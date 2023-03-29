@@ -20,7 +20,6 @@ out/
 bin/
 tmp/
 .metadata
-.classpath
 .project
 *.tmp
 *.bak
