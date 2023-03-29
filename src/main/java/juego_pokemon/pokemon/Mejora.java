@@ -12,4 +12,7 @@ public class Mejora extends Movimiento {
     protected int turnos;
     protected String mejora;
 
+    public Mejora(int idMovimiento, Pokemon tipoMovimiento, String nombreMovimiento) {
+        super(idMovimiento, tipoMovimiento, nombreMovimiento);
+    }
 }
