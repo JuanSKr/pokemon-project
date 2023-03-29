@@ -5,10 +5,14 @@ POR HACER:
 3. Métodos
  */
 
-public abstract class Movimiento {
-    protected int idMovimiento;
+package juego_pokemon.pokemon;
+
+
+public class Ataque extends Movimiento {
+
+    protected int potencia;
     protected Pokemon tipoMovimiento;
-    protected String nombreMovimiento;
+
 }
 
-// Metodos:
+

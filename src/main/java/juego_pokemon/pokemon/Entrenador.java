@@ -1,3 +1,6 @@
+package juego_pokemon.pokemon;
+
+
 import java.util.LinkedList;
 
 //Hay que implementar la funciones a las clases 
