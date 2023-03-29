@@ -5,10 +5,9 @@ POR HACER:
 3. Métodos
  */
 
-package juego_pokemon.pokemon;
+package src.main.java.juego_pokemon.pokemon;
 
-
-public class Ataque extends Movimiento {
+class Ataque extends Movimiento {
 
     protected int potencia;
     protected Pokemon tipoMovimiento;

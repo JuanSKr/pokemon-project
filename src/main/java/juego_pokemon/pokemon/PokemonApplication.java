@@ -1,4 +1,4 @@
-package juego_pokemon.pokemon;
+package src.main.java.juego_pokemon.pokemon;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
