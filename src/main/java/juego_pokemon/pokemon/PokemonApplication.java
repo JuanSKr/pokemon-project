@@ -12,7 +12,7 @@ public class PokemonApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PokemonApplication.class.getResource("pokemon-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Pokemon");
         stage.setScene(scene);
         stage.show();
     }
