@@ -1,4 +1,4 @@
-package src.main.java.juego_pokemon.pokemon;
+package juego_pokemon.pokemon;
 
 
 /*
@@ -13,4 +13,7 @@ public class Estado extends Movimiento {
     protected int turnos;
     protected Pokemon estado;
 
+    public Estado(int idMovimiento, Pokemon tipoMovimiento, String nombreMovimiento) {
+        super(idMovimiento, tipoMovimiento, nombreMovimiento);
+    }
 }

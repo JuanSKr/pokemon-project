@@ -1,4 +1,5 @@
-package src.main.java.juego_pokemon.pokemon;
+package juego_pokemon.pokemon;
+
 /*
 POR HACER:
 1. Constructores

@@ -1,4 +1,4 @@
-package src.main.java.juego_pokemon.pokemon;
+package juego_pokemon.pokemon;
 
 
 import java.util.LinkedList;
