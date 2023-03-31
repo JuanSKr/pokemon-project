@@ -17,5 +17,12 @@ public class Objeto {
     protected double defensaEspecial;
     protected double vitalidad;
     protected double precio;
+    
+    
+
+	public int getIdObjeto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

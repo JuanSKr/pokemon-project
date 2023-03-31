@@ -10,5 +10,5 @@ public class PokemonController {
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
-    }
+    }      
 }

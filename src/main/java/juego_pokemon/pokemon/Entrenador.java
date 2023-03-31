@@ -9,12 +9,12 @@ import java.util.LinkedList;
 
 public class Entrenador {
 	// Atributos privados de la clase Entrenador
-	private String nombre;
-	private int dinero;
-	private LinkedList<Pokemon>equipo1;
-	private LinkedList<Pokemon>equipo2;
-	private LinkedList<Pokemon>caja;
-	private LinkedList<Pokemon>mochila;
+	protected String nombre;
+	protected int dinero;
+	protected LinkedList<Pokemon>equipo1;
+	protected LinkedList<Pokemon>equipo2;
+	protected LinkedList<Pokemon>caja;
+	protected LinkedList<Pokemon>mochila;
 	
 	
 	// Constructor de la clase Entrenador
@@ -27,22 +27,22 @@ public class Entrenador {
         this.caja = new LinkedList<>();
         this.mochila = new LinkedList<>();
 	}
-	// Método para mover un objeto de la mochila a la caja
+	// MÉTODO PARA MOVER UN OBJETO DE LA MOCHILA A LA CAJA
 	 public void moverACaja() {}
 	 
-	// Método para mover un Pokemon del equipo1 o equipo2 a la mochila
+	// MÉTODO PARA MOVER UN POKEMON DEL EQUIPO1 O EQUIPO2 A LA MOCHILA
 	 public void moverAEquipo() {}
 	 
-	 // Método para entrenar a un Pokemon de la mochila
+	 // MÉTODO PARA ENTRENAR A UN POKEMON DE LA MOCHILA
 	 public void entrenar() {}
 	 
-	 // Método para capturar un nuevo Pokemon y añadirlo a la caja
+	 // MÉTODO PARA CAPTURAR UN NUEVO POKEMON Y AÑADIRLO A LA CAJA
 	 public void capturar() {}
 	 
-	 // Método para combatir con un Pokemon del equipo1 o equipo2
+	 // MÉTODO PARA COMBATIR CON UN POKEMON DEL EQUIPO1 O EQUIPO2
 	 public void combatir() {}
 	 
-	// Método para criar un huevo Pokemon
+	// MÉTODO PARA CRIAR UN HUEVO POKEMON
 	 public void criar() {}
 	
 }
