@@ -7,6 +7,8 @@ POR HACER:
 3. Métodos
  */
 
+import java.util.HashMap;
+
 public class Pokemon {
 
     protected String nombre;
@@ -26,5 +28,8 @@ public class Pokemon {
     protected int fertilidad;
     protected Objeto obj;
     protected Movimiento movimiento;
+
+    private HashMap<String, Movimiento> movimientosDisponibles;
+    private HashMap<String, Movimiento> movimientosAprendidos;
 
 }

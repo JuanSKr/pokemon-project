@@ -11,46 +11,50 @@ public abstract class Movimiento {
 
     // Atributos de la clase
 
-    protected int idMovimiento;
-    protected Pokemon tipoMovimiento;
-    protected String nombreMovimiento;
+     protected int idMovimiento;
+     protected String nombreMovimiento;
 
-    // Constructor con todos los parametros
+     // Constructor con todos los parametros
 
-    public Movimiento(int idMovimiento, Pokemon tipoMovimiento, String nombreMovimiento) {
-        this.idMovimiento = idMovimiento;
-        this.tipoMovimiento = tipoMovimiento;
-        this.nombreMovimiento = nombreMovimiento;
-    }
+     public Movimiento(int idMovimiento, String nombreMovimiento) {
+          this.idMovimiento = idMovimiento;
+          this.nombreMovimiento = nombreMovimiento;
+     }
 
-    // Metodos:
+     // Constructor por defecto
 
-    int patata = 5;
+     public Movimiento() {
+          this.idMovimiento = 0;
+          this.nombreMovimiento = "";
+     }
+
+     // Constructor copia
+
+     public Movimiento(Movimiento m) {
+          this.idMovimiento = m.idMovimiento;
+          this.nombreMovimiento = m.nombreMovimiento;
+     }
+
+     // Metodos
+
+     // Getters y Setters
 
 
-    public int getIdMovimiento() {
-        return idMovimiento;
-    }
+     public int getIdMovimiento() {
+          return idMovimiento;
+     }
 
-    public void setIdMovimiento(int idMovimiento) {
-        this.idMovimiento = idMovimiento;
-    }
+     public void setIdMovimiento(int idMovimiento) {
+          this.idMovimiento = idMovimiento;
+     }
 
-    public Pokemon getTipoMovimiento() {
-        return tipoMovimiento;
-    }
+     public String getNombreMovimiento() {
+          return nombreMovimiento;
+     }
 
-    public void setTipoMovimiento(Pokemon tipoMovimiento) {
-        this.tipoMovimiento = tipoMovimiento;
-    }
-
-    public String getNombreMovimiento() {
-        return nombreMovimiento;
-    }
-
-    public void setNombreMovimiento(String nombreMovimiento) {
-        this.nombreMovimiento = nombreMovimiento;
-    }
+     public void setNombreMovimiento(String nombreMovimiento) {
+          this.nombreMovimiento = nombreMovimiento;
+     }
 }
 
 
