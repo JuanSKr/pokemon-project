@@ -9,49 +9,66 @@ import java.util.LinkedList;
 
 public class Entrenador {
 	// Atributos privados de la clase Entrenador
-	private String nombre;
-	private int dinero;
-	private LinkedList<Pokemon>equipo1;
-	private LinkedList<Pokemon>equipo2;
-	private LinkedList<Pokemon>caja;
-	private LinkedList<Pokemon>mochila;
-	
-	
+	protected String nombre;
+	protected int Dinero;
+	protected LinkedList<Pokemon>equipo1;
+	protected LinkedList<Pokemon>equipo2;
+	protected LinkedList<Pokemon>caja;
+	protected LinkedList<Pokemon>Mochila;
+
+
 	// Constructor de la clase Entrenador
 	public Entrenador(String nombre, int dinero) {
 		super();
 		this.nombre = nombre;
-		this.dinero = dinero;
+		this.Dinero = dinero;
 		this.equipo1 = new LinkedList<>();
-        this.equipo2 = new LinkedList<>();
-        this.caja = new LinkedList<>();
-        this.mochila = new LinkedList<>();
+		this.equipo2 = new LinkedList<>();
+		this.caja = new LinkedList<>();
+		this.Mochila = new LinkedList<>();
 	}
-	// Método para mover un objeto de la mochila a la caja
-	 public void moverACaja() {}
-	 
-	// Método para mover un Pokemon del equipo1 o equipo2 a la mochila
-	 public void moverAEquipo() {}
-	 
-	 // Método para entrenar a un Pokemon de la mochila
-	 public void entrenar() {}
-	 
-	 // Método para capturar un nuevo Pokemon y añadirlo a la caja
-	 public void capturar() {}
-	 
-	 // Método para combatir con un Pokemon del equipo1 o equipo2
-	 public void combatir() {}
-	 
-	// Método para criar un huevo Pokemon
-	 public void criar() {}
-	
+	// MÉTODO PARA MOVER UN OBJETO DE LA MOCHILA A LA CAJA
+	public void moverACaja() {}
+
+	// MÉTODO PARA MOVER UN POKEMON DEL EQUIPO1 O EQUIPO2 A LA MOCHILA
+	public void moverAEquipo() {}
+
+	// MÉTODO PARA ENTRENAR A UN POKEMON DE LA MOCHILA
+	public void entrenar() {}
+
+	// MÉTODO PARA CAPTURAR UN NUEVO POKEMON Y AÑADIRLO A LA CAJA
+	public void capturar() {}
+
+	// MÉTODO PARA COMBATIR CON UN POKEMON DEL EQUIPO1 O EQUIPO2
+	public void combatir() {}
+
+	// MÉTODO PARA CRIAR UN HUEVO POKEMON
+	public void criar() {}
+
+
+	public static void restarSaldo(int precio) {
+		// TODO Auto-generated method stub
+
+	}
+	public static void setObjeto(Objeto objetoComprado) {
+		// TODO Auto-generated method stub
+
+	}
+
+
+	public void setDinero(double d) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public LinkedList<Objeto> getMochila() {
+
+		return null;
+	}
+	public double getDinero() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 }
-	
-	
-	
-	
-	 
-	
-
-	
-
