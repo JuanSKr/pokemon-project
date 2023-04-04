@@ -7,8 +7,6 @@ POR HACER:
 
 package juego_pokemon.pokemon;
 
-
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Ataque extends Movimiento {
@@ -16,8 +14,6 @@ public class Ataque extends Movimiento {
     protected int potencia;
     protected Tipo tipoMovimiento;
 
-
-    static HashMap<String, Ataque> movimientosAtaque = new HashMap<>();
 
     static Ataque lanzallamas = new Ataque(1, "Lanzallamas", 80, Tipo.FUEGO);
     static Ataque cascada = new Ataque(2, "Cascada", 50, Tipo.AGUA);
@@ -73,7 +69,6 @@ public class Ataque extends Movimiento {
 
     // Getters y Setters
 
-
     public int getPotencia() {
         return potencia;
     }
@@ -90,56 +85,13 @@ public class Ataque extends Movimiento {
         this.tipoMovimiento = tipoMovimiento;
     }
 
-    public static HashMap<String, Ataque> getMovimientosAtaque() {
-        return movimientosAtaque;
-    }
-
-    public static void setMovimientosAtaque(HashMap<String, Ataque> movimientosAtaque) {
-        Ataque.movimientosAtaque = movimientosAtaque;
-    }
-
-    public static Ataque getLanzallamas() {
-        return lanzallamas;
-    }
-
-    public static void setLanzallamas(Ataque lanzallamas) {
-        Ataque.lanzallamas = lanzallamas;
-    }
-
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Lanzallamas: " + lanzallamas.getTipoMovimiento());
+        System.out.println("Cascada: " + cascada.getTipoMovimiento());
+        System.out.println("Hueso palo: " + huesopalo.getTipoMovimiento());
 
-        int vidaPokemon = 15;
-        int estamina = 100;
-
-
-        System.out.println("------------------");
-        System.out.println("   Movimientos");
-        System.out.println("------------------");
-        System.out.println("1. Lanzallamas");
-        System.out.println("2. Movimiento 2");
-        System.out.println("3. Movimiento 3");
-        System.out.println("4. Movimiento 4");
-        System.out.println("------------------");
-        System.out.print("Elige un movimiento: ");
-        int opcion = sc.nextInt();
-
-        switch (opcion) {
-
-            case 1:
-                System.out.println("Estamina: "+estamina);
-                System.out.println("----------------");
-                System.out.println("Vida Pikachu enemigo: " + vidaPokemon);
-                System.out.println("¡Pepe ha utilizado " + lanzallamas.getNombreMovimiento() + "!");
-                System.out.println("El Pikachu enemigo ha recibido: " + lanzallamas.getPotencia() + " puntos de daño");
-                System.out.println("Ahora el Pikachu enemigo tiene: " + calcularAtaque(vidaPokemon, lanzallamas) + " puntos de vida");
-                System.out.println("Ahora tu estamina es de: "+costeEstamina(lanzallamas.getPotencia(), estamina));
-
-
-
-        }
 
     }
 
