@@ -1,6 +1,7 @@
 package juego_pokemon.pokemon;
 
 
+
 import java.util.LinkedList;
 
 //Hay que implementar la funciones a las clases 
@@ -10,22 +11,22 @@ import java.util.LinkedList;
 public class Entrenador {
 	// Atributos privados de la clase Entrenador
 	protected String nombre;
-	protected int dinero;
+	protected int Dinero;
 	protected LinkedList<Pokemon>equipo1;
 	protected LinkedList<Pokemon>equipo2;
 	protected LinkedList<Pokemon>caja;
-	protected LinkedList<Pokemon>mochila;
+	protected LinkedList<Pokemon>Mochila;
 	
 	
 	// Constructor de la clase Entrenador
 	public Entrenador(String nombre, int dinero) {
 		super();
 		this.nombre = nombre;
-		this.dinero = dinero;
+		this.Dinero = dinero;
 		this.equipo1 = new LinkedList<>();
         this.equipo2 = new LinkedList<>();
         this.caja = new LinkedList<>();
-        this.mochila = new LinkedList<>();
+        this.Mochila = new LinkedList<>();
 	}
 	// MÉTODO PARA MOVER UN OBJETO DE LA MOCHILA A LA CAJA
 	 public void moverACaja() {}
@@ -44,6 +45,32 @@ public class Entrenador {
 	 
 	// MÉTODO PARA CRIAR UN HUEVO POKEMON
 	 public void criar() {}
+	 
+	
+	public static void restarSaldo(int precio) {
+		// TODO Auto-generated method stub
+		
+	}
+	public static void setObjeto(Objeto objetoComprado) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	public void setDinero(double d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public LinkedList<Objeto> getMochila() {
+		
+		return null;
+	}
+	public double getDinero() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	
 }
 	
