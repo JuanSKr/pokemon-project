@@ -15,7 +15,7 @@ public class PokemonApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PokemonApplication.class.getResource("pokemon-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 850);
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 650);
 
         // crear botones personalizados para minimizar y cerrar la ventana
         Button minimizeButton = new Button("-");
