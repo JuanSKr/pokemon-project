@@ -26,8 +26,5 @@ public class Pokemon {
     protected int fertilidad;
     protected Objeto obj;
     protected Movimiento movimiento;
-    
-    
-	
 
 }
