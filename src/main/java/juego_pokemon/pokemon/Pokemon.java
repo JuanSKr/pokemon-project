@@ -26,5 +26,13 @@ public class Pokemon {
     protected int fertilidad;
     protected Objeto obj;
     protected Movimiento movimiento;
+	public int getPrecio() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

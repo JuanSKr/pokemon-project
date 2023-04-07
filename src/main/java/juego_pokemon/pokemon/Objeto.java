@@ -1,10 +1,12 @@
 package juego_pokemon.pokemon;
 
+//FALTA POR AÑADIR LA MEJORA DEL POKEMON UNA VEZ USA EL OBJETO
+
 //CLASE OBJETO
 class Objeto {
 	private int id;
 	private String nombre;
-	int precio;
+	static int precio;
 	private String efecto;
 	public String idObjeto;
 
@@ -12,7 +14,7 @@ class Objeto {
 	public Objeto(int id, String nombre, int precio, String efecto) {
 		this.id = id;
 		this.nombre = nombre;
-		this.precio = precio;
+		Objeto.precio = precio;
 		this.efecto = efecto;
 	}
 
@@ -41,4 +43,10 @@ class Objeto {
 	public String toString() {
 		return "*OBJETO--> " + id + " NOMBRE--> " + nombre + "  PRECIO--> " + precio + "  EFECTO-->" + efecto;
 	}
+
+	public boolean comprobarCompra(Entrenador entrenador) {
+	    return entrenador.getDinero() >= precio;
+	}
+
+
 }
