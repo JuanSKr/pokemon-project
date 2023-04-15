@@ -47,6 +47,4 @@ class Objeto {
 	public boolean comprobarCompra(Entrenador entrenador) {
 	    return entrenador.getDinero() >= precio;
 	}
-
-
 }

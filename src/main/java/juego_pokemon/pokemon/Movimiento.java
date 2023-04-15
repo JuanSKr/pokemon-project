@@ -12,20 +12,33 @@ public abstract class Movimiento {
     // Atributos de la clase
 
     protected int idMovimiento;
-    protected Pokemon tipoMovimiento;
     protected String nombreMovimiento;
+
 
     // Constructor con todos los parametros
 
-    public Movimiento(int idMovimiento, Pokemon tipoMovimiento, String nombreMovimiento) {
+    public Movimiento(int idMovimiento, String nombreMovimiento) {
         this.idMovimiento = idMovimiento;
-        this.tipoMovimiento = tipoMovimiento;
         this.nombreMovimiento = nombreMovimiento;
     }
 
-    // Metodos:
+    // Constructor por defecto
 
-    int patata = 5;
+    public Movimiento(int idMovimiento2, Pokemon tipoMovimiento, String nombreMovimiento2) {
+        this.idMovimiento = 0;
+        this.nombreMovimiento = "";
+    }
+
+    // Constructor copia
+
+    public Movimiento(Movimiento m) {
+        this.idMovimiento = m.idMovimiento;
+        this.nombreMovimiento = m.nombreMovimiento;
+    }
+
+    // Metodos
+
+    // Getters y Setters
 
 
     public int getIdMovimiento() {
@@ -36,14 +49,6 @@ public abstract class Movimiento {
         this.idMovimiento = idMovimiento;
     }
 
-    public Pokemon getTipoMovimiento() {
-        return tipoMovimiento;
-    }
-
-    public void setTipoMovimiento(Pokemon tipoMovimiento) {
-        this.tipoMovimiento = tipoMovimiento;
-    }
-
     public String getNombreMovimiento() {
         return nombreMovimiento;
     }
@@ -52,5 +57,6 @@ public abstract class Movimiento {
         this.nombreMovimiento = nombreMovimiento;
     }
 }
+
 
 
