@@ -25,28 +25,6 @@ public class Pokemon {
     protected String movimiento3;
     protected String movimiento4;
 
-    static Pokemon Pikachu = new Pokemon(
-            "Nombre",
-            "Pika",
-            5,
-            Tipo.ELECTRICO,
-            null,
-            'H',
-            100,
-            50,
-            50,
-            65,
-            60,
-            150,
-            30,
-            null,
-            10,
-            null,
-            Ataque.lanzallamas.getNombreMovimiento(),
-            huesopalo.getNombreMovimiento(),
-            Ataque.cascada.getNombreMovimiento(),
-            null);
-
     // Constructor con todos los parámetros
 
     public Pokemon(String nombre, String mote, int nivel, Tipo tipo1, Tipo tipo2, char sexo, double vitalidad,

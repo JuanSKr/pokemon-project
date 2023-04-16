@@ -11,28 +11,24 @@ public abstract class Movimiento {
 
     // Atributos de la clase
 
-    protected int idMovimiento;
     protected String nombreMovimiento;
 
 
     // Constructor con todos los parametros
 
-    public Movimiento(int idMovimiento, String nombreMovimiento) {
-        this.idMovimiento = idMovimiento;
+    public Movimiento(String nombreMovimiento) {
         this.nombreMovimiento = nombreMovimiento;
     }
 
     // Constructor por defecto
 
     public Movimiento() {
-        this.idMovimiento = 0;
         this.nombreMovimiento = "";
     }
 
     // Constructor copia
 
     public Movimiento(Movimiento m) {
-        this.idMovimiento = m.idMovimiento;
         this.nombreMovimiento = m.nombreMovimiento;
     }
 
@@ -40,14 +36,6 @@ public abstract class Movimiento {
 
     // Getters y Setters
 
-
-    public int getIdMovimiento() {
-        return idMovimiento;
-    }
-
-    public void setIdMovimiento(int idMovimiento) {
-        this.idMovimiento = idMovimiento;
-    }
 
     public String getNombreMovimiento() {
         return nombreMovimiento;
@@ -57,5 +45,3 @@ public abstract class Movimiento {
         this.nombreMovimiento = nombreMovimiento;
     }
 }
-
-

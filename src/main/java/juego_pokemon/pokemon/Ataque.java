@@ -15,16 +15,15 @@ public class Ataque extends Movimiento {
     protected Tipo tipoMovimiento;
 
 
-    static Ataque lanzallamas = new Ataque(1, "Lanzallamas", 80, Tipo.FUEGO);
-    static Ataque cascada = new Ataque(2, "Cascada", 50, Tipo.AGUA);
-    static Ataque huesopalo = new Ataque(3, "Hueso palo", 30, Tipo.TIERRA);
+    static Ataque lanzallamas = new Ataque("Lanzallamas", 80, Tipo.FUEGO);
+    static Ataque cascada = new Ataque("Cascada", 50, Tipo.AGUA);
+    static Ataque huesopalo = new Ataque("Hueso palo", 30, Tipo.TIERRA);
 
 
     // Constructor con todos los parámetros
 
-    public Ataque(int idMovimiento, String nombreMovimiento, int potencia, Tipo tipoMovimiento) {
-        super(idMovimiento, nombreMovimiento);
-        this.idMovimiento = idMovimiento;
+    public Ataque(String nombreMovimiento, int potencia, Tipo tipoMovimiento) {
+        super(nombreMovimiento);
         this.nombreMovimiento = nombreMovimiento;
         this.potencia = potencia;
         this.tipoMovimiento = tipoMovimiento;
@@ -33,7 +32,6 @@ public class Ataque extends Movimiento {
     // Construtor por defecto
 
     public Ataque() {
-        this.idMovimiento = 0;
         this.nombreMovimiento = "";
         this.potencia = 0;
         this.tipoMovimiento = null;
@@ -42,7 +40,6 @@ public class Ataque extends Movimiento {
     // Constructor copia
 
     public Ataque(Ataque a) {
-        this.idMovimiento = a.idMovimiento;
         this.nombreMovimiento = a.nombreMovimiento;
         this.potencia = a.potencia;
         this.tipoMovimiento = a.tipoMovimiento;
@@ -97,5 +94,3 @@ public class Ataque extends Movimiento {
 
 
 }
-
-
