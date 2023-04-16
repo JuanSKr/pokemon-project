@@ -11,26 +11,26 @@ IMPORTANTE:
 public class Pokedex {
 
     static Pokemon Pikachu = new Pokemon(
-        "Pikachu",
-        null,
-        5,
-        Tipo.ELECTRICO,
-        null,
-        'H',
-        100,
-        50,
-        50,
-        65,
-        60,
-        150,
-        30,
-        null,
-        10,
-        null,
-        Ataque.lanzallamas.getNombreMovimiento(),
-        Estado.rayoconfuso.getNombreMovimiento(),
-        Ataque.cascada.getNombreMovimiento(),
-        null);
+            "Pikachu",
+            null,
+            5,
+            Tipo.ELECTRICO,
+            null,
+            'H',
+            100,
+            50,
+            50,
+            65,
+            60,
+            150,
+            30,
+            null,
+            10,
+            null,
+            Ataque.lanzallamas.getNombreMovimiento(),
+            Estado.rayoconfuso.getNombreMovimiento(),
+            Ataque.cascada.getNombreMovimiento(),
+            null);
 
     static Pokemon Raichu = new Pokemon(
             "Raichu",
@@ -451,7 +451,5 @@ public class Pokedex {
             Estado.rayoconfuso.getNombreMovimiento(),
             Ataque.cascada.getNombreMovimiento(),
             null);
-
-public class Pokedex {
 
 }
