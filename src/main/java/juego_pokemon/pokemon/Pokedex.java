@@ -452,4 +452,6 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
+public class Pokedex {
+
 }
