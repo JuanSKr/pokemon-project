@@ -1,12 +1,12 @@
 package juego_pokemon.pokemon;
 
-import java.util.HashMap;
+/*
+ - CAMBIAR TODOS LOS VALORES DE LOS ATAQUES
+ */
 
 public class Mejora extends Movimiento {
 
     protected int turnos;
-
-    static HashMap<String, Mejora> movimientosMejora = new HashMap<>();
 
     static Mejora absorver = new Mejora("Absorver", 5);
     static Mejora danzapetalo = new Mejora("Danza petalo", 3);

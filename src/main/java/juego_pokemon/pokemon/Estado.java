@@ -2,6 +2,10 @@ package juego_pokemon.pokemon;
 
 import java.util.HashMap;
 
+/*
+- CAMBIAR TODOS LOS VALORES DE LOS ATAQUES
+ */
+
 public class Estado extends Movimiento {
 
     protected int turnos;
