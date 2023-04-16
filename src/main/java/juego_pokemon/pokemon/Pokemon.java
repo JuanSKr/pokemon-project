@@ -1,5 +1,7 @@
 package juego_pokemon.pokemon;
 
+
+
 /*
 POR HACER:
 1. Constructores

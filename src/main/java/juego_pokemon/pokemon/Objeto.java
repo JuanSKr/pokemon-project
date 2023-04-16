@@ -1,22 +1,19 @@
 package juego_pokemon.pokemon;
 
-//FALTA POR AÑADIR LA MEJORA DEL POKEMON UNA VEZ USA EL OBJETO
-
-//CLASE OBJETO
+// CLASE OBJETO
 class Objeto {
-	private int id;
-	private String nombre;
-	static int precio;
-	private String efecto;
-	public String idObjeto;
+	  private int id;
+	    private String nombre;
+	    private int precio;
+	    private String efecto;
 
 	// Constructor
 	public Objeto(int id, String nombre, int precio, String efecto) {
-		this.id = id;
-		this.nombre = nombre;
-		Objeto.precio = precio;
-		this.efecto = efecto;
-	}
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.efecto = efecto;
+    }
 
 	// MÉTODO PARA OBTENER EL ID DEL OBJETO
 	public int getId() {
@@ -40,11 +37,12 @@ class Objeto {
 
 	// MÉTODO PARA MOSTRAR LA INFORMACIÓN DEL OBJETO
 	@Override
-	public String toString() {
-		return "*OBJETO--> " + id + " NOMBRE--> " + nombre + "  PRECIO--> " + precio + "  EFECTO-->" + efecto;
-	}
+    public String toString() {
+        return "*OBJETO--> "  + id + " NOMBRE--> " + nombre + "  PRECIO--> " + precio +"  EFECTO-->" + efecto ;
+    }
 
-	public boolean comprobarCompra(Entrenador entrenador) {
-	    return entrenador.getDinero() >= precio;
+	public void setNombre(String nombre2) {
+		// TODO Auto-generated method stub
+		
 	}
 }
