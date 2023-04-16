@@ -8,9 +8,55 @@ POR HACER:
  */
 
 public abstract class Movimiento {
+
+    // Atributos de la clase
+
     protected int idMovimiento;
-    protected Pokemon tipoMovimiento;
     protected String nombreMovimiento;
+
+
+    // Constructor con todos los parametros
+
+    public Movimiento(int idMovimiento, String nombreMovimiento) {
+        this.idMovimiento = idMovimiento;
+        this.nombreMovimiento = nombreMovimiento;
+    }
+
+    // Constructor por defecto
+
+    public Movimiento(int idMovimiento2, Pokemon tipoMovimiento, String nombreMovimiento2) {
+        this.idMovimiento = 0;
+        this.nombreMovimiento = "";
+    }
+
+    // Constructor copia
+
+    public Movimiento(Movimiento m) {
+        this.idMovimiento = m.idMovimiento;
+        this.nombreMovimiento = m.nombreMovimiento;
+    }
+
+    // Metodos
+
+    // Getters y Setters
+
+
+    public int getIdMovimiento() {
+        return idMovimiento;
+    }
+
+    public void setIdMovimiento(int idMovimiento) {
+        this.idMovimiento = idMovimiento;
+    }
+
+    public String getNombreMovimiento() {
+        return nombreMovimiento;
+    }
+
+    public void setNombreMovimiento(String nombreMovimiento) {
+        this.nombreMovimiento = nombreMovimiento;
+    }
 }
 
-// Metodos:
+
+

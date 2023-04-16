@@ -13,6 +13,9 @@ public class Ataque extends Movimiento {
     protected int potencia;
     protected Pokemon tipoMovimiento;
 
+    public Ataque(int idMovimiento, Pokemon tipoMovimiento, String nombreMovimiento) {
+        super(idMovimiento, tipoMovimiento, nombreMovimiento);
+    }
 }
 
 
