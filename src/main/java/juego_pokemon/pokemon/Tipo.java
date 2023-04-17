@@ -18,5 +18,5 @@ public enum Tipo {
     SINIESTRO,
     TIERRA,
     VENENO,
-    VOLADOR
+    VOLADOR;
 }
