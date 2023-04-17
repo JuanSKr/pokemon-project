@@ -1,74 +1,48 @@
 package juego_pokemon.pokemon;
 
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.LinkedList;
+//CLASE ENTRENADOR
+class Entrenador {
+ private static  int dinero;
+ private Map<Integer, Objeto> mochila;
+ private Map<Objeto, Integer> contador; // nuevo HashMap
 
-//Hay que implementar la funciones a las clases 
-//moverACaja/moverAEquipo/entrenar/capturar/combatir/criar
+ // CONSTRUCTOR
+ public Entrenador(int dinero) {
+     this.dinero = 200;
+     this.mochila = new HashMap<>();
+     this.contador = new HashMap<>(); // inicializar el nuevo HashMap
+ }
 
+ // MÉTODO PARA COMPRAR UN OBJETO
+ public void comprarObjeto(Objeto objeto) {
+     if (dinero >= objeto.getPrecio()) {
+         dinero -= objeto.getPrecio();
+         mochila.put(objeto.getId(), objeto);
+         System.out.println("¡Objeto  " +objeto.getNombre() +" comprado y añadido a la mochila!");
+      // Incrementar el contador del objeto comprado
+         if (contador.containsKey(objeto)) {
+             contador.put(objeto, contador.get(objeto) + 1);
+         } else {
+             contador.put(objeto, 1);
+         }
+     	} else {
+         System.out.println("No tienes suficiente dinero para comprar este objeto.");
+     }
+ }
 
-public class Entrenador {
-	// Atributos privados de la clase Entrenador
-	protected String nombre;
-	protected int Dinero;
-	protected LinkedList<Pokemon>equipo1;
-	protected LinkedList<Pokemon>equipo2;
-	protected LinkedList<Pokemon>caja;
-	protected LinkedList<Pokemon>Mochila;
+ // MÉTODO PARA OBTENER EL DINERO DEL ENTRENADOR
+ public static int getDinero() {
+     return dinero;
+ }
 
+ public Map<Integer, Objeto> getMochila() {
+     return mochila;
+ }
 
-	// Constructor de la clase Entrenador
-	public Entrenador(String nombre, int dinero) {
-		super();
-		this.nombre = nombre;
-		this.Dinero = dinero;
-		this.equipo1 = new LinkedList<>();
-		this.equipo2 = new LinkedList<>();
-		this.caja = new LinkedList<>();
-		this.Mochila = new LinkedList<>();
-	}
-	// MÉTODO PARA MOVER UN OBJETO DE LA MOCHILA A LA CAJA
-	public void moverACaja() {}
-
-	// MÉTODO PARA MOVER UN POKEMON DEL EQUIPO1 O EQUIPO2 A LA MOCHILA
-	public void moverAEquipo() {}
-
-	// MÉTODO PARA ENTRENAR A UN POKEMON DE LA MOCHILA
-	public void entrenar() {}
-
-	// MÉTODO PARA CAPTURAR UN NUEVO POKEMON Y AÑADIRLO A LA CAJA
-	public void capturar() {}
-
-	// MÉTODO PARA COMBATIR CON UN POKEMON DEL EQUIPO1 O EQUIPO2
-	public void combatir() {}
-
-	// MÉTODO PARA CRIAR UN HUEVO POKEMON
-	public void criar() {}
-
-
-	public static void restarSaldo(int precio) {
-		// TODO Auto-generated method stub
-
-	}
-	public static void setObjeto(Objeto objetoComprado) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	public void setDinero(double d) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public LinkedList<Objeto> getMochila() {
-
-		return null;
-	}
-	public double getDinero() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
+ public Map<Objeto, Integer> getContador() {
+     return contador;
+ }
 }

@@ -1,58 +1,48 @@
 package juego_pokemon.pokemon;
 
-import java.util.HashMap;
+// CLASE OBJETO
+class Objeto {
+	  private int id;
+	    private String nombre;
+	    private int precio;
+	    private String efecto;
 
-//FALTAN POR AÑADIR MÉTODOS GETTERS Y SETTERS
-
-
-public class Objeto {
-
-    protected int idObjeto;
-    protected String nombre;
-    protected double ataque;
-    protected double defensa;
-    protected double ataqueEspecial;
-    protected double defensaEspecial;
-    protected double vitalidad;
-    protected double precio;
-
-    // CONSTRUCTOR POR DEFECTO
-    public Objeto() {
-        this.idObjeto = 0;
-        this.nombre = "";
-        this.ataque = 0;
-        this.defensa = 0;
-        this.ataqueEspecial = 0;
-        this.defensaEspecial = 0;
-        this.vitalidad = 0;
-        this.precio = 5;//PRECIO ESTABLECIDO AL OBJETO
-    }
-
-    // CONSTRUCTOR CON PARÁMETROS
-    public Objeto(int idObjeto, String nombre, double ataque, double defensa, double ataqueEspecial,
-                  double defensaEspecial, double vitalidad, double precio) {
-        this.idObjeto = idObjeto;
+	// Constructor
+	public Objeto(int id, String nombre, int precio, String efecto) {
+        this.id = id;
         this.nombre = nombre;
-        this.ataque = ataque;
-        this.defensa = defensa;
-        this.ataqueEspecial = ataqueEspecial;
-        this.defensaEspecial = defensaEspecial;
-        this.vitalidad = vitalidad;
         this.precio = precio;
+        this.efecto = efecto;
     }
 
-    // HASHMAP CON LOS OBJETOS DISPONIBLES EN LA TIENDA
-    public static final HashMap<String, Objeto> objetosDisponibles = new HashMap<String, Objeto>() {{
-        put("pesa", new Objeto(1, "pesa", 1.2, 1.2, 1.0, 1.0, 1.0, 10.0));
-        put("pluma", new Objeto(2, "pluma", 1.0, 0.8, 1.0, 0.8, 1.3, 10.0));
-        put("chaleco", new Objeto(3, "chaleco", 0.85, 1.2, 0.85, 1.2, 1.0, 10.0));
-        put("bastón", new Objeto(4, "bastón", 1.0, 1.0, 1.0, 1.0, 1.2, 10.0));
-        put("pilas", new Objeto(5, "pilas", 1.0, 1.0, 0.7, 0.7, 1.0, 10.0));
-    }};
+	// MÉTODO PARA OBTENER EL ID DEL OBJETO
+	public int getId() {
+		return id;
+	}
 
-    public int getIdObjeto() {
-        // TODO Auto-generated method stub
-        return 0;
+	// MÉTODO PARA OBTENER EL NOMBRE DEL OBJETO
+	public String getNombre() {
+		return nombre;
+	}
+
+	// MÉTODO PARA OBTENER EL PRECIO DEL OBJETO
+	public int getPrecio() {
+		return precio;
+	}
+
+	// MÉTODO PARA OBTENER LA DESCRIPCIÓN DEL OBJETO
+	public String getDescripcion() {
+		return efecto;
+	}
+
+	// MÉTODO PARA MOSTRAR LA INFORMACIÓN DEL OBJETO
+	@Override
+    public String toString() {
+        return "*OBJETO--> "  + id + " NOMBRE--> " + nombre + "  PRECIO--> " + precio +"  EFECTO-->" + efecto ;
     }
 
+	public void setNombre(String nombre2) {
+		// TODO Auto-generated method stub
+		
+	}
 }

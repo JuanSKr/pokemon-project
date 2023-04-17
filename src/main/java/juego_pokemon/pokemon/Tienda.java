@@ -1,57 +1,33 @@
 package juego_pokemon.pokemon;
 
+
 import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.Map;
 
-public class Tienda {
-    private HashMap<Integer, Objeto> objetosDisponibles; // MAPA DE OBJETOS DISPONIBLES EN LA TIENDA
+//CLASE TIENDA
+class Tienda {
+ private Map<Integer, Objeto> inventario;
 
-    public Tienda() {
-        // INICIALIZAR MAPA DE OBJETOS EN VENTA
-        objetosDisponibles = new HashMap<>();
-        for (Objeto objeto : Objeto.objetosDisponibles.values()) {
-            objetosDisponibles.put(objeto.idObjeto, objeto);
-        }
-    }
+ // CONSTRUCTOR
+ public Tienda() {
+     this.inventario = new HashMap<>();
+     inventario.put(1, new Objeto(1, "Pesa", 50, "Aumenta el ataque y la defensa un 20%, pero disminuye la velocidad un 20%."));
+     inventario.put(2, new Objeto(2, "Pluma", 60, "Aumenta la velocidad un 30%, pero disminuye la defensa y la defensa especial en un 20%."));
+     inventario.put(3, new Objeto(3, "Chaleco", 70, "Aumenta la defensa y la defensa especial un 20%, pero disminuye la velocidad y el ataque un 15%."));
+     inventario.put(4, new Objeto(4, "Bastón", 80, "Aumenta la estamina un 20%, pero disminuye en un 15% la velocidad."));
+     inventario.put(5, new Objeto(5, "Pilas", 90, "Aumenta la recuperación de estamina en un 50%, pero disminuye la defensa especial un 30%."));
+ }
 
-    public void mostrarCatalogo() {
-        System.out.println("Catálogo de objetos:");
-        for (Objeto objeto : objetosDisponibles.values()) {
-            System.out.println("ID: " + objeto.idObjeto + ", Nombre: " + objeto.nombre + ", Precio: " + objeto.precio);
-        }
-    }
+ // MÉTODO PARA MOSTRAR EL INVENTARIO DE LA TIENDA
+ public void mostrarInventario() {
+     System.out.println("Inventario de la tienda:");
+     for (Objeto objeto : inventario.values()) {
+         System.out.println(objeto.toString());
+     }
+ }
 
-    public void comprarObjeto(Entrenador entrenador, int idObjeto)
-            throws ObjetoNoEncontradoException, DineroInsuficienteException, ObjetoYaEnMochilaException {
-        Objeto objetoComprado = objetosDisponibles.get(idObjeto);
-        if (objetoComprado == null) {
-            throw new ObjetoNoEncontradoException();
-        }
-
-        if (entrenador.getDinero() < objetoComprado.precio) {
-            throw new DineroInsuficienteException();
-        }
-
-        if (entrenador.getMochila().contains(objetoComprado)) {
-            throw new ObjetoYaEnMochilaException();
-        }
-
-        entrenador.setDinero(objetoComprado.precio);
-        entrenador.getMochila().add(objetoComprado);
-        System.out.println("Has comprado el objeto " + objetoComprado.nombre + ".");
-
-    }
-}
-
-class ObjetoNoEncontradoException extends Exception {
-// EXCEPCIÓN LANZADA CUANDO NO SE ENCUENTRA EL OBJETO CON EL ID INDICADO EN LA TIENDA
-}
-
-class DineroInsuficienteException extends Exception {
-// EXCEPCIÓN LANZADA CUANDO EL ENTRENADOR NO TIENE SUFICIENTE DINERO PARA COMPRAR EL OBJETO
-}
-
-class ObjetoYaEnMochilaException extends Exception {
-// EXCEPCIÓN LANZADA CUANDO EL OBJETO QUE SE INTENTA COMPRAR YA ESTÁ EN LA MOCHILA DEL ENTRENADOR
-
+ // MÉTODO PARA OBTENER UN OBJETO DEL INVENTARIO DE LA TIENDA
+ public Objeto obtenerObjeto(int id) {
+     return inventario.get(id);
+ }
 }

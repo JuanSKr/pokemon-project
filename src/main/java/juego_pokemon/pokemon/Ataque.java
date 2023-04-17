@@ -22,6 +22,7 @@ public class Ataque extends Movimiento {
     static Ataque lanzallamas = new Ataque("Lanzallamas", 80, Tipo.FUEGO);
     static Ataque cascada = new Ataque("Cascada", 50, Tipo.AGUA);
     static Ataque huesopalo = new Ataque("Hueso palo", 30, Tipo.TIERRA);
+
     static Ataque ataqueaereo = new Ataque("Ataque aéreo", 80, Tipo.VOLADOR);
     static Ataque picotaladro = new Ataque("Pico taladro", 20, Tipo.VOLADOR);
     static Ataque picotazo = new Ataque("Picotazo", 65, Tipo.VOLADOR);
