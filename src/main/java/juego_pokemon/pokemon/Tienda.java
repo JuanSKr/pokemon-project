@@ -31,10 +31,10 @@ class Tienda {
  public Objeto obtenerObjeto(int id) {
      return inventario.get(id);
  }
- 
+
  public static void abrirTienda() {
 	   // CREAMOS UN ENTRENADOR CON 500 MONEDAS
-	   Entrenador entrenador = new Entrenador(Entrenador.getDinero());
+	   Entrenador entrenador = new Entrenador();
 
 	   // Creamos una tienda
 	   Tienda tienda = new Tienda();
@@ -105,7 +105,7 @@ class Tienda {
 	       }
 
 		public static void tiendaButton() {
-			
-			
+
+
 		}
 }

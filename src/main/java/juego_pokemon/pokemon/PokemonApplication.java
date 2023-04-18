@@ -90,7 +90,7 @@ public class PokemonApplication extends Application {
 
             tiendaButton.setOnAction(e -> {
                 // AQUÍ PUEDES LLAMAR A LA CLASE TIENDA
-            	MainTienda.abrirTienda();
+            	Tienda.abrirTienda();
             	
             });
             
