@@ -74,7 +74,9 @@ public class PokemonApplication extends Application {
             });
             exploracionButton.setOnAction(e -> {
                 // AQUÍ PUEDES LLAMAR A LA CLASE EXPLORAR PARA CAPTURAR POKEMOS
+            	
             });
+            
             pokedexButton.setOnAction(e -> {
                 // AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
             });
@@ -88,6 +90,8 @@ public class PokemonApplication extends Application {
 
             tiendaButton.setOnAction(e -> {
                 // AQUÍ PUEDES LLAMAR A LA CLASE TIENDA
+            	MainTienda.abrirTienda();
+            	
             });
             
             //FUNCION PARA SALIR DEL PROGRAMA

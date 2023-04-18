@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 //Clase Main
-public class Main {
-	public static void main(String[] args) {
+public class MainTienda {
+	public static void abrirTienda() {
    // CREAMOS UN ENTRENADOR CON 500 MONEDAS
    Entrenador entrenador = new Entrenador(Entrenador.getDinero());
 
@@ -76,4 +76,9 @@ public class Main {
                }
            } while (opcion != 4);
        }
+
+	public static void tiendaButton() {
+		
+		
+	}
 }

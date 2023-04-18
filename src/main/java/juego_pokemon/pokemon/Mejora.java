@@ -15,7 +15,7 @@ public class Mejora extends Movimiento {
 
     // Constructor con todos los parámetros
 
-    public Mejora(String nombreMovimiento, int turnos) {
+    public Mejora(Movimiento nombreMovimiento, int turnos) {
         super(nombreMovimiento);
         this.nombreMovimiento = nombreMovimiento;
         this.turnos = turnos;
