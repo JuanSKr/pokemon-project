@@ -104,8 +104,4 @@ class Tienda {
 	           } while (opcion != 4);
 	       }
 
-		public static void tiendaButton() {
-
-
-		}
 }

@@ -1,0 +1,95 @@
+/*
+Configuración general de todos los botones:
+- tamaño de fuente
+- ancho del botón
+- altura de botón
+- color del fondo del botón default
+- color del texto
+*/
+
+.button {
+    -fx-font-size: 18px;
+    -fx-background-color: brown;
+    -fx-text-fill: white;
+}
+
+/*
+Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...:
+- color de fondo del botón
+- posición X del botón
+- posición Y del botón
+*/
+
+#combateButton {
+    -fx-background-color: orange;
+        -fx-translate-x: -120px;
+        -fx-translate-y: 132px;
+        -fx-min-width: 180px;
+        -fx-min-height: 45px;
+        -fx-background-image: url('https://i.imgur.com/VVdKgVN.jpg');
+
+}
+
+#explorarButton {
+    -fx-background-color: #5b1cc1;
+    -fx-translate-x: 130px;
+    -fx-translate-y: 75px;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
+
+}
+
+#pokedexButton {
+    -fx-background-color: #6d6875;
+    -fx-translate-x: -120px;
+    -fx-translate-y: 105px;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
+
+}
+
+#entrenadorButton {
+    -fx-background-color: #282c34;
+    -fx-translate-x: -400px;
+    -fx-translate-y: -235px;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
+}
+
+/*
+Mochila no se muestra en el inicio
+*/
+
+#mochilaButton {
+    -fx-background-color: #20bf6b;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
+}
+
+#tiendaButton {
+    -fx-background-color: #3867d6;
+    -fx-translate-x: 130px;
+    -fx-translate-y: -7.5px;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
+}
+
+#salirButton {
+    -fx-background-color: #eb3b5a;
+    -fx-translate-x: 0px;
+    -fx-translate-y: 15px;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
+}
+
+/*
+Hover: Estilo de cuando tienes el ratón encima del botón:
+- efecto de sombra
+- color del texto al tener el ratón encima del botón
+*/
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 2, 0, 0, 1);
+    -fx-text-fill: white;
+}
+
