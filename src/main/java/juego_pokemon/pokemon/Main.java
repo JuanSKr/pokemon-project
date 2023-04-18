@@ -3,77 +3,77 @@ package juego_pokemon.pokemon;
 import java.util.Map;
 import java.util.Scanner;
 
+
 //Clase Main
 public class Main {
-	public static void main(String[] args) {
-   // CREAMOS UN ENTRENADOR CON 500 MONEDAS
-   Entrenador entrenador = new Entrenador(Entrenador.getDinero());
 
-   // Creamos una tienda
-   Tienda tienda = new Tienda();
-           // CREAMOS UN OBJETO SCANNER PARA LEER LA ENTRADA DEL USUARIO
-           Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
+    static Entrenador entrenador = new Entrenador();
+    static Tienda tienda = new Tienda();
 
-           // MOSTRAMOS EL MENÚ DE OPCIONES
-           int opcion;
-           do {
-               System.out.println("Menu:");
-               System.out.println("1. Mostrar inventario de la tienda");
-               System.out.println("2. Mostrar mochila del entrenador");
-               System.out.println("3. Mostrar dinero del entrenador");
-               System.out.println("4. Salir");
-               System.out.print("Elige una opcion: ");
-               opcion = scanner.nextInt();
+    public static void mainTienda() {
 
-               // REALIZAMOS UNA ACCIÓN SEGÚN LA OPCIÓN ELEGIDA
-               switch (opcion) {
-                   case 1:
-                       // MOSTRAMOS EL INVENTARIO DE LA TIENDA
-                       tienda.mostrarInventario();
+        // MOSTRAMOS EL MENÚ DE OPCIONES
+        int opcion;
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Mostrar inventario de la tienda");
+            System.out.println("2. Mostrar mochila del entrenador");
+            System.out.println("3. Mostrar dinero del entrenador");
+            System.out.println("4. Salir");
+            System.out.print("Elige una opcion: ");
+            opcion = scanner.nextInt();
 
-                       // PREGUNTAMOS AL USUARIO QUÉ OBJETO QUIERE COMPRAR
-                       System.out.print("Elige el ID del objeto que quieres comprar: ");
-                       int idObjeto = scanner.nextInt();
-                       Objeto objetoComprado = tienda.obtenerObjeto(idObjeto);
+            // REALIZAMOS UNA ACCIÓN SEGÚN LA OPCIÓN ELEGIDA
+            switch (opcion) {
+                case 1:
+                    // MOSTRAMOS EL INVENTARIO DE LA TIENDA
+                    tienda.mostrarInventario();
 
-                       // COMPRAMOS EL OBJETO SI EXISTE EN LA TIENDA
-                       if (objetoComprado != null) {
-                           entrenador.comprarObjeto(objetoComprado);
-                       } else {
-                           System.out.println("No existe ningun objeto con ese ID en la tienda.");
-                       }
-                       break;
+                    // PREGUNTAMOS AL USUARIO QUÉ OBJETO QUIERE COMPRAR
+                    System.out.print("Elige el ID del objeto que quieres comprar: ");
+                    int idObjeto = scanner.nextInt();
+                    Objeto objetoComprado = tienda.obtenerObjeto(idObjeto);
 
-                   case 2:
-                	    // MOSTRAMOS LA MOCHILA DEL ENTRENADOR
-                	    System.out.println("Mochila del entrenador:");
-                	    for (Objeto objeto : entrenador.getMochila().values()) {
-                	        System.out.println(objeto.toString());
-                	    }
+                    // COMPRAMOS EL OBJETO SI EXISTE EN LA TIENDA
+                    if (objetoComprado != null) {
+                        entrenador.comprarObjeto(objetoComprado);
+                    } else {
+                        System.out.println("No existe ningun objeto con ese ID en la tienda.");
+                    }
+                    break;
 
-                	    // MOSTRAMOS EL CONTADOR DE OBJETOS
-                	    System.out.println("Contador de objetos:");
-                	    for (Map.Entry<Objeto, Integer> entry : entrenador.getContador().entrySet()) {
-                	        Objeto objeto = entry.getKey();
-                	        int cantidad = entry.getValue();
-                	        System.out.println(objeto.getNombre() + ": " + cantidad);
-                	    }
-                	    break;
+                case 2:
+                    // MOSTRAMOS LA MOCHILA DEL ENTRENADOR
+                    System.out.println("Mochila del entrenador:");
+                    for (Objeto objeto : entrenador.getMochila().values()) {
+                        System.out.println(objeto.toString());
+                    }
+
+                    // MOSTRAMOS EL CONTADOR DE OBJETOS
+                    System.out.println("Contador de objetos:");
+                    for (Map.Entry<Objeto, Integer> entry : entrenador.getContador().entrySet()) {
+                        Objeto objeto = entry.getKey();
+                        int cantidad = entry.getValue();
+                        System.out.println(objeto.getNombre() + ": " + cantidad);
+                    }
+                    break;
 
 
-                   case 3:
-                       // MOSTRAMOS EL DINERO DEL ENTRENADOR
-                       System.out.println("Dinero del entrenador: " + entrenador.getDinero() + " monedas");
-                       break;
+                case 3:
+                    // MOSTRAMOS EL DINERO DEL ENTRENADOR
+                    System.out.println("Dinero del entrenador: " + entrenador.getDinero() + " monedas");
+                    break;
 
-                   case 4:
-                       // SALIMOS DEL PROGRAMA
-                       System.out.println("¡Hasta luego!");
-                       break;
+                case 4:
+                    // SALIMOS DEL PROGRAMA
+                    System.out.println("¡Hasta luego!");
+                    break;
 
-                   default:
-                       System.out.println("Opcion no valida.");
-               }
-           } while (opcion != 4);
-       }
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+        } while (opcion != 4);
+    }
+
 }
