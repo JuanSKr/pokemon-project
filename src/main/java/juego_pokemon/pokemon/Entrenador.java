@@ -22,8 +22,8 @@ class Entrenador {
     public Entrenador() {
         this.nombre = "";
         this.dinero = 200;
-        this.mochila = null;
-        this.contador = null;
+        this.mochila = new HashMap<>();
+        this.contador = new HashMap<>();
     }
 
 
