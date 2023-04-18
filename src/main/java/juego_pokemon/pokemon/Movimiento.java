@@ -44,7 +44,4 @@ public abstract class Movimiento {
     public void setNombreMovimiento(String nombreMovimiento) {
         this.nombreMovimiento = nombreMovimiento;
     }
-
-}
-
 }
