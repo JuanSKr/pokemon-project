@@ -40,6 +40,24 @@ public class Ataque extends Movimiento {
     static Ataque doblepatada = new Ataque("Hueso palo", 30, Tipo.LUCHA);
     static Ataque punotrueno = new Ataque("Hueso palo", 30, Tipo.ELECTRICO);
 
+    static Ataque ataqueaereo = new Ataque("Ataque aéreo", 80, Tipo.VOLADOR);
+    static Ataque picotaladro = new Ataque("Pico taladro", 20, Tipo.VOLADOR);
+    static Ataque picotazo = new Ataque("Picotazo", 65, Tipo.VOLADOR);
+    static Ataque excavar = new Ataque("Excavar", 30, Tipo.TIERRA);
+    static Ataque fisura = new Ataque("Fisura", 30, Tipo.TIERRA);
+    static Ataque hojafilada = new Ataque("Hoja afilada", 30, Tipo.PLANTA);
+    static Ataque latigocepa = new Ataque("Latigo cepa", 30, Tipo.PLANTA);
+    static Ataque agarre = new Ataque("Agarre", 30, Tipo.NORMAL);
+    static Ataque aranazo = new Ataque("Arañazo", 30, Tipo.NORMAL);
+    static Ataque ataquefuria = new Ataque("Ataque furia", 30, Tipo.NORMAL);
+    static Ataque ataquerapido = new Ataque("Ataque rapido", 30, Tipo.NORMAL);
+    static Ataque cabezazo = new Ataque("Cabezazo", 30, Tipo.NORMAL);
+    static Ataque cuchillada = new Ataque("Cuchillada", 30, Tipo.NORMAL);
+    static Ataque derribo = new Ataque("Derribo", 30, Tipo.NORMAL);
+    static Ataque golpekarate = new Ataque("Golpe kárate", 30, Tipo.NORMAL);
+    static Ataque doblepatada = new Ataque("Hueso palo", 30, Tipo.LUCHA);
+    static Ataque punotrueno = new Ataque("Hueso palo", 30, Tipo.ELECTRICO);
+
 
     // Constructor con todos los parámetros
 
