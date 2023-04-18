@@ -1,10 +1,10 @@
 /*
-Configuración general de todos los botones:
-- tamaño de fuente
-- ancho del botón
-- altura de botón
-- color del fondo del botón default
-- color del texto
+CONFIGURACIÓN GENERAL DE TODOS LOS BOTONES:
+- TAMAÑO DE FUENTE
+- ANCHO DEL BOTÓN
+- ALTURA DE BOTÓN
+- COLOR DEL FONDO DEL BOTÓN DEFAULT
+- COLOR DEL TEXTO
 */
 
 .button {
@@ -14,10 +14,10 @@ Configuración general de todos los botones:
 }
 
 /*
-Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...:
-- color de fondo del botón
-- posición X del botón
-- posición Y del botón
+ESTILO DEL BOTÓN INDIVIDUAL (COMBATE, POKEDEX, ENTRENADOR, MOCHILA, ETC...:
+- COLOR DE FONDO DEL BOTÓN
+- POSICIÓN X DEL BOTÓN
+- POSICIÓN Y DEL BOTÓN
 */
 
 #combateButton {
@@ -57,7 +57,7 @@ Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...:
 }
 
 /*
-Mochila no se muestra en el inicio
+MOCHILA NO SE MUESTRA EN EL INICIO
 */
 
 #mochilaButton {
@@ -83,9 +83,9 @@ Mochila no se muestra en el inicio
 }
 
 /*
-Hover: Estilo de cuando tienes el ratón encima del botón:
-- efecto de sombra
-- color del texto al tener el ratón encima del botón
+HOVER: ESTILO DE CUANDO TIENES EL RATÓN ENCIMA DEL BOTÓN:
+- EFECTO DE SOMBRA
+- COLOR DEL TEXTO AL TENER EL RATÓN ENCIMA DEL BOTÓN
 */
 
 .button:hover {

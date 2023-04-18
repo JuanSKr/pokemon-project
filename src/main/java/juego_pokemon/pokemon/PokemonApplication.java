@@ -6,10 +6,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,7 +18,7 @@ public class PokemonApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(PokemonApplication.class.getResource("pokemon-view.fxml"));
 
         //AQUI SE AÑADEN LOS BOTONES DEL MENU
-        // El setId le asigna su ID dentro del css.
+        // EL SETID LE ASIGNA SU ID DENTRO DEL CSS.
         Button combateButton = new Button("Combate");
         combateButton.setId("combateButton");
         Button exploracionButton = new Button("Explorar");
@@ -30,8 +28,8 @@ public class PokemonApplication extends Application {
         Button entrenadorButton = new Button(Entrenador.getNombre());
         entrenadorButton.setId("entrenadorButton");
         // AÑADIR MOCHILA DENTRO DE ENTRENADOR
-//        Button mochilaButton = new Button("Mochila");
-//        mochilaButton.setId("mochilaButton");
+        // BUTTON MOCHILABUTTON = NEW BUTTON("MOCHILA");
+        // MOCHILABUTTON.SETID("MOCHILABUTTON");
         Button tiendaButton = new Button("Tienda");
         tiendaButton.setId("tiendaButton");
         Button salirButton = new Button("Salir");
@@ -42,7 +40,7 @@ public class PokemonApplication extends Application {
 
         combateButton.setOnAction(e -> {
             // AQUÍ PUEDES LLAMAR A LA CLASE COMBATE
-            Login.login();
+        	
 
         });
         exploracionButton.setOnAction(e -> {
@@ -98,6 +96,5 @@ public class PokemonApplication extends Application {
 //        Login.login();
         launch(args);
     }
-
 }
 
