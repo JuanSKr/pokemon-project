@@ -1,15 +1,16 @@
-package juego_pokemon.pokemon;
+package Pokemon.Entrenador;
+
+import Pokemon.Pokemon.Objeto;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //CLASE ENTRENADOR
-class Entrenador {
+public class Entrenador {
     protected static String nombre;
     private static int dinero;
     private static Map<Integer, Objeto> mochila;
     private static Map<Objeto, Integer> contador; // nuevo HashMap
-    private String nombreUsuario;
     private String contrasena;
 
     // Constructor con todos los parametros
@@ -21,12 +22,11 @@ class Entrenador {
         this.contador = contador;
     }
 
-    public Entrenador(String usuario, String nombreUsuario) {
+    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena) {
         this.nombre = "";
         this.dinero = 200;
         this.mochila = new HashMap<>();
         this.contador = new HashMap<>();
-        this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
     }
 
@@ -82,13 +82,13 @@ class Entrenador {
         Entrenador.contador = contador;
     }
 
-	public static void setContrasena(String contrasena) {
-		// TODO Auto-generated method stub
-		
-	}
+    public static void setContrasena(String contrasena) {
+        // TODO Auto-generated method stub
 
-	public static String getContrasena() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
+
+    public static String getContrasena() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

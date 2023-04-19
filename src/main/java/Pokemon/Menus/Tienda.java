@@ -1,5 +1,8 @@
-package juego_pokemon.pokemon;
+package Pokemon.Menus;
 
+
+import Pokemon.Entrenador.Entrenador;
+import Pokemon.Pokemon.Objeto;
 
 import java.util.HashMap;
 import java.util.Map;

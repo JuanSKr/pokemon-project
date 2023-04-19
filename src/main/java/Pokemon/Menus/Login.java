@@ -1,5 +1,6 @@
-package juego_pokemon.pokemon;
+package Pokemon.Menus;
 
+import Pokemon.Entrenador.Entrenador;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -49,23 +50,29 @@ public class Login extends Application {
         grid.getChildren().addAll(nombreUsuarioLabel, nombreUsuario, contrasenaLabel, contrasena,
                 iniciarSesion, cerrarSesion, mensaje);
 
-        
+
         Scene scene = new Scene(grid, 1080, 650);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     private void iniciarSesion() {
-        String usuario = nombreUsuario.getText();
-        String pass = contrasena.getText();
+        String nombre = nombreUsuario.getText();
+        String password = contrasena.getText();
 
-        if (usuario.isEmpty() || pass.isEmpty()) {
-            mensaje.setText("Por favor ingresa un nombre de usuario y contraseña");
-            return;
+        if (nombre.equals("usuario") && password.equals("1234")) {
+            mensaje.setText("Inicio de sesión exitoso.");
+            Entrenador.setNombre(nombre);
+            Menu menu = new Menu();
+            try {
+                menu.start(new Stage());
+                ((Stage) nombreUsuario.getScene().getWindow()).close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            mensaje.setText("Nombre de usuario o contraseña incorrectos.");
         }
-
-        entrenador = new Entrenador(usuario, pass);
-        mensaje.setText("Sesión iniciada");
     }
 
     private void cerrarSesion() {
@@ -76,4 +83,5 @@ public class Login extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }

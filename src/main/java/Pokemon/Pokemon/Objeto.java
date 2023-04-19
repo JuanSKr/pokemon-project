@@ -1,7 +1,7 @@
-package juego_pokemon.pokemon;
+package Pokemon.Pokemon;
 
 // CLASE OBJETO
-class Objeto {
+public class Objeto {
 	  private int id;
 	    private String nombre;
 	    private int precio;

@@ -1,24 +1,26 @@
-package juego_pokemon.pokemon;
+package Pokemon.Menus;
 
+import Pokemon.Entrenador.Entrenador;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PokemonApplication extends Application {
+public class Menu extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PokemonApplication.class.getResource("pokemon-view.fxml"));
 
         //AQUI SE AÑADEN LOS BOTONES DEL MENU
-        // EL SETID LE ASIGNA SU ID DENTRO DEL CSS.
+            // El setId le asigna su ID dentro del css.
         Button combateButton = new Button("Combate");
         combateButton.setId("combateButton");
         Button exploracionButton = new Button("Explorar");
@@ -28,8 +30,8 @@ public class PokemonApplication extends Application {
         Button entrenadorButton = new Button(Entrenador.getNombre());
         entrenadorButton.setId("entrenadorButton");
         // AÑADIR MOCHILA DENTRO DE ENTRENADOR
-        // BUTTON MOCHILABUTTON = NEW BUTTON("MOCHILA");
-        // MOCHILABUTTON.SETID("MOCHILABUTTON");
+//        Button mochilaButton = new Button("Mochila");
+//        mochilaButton.setId("mochilaButton");
         Button tiendaButton = new Button("Tienda");
         tiendaButton.setId("tiendaButton");
         Button salirButton = new Button("Salir");
@@ -40,7 +42,6 @@ public class PokemonApplication extends Application {
 
         combateButton.setOnAction(e -> {
             // AQUÍ PUEDES LLAMAR A LA CLASE COMBATE
-        	
 
         });
         exploracionButton.setOnAction(e -> {
@@ -85,7 +86,7 @@ public class PokemonApplication extends Application {
         //TAMAÑO VENTANA
 
         Scene scene = new Scene(root, 1080, 650);
-        scene.getStylesheets().add("styles.css");
+        scene.getStylesheets().add("Menu.css");
 
         primaryStage.setTitle("Menú de Inicio");
         primaryStage.setScene(scene);
@@ -93,8 +94,13 @@ public class PokemonApplication extends Application {
     }
 
     public static void main(String[] args) {
-//        Login.login();
-        launch(args);
+        abrirMenu();
     }
+
+    public static void abrirMenu() {
+        launch();
+    }
+
+
 }
 

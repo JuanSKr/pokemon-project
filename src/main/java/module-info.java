@@ -1,4 +1,4 @@
-module juego_pokemon.pokemon {
+module Pokemon.Menus {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,8 +6,9 @@ module juego_pokemon.pokemon {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
-	requires javafx.graphics;
+    requires javafx.graphics;
 
-    opens juego_pokemon.pokemon to javafx.fxml;
-    exports juego_pokemon.pokemon;
+    opens Pokemon.Menus to javafx.fxml;
+    exports Pokemon.Menus;
+
 }

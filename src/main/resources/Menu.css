@@ -1,10 +1,10 @@
 /*
-CONFIGURACIÓN GENERAL DE TODOS LOS BOTONES:
-- TAMAÑO DE FUENTE
-- ANCHO DEL BOTÓN
-- ALTURA DE BOTÓN
-- COLOR DEL FONDO DEL BOTÓN DEFAULT
-- COLOR DEL TEXTO
+Configuración general de todos los botones:
+- Tamaño de fuente.
+- Ancho del botón.
+- Altura de botón.
+- Color del fondo del botón default.
+- Color del texto.
 */
 
 .button {
@@ -14,10 +14,10 @@ CONFIGURACIÓN GENERAL DE TODOS LOS BOTONES:
 }
 
 /*
-ESTILO DEL BOTÓN INDIVIDUAL (COMBATE, POKEDEX, ENTRENADOR, MOCHILA, ETC...:
-- COLOR DE FONDO DEL BOTÓN
-- POSICIÓN X DEL BOTÓN
-- POSICIÓN Y DEL BOTÓN
+Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...):
+- Color de fondo del botón.
+- Posición X del botón.
+- Posición Y del botón.
 */
 
 #combateButton {
@@ -57,7 +57,7 @@ ESTILO DEL BOTÓN INDIVIDUAL (COMBATE, POKEDEX, ENTRENADOR, MOCHILA, ETC...:
 }
 
 /*
-MOCHILA NO SE MUESTRA EN EL INICIO
+Mochila no se muestra en el inicio.
 */
 
 #mochilaButton {
@@ -83,13 +83,21 @@ MOCHILA NO SE MUESTRA EN EL INICIO
 }
 
 /*
-HOVER: ESTILO DE CUANDO TIENES EL RATÓN ENCIMA DEL BOTÓN:
-- EFECTO DE SOMBRA
-- COLOR DEL TEXTO AL TENER EL RATÓN ENCIMA DEL BOTÓN
+Hover: Estilo de cuando tienes el ratón encima del botón:
+- Efecto de sombra.
+- Color del texto al tener el ratón encima del botón.
+
+Valores del hover:
+    gaussian: Tipo de sombra.
+    rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparencia.
+    10: Distancia horizontal entre la sombra y el objeto.
+    0: Distancia vertical entre la sombra y el objeto.
+    0: Desenfoque de la sombra.
+    5: Tamaño de la extensión de la sombra.
 */
 
 .button:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 2, 0, 0, 1);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 3, 2, 0, 2);
     -fx-text-fill: white;
 }
 
