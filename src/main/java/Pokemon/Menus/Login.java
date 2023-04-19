@@ -1,5 +1,6 @@
-package juego_pokemon.pokemon;
+package Pokemon.Menus;
 
+import Pokemon.Entrenador.Entrenador;
 import java.util.Scanner;
 
 public class Login {

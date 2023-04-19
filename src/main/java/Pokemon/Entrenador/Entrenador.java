@@ -1,10 +1,10 @@
-package juego_pokemon.pokemon;
+package Pokemon.Entrenador;
 
-import java.util.HashMap;
+import Pokemon.Pokemon.Objeto;
 import java.util.Map;
 
 //CLASE ENTRENADOR
-class Entrenador {
+public class Entrenador {
     protected static String nombre;
     private static int dinero;
     private static Map<Integer, Objeto> mochila;

@@ -1,5 +1,6 @@
-package juego_pokemon.pokemon;
+package Pokemon.Menus;
 
+import Pokemon.Entrenador.Entrenador;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -14,10 +15,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PokemonApplication extends Application {
+public class Menu extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PokemonApplication.class.getResource("pokemon-view.fxml"));
 
         //AQUI SE AÑADEN LOS BOTONES DEL MENU
             // El setId le asigna su ID dentro del css.
@@ -69,7 +69,7 @@ public class PokemonApplication extends Application {
 
         tiendaButton.setOnAction(e -> {
             // AQUÍ PUEDES LLAMAR A LA CLASE TIENDA
-            Main.mainTienda();
+            Tienda.abrirTienda();
         });
 
         //FUNCION PARA SALIR DEL PROGRAMA
@@ -95,7 +95,7 @@ public class PokemonApplication extends Application {
     }
 
     public static void main(String[] args) {
-//        Login.login();
+        Login.login();
         launch(args);
     }
 
