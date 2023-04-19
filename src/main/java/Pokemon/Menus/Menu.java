@@ -42,7 +42,6 @@ public class Menu extends Application {
 
         combateButton.setOnAction(e -> {
             // AQUÍ PUEDES LLAMAR A LA CLASE COMBATE
-            Login.login();
 
         });
         exploracionButton.setOnAction(e -> {
@@ -87,7 +86,7 @@ public class Menu extends Application {
         //TAMAÑO VENTANA
 
         Scene scene = new Scene(root, 1080, 650);
-        scene.getStylesheets().add("styles.css");
+        scene.getStylesheets().add("Menu.css");
 
         primaryStage.setTitle("Menú de Inicio");
         primaryStage.setScene(scene);
@@ -95,9 +94,13 @@ public class Menu extends Application {
     }
 
     public static void main(String[] args) {
-        Login.login();
-        launch(args);
+        abrirMenu();
     }
+
+    public static void abrirMenu() {
+        launch();
+    }
+
 
 }
 

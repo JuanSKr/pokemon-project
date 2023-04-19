@@ -1,6 +1,8 @@
 package Pokemon.Entrenador;
 
 import Pokemon.Pokemon.Objeto;
+
+import java.util.HashMap;
 import java.util.Map;
 
 //CLASE ENTRENADOR
@@ -9,21 +11,23 @@ public class Entrenador {
     private static int dinero;
     private static Map<Integer, Objeto> mochila;
     private static Map<Objeto, Integer> contador; // nuevo HashMap
+    private String contrasena;
 
     // Constructor con todos los parametros
 
-    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador) {
+    public Entrenador() {
         this.nombre = nombre;
         this.dinero = dinero;
         this.mochila = mochila;
         this.contador = contador;
     }
 
-    public Entrenador() {
+    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena) {
         this.nombre = "";
         this.dinero = 200;
         this.mochila = new HashMap<>();
         this.contador = new HashMap<>();
+        this.contrasena = contrasena;
     }
 
 
@@ -76,5 +80,15 @@ public class Entrenador {
 
     public static void setContador(Map<Objeto, Integer> contador) {
         Entrenador.contador = contador;
+    }
+
+    public static void setContrasena(String contrasena) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public static String getContrasena() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
