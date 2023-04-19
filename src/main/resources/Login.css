@@ -1,0 +1,52 @@
+.button {
+    -fx-font-size: 18px;
+    -fx-background-color: brown;
+    -fx-text-fill: white;
+}
+
+#iniciarSesion {
+    -fx-background-color: transparent;
+    -fx-translate-x: 230px;
+    -fx-translate-y: 380px;
+    -fx-min-width: 180px;
+    -fx-min-height: 180px;
+    -fx-background-image: url('https://i.imgur.com/MegLcrz.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#crearCuenta {
+    -fx-background-color: transparent;
+    -fx-translate-x: 437.5px;
+    -fx-translate-y: 191.5px;
+    -fx-min-width: 180px;
+    -fx-min-height: 180px;
+    -fx-background-image: url('https://i.imgur.com/E7N7CNE.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#labelIniciarSesion {
+
+
+
+}
+
+
+/*
+Valores del hover:
+    gaussian: Tipo de sombra.
+    rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparencia.
+    10: Distancia horizontal entre la sombra y el objeto.
+    0: Distancia vertical entre la sombra y el objeto.
+    0: Desenfoque de la sombra.
+    5: Tamaño de la extensión de la sombra.
+*/
+
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 4.5, 8);
+    -fx-text-fill: white;
+}

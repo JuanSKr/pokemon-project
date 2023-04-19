@@ -1,10 +1,10 @@
 /*
 Configuración general de todos los botones:
-- tamaño de fuente
-- ancho del botón
-- altura de botón
-- color del fondo del botón default
-- color del texto
+- Tamaño de fuente.
+- Ancho del botón.
+- Altura de botón.
+- Color del fondo del botón default.
+- Color del texto.
 */
 
 .button {
@@ -14,10 +14,10 @@ Configuración general de todos los botones:
 }
 
 /*
-Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...:
-- color de fondo del botón
-- posición X del botón
-- posición Y del botón
+Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...):
+- Color de fondo del botón.
+- Posición X del botón.
+- Posición Y del botón.
 */
 
 #combateButton {
@@ -27,7 +27,6 @@ Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...:
         -fx-min-width: 180px;
         -fx-min-height: 45px;
         -fx-background-image: url('https://i.imgur.com/VVdKgVN.jpg');
-
 }
 
 #explorarButton {
@@ -57,7 +56,7 @@ Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...:
 }
 
 /*
-Mochila no se muestra en el inicio
+Mochila no se muestra en el inicio.
 */
 
 #mochilaButton {
@@ -84,12 +83,20 @@ Mochila no se muestra en el inicio
 
 /*
 Hover: Estilo de cuando tienes el ratón encima del botón:
-- efecto de sombra
-- color del texto al tener el ratón encima del botón
+- Efecto de sombra.
+- Color del texto al tener el ratón encima del botón.
+
+Valores del hover:
+    gaussian: Tipo de sombra.
+    rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparencia.
+    10: Distancia horizontal entre la sombra y el objeto.
+    0: Distancia vertical entre la sombra y el objeto.
+    0: Desenfoque de la sombra.
+    5: Tamaño de la extensión de la sombra.
 */
 
 .button:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 2, 0, 0, 1);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 3, 2, 0, 2);
     -fx-text-fill: white;
 }
 

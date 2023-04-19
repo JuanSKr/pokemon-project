@@ -1,6 +1,4 @@
-package juego_pokemon.pokemon;
-
-import static juego_pokemon.pokemon.Ataque.huesopalo;
+package Pokemon.Pokemon;
 
 public class Pokemon {
 

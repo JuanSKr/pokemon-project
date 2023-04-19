@@ -1,4 +1,4 @@
-package juego_pokemon.pokemon;
+package Pokemon.Pokemon;
 
 public enum ListaEstados {
 

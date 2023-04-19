@@ -1,4 +1,4 @@
-package juego_pokemon.pokemon;
+package Pokemon.Menus;
 
 /*
 IMPORTANTE:
@@ -7,6 +7,11 @@ IMPORTANTE:
     - Los tipos están bien
     - Está "ordenado" por evoluciones, no están todas.
  */
+
+import Pokemon.Combate.Ataque;
+import Pokemon.Combate.Estado;
+import Pokemon.Pokemon.Pokemon;
+import Pokemon.Pokemon.Tipo;
 
 public class Pokedex {
 
