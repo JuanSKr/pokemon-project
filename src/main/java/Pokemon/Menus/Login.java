@@ -7,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Login extends Application {
@@ -24,10 +22,8 @@ public class Login extends Application {
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
-
         BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/ehLRxNl.png"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         grid.setBackground(new Background(backgroundImage));
-
         grid.setVgap(8);
         grid.setHgap(10);
 
@@ -43,7 +39,6 @@ public class Login extends Application {
         contrasena = new PasswordField();
         GridPane.setConstraints(contrasena, 1, 1);
 
-
         Button iniciarSesion = new Button();
         iniciarSesion.setId("iniciarSesion");
         iniciarSesion.setOnAction(e -> iniciarSesion());
@@ -54,30 +49,14 @@ public class Login extends Application {
         crearCuenta.setOnAction(e -> crearCuenta());
         GridPane.setConstraints(crearCuenta, 1, 3);
 
-        Button iniciarSesion = new Button("Iniciar sesión");
-        iniciarSesion.setOnAction(e -> iniciarSesion());
-        GridPane.setConstraints(iniciarSesion, 1, 2);
-
-        Button cerrarSesion = new Button("Cerrar sesión");
-        cerrarSesion.setOnAction(e -> cerrarSesion());
-        GridPane.setConstraints(cerrarSesion, 1, 3);
-
-
         mensaje = new Label();
         GridPane.setConstraints(mensaje, 1, 4);
 
         grid.getChildren().addAll(nombreUsuarioLabel, nombreUsuario, contrasenaLabel, contrasena,
-
                 iniciarSesion, crearCuenta, mensaje);
 
         Scene scene = new Scene(grid, 1080, 650);
         scene.getStylesheets().add("Login.css");
-
-                iniciarSesion, cerrarSesion, mensaje);
-
-
-        Scene scene = new Scene(grid, 1080, 650);
-
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -103,12 +82,7 @@ public class Login extends Application {
 
     private void crearCuenta() {
         entrenador = null;
-        mensaje.setText("PATATA");
-
-    private void cerrarSesion() {
-        entrenador = null;
-        mensaje.setText("Sesión cerrada");
-
+        mensaje.setText("Test");
     }
 
     public static void main(String[] args) {
