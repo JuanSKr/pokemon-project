@@ -6,8 +6,8 @@
 
 #iniciarSesion {
     -fx-background-color: transparent;
-    -fx-translate-x: 101px;
-    -fx-translate-y: 345px;
+    -fx-translate-x: -580px;
+    -fx-translate-y: 45.8px;
     -fx-min-width: 180px;
     -fx-min-height: 180px;
     -fx-background-image: url('https://i.imgur.com/MegLcrz.png');
@@ -18,8 +18,8 @@
 
 #crearCuenta {
     -fx-background-color: transparent;
-    -fx-translate-x: 307px;
-    -fx-translate-y: 157px;
+    -fx-translate-x: -350px;
+    -fx-translate-y: -142.5px;
     -fx-min-width: 180px;
     -fx-min-height: 180px;
     -fx-background-image: url('https://i.imgur.com/E7N7CNE.png');
@@ -30,8 +30,8 @@
 
 #labelNombreUsuario {
     -fx-background-color: dodgerblue;
-    -fx-translate-x: 110px;
-    -fx-translate-y: 270px;
+    -fx-translate-x: -562px;
+    -fx-translate-y: 122px;
     -fx-min-width: 370px;
     -fx-min-height: 50px;
     -fx-font: bold 20px arial;
@@ -40,31 +40,39 @@
 }
 
 #labelContrasena {
--fx-background-color: dodgerblue;
--fx-translate-x: 110px;
--fx-translate-y: 330px;
--fx-min-width: 370px;
--fx-min-height: 50px;
--fx-font: bold 18px arial;
--fx-text-fill: white;
--fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 4.5, 8);
+    -fx-background-color: dodgerblue;
+    -fx-translate-x: -562px;
+    -fx-translate-y: 50px;
+    -fx-min-width: 370px;
+    -fx-min-height: 50px;
+    -fx-font: bold 18px arial;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 4.5, 8);
 }
 
 #nombreUsuarioTxt {
--fx-translate-x: 360px;
--fx-translate-y: 218px;
--fx-font: bold 25px Bahnschrift;
--fx-text-fill: white;
--fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0.5, 4, 0.5);
+    -fx-translate-x: 352px;
+    -fx-translate-y: 75px;
+    -fx-font: bold 25px Bahnschrift;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0.5, 4, 0.5);
 }
 
 #contrasenaTxt {
--fx-translate-x: 360px;
--fx-translate-y: 280px;
--fx-font: bold 25px Bahnschrift;
--fx-text-fill: white;
--fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0.5, 4, 0.5);
+    -fx-translate-x: 352px;
+    -fx-translate-y: 0px;
+    -fx-font: bold 25px Bahnschrift;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0.5, 4, 0.5);
 }
+
+#logo {
+    -fx-translate-x: 70px;
+    -fx-translate-y: -68px;
+    -fx-scale-x: 0.5;
+    -fx-scale-y: 0.5;
+}
+
 
 /*
 Valores del hover:

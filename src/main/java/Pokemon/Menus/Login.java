@@ -28,7 +28,13 @@ public class Login extends Application {
         grid.setVgap(8);
         grid.setHgap(10);
 
-        ImageView imagen = new ImageView(new Image("https://i.imgur.com/35umlbf.png"));
+        Image logo = new Image(getClass().getResourceAsStream("/img/logo.png"));
+        ImageView imgView = new ImageView(logo);
+        imgView.setFitWidth(900);
+        imgView.setFitHeight(350);
+        imgView.setId("logo");
+        grid.getChildren().add(imgView);
+
 
         Label nombreUsuarioTxt = new Label("Nombre de usuario:");
         nombreUsuarioTxt.setId("nombreUsuarioTxt");
