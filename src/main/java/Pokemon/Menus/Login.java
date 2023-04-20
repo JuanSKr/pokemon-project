@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -27,22 +28,29 @@ public class Login extends Application {
         grid.setVgap(8);
         grid.setHgap(10);
 
-        Label nombreUsuarioLabel = new Label("Nombre de usuario:");
-        GridPane.setConstraints(nombreUsuarioLabel, 0, 0);
+        ImageView imagen = new ImageView(new Image("https://i.imgur.com/35umlbf.png"));
+
+        Label nombreUsuarioTxt = new Label("Nombre de usuario:");
+        nombreUsuarioTxt.setId("nombreUsuarioTxt");
+        GridPane.setConstraints(nombreUsuarioTxt, 0, 0);
 
         nombreUsuario = new TextField();
+        nombreUsuario.setId("labelNombreUsuario");
         GridPane.setConstraints(nombreUsuario, 1, 0);
 
-        Label contrasenaLabel = new Label("Contraseña:");
-        GridPane.setConstraints(contrasenaLabel, 0, 1);
+        Label contrasenaTxt = new Label("Contraseña:");
+        contrasenaTxt.setId("contrasenaTxt");
+        GridPane.setConstraints(contrasenaTxt, 0, 1);
 
         contrasena = new PasswordField();
+        contrasena.setId("labelContrasena");
         GridPane.setConstraints(contrasena, 1, 1);
 
         Button iniciarSesion = new Button();
         iniciarSesion.setId("iniciarSesion");
         iniciarSesion.setOnAction(e -> iniciarSesion());
         GridPane.setConstraints(iniciarSesion, 1, 2);
+
 
         Button crearCuenta = new Button();
         crearCuenta.setId("crearCuenta");
@@ -52,7 +60,7 @@ public class Login extends Application {
         mensaje = new Label();
         GridPane.setConstraints(mensaje, 1, 4);
 
-        grid.getChildren().addAll(nombreUsuarioLabel, nombreUsuario, contrasenaLabel, contrasena,
+        grid.getChildren().addAll(nombreUsuarioTxt, nombreUsuario, contrasenaTxt, contrasena,
                 iniciarSesion, crearCuenta, mensaje);
 
         Scene scene = new Scene(grid, 1080, 650);

@@ -6,8 +6,8 @@
 
 #iniciarSesion {
     -fx-background-color: transparent;
-    -fx-translate-x: 230px;
-    -fx-translate-y: 380px;
+    -fx-translate-x: 101px;
+    -fx-translate-y: 345px;
     -fx-min-width: 180px;
     -fx-min-height: 180px;
     -fx-background-image: url('https://i.imgur.com/MegLcrz.png');
@@ -18,8 +18,8 @@
 
 #crearCuenta {
     -fx-background-color: transparent;
-    -fx-translate-x: 437.5px;
-    -fx-translate-y: 191.5px;
+    -fx-translate-x: 307px;
+    -fx-translate-y: 157px;
     -fx-min-width: 180px;
     -fx-min-height: 180px;
     -fx-background-image: url('https://i.imgur.com/E7N7CNE.png');
@@ -28,12 +28,43 @@
     -fx-background-position: center;
 }
 
-#labelIniciarSesion {
-
-
-
+#labelNombreUsuario {
+    -fx-background-color: dodgerblue;
+    -fx-translate-x: 110px;
+    -fx-translate-y: 270px;
+    -fx-min-width: 370px;
+    -fx-min-height: 50px;
+    -fx-font: bold 20px arial;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 4.5, 8);
 }
 
+#labelContrasena {
+-fx-background-color: dodgerblue;
+-fx-translate-x: 110px;
+-fx-translate-y: 330px;
+-fx-min-width: 370px;
+-fx-min-height: 50px;
+-fx-font: bold 18px arial;
+-fx-text-fill: white;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 4.5, 8);
+}
+
+#nombreUsuarioTxt {
+-fx-translate-x: 360px;
+-fx-translate-y: 218px;
+-fx-font: bold 25px Bahnschrift;
+-fx-text-fill: white;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0.5, 4, 0.5);
+}
+
+#contrasenaTxt {
+-fx-translate-x: 360px;
+-fx-translate-y: 280px;
+-fx-font: bold 25px Bahnschrift;
+-fx-text-fill: white;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0.5, 4, 0.5);
+}
 
 /*
 Valores del hover:
