@@ -5,7 +5,9 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class Login extends Application {
@@ -21,37 +23,54 @@ public class Login extends Application {
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
+        BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/ehLRxNl.png"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        grid.setBackground(new Background(backgroundImage));
         grid.setVgap(8);
         grid.setHgap(10);
 
-        Label nombreUsuarioLabel = new Label("Nombre de usuario:");
-        GridPane.setConstraints(nombreUsuarioLabel, 0, 0);
+        Image logo = new Image(getClass().getResourceAsStream("/img/logo.png"));
+        ImageView imgView = new ImageView(logo);
+        imgView.setFitWidth(900);
+        imgView.setFitHeight(350);
+        imgView.setId("logo");
+        grid.getChildren().add(imgView);
+
+
+        Label nombreUsuarioTxt = new Label("Nombre de usuario:");
+        nombreUsuarioTxt.setId("nombreUsuarioTxt");
+        GridPane.setConstraints(nombreUsuarioTxt, 0, 0);
 
         nombreUsuario = new TextField();
+        nombreUsuario.setId("labelNombreUsuario");
         GridPane.setConstraints(nombreUsuario, 1, 0);
 
-        Label contrasenaLabel = new Label("Contraseña:");
-        GridPane.setConstraints(contrasenaLabel, 0, 1);
+        Label contrasenaTxt = new Label("Contraseña:");
+        contrasenaTxt.setId("contrasenaTxt");
+        GridPane.setConstraints(contrasenaTxt, 0, 1);
 
         contrasena = new PasswordField();
+        contrasena.setId("labelContrasena");
         GridPane.setConstraints(contrasena, 1, 1);
 
-        Button iniciarSesion = new Button("Iniciar sesión");
+        Button iniciarSesion = new Button();
+        iniciarSesion.setId("iniciarSesion");
         iniciarSesion.setOnAction(e -> iniciarSesion());
         GridPane.setConstraints(iniciarSesion, 1, 2);
 
-        Button cerrarSesion = new Button("Cerrar sesión");
-        cerrarSesion.setOnAction(e -> cerrarSesion());
-        GridPane.setConstraints(cerrarSesion, 1, 3);
+
+        Button crearCuenta = new Button();
+        crearCuenta.setId("crearCuenta");
+        crearCuenta.setOnAction(e -> crearCuenta());
+        GridPane.setConstraints(crearCuenta, 1, 3);
 
         mensaje = new Label();
         GridPane.setConstraints(mensaje, 1, 4);
 
-        grid.getChildren().addAll(nombreUsuarioLabel, nombreUsuario, contrasenaLabel, contrasena,
-                iniciarSesion, cerrarSesion, mensaje);
-
+        grid.getChildren().addAll(nombreUsuarioTxt, nombreUsuario, contrasenaTxt, contrasena,
+                iniciarSesion, crearCuenta, mensaje);
 
         Scene scene = new Scene(grid, 1080, 650);
+        scene.getStylesheets().add("Login.css");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -75,9 +94,9 @@ public class Login extends Application {
         }
     }
 
-    private void cerrarSesion() {
+    private void crearCuenta() {
         entrenador = null;
-        mensaje.setText("Sesión cerrada");
+        mensaje.setText("Test");
     }
 
     public static void main(String[] args) {

@@ -27,7 +27,6 @@ Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...):
         -fx-min-width: 180px;
         -fx-min-height: 45px;
         -fx-background-image: url('https://i.imgur.com/VVdKgVN.jpg');
-
 }
 
 #explorarButton {

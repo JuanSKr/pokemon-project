@@ -10,5 +10,5 @@ module Pokemon.Menus {
 
     opens Pokemon.Menus to javafx.fxml;
     exports Pokemon.Menus;
-
+    exports Pokemon.Entrenador to javafx.graphics;
 }
