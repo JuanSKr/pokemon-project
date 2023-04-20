@@ -11,6 +11,7 @@ public class Entrenador {
     private static int dinero;
     private static Map<Integer, Objeto> mochila;
     private static Map<Objeto, Integer> contador; // nuevo HashMap
+	private static Object MenuEntrenado;
     private String contrasena;
 
     // Constructor con todos los parametros
@@ -91,4 +92,8 @@ public class Entrenador {
         // TODO Auto-generated method stub
         return null;
     }
+
+	public static void abrirMenuEntrenador() {
+return;
+	}
 }

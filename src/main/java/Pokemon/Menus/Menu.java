@@ -1,8 +1,8 @@
 package Pokemon.Menus;
 
 import Pokemon.Entrenador.Entrenador;
+import Pokemon.Entrenador.MenuEntrenador;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -55,9 +55,12 @@ public class Menu extends Application {
 
         });
         entrenadorButton.setOnAction(e -> {
-            // AQUÍ PUEDES LLAMAR A LA CLASE ENTRENADOR
-            System.out.println("Entrenador");
-
+            // CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
+            // POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
+            Scene currentScene = primaryStage.getScene();
+            MenuEntrenador menuEntrenador = new MenuEntrenador(primaryStage, currentScene);
+            Scene menuEntrenadorScene = menuEntrenador.getScene();
+            primaryStage.setScene(menuEntrenadorScene);
         });
 
 //        mochilaButton.setOnAction(e -> {

@@ -79,7 +79,7 @@ public class Login extends Application {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
 
-        if (nombre.equals("usuario") && password.equals("1234")) {
+        if (nombre.equals("user") && password.equals("1234")) {
             mensaje.setText("Inicio de sesión exitoso.");
             Entrenador.setNombre(nombre);
             Menu menu = new Menu();

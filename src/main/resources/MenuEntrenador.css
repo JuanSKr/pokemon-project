@@ -1,0 +1,7 @@
+.back-button {
+    -fx-background-color: #ff0000;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
