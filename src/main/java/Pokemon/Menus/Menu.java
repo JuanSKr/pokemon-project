@@ -1,5 +1,6 @@
 package Pokemon.Menus;
 
+import Pokemon.Capturar.MenuExplorador;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Entrenador.MenuEntrenador;
 import javafx.application.Application;
@@ -45,8 +46,12 @@ public class Menu extends Application {
 
         });
         exploracionButton.setOnAction(e -> {
-            // AQUÍ PUEDES LLAMAR A LA CLASE EXPLORAR PARA CAPTURAR POKEMOS
-            System.out.println("Capturar");
+        	 // CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
+            // POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
+            Scene currentScene = primaryStage.getScene();
+            MenuExplorador menuExploracion = new MenuExplorador(primaryStage, currentScene);
+            Scene menuExploradorScene = menuExploracion.getScene();
+            primaryStage.setScene(menuExploradorScene);
 
         });
         pokedexButton.setOnAction(e -> {

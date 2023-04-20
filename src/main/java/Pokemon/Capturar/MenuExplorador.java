@@ -1,4 +1,4 @@
-package Pokemon.Entrenador;
+package Pokemon.Capturar;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -16,7 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 	//AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
-public class MenuEntrenador extends Application {
+public class MenuExplorador extends Application {
 
     private static final int SCENE_WIDTH = 1080;
     private static final int SCENE_HEIGHT = 650;
@@ -25,9 +25,9 @@ public class MenuEntrenador extends Application {
 
     private Stage primaryStage;
     private Scene previousScene;
-    Image image = new Image(getClass().getResourceAsStream("/img/Prueba1.jpeg"));
+    Image image = new Image(getClass().getResourceAsStream("/img/Prueba.jpeg"));
 
-    public MenuEntrenador(Stage primaryStage, Scene previousScene) {
+    public MenuExplorador(Stage primaryStage, Scene previousScene) {
         this.primaryStage = primaryStage;
         this.previousScene = previousScene;
     }
