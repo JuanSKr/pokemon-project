@@ -8,10 +8,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -75,8 +73,12 @@ public class Menu extends Application {
 //        });
 
         tiendaButton.setOnAction(e -> {
-            // AQUÍ PUEDES LLAMAR A LA CLASE TIENDA
-            Tienda.abrirTienda();
+        	  Scene currentScene = primaryStage.getScene();
+              MenuTienda menuTienda = new MenuTienda(primaryStage, currentScene);
+              Scene menuTiendaScene = menuTienda.getScene();
+              primaryStage.setScene(menuTiendaScene);
+              //Muestrar por Consola
+            //Tienda.abrirTienda();
         });
 
         //FUNCION PARA SALIR DEL PROGRAMA

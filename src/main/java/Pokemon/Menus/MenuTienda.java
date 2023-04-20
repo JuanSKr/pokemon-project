@@ -1,5 +1,6 @@
 package Pokemon.Menus;
 
+
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -25,7 +26,7 @@ import javafx.stage.Stage;
 
 	    private Stage primaryStage;
 	    private Scene previousScene;
-	    Image image = new Image(getClass().getResourceAsStream("/img/Prueba.jpeg"));
+	    Image image = new Image(getClass().getResourceAsStream("/img/Prueba.gif"));
 	    
 
 	    public MenuTienda(Stage primaryStage, Scene previousScene) {

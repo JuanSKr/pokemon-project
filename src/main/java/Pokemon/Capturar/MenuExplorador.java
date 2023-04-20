@@ -25,7 +25,7 @@ public class MenuExplorador extends Application {
 
     private Stage primaryStage;
     private Scene previousScene;
-    Image image = new Image(getClass().getResourceAsStream("/img/Prueba.jpeg"));
+    Image image = new Image(getClass().getResourceAsStream("/img/Prueba.gif"));
 
     public MenuExplorador(Stage primaryStage, Scene previousScene) {
         this.primaryStage = primaryStage;
