@@ -13,6 +13,8 @@ public class Entrenador {
     private static Map<Objeto, Integer> contador; // nuevo HashMap
     private String contrasena;
 
+
+
     // Constructor con todos los parametros
 
     public Entrenador() {
@@ -22,13 +24,16 @@ public class Entrenador {
         this.contador = contador;
     }
 
+
+
     public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena) {
         this.nombre = "";
-        this.dinero = 200;
+        this.dinero = 0;
         this.mochila = new HashMap<>();
         this.contador = new HashMap<>();
         this.contrasena = contrasena;
     }
+
 
 
     // MÉTODO PARA COMPRAR UN OBJETO
@@ -47,6 +52,7 @@ public class Entrenador {
             System.out.println("No tienes suficiente dinero para comprar este objeto.");
         }
     }
+
 
 
     // MÉTODO PARA OBTENER EL DINERO DEL ENTRENADOR

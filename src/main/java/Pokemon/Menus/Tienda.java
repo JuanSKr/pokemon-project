@@ -37,9 +37,11 @@ class Tienda {
 
  public static void abrirTienda() {
 	   // CREAMOS UN ENTRENADOR CON 500 MONEDAS
-	   Entrenador entrenador = new Entrenador();
 
-	   // Creamos una tienda
+	 Entrenador entrenador = new Entrenador(null, 500, null, null, null);
+
+
+	 // Creamos una tienda
 	   Tienda tienda = new Tienda();
 	           // CREAMOS UN OBJETO SCANNER PARA LEER LA ENTRADA DEL USUARIO
 	           Scanner scanner = new Scanner(System.in);

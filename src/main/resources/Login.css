@@ -6,7 +6,7 @@
 
 #iniciarSesion {
     -fx-background-color: transparent;
-    -fx-translate-x: -580px;
+    -fx-translate-x: -568px;
     -fx-translate-y: 45.8px;
     -fx-min-width: 180px;
     -fx-min-height: 180px;
@@ -18,7 +18,7 @@
 
 #crearCuenta {
     -fx-background-color: transparent;
-    -fx-translate-x: -350px;
+    -fx-translate-x: -365px;
     -fx-translate-y: -142.5px;
     -fx-min-width: 180px;
     -fx-min-height: 180px;
@@ -71,6 +71,8 @@
     -fx-translate-y: -68px;
     -fx-scale-x: 0.5;
     -fx-scale-y: 0.5;
+    -fx-effect: dropshadow(gaussian, rgba(49,100,158,0.7), 4, 0, 7.5, 4);
+
 }
 
 
