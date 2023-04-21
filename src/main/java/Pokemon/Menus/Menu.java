@@ -1,6 +1,7 @@
 package Pokemon.Menus;
 
 import Pokemon.Capturar.MenuExplorador;
+import Pokemon.Combate.MenuCombate;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Entrenador.MenuEntrenador;
 import javafx.application.Application;
@@ -41,6 +42,10 @@ public class Menu extends Application {
 
         combateButton.setOnAction(e -> {
             // AQUÍ PUEDES LLAMAR A LA CLASE COMBATE
+        	Scene currentScene = primaryStage.getScene();
+            MenuCombate menuCombate = new MenuCombate(primaryStage, currentScene);
+            Scene menuCombateScene = menuCombate.getScene();
+            primaryStage.setScene(menuCombateScene);
 
         });
         exploracionButton.setOnAction(e -> {
@@ -110,7 +115,5 @@ public class Menu extends Application {
     public static void abrirMenu() {
         launch();
     }
-
-
 }
 

@@ -8,11 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 	//AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
@@ -39,6 +42,7 @@ public class MenuExplorador extends Application {
 
     public Scene getScene() {
         GridPane gridPane = new GridPane();
+        gridPane.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
         gridPane.setPadding(new Insets(PADDING_SIZE));
         BackgroundImage backgroundImage = new BackgroundImage(image,
         	    BackgroundRepeat.NO_REPEAT,

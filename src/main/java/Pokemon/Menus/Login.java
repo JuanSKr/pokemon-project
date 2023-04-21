@@ -23,7 +23,8 @@ public class Login extends Application {
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
-        BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/ehLRxNl.png"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundSize backgroundSize = new BackgroundSize(1280, 720, false, false, false, false);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/6y651sN.gif"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         grid.setBackground(new Background(backgroundImage));
         grid.setVgap(8);
         grid.setHgap(10);

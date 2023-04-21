@@ -75,7 +75,6 @@ class Tienda {
 					System.out.println("No existe ningun objeto con ese ID en la tienda.");
 				}
 				break;
-
 			case 2:
 				// MOSTRAMOS LA MOCHILA DEL ENTRENADOR
 				System.out.println("Mochila del entrenador:");
@@ -91,17 +90,14 @@ class Tienda {
 					System.out.println(objeto.getNombre() + ": " + cantidad);
 				}
 				break;
-
 			case 3:
 				// MOSTRAMOS EL DINERO DEL ENTRENADOR
 				System.out.println("Dinero del entrenador: " + entrenador.getDinero() + " monedas");
 				break;
-
 			case 4:
 				// SALIMOS DEL PROGRAMA
 				System.out.println("¡Hasta luego!");
 				break;
-
 			default:
 				System.out.println("Opcion no valida.");
 			}
