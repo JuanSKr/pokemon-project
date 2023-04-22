@@ -4,6 +4,7 @@ import Pokemon.Capturar.MenuExplorador;
 import Pokemon.Combate.MenuCombate;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Entrenador.MenuEntrenador;
+import Pokemon.Tienda.MenuTienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,6 +22,12 @@ public class Menu extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+    	// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
+//        Media audioMedia = new Media(getClass().getResource("/aud/Prueba.wav").toExternalForm());
+//        MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
+//        audioMediaPlayer.setAutoPlay(true);
+//        audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+    	
         //AQUI SE AÑADEN LOS BOTONES DEL MENU
             // El setId le asigna su ID dentro del css.
         Button combateButton = new Button("Combate");

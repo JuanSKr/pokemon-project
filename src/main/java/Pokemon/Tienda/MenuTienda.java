@@ -1,26 +1,16 @@
-package Pokemon.Menus;
+package Pokemon.Tienda;
 
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class MenuTienda extends Application {
@@ -44,16 +34,15 @@ public class MenuTienda extends Application {
     }
 
     public Scene getScene() {
-        GridPane gridPane = new GridPane();
+    	GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10, 10, 10, 10));
-        BackgroundSize backgroundSize = new BackgroundSize(1280, 720, false, false, false, false);
-        BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/GGNNkkF.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
-        gridPane.setBackground(new Background(backgroundImage));
         gridPane.setVgap(8);
         gridPane.setHgap(10);
+        
+     
 
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL VÍDEO
-        Media media = new Media(getClass().getResource("/vid/VideoTienda.mp4").toExternalForm());
+        Media media = new Media(getClass().getResource("/vid/VideoLoggin.mp4").toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -62,19 +51,7 @@ public class MenuTienda extends Application {
         MediaView mediaView = new MediaView(mediaPlayer);
         mediaView.setFitWidth(SCENE_WIDTH);
         mediaView.setFitHeight(SCENE_HEIGHT);
-
-        // AGREGAMOS LA VISTA DE MEDIOS AL CONTENEDOR
-//        StackPane stackPane = new StackPane();
-//        stackPane.getChildren().add(mediaView);
-//        stackPane.setAlignment(Pos.CENTER);
-//        gridPane.add(stackPane, 0, 0);
         
-        
-		/* CAJON
-		 * BorderPane borderPane = new BorderPane(); TextArea textArea = new TextArea();
-		 * borderPane.setRight(textArea);
-		 */
-
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
         Media audioMedia = new Media(getClass().getResource("/aud/TemaInicioPokemonVersion2.wav").toExternalForm());
         MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
@@ -99,10 +76,17 @@ public class MenuTienda extends Application {
                 audioMediaPlayer.setMute(true);
             }
         });
+      //BOTON DE MUTE
         gridPane.add(muteButton, 1, 0);
         GridPane.setHalignment(muteButton, HPos.RIGHT);
+        // AGREGAR MEDIAVIEW AL GRIDPANE PARA MOSTRAR EL VIDEO
+        gridPane.add(mediaView, 0, 1, 2, 1);
+        GridPane.setVgrow(mediaView, Priority.ALWAYS);
+        GridPane.setHgrow(mediaView, Priority.ALWAYS);
+      
         
-
+     
+        
         // MÉTODO DE INICIO DE LA APLICACIÓN
         Scene scene = new Scene(gridPane, SCENE_WIDTH, SCENE_HEIGHT);
         return scene;
