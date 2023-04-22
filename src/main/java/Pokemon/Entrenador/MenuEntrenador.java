@@ -23,7 +23,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class MenuEntrenador extends Application {
-
     private static final int SCENE_WIDTH = 1080;
     private static final int SCENE_HEIGHT = 650;
     private static final int PADDING_SIZE = 10;  
@@ -58,7 +57,7 @@ public class MenuEntrenador extends Application {
          	ImageView imagenLogo = new ImageView(image);
         
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-        Media audioMedia = new Media(getClass().getResource("/aud/Prueba.wav").toExternalForm());
+        Media audioMedia = new Media(getClass().getResource("/aud/Entrenador.wav").toExternalForm());
         MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
         audioMediaPlayer.setAutoPlay(true);
         audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);

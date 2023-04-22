@@ -53,7 +53,7 @@ public class MenuTienda extends Application {
         mediaView.setFitHeight(SCENE_HEIGHT);
         
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-        Media audioMedia = new Media(getClass().getResource("/aud/TemaInicioPokemonVersion2.wav").toExternalForm());
+        Media audioMedia = new Media(getClass().getResource("/aud/Tienda.wav").toExternalForm());
         MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
         audioMediaPlayer.setAutoPlay(true);
         audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
