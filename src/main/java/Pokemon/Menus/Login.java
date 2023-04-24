@@ -15,7 +15,6 @@ public class Login extends Application {
     private TextField nombreUsuario;
     private PasswordField contrasena;
     private Label mensaje;
-    private Entrenador entrenador;
 
     @Override
     public void start(Stage primaryStage) {
@@ -95,7 +94,6 @@ public class Login extends Application {
     }
 
     private void crearCuenta() {
-        entrenador = null;
         mensaje.setText("Test");
     }
 

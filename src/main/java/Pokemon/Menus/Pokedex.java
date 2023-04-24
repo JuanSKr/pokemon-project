@@ -15,7 +15,7 @@ import Pokemon.Pokemon.Tipo;
 
 public class Pokedex {
 
-    static Pokemon Pikachu = new Pokemon(
+    public static Pokemon Pikachu = new Pokemon(
             "Pikachu",
             null,
             5,
@@ -37,7 +37,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Raichu = new Pokemon(
+    public static Pokemon Raichu = new Pokemon(
             "Raichu",
             null,
             5,
@@ -59,7 +59,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Bulbasaur = new Pokemon(
+    public static Pokemon Bulbasaur = new Pokemon(
             "Bulbasaur",
             null,
             5,
@@ -82,7 +82,7 @@ public class Pokedex {
             null);
 
 
-    static Pokemon Squirtle = new Pokemon(
+    public static Pokemon Squirtle = new Pokemon(
             "Squirtle",
             null,
             5,
@@ -104,7 +104,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Wartortle = new Pokemon(
+    public static Pokemon Wartortle = new Pokemon(
             "Wartortle",
             null,
             5,
@@ -126,7 +126,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Blastoise = new Pokemon(
+    public static Pokemon Blastoise = new Pokemon(
             "Blastoise",
             null,
             5,
@@ -148,7 +148,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Caterpie = new Pokemon(
+    public static Pokemon Caterpie = new Pokemon(
             "Caterpie",
             null,
             5,
@@ -170,7 +170,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Metapod = new Pokemon(
+    public static Pokemon Metapod = new Pokemon(
             "Metapod",
             null,
             5,
@@ -192,7 +192,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Butterfree = new Pokemon(
+    public static Pokemon Butterfree = new Pokemon(
             "Butterfree",
             null,
             5,
@@ -214,7 +214,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Weedle = new Pokemon(
+    public static Pokemon Weedle = new Pokemon(
             "Weedle",
             null,
             5,
@@ -236,7 +236,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Kakuna = new Pokemon(
+    public static Pokemon Kakuna = new Pokemon(
             "Kakuna",
             null,
             5,
@@ -258,7 +258,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Pidgey = new Pokemon(
+    public static Pokemon Pidgey = new Pokemon(
             "Pidgey",
             null,
             5,
@@ -280,7 +280,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Pidgeotto = new Pokemon(
+    public static Pokemon Pidgeotto = new Pokemon(
             "Pidgeotto",
             null,
             5,
@@ -302,7 +302,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Pidgeot = new Pokemon(
+    public static Pokemon Pidgeot = new Pokemon(
             "Pidgeot",
             null,
             5,
@@ -324,7 +324,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Rattata = new Pokemon(
+    public static Pokemon Rattata = new Pokemon(
             "Rattata",
             null,
             5,
@@ -346,7 +346,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Raticate = new Pokemon(
+    public static Pokemon Raticate = new Pokemon(
             "Raticate",
             null,
             5,
@@ -368,7 +368,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Spearow = new Pokemon(
+    public static Pokemon Spearow = new Pokemon(
             "Spearow",
             null,
             5,
@@ -390,7 +390,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Fearow = new Pokemon(
+    public static Pokemon Fearow = new Pokemon(
             "Fearow",
             null,
             5,
@@ -413,7 +413,7 @@ public class Pokedex {
             null);
 
 
-    static Pokemon Vulpix = new Pokemon(
+    public static Pokemon Vulpix = new Pokemon(
             "Vulpix",
             null,
             5,
@@ -435,7 +435,7 @@ public class Pokedex {
             Ataque.cascada.getNombreMovimiento(),
             null);
 
-    static Pokemon Ninetales = new Pokemon(
+    public static Pokemon Ninetales = new Pokemon(
             "Ninetales",
             null,
             5,

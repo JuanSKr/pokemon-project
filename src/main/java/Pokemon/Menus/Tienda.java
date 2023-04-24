@@ -12,6 +12,7 @@ import java.util.Scanner;
 class Tienda {
  private Map<Integer, Objeto> inventario;
 
+
  // CONSTRUCTOR
  public Tienda() {
      this.inventario = new HashMap<>();
@@ -38,8 +39,7 @@ class Tienda {
  public static void abrirTienda() {
 	   // CREAMOS UN ENTRENADOR CON 500 MONEDAS
 
-	 Entrenador entrenador = new Entrenador(null, 500, null, null, null);
-
+	 Entrenador entrenador = new Entrenador();
 
 	 // Creamos una tienda
 	   Tienda tienda = new Tienda();
@@ -70,7 +70,7 @@ class Tienda {
 
 	                       // COMPRAMOS EL OBJETO SI EXISTE EN LA TIENDA
 	                       if (objetoComprado != null) {
-	                           entrenador.comprarObjeto(objetoComprado);
+							   entrenador.comprarObjeto(objetoComprado);
 	                       } else {
 	                           System.out.println("No existe ningun objeto con ese ID en la tienda.");
 	                       }
@@ -95,8 +95,8 @@ class Tienda {
 
 	                   case 3:
 	                       // MOSTRAMOS EL DINERO DEL ENTRENADOR
-	                       System.out.println("Dinero del entrenador: " + entrenador.getDinero() + " monedas");
-	                       break;
+						   System.out.println("Dinero del entrenador: " + entrenador.getDinero() + " monedas");
+						   break;
 
 	                   case 4:
 	                       // SALIMOS DEL PROGRAMA
@@ -108,5 +108,9 @@ class Tienda {
 	               }
 	           } while (opcion != 4);
 	       }
+
+	public static void main(String[] args) {
+		abrirTienda();
+	}
 
 }
