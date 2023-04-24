@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 //CLASE ENTRENADOR
 public class Entrenador {
+
+    static Scanner sc = new Scanner(System.in);
+
+
     protected static String nombre;
     private static int dinero;
     private static Map<Integer, Objeto> mochila;
@@ -110,7 +114,6 @@ public class Entrenador {
     }
 
     /**
-     *
      * @param pokemon
      * @param equipoInicial
      * @param equipoFinal
@@ -120,33 +123,44 @@ public class Entrenador {
     public static void moverPokemon(Pokemon pokemon, LinkedList equipoInicial, LinkedList equipoFinal) {
 
         equipoInicial.remove(pokemon);
-
         equipoFinal.add(pokemon);
 
     }
 
+
     /**
-     *
      * @param pokemon
-     * @param equipo
-     * @return Se le pasan dos parametros al método, el Pokemon que se quiere añadir, y el equipo al que se quiere añadir.
+     * @param equipo1
+     * @return Se le pasan dos parametros al método, el Pokemon que se quiere añadir, y el equipo al que se quiere añadir. Si el equipo contiene < 6 integrantes se añade, si no, no.
      */
 
-    public static void addPokemon(Pokemon pokemon, LinkedList equipo) {
-
-        equipo.add(pokemon);
-
+    public static void addPokemon(Pokemon pokemon, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
+        try {
+            if (equipo1.size() < 1) {
+                equipo1.add(pokemon);
+            } else if (equipo2 != null && equipo2.size() < 1) {
+                equipo2.add(pokemon);
+                System.out.println("El " + pokemon.getNombre() + " no cabe en el equipo titular. Ha sido agregado al equipo suplente.");
+            } else {
+                caja.add(pokemon);
+                System.out.println("El " + pokemon.getNombre() + " no cabe en ningún equipo. Ha sido agregado a la caja.");
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Error: No tienes capacidad para almacenar a " + pokemon.getNombre());
+        }
     }
 
-    public static void main(String[] args) { //Clase Main para testear
+    /**
+     * @return Metodo para darle al usuario la opción de elegir su Pokémon inicial entre 3.
+     */
 
-        Scanner sc = new Scanner(System.in);
+    public static void primerPokemon() {
         LinkedList<Pokemon> equipo1 = new LinkedList<Pokemon>();
         LinkedList<Pokemon> equipo2 = new LinkedList<Pokemon>();
         LinkedList<Pokemon> caja = new LinkedList<Pokemon>();
 
         System.out.print("Elige que pokemon añadir a equipo1: ");
-        System.out.println("\n1.Pikachu\n2.Raichu\n3.Bulbasaur");
+        System.out.println("\n1.Pikachu\n2.Charmander\n3.Bulbasaur");
         int opcion = sc.nextInt();
 
         switch (opcion) {
@@ -173,35 +187,34 @@ public class Entrenador {
                 break;
         }
 
-        for (Pokemon equipoPrincipal : equipo1) {
-            System.out.println("Equipo 1: " + equipoPrincipal.toString());
-        }
-
-        System.out.println("--------------------------------------");
-        System.out.println("Quieres mover a pikachu al equipo 2?");
-        System.out.println("1 = Si / 2 = No");
-        int opcionMover = sc.nextInt();
-
-        switch (opcionMover) {
-
-            case 1:
-                moverPokemon(Pokedex.Pikachu, equipo1, equipo2);
-                System.out.println("Se ha movido a " + Pokedex.Pikachu.getNombre() + " a equipo 2.");
-
-                for(Pokemon equipoSuplentes : equipo2) {
-                    System.out.println("Equipo 2: " + equipoSuplentes.toString());
-
-                }
-
-                break;
-
-            case 2:
-                System.out.println("No");
-                break;
-        }
-
-
     }
 
+
+    public static void main(String[] args) {
+
+        LinkedList<Pokemon> equipo1 = new LinkedList<Pokemon>();
+        LinkedList<Pokemon> equipo2 = new LinkedList<Pokemon>();
+        LinkedList<Pokemon> caja = new LinkedList<Pokemon>();
+
+        addPokemon(Pokedex.Raichu, equipo1, equipo2, caja);
+        addPokemon(Pokedex.Butterfree, equipo1, equipo2, caja);
+
+        System.out.println("Equipo 1:");
+        for (Pokemon mostrarEquipo : equipo1) {
+            System.out.println(mostrarEquipo.getNombre());
+        }
+
+        System.out.println("---------------[TEST]------------------");
+        System.out.println("Añadimos Raticate a equipo2 (no cabe)");
+        System.out.println("---------------[TEST]------------------");
+
+        addPokemon(Pokedex.Bulbasaur, equipo1, equipo2, caja);
+
+        System.out.println("Caja:");
+        for (Pokemon mostrarEquipo : caja) {
+            System.out.println(mostrarEquipo.getNombre());
+        }
+
+    }
 
 }
