@@ -1,4 +1,4 @@
-package Pokemon.Combate;
+package Pokemon.Menus;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;

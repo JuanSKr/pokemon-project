@@ -2,14 +2,11 @@ package Pokemon.Capturar;
 
 
 import javafx.application.Application;
-import Pokemon.Menus.Pokedex;
+import Pokemon.Pokemon.Pokedex;
 import Pokemon.Pokemon.Pokemon;
 
 import java.util.Scanner;
 
-import static Pokemon.Entrenador.Entrenador.*;
-
-import Pokemon.Menus.Pokedex;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -86,27 +83,27 @@ public class Exploracion extends Application {
         Pokemon[] pokemons = {
                 Pokedex.Pikachu,
                 Pokedex.Raichu,
-//                Pokedex.Bulbasaur,
-//                Pokedex.Ivysaur,
-//                Pokedex.Venusaur,
-//                Pokedex.Charmander,
-//                Pokedex.Charmeleon,
-//                Pokedex.Charizard,
-//                Pokedex.Squirtle,
-//                Pokedex.Wartortle,
-//                Pokedex.Butterfree,
-//                Pokedex.Weedle,
-//                Pokedex.Kakuna,
-//                Pokedex.Beedrill,
-//                Pokedex.Pidgey,
-//                Pokedex.Pidgeotto,
-//                Pokedex.Pidgeot,
-//                Pokedex.Rattata,
-//                Pokedex.Raticate,
-//                Pokedex.Spearow
+                Pokedex.Bulbasaur,
+                Pokedex.Ivysaur,
+                Pokedex.Venusaur,
+                Pokedex.Charmander,
+                Pokedex.Charmeleon,
+                Pokedex.Charizard,
+                Pokedex.Squirtle,
+                Pokedex.Wartortle,
+                Pokedex.Butterfree,
+                Pokedex.Weedle,
+                Pokedex.Kakuna,
+                Pokedex.Beedrill,
+                Pokedex.Pidgey,
+                Pokedex.Pidgeotto,
+                Pokedex.Pidgeot,
+                Pokedex.Rattata,
+                Pokedex.Raticate,
+                Pokedex.Spearow
         };
 
-        int random = (int) (Math.random() * 2 + 1);
+        int random = (int) (Math.random() * 19 + 0);
 
         Pokemon pokemonRandom = pokemons[random];
 

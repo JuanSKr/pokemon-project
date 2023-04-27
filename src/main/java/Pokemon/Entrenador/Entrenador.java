@@ -2,7 +2,7 @@ package Pokemon.Entrenador;
 
 import Pokemon.Pokemon.Objeto;
 import Pokemon.Pokemon.Pokemon;
-import Pokemon.Menus.Pokedex;
+import Pokemon.Pokemon.Pokedex;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -140,16 +140,16 @@ public class Entrenador {
         try {
             if (equipo1.size() < 6) {
                 equipo1.add(pokemon);
-                System.out.println("Se ha añadido a " + pokemon.getNombre() + " al equipo titular.");
+                System.out.println("Se ha añadido a " + pokemon.toString() + " al equipo titular.");
             } else if (equipo2.size() < 6) {
                 equipo2.add(pokemon);
-                System.out.println(pokemon.getNombre() + " no cabe en el equipo titular. Ha sido agregado al equipo suplente.");
+                System.out.println(pokemon.toString() + " no cabe en el equipo titular. Ha sido agregado al equipo suplente.");
             } else {
                 caja.add(pokemon);
-                System.out.println(pokemon.getNombre() + " no cabe en ningún equipo. Ha sido agregado a la caja.");
+                System.out.println(pokemon.toString() + " no cabe en ningún equipo. Ha sido agregado a la caja.");
             }
         } catch (NullPointerException e) {
-            System.out.println("Error: No tienes capacidad para almacenar a " + pokemon.getNombre());
+            System.out.println("Error: No tienes capacidad para almacenar a " + pokemon.toString());
         }
     }
 

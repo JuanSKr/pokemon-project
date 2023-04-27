@@ -1,9 +1,8 @@
-package Pokemon.Capturar;
+package Pokemon.Menus;
 
 import Pokemon.Menus.Menu;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -14,9 +13,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.*;
 
-import Pokemon.Menus.Pokedex;
 import Pokemon.Pokemon.Pokemon;
 
 import static Pokemon.Entrenador.Entrenador.*;
@@ -27,14 +24,10 @@ public class MenuExplorador extends Application {
     private static final double WINDOW_HEIGHT = 650;
     private Circle trainerCircle;
     private Circle pokemonCircle;
-    private List<String> trainerBox = new ArrayList<>();
     private double pokemonSpeedX = 1;
     private double pokemonSpeedY = 1;
     static Pokemon pokemon;
-    static boolean quiereMote;
-    static boolean capturado = false;
     private Scene previousScene;
-
 
     @Override
     public void start(Stage primaryStage) {
@@ -47,7 +40,7 @@ public class MenuExplorador extends Application {
         // Crear la circunferencia Pokémon
         pokemonCircle = new Circle(100, 100, 10, Color.RED);
 
-        // CREAR EL PANEL PRINCIPAL Y AGREGAR LAS CIRCUNFERENCIAS
+        // Creamos el panel especial y se agregan las circunferencias.
         Pane root = new Pane();
         root.getChildren().addAll(trainerCircle, pokemonCircle);
 
@@ -111,20 +104,20 @@ public class MenuExplorador extends Application {
                     dialog.setTitle("Capturado!");
                     dialog.setHeaderText("¡Felicidades! Has capturado a " + copia.toString());
 
-// Crear el Label y los botones
+                    // Crear el Label y los botones
                     Label label = new Label("¿Quieres darle un mote a tu " + copia.toString() + " ?");
                     TextField textField = new TextField();
                     Button ponerMoteButton = new Button("Aplicar mote");
-                    Button noMoteButton = new Button("No aplicar mote");
+                    Button noMoteButton = new Button("No dar mote");
                     Button salirButton = new Button("Salir");
 
 
-// Agregar los nodos al diálogo personalizado
+                    // Agregar los nodos al diálogo personalizado
                     VBox vbox = new VBox();
                     vbox.getChildren().addAll(label, textField, ponerMoteButton, noMoteButton, salirButton);
                     dialog.getDialogPane().setContent(vbox);
 
-// Manejar el evento de clic en el botón de confirmación
+                    // Le pone un mote al pokemon, lo añade al equipo disponible y cierra la ventana.
                     ponerMoteButton.setOnAction(event -> {
                         String apodo = textField.getText();
                         copia.setMote(apodo); // Asignar el mote al Pokemon
@@ -133,23 +126,25 @@ public class MenuExplorador extends Application {
                         verEquipos();
                     });
 
+                    //Cierra la ventana de diálogo y añade al Pokemon al equipo.
                     noMoteButton.setOnAction(event -> {
                         dialog.setResult("cancel");
                         addPokemon(copia, equipo1, equipo2, caja);
                         verEquipos();
                     });
 
+                    //Cierra la ventana y añade al Pokemon al equipo.
                     salirButton.setOnAction(event -> {
-                            System.out.println("Saliendo");
-                            dialog.setResult("cancel");
-                            addPokemon(copia, equipo1, equipo2, caja);
-                            verEquipos();
+                        System.out.println("Saliendo");
+                        dialog.setResult("cancel");
+                        addPokemon(copia, equipo1, equipo2, caja);
+                        verEquipos();
                     });
 
-// Mostrar el diálogo
+                    // Mostrar el diálogo
                     dialog.show();
 
-// Agregar el diálogo personalizado a la ventana root después de cerrarse
+                    // Agregar el diálogo personalizado a la ventana root después de cerrarse
                     dialog.setOnHidden(event -> {
 
                         if (copia.getMote() == null) {

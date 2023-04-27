@@ -1,4 +1,4 @@
-package Pokemon.Menus;
+package Pokemon.Pokemon;
 
 /*
 IMPORTANTE:

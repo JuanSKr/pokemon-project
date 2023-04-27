@@ -1,7 +1,5 @@
 package Pokemon.Pokemon;
 
-import Pokemon.Menus.Pokedex;
-
 public class Pokemon {
 
     protected String nombre;

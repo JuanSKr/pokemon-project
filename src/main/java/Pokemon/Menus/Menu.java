@@ -1,11 +1,6 @@
 package Pokemon.Menus;
 
-import Pokemon.Capturar.Exploracion;
-import Pokemon.Capturar.MenuExplorador;
-import Pokemon.Combate.MenuCombate;
 import Pokemon.Entrenador.Entrenador;
-import Pokemon.Entrenador.MenuEntrenador;
-import Pokemon.Tienda.MenuTienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
