@@ -1,5 +1,6 @@
 package Pokemon.Menus;
 
+import Pokemon.Capturar.Exploracion;
 import Pokemon.Capturar.MenuExplorador;
 import Pokemon.Combate.MenuCombate;
 import Pokemon.Entrenador.Entrenador;
@@ -56,14 +57,24 @@ public class Menu extends Application {
 			primaryStage.setScene(menuCombateScene);
 
 		});
+//		exploracionButton.setOnAction(e -> {
+//			// CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
+//			// POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
+//			Scene currentScene = primaryStage.getScene();
+//			Exploracion Exploracion = new Exploracion(primaryStage, currentScene);
+//			Scene ExploradorScene = Exploracion.getScene();
+//			primaryStage.setScene(ExploradorScene);
+//
+		
+		
+		
+//		});
+		
 		exploracionButton.setOnAction(e -> {
-			// CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
-			// POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
-			Scene currentScene = primaryStage.getScene();
-			MenuExplorador menuExploracion = new MenuExplorador(primaryStage, currentScene);
-			Scene menuExploradorScene = menuExploracion.getScene();
-			primaryStage.setScene(menuExploradorScene);
-
+		    // CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
+		    // POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
+		    MenuExplorador menuExplorador = new MenuExplorador();
+		    menuExplorador.start(primaryStage);
 		});
 		pokedexButton.setOnAction(e -> {
 			// AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
@@ -87,12 +98,13 @@ public class Menu extends Application {
 //        });
 
 		tiendaButton.setOnAction(e -> {
-			Scene currentScene = primaryStage.getScene();
-			MenuTienda menuTienda = new MenuTienda(primaryStage, currentScene);
-			Scene menuTiendaScene = menuTienda.getScene();
-			primaryStage.setScene(menuTiendaScene);
-			// Muestrar por Consola
-			// Tienda.abrirTienda();
+//			Scene currentScene = primaryStage.getScene();
+//			MenuTienda menuTienda = new MenuTienda(primaryStage, currentScene);
+//			Scene menuTiendaScene = menuTienda.getScene();
+//			primaryStage.setScene(menuTiendaScene);
+			
+			//Muestrar por Consola
+			Tienda.abrirTienda();
 		});
 		
 

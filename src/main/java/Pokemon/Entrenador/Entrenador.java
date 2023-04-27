@@ -12,7 +12,7 @@ public class Entrenador {
     private static Map<Integer, Objeto> mochila;
     private static Map<Objeto, Integer> contador; // nuevo HashMap
 	private static Object MenuEntrenado;
-    private String contrasena;
+    private static String contrasena;
 
     // Constructor con todos los parametros
 
@@ -23,17 +23,17 @@ public class Entrenador {
         this.contador = contador;
     }
 
-    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena) {
-        this.nombre = "";
+    public Entrenador(String nombre, String contrasena) {
         this.dinero = 200;
         this.mochila = new HashMap<>();
         this.contador = new HashMap<>();
+        this.nombre = nombre;
         this.contrasena = contrasena;
     }
 
 
     // MÉTODO PARA COMPRAR UN OBJETO
-    public void comprarObjeto(Objeto objeto) {
+    public static void comprarObjeto(Objeto objeto) {
         if (dinero >= objeto.getPrecio()) {
             dinero -= objeto.getPrecio();
             mochila.put(objeto.getId(), objeto);
@@ -59,7 +59,7 @@ public class Entrenador {
         return mochila;
     }
 
-    public Map<Objeto, Integer> getContador() {
+    public static Map<Objeto, Integer> getContador() {
         return contador;
     }
 
@@ -84,13 +84,11 @@ public class Entrenador {
     }
 
     public static void setContrasena(String contrasena) {
-        // TODO Auto-generated method stub
-
+    	
     }
 
     public static String getContrasena() {
-        // TODO Auto-generated method stub
-        return null;
+        return  contrasena;
     }
 
 	public static void abrirMenuEntrenador() {

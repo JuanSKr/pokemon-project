@@ -1,7 +1,7 @@
 module Pokemon.Menus {
     requires javafx.controls;
     requires javafx.fxml;
-    //requires javafx.media;
+    
 
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
@@ -12,5 +12,7 @@ module Pokemon.Menus {
 
     opens Pokemon.Menus to javafx.fxml;
     exports Pokemon.Menus;
+    exports Pokemon.Capturar to javafx.graphics;
     exports Pokemon.Entrenador to javafx.graphics;
+    exports Pokemon.Tienda to javafx.graphics;
 }

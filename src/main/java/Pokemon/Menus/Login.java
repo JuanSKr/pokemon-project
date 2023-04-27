@@ -15,7 +15,7 @@ public class Login extends Application {
     private TextField nombreUsuario;
     private PasswordField contrasena;
     private Label mensaje;
-    private Entrenador entrenador;
+    private Entrenador entrenador = null;
 
     @Override
     public void start(Stage primaryStage) {
@@ -79,10 +79,10 @@ public class Login extends Application {
     private void iniciarSesion() {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
-
-        if (nombre.equals("user") && password.equals("1234")) {
+        if (nombre.equals(entrenador.getNombre()) && password.equals(entrenador.getContrasena())) {
             mensaje.setText("Inicio de sesión exitoso.");
             Entrenador.setNombre(nombre);
+            entrenador = new Entrenador(nombre, password);
             Menu menu = new Menu();
             try {
                 menu.start(new Stage());
@@ -96,8 +96,10 @@ public class Login extends Application {
     }
 
     private void crearCuenta() {
-        entrenador = null;
-        mensaje.setText("Test");
+        String nombre = nombreUsuario.getText();
+        String password = contrasena.getText();
+        entrenador = new Entrenador(nombre, password);
+        mensaje.setText("Cuenta creada exitosamente.");
     }
 
     public static void main(String[] args) {

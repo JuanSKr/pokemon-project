@@ -57,7 +57,7 @@ public class MenuEntrenador extends Application {
          	ImageView imagenLogo = new ImageView(image);
         
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-        Media audioMedia = new Media(getClass().getResource("/aud/Entrenador.wav").toExternalForm());
+        Media audioMedia = new Media(getClass().getResource("/aud/Prueba.wav").toExternalForm());
         MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
         audioMediaPlayer.setAutoPlay(true);
         audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);

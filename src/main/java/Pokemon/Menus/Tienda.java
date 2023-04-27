@@ -7,11 +7,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 //CLASE TIENDA
-class Tienda {
-	private Map<Integer, Objeto> inventario;
+public class Tienda {
+	private static Map<Integer, Objeto> inventario;
 
 	// CONSTRUCTOR
-	public Tienda() {
+	public  Tienda() {
 		this.inventario = new HashMap<>();
 		inventario.put(1, new Objeto(1, "Pesa", 50,
 				"Aumenta el ataque y la defensa un 20%, pero disminuye la velocidad un 20%."));
@@ -26,7 +26,7 @@ class Tienda {
 	}
 
 	// MÉTODO PARA MOSTRAR EL INVENTARIO DE LA TIENDA
-	public void mostrarInventario() {
+	public static void mostrarInventario() {
 		System.out.println("Inventario de la tienda:");
 		for (Objeto objeto : inventario.values()) {
 			System.out.println(objeto.toString());
@@ -41,7 +41,6 @@ class Tienda {
 	public static void abrirTienda() {
 		// CREAMOS UN ENTRENADOR CON 500 MONEDAS
 		Entrenador entrenador = new Entrenador();
-
 		// Creamos una tienda
 		Tienda tienda = new Tienda();
 		// CREAMOS UN OBJETO SCANNER PARA LEER LA ENTRADA DEL USUARIO
@@ -92,7 +91,7 @@ class Tienda {
 				break;
 			case 3:
 				// MOSTRAMOS EL DINERO DEL ENTRENADOR
-				System.out.println("Dinero del entrenador: " + entrenador.getDinero() + " monedas");
+				System.out.println("Dinero del entrenador: " + entrenador.getNombre()  + " monedas " + entrenador.getDinero() );
 				break;
 			case 4:
 				// SALIMOS DEL PROGRAMA
@@ -102,5 +101,9 @@ class Tienda {
 				System.out.println("Opcion no valida.");
 			}
 		} while (opcion != 4);
+	}
+
+	public Map<Integer, Objeto> getInventario() {
+	    return this.inventario;
 	}
 }

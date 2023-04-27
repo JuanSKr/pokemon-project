@@ -27,19 +27,15 @@ public class MenuTienda extends Application {
         this.primaryStage = primaryStage;
         this.previousScene = previousScene;
     }
-
     @Override
     public void start(Stage primaryStage) {
         // Este método ya no es necesario
     }
-
     public Scene getScene() {
     	GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10, 10, 10, 10));
         gridPane.setVgap(8);
         gridPane.setHgap(10);
-        
-     
 
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL VÍDEO
         Media media = new Media(getClass().getResource("/vid/VideoLoggin.mp4").toExternalForm());
@@ -53,7 +49,7 @@ public class MenuTienda extends Application {
         mediaView.setFitHeight(SCENE_HEIGHT);
         
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-        Media audioMedia = new Media(getClass().getResource("/aud/Tienda.wav").toExternalForm());
+        Media audioMedia = new Media(getClass().getResource("/aud/Prueba1.wav").toExternalForm());
         MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
         audioMediaPlayer.setAutoPlay(true);
         audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -83,10 +79,7 @@ public class MenuTienda extends Application {
         gridPane.add(mediaView, 0, 1, 2, 1);
         GridPane.setVgrow(mediaView, Priority.ALWAYS);
         GridPane.setHgrow(mediaView, Priority.ALWAYS);
-      
-        
-     
-        
+
         // MÉTODO DE INICIO DE LA APLICACIÓN
         Scene scene = new Scene(gridPane, SCENE_WIDTH, SCENE_HEIGHT);
         return scene;
