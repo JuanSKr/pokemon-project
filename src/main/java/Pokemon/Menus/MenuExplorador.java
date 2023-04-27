@@ -144,25 +144,8 @@ public class MenuExplorador extends Application {
                     // Mostrar el diálogo
                     dialog.show();
 
-                    // Agregar el diálogo personalizado a la ventana root después de cerrarse
-                    dialog.setOnHidden(event -> {
 
-                        if (copia.getMote() == null) {
-
-                            VBox nicknameBox = new VBox();
-                            nicknameBox.getChildren().addAll(new Label("Mote: " + copia.getNombre()), ponerMoteButton, salirButton);
-                            root.getChildren().add(nicknameBox);
-
-                        } else {
-
-                            VBox nicknameBox = new VBox();
-                            nicknameBox.getChildren().addAll(new Label("Este " + copia + " no tendrá ningún mote."), ponerMoteButton, salirButton);
-                            root.getChildren().add(nicknameBox);
-
-                        }
-                    });
-
-
+                    //Volver al menu despúes de la captura.
                     Menu menu = new Menu();
                     try {
                         menu.start(primaryStage);
