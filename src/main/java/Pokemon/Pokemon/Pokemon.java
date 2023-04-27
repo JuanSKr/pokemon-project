@@ -285,8 +285,6 @@ public class Pokemon {
 
         return Pokedex.Pikachu;
 
-
-
     }
 }
 

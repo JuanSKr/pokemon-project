@@ -19,9 +19,9 @@ public class Entrenador {
     private static int dinero;
     private static Map<Integer, Objeto> mochila;
     private static Map<Objeto, Integer> contador; // nuevo HashMap
-    private static LinkedList<Pokemon> equipo1;
-    private static LinkedList<Pokemon> equipo2;
-    private static LinkedList<Pokemon> caja;
+    public static LinkedList<Pokemon> equipo1 = new LinkedList<>();
+    public static LinkedList<Pokemon> equipo2 = new LinkedList<>();
+    public static LinkedList<Pokemon> caja = new LinkedList<>();
     private String contrasena;
 
 //
@@ -29,20 +29,9 @@ public class Entrenador {
 
     // Constructor con todos los parametros
 
-    public Entrenador() {
+    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
         this.nombre = nombre;
         this.dinero = dinero;
-        this.mochila = mochila;
-        this.contador = contador;
-        this.equipo1 = equipo1;
-        this.equipo2 = equipo2;
-        this.caja = caja;
-    }
-
-
-    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
-        this.nombre = "";
-        this.dinero = 500;
         this.mochila = new HashMap<>();
         this.contador = new HashMap<>();
         this.contrasena = contrasena;
@@ -50,6 +39,21 @@ public class Entrenador {
         this.equipo2 = equipo2;
         this.caja = caja;
     }
+
+    // Constructor por defecto:
+
+    public Entrenador() {
+        this.nombre = "";
+        this.dinero = 500;
+        this.mochila = null;
+        this.contador = null;
+        this.equipo1 = new LinkedList<>();
+        this.equipo2 = new LinkedList<>();
+        this.caja = new LinkedList<>();
+    }
+
+
+
 
 
     // MÉTODO PARA COMPRAR UN OBJETO
@@ -138,12 +142,13 @@ public class Entrenador {
         try {
             if (equipo1.size() < 1) {
                 equipo1.add(pokemon);
-            } else if (equipo2 != null && equipo2.size() < 1) {
+                System.out.println("Se ha añadido a "+pokemon.getNombre() + " al equipo titular.");
+            } else if (equipo2.size() < 1) {
                 equipo2.add(pokemon);
-                System.out.println("El " + pokemon.getNombre() + " no cabe en el equipo titular. Ha sido agregado al equipo suplente.");
+                System.out.println(pokemon.getNombre() + " no cabe en el equipo titular. Ha sido agregado al equipo suplente.");
             } else {
                 caja.add(pokemon);
-                System.out.println("El " + pokemon.getNombre() + " no cabe en ningún equipo. Ha sido agregado a la caja.");
+                System.out.println(pokemon.getNombre() + " no cabe en ningún equipo. Ha sido agregado a la caja.");
             }
         } catch (NullPointerException e) {
             System.out.println("Error: No tienes capacidad para almacenar a " + pokemon.getNombre());
@@ -155,12 +160,12 @@ public class Entrenador {
      */
 
     public static void primerPokemon() {
-        LinkedList<Pokemon> equipo1 = new LinkedList<Pokemon>();
-        LinkedList<Pokemon> equipo2 = new LinkedList<Pokemon>();
-        LinkedList<Pokemon> caja = new LinkedList<Pokemon>();
 
-        System.out.print("Elige que pokemon añadir a equipo1: ");
-        System.out.println("\n1.Pikachu\n2.Charmander\n3.Bulbasaur");
+        System.out.println("-----------------------");
+        System.out.println("   PRIMER POKEMON");
+        System.out.println("-----------------------");
+        System.out.println("1.Pikachu\n2.Charmander\n3.Bulbasaur");
+        System.out.print("Elige tu primer pokemon: ");
         int opcion = sc.nextInt();
 
         switch (opcion) {
@@ -189,31 +194,53 @@ public class Entrenador {
 
     }
 
-
-    public static void main(String[] args) {
-
-        LinkedList<Pokemon> equipo1 = new LinkedList<Pokemon>();
-        LinkedList<Pokemon> equipo2 = new LinkedList<Pokemon>();
-        LinkedList<Pokemon> caja = new LinkedList<Pokemon>();
-
-        addPokemon(Pokedex.Raichu, equipo1, equipo2, caja);
-        addPokemon(Pokedex.Butterfree, equipo1, equipo2, caja);
+    public static void verEquipos() {
 
         System.out.println("Equipo 1:");
         for (Pokemon mostrarEquipo : equipo1) {
             System.out.println(mostrarEquipo.getNombre());
         }
 
-        System.out.println("---------------[TEST]------------------");
-        System.out.println("Añadimos Raticate a equipo2 (no cabe)");
-        System.out.println("---------------[TEST]------------------");
-
-        addPokemon(Pokedex.Bulbasaur, equipo1, equipo2, caja);
+        System.out.println("Equipo 2:");
+        for (Pokemon mostrarEquipo : equipo2) {
+            System.out.println(mostrarEquipo.getNombre());
+        }
 
         System.out.println("Caja:");
         for (Pokemon mostrarEquipo : caja) {
             System.out.println(mostrarEquipo.getNombre());
         }
+    }
+
+
+    public static void main(String[] args) {
+
+//        addPokemon(Pokedex.Raichu, equipo1, equipo2, caja);
+//        addPokemon(Pokedex.Butterfree, equipo1, equipo2, caja);
+//
+//        System.out.println("Equipo 1:");
+//        for (Pokemon mostrarEquipo : equipo1) {
+//            System.out.println(mostrarEquipo.getNombre());
+//        }
+//
+//        System.out.println("Equipo 2:");
+//        for (Pokemon mostrarEquipo : equipo2) {
+//            System.out.println(mostrarEquipo.getNombre());
+//        }
+//
+//        System.out.println("---------------[TEST]------------------");
+//        System.out.println("Añadimos Raticate a equipo2 (no cabe)");
+//        System.out.println("---------------[TEST]------------------");
+//
+//        addPokemon(Pokedex.Bulbasaur, equipo1, equipo2, caja);
+//
+//        System.out.println("Caja:");
+//        for (Pokemon mostrarEquipo : caja) {
+//            System.out.println(mostrarEquipo.getNombre());
+//        }
+
+        primerPokemon();
+        verEquipos();
 
     }
 
