@@ -1,10 +1,13 @@
 package Pokemon.Pokemon;
 
+import Pokemon.Menus.Pokedex;
+
 public class Pokemon {
 
     protected String nombre;
     protected String mote;
     protected int nivel;
+    protected int xp;
     protected Tipo tipo1;
     protected Tipo tipo2;
     protected char sexo;
@@ -25,12 +28,13 @@ public class Pokemon {
 
     // Constructor con todos los parámetros
 
-    public Pokemon(String nombre, String mote, int nivel, Tipo tipo1, Tipo tipo2, char sexo, double vitalidad,
+    public Pokemon(String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, double vitalidad,
                    double ataque, double defensa, double ataqueEspecial, double defensaEspecial, double estamina, double velocidad,
                    ListaEstados estado, int fertilidad, Objeto obj, String movimiento1, String movimiento2, String movimiento3, String movimiento4) {
         this.nombre = nombre;
         this.mote = mote;
         this.nivel = nivel;
+        this.xp = xp;
         this.tipo1 = tipo1;
         this.tipo2 = tipo2;
         this.sexo = sexo;
@@ -56,6 +60,7 @@ public class Pokemon {
         this.nombre = "";
         this.mote = "";
         this.nivel = 0;
+        this.xp = 0;
         this.tipo1 = null;
         this.tipo2 = null;
         this.sexo = ' ';
@@ -77,27 +82,28 @@ public class Pokemon {
 
     // Constructor copia
 
-    public Pokemon(Pokemon p) {
-        this.nombre = p.nombre;
-        this.mote = p.mote;
-        this.nivel = p.nivel;
-        this.tipo1 = p.tipo1;
-        this.tipo2 = p.tipo2;
-        this.sexo = p.sexo;
-        this.vitalidad = p.vitalidad;
-        this.ataque = p.ataque;
-        this.defensa = p.defensa;
-        this.ataqueEspecial = p.ataqueEspecial;
-        this.defensaEspecial = p.defensaEspecial;
-        this.estamina = p.estamina;
-        this.velocidad = p.velocidad;
-        this.estado = p.estado;
-        this.fertilidad = p.fertilidad;
-        this.obj = p.obj;
-        this.movimiento1 = p.movimiento1;
-        this.movimiento2 = p.movimiento2;
-        this.movimiento3 = p.movimiento3;
-        this.movimiento4 = p.movimiento4;
+    public Pokemon(Pokemon capturado) {
+        this.nombre = capturado.nombre;
+        this.mote = capturado.mote;
+        this.nivel = capturado.nivel;
+        this.xp = capturado.xp;
+        this.tipo1 = capturado.tipo1;
+        this.tipo2 = capturado.tipo2;
+        this.sexo = capturado.sexo;
+        this.vitalidad = capturado.vitalidad;
+        this.ataque = capturado.ataque;
+        this.defensa = capturado.defensa;
+        this.ataqueEspecial = capturado.ataqueEspecial;
+        this.defensaEspecial = capturado.defensaEspecial;
+        this.estamina = capturado.estamina;
+        this.velocidad = capturado.velocidad;
+        this.estado = capturado.estado;
+        this.fertilidad = capturado.fertilidad;
+        this.obj = capturado.obj;
+        this.movimiento1 = capturado.movimiento1;
+        this.movimiento2 = capturado.movimiento2;
+        this.movimiento3 = capturado.movimiento3;
+        this.movimiento4 = capturado.movimiento4;
     }
 
     public String getNombre() {
@@ -260,9 +266,27 @@ public class Pokemon {
         this.movimiento4 = movimiento4;
     }
 
+    public int getXp() {
+        return xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
     @Override
     public String toString() {
         return nombre;
+    }
+
+    public static Pokemon pokeRandom() {
+
+        int random = (int)(Math.random() *10+1);
+
+        return Pokedex.Pikachu;
+
+
+
     }
 }
 
