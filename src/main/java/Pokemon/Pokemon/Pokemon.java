@@ -276,15 +276,12 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return nombre;
+        if(this.mote == null) {
+            return this.nombre;
+        } else {
+            return this.mote;
+        }
     }
 
-    public static Pokemon pokeRandom() {
-
-        int random = (int)(Math.random() *10+1);
-
-        return Pokedex.Pikachu;
-
-    }
 }
 

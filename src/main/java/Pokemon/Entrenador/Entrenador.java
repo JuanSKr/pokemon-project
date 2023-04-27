@@ -53,9 +53,6 @@ public class Entrenador {
     }
 
 
-
-
-
     // MÉTODO PARA COMPRAR UN OBJETO
     public static void comprarObjeto(Objeto objeto) {
         if (dinero >= objeto.getPrecio()) {
@@ -139,11 +136,12 @@ public class Entrenador {
      */
 
     public static void addPokemon(Pokemon pokemon, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
+
         try {
-            if (equipo1.size() < 1) {
+            if (equipo1.size() < 6) {
                 equipo1.add(pokemon);
-                System.out.println("Se ha añadido a "+pokemon.getNombre() + " al equipo titular.");
-            } else if (equipo2.size() < 1) {
+                System.out.println("Se ha añadido a " + pokemon.getNombre() + " al equipo titular.");
+            } else if (equipo2.size() < 6) {
                 equipo2.add(pokemon);
                 System.out.println(pokemon.getNombre() + " no cabe en el equipo titular. Ha sido agregado al equipo suplente.");
             } else {
@@ -198,17 +196,17 @@ public class Entrenador {
 
         System.out.println("Equipo 1:");
         for (Pokemon mostrarEquipo : equipo1) {
-            System.out.println(mostrarEquipo.getNombre());
+            System.out.println(mostrarEquipo.toString());
         }
 
         System.out.println("Equipo 2:");
         for (Pokemon mostrarEquipo : equipo2) {
-            System.out.println(mostrarEquipo.getNombre());
+            System.out.println(mostrarEquipo.toString());
         }
 
         System.out.println("Caja:");
         for (Pokemon mostrarEquipo : caja) {
-            System.out.println(mostrarEquipo.getNombre());
+            System.out.println(mostrarEquipo.toString());
         }
     }
 

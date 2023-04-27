@@ -1,7 +1,5 @@
 package Pokemon.Pokemon;
 
-import java.util.HashMap;
-
 public enum Tipo {
     ACERO,
     AGUA,
@@ -21,5 +19,4 @@ public enum Tipo {
     TIERRA,
     VENENO,
     VOLADOR;
-
 }

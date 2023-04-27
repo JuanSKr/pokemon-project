@@ -15,6 +15,7 @@ public class Login extends Application {
     private TextField nombreUsuario;
     private PasswordField contrasena;
     private Label mensaje;
+    private Entrenador entrenador = null;
 
     @Override
     public void start(Stage primaryStage) {
@@ -22,7 +23,8 @@ public class Login extends Application {
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
-        BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/ehLRxNl.png"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundSize backgroundSize = new BackgroundSize(1280, 720, false, false, false, false);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/6y651sN.gif"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         grid.setBackground(new Background(backgroundImage));
         grid.setVgap(8);
         grid.setHgap(10);
@@ -77,8 +79,7 @@ public class Login extends Application {
     private void iniciarSesion() {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
-
-        if (nombre.equals("usuario") && password.equals("1234")) {
+        if (nombre.equals("test") && password.equals("1234")) {
             mensaje.setText("Inicio de sesión exitoso.");
             Entrenador.setNombre(nombre);
             Menu menu = new Menu();
@@ -94,7 +95,9 @@ public class Login extends Application {
     }
 
     private void crearCuenta() {
-        mensaje.setText("Test");
+        String nombre = nombreUsuario.getText();
+        String password = contrasena.getText();
+        mensaje.setText("Cuenta creada exitosamente.");
     }
 
     public static void main(String[] args) {
