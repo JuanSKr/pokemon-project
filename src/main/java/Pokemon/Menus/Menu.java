@@ -1,6 +1,7 @@
 package Pokemon.Menus;
 
 import Pokemon.Entrenador.Entrenador;
+import Pokemon.Tienda.Tienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

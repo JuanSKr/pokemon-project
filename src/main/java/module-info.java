@@ -9,12 +9,14 @@ module Pokemon.Menus {
     requires com.almasb.fxgl.all;
     requires javafx.graphics;
     requires javafx.media;
+    requires java.sql;
 
     opens Pokemon.Menus to javafx.fxml;
     exports Pokemon.Menus;
     exports Pokemon.Capturar to javafx.graphics;
     exports Pokemon.Entrenador to javafx.graphics;
-    exports Pokemon.Tienda to javafx.graphics;
     exports Pokemon.Pokemon;
     opens Pokemon.Pokemon to javafx.fxml;
+    exports Pokemon.Tienda;
+    opens Pokemon.Tienda to javafx.fxml;
 }

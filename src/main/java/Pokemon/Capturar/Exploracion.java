@@ -105,14 +105,12 @@ public class Exploracion extends Application {
 
         int random = (int) (Math.random() * 19 + 0);
 
-        Pokemon pokemonRandom = pokemons[random];
-
-        return pokemonRandom;
+        return pokemons[random];
     }
 
 
-    public Exploracion(Stage primaryStage, Scene previousScene) {
-        this.primaryStage = primaryStage;
-        this.previousScene = previousScene;
-    }
+//    public Exploracion(Stage primaryStage, Scene previousScene) {
+//        this.primaryStage = primaryStage;
+//        this.previousScene = previousScene;
+//    }
 }

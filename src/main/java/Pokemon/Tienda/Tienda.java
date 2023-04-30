@@ -1,4 +1,4 @@
-package Pokemon.Menus;
+package Pokemon.Tienda;
 
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Pokemon.Objeto;

@@ -27,7 +27,6 @@ public class MenuExplorador extends Application {
     private double pokemonSpeedX = 1;
     private double pokemonSpeedY = 1;
     static Pokemon pokemon;
-    private Scene previousScene;
 
     @Override
     public void start(Stage primaryStage) {
@@ -59,7 +58,7 @@ public class MenuExplorador extends Application {
                     trainerCircle.setCenterY(trainerCircle.getCenterY() + moveDistance);
                 } else if (code == KeyCode.LEFT) {
                     trainerCircle.setCenterX(trainerCircle.getCenterX() - moveDistance);
-                } else if (code == KeyCode.RIGHT) {
+                } else {
                     trainerCircle.setCenterX(trainerCircle.getCenterX() + moveDistance);
                 }
                 // VERIFICAR SI LA CIRCUNFERENCIA ENTRENADOR ESTÁ FUERA DE LOS LÍMITES DE LA
@@ -86,10 +85,10 @@ public class MenuExplorador extends Application {
             @Override
             public void handle(long now) {
                 // Mover el Pokémon en la dirección actual
+                // ERROR: ERROR: ERROR: ERROR: ERROR: ERROR: ERROR: ERROR: ERROR: ERROR:
                 pokemonCircle.setCenterX(pokemonCircle.getCenterX() + pokemonSpeedX);
                 pokemonCircle.setCenterY(pokemonCircle.getCenterY() + pokemonSpeedY);
-                // Verificar si el Pokémon está cerca de los límites de la ventana y cambiar su
-                // dirección si es necesario
+                // Hacer que el Pokemon rebote en las paredes
                 if (pokemonCircle.getCenterX() < 0 || pokemonCircle.getCenterX() > WINDOW_WIDTH) {
                     pokemonSpeedX = -pokemonSpeedX;
                 }
@@ -98,61 +97,53 @@ public class MenuExplorador extends Application {
                 }
                 // Verificar si las circunferencias están en contacto
                 if (trainerCircle.getBoundsInParent().intersects(pokemonCircle.getBoundsInParent())) {
-                    Pokemon copia = new Pokemon(pokemon);
 
-                    Dialog<String> dialog = new Dialog<>();
-                    dialog.setTitle("Capturado!");
-                    dialog.setHeaderText("¡Felicidades! Has capturado a " + copia.toString());
+                    Pokemon copia = new Pokemon(pokemon);
 
                     // Crear el Label y los botones
                     Label label = new Label("¿Quieres darle un mote a tu " + copia.toString() + " ?");
                     TextField textField = new TextField();
                     Button ponerMoteButton = new Button("Aplicar mote");
                     Button noMoteButton = new Button("No dar mote");
-                    Button salirButton = new Button("Salir");
-
 
                     // Agregar los nodos al diálogo personalizado
                     VBox vbox = new VBox();
-                    vbox.getChildren().addAll(label, textField, ponerMoteButton, noMoteButton, salirButton);
+                    vbox.getChildren().addAll(label, textField, ponerMoteButton, noMoteButton);
+                    Dialog<String> dialog = new Dialog<>();
+                    dialog.setTitle("Capturado!");
+                    dialog.setHeaderText("¡Felicidades! Has capturado a " + copia.toString());
                     dialog.getDialogPane().setContent(vbox);
-
-                    // Le pone un mote al pokemon, lo añade al equipo disponible y cierra la ventana.
-                    ponerMoteButton.setOnAction(event -> {
-                        String apodo = textField.getText();
-                        copia.setMote(apodo); // Asignar el mote al Pokemon
-                        dialog.setResult("cancel");
-                        addPokemon(copia, equipo1, equipo2, caja);
-                        verEquipos();
-                    });
-
-                    //Cierra la ventana de diálogo y añade al Pokemon al equipo.
-                    noMoteButton.setOnAction(event -> {
-                        dialog.setResult("cancel");
-                        addPokemon(copia, equipo1, equipo2, caja);
-                        verEquipos();
-                    });
-
-                    //Cierra la ventana y añade al Pokemon al equipo.
-                    salirButton.setOnAction(event -> {
-                        System.out.println("Saliendo");
-                        dialog.setResult("cancel");
-                        addPokemon(copia, equipo1, equipo2, caja);
-                        verEquipos();
-                    });
 
                     // Mostrar el diálogo
                     dialog.show();
 
 
+                    // Le pone un mote al pokemon, lo añade al equipo disponible y cierra la ventana.
+                    ponerMoteButton.setOnAction(event -> {
+                        String apodo = textField.getText();
+                        copia.setMote(apodo); // Asignar el mote al Pokemon
+                        addPokemon(copia, equipo1, equipo2, caja);
+                        verEquipos();
+                        dialog.close();
+                        dialog.setResult("cerrar");
+                    });
+
+                    //Cierra la ventana de diálogo y añade al Pokemon al equipo.
+                    noMoteButton.setOnAction(event -> {
+                        addPokemon(copia, equipo1, equipo2, caja);
+                        verEquipos();
+                        dialog.close();
+                        dialog.setResult("cerrar");
+                    });
+
                     //Volver al menu despúes de la captura.
                     Menu menu = new Menu();
+
                     try {
                         menu.start(primaryStage);
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
-
 
                     // Colocar al Pokémon en una posición aleatoria de la ventana
                     pokemonCircle.setCenterX(
@@ -160,6 +151,7 @@ public class MenuExplorador extends Application {
                     pokemonCircle.setCenterY(Math.random() * (WINDOW_HEIGHT - pokemonCircle.getRadius() * 2)
                             + pokemonCircle.getRadius());
                 }
+
 
                 // Verificar si la circunferencia entrenador está fuera de los límites de la
                 // ventana y actualizar su posición en consecuencia
@@ -180,6 +172,7 @@ public class MenuExplorador extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 
     public static void main(String[] args) {
         launch(args);

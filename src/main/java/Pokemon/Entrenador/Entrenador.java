@@ -1,9 +1,12 @@
 package Pokemon.Entrenador;
 
+import Pokemon.Main.Main;
 import Pokemon.Pokemon.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Pokedex;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -22,7 +25,7 @@ public class Entrenador {
     public static LinkedList<Pokemon> equipo1 = new LinkedList<>();
     public static LinkedList<Pokemon> equipo2 = new LinkedList<>();
     public static LinkedList<Pokemon> caja = new LinkedList<>();
-    private String contrasena;
+    private String pass;
 
 //
 
@@ -34,7 +37,7 @@ public class Entrenador {
         this.dinero = dinero;
         this.mochila = new HashMap<>();
         this.contador = new HashMap<>();
-        this.contrasena = contrasena;
+        this.pass = contrasena;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.caja = caja;
@@ -211,34 +214,9 @@ public class Entrenador {
     }
 
 
+
     public static void main(String[] args) {
 
-//        addPokemon(Pokedex.Raichu, equipo1, equipo2, caja);
-//        addPokemon(Pokedex.Butterfree, equipo1, equipo2, caja);
-//
-//        System.out.println("Equipo 1:");
-//        for (Pokemon mostrarEquipo : equipo1) {
-//            System.out.println(mostrarEquipo.getNombre());
-//        }
-//
-//        System.out.println("Equipo 2:");
-//        for (Pokemon mostrarEquipo : equipo2) {
-//            System.out.println(mostrarEquipo.getNombre());
-//        }
-//
-//        System.out.println("---------------[TEST]------------------");
-//        System.out.println("Añadimos Raticate a equipo2 (no cabe)");
-//        System.out.println("---------------[TEST]------------------");
-//
-//        addPokemon(Pokedex.Bulbasaur, equipo1, equipo2, caja);
-//
-//        System.out.println("Caja:");
-//        for (Pokemon mostrarEquipo : caja) {
-//            System.out.println(mostrarEquipo.getNombre());
-//        }
-
-        primerPokemon();
-        verEquipos();
 
     }
 
