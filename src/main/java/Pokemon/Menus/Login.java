@@ -100,7 +100,7 @@ public class Login extends Application {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
 
-        Main.comprobarUsuario(nombre, password);
+        Main.login(nombre, password);
 
         if (Main.login) {
             Menu menu = new Menu();
@@ -119,7 +119,14 @@ public class Login extends Application {
     private void crearCuenta() {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
-        mensaje.setText("Cuenta creada exitosamente.");
+
+        if (nombre.isEmpty() || password.isEmpty()) {
+            mensaje.setText("Debes rellenar todos los campos.");
+        } else {
+            Main.register(nombre, password);
+            mensaje.setText("Te has registrado correctamente.");
+        }
+
     }
 
     public static void main(String[] args) {

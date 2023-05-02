@@ -10,6 +10,7 @@ public class Main {
 
     private static Connection conexion;
     public static boolean login;
+    public static boolean registrado;
 
     public static void todoEntrenador() {
 
@@ -48,42 +49,37 @@ public class Main {
 
     }
 
-    public static void comprobarUsuario(String usuarioIngresado, String passIngresada) {
+    public static void login(String usuarioIngresado, String passIngresada) {
 
         try {
 
             Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
-            String sqlUsuario = "SELECT nombre FROM entrenador";
+            String sql = "SELECT nombre, pass FROM entrenador WHERE nombre = ?";
 
-            Statement statementUsuario = db.createStatement();
-            ResultSet resultSetUsuario = statementUsuario.executeQuery(sqlUsuario);
-            String usuario = "";
-            if (resultSetUsuario.next()) {
-                usuario = resultSetUsuario.getString("nombre");
-            }
+            PreparedStatement statement = db.prepareStatement(sql);
+            statement.setString(1, usuarioIngresado);
 
-            String sqlContrasena = "SELECT pass FROM entrenador";
+            ResultSet resultSet = statement.executeQuery();
 
-            Statement statementContrasena = db.createStatement();
-            ResultSet resultSetContrasena = statementContrasena.executeQuery(sqlContrasena);
-            String pass = "";
-            if (resultSetContrasena.next()) {
-                pass = resultSetContrasena.getString("pass");
-            }
+            if (resultSet.next()) {
+                String usuario = resultSet.getString("nombre");
+                String pass = resultSet.getString("pass");
 
-            if (usuario.equals(usuarioIngresado) && pass.equals(passIngresada)) {
-                System.out.println("Acceso permitido");
-                login = true;
+                if (pass.equals(passIngresada)) {
+                    System.out.println("Acceso permitido");
+                    login = true;
+                } else {
+                    System.out.println("Usuario o contraseña incorrectos.");
+                    login = false;
+                }
             } else {
                 System.out.println("Usuario o contraseña incorrectos.");
                 login = false;
             }
 
-            resultSetUsuario.close();
-            statementUsuario.close();
-            resultSetContrasena.close();
-            statementContrasena.close();
+            resultSet.close();
+            statement.close();
             db.close();
 
         } catch (Exception e) {
@@ -94,12 +90,12 @@ public class Main {
 
     }
 
-    public static Entrenador obtenerEntrenador(String usuario, String contrasena) throws SQLException {
+    public static Entrenador obtenerEntrenador(String usuario, String pass) throws SQLException {
         Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
         String sql = "SELECT * FROM entrenador WHERE nombre = ? AND pass = ?";
         PreparedStatement statement = db.prepareStatement(sql);
         statement.setString(1, usuario);
-        statement.setString(2, contrasena);
+        statement.setString(2, pass);
         ResultSet resultSet = statement.executeQuery();
         Entrenador entrenador = null;
         if (resultSet.next()) {
@@ -116,8 +112,59 @@ public class Main {
         return entrenador;
     }
 
-    public static void main(String[] args) {
-        comprobarUsuario("Juan", "test");
+    public static void register(String nombre, String pass) {
+
+        try {
+            Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
+            String sql = "SELECT MAX(id_entrenador) FROM entrenador";
+            PreparedStatement statement = db.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            int ultimaId = 0;
+
+            if(rs.next()) {
+                ultimaId = rs.getInt(1);
+            }
+
+            int nuevaId = ultimaId + 1;
+
+            sql = "SELECT COUNT(*) FROM entrenador WHERE id_entrenador = ?";
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, nuevaId);
+            rs = preparedStatement.executeQuery();
+            int numUsuarios = 0;
+
+            if(rs.next()) {
+                numUsuarios = rs.getInt(1);
+            }
+            if(numUsuarios > 0) {
+                System.out.println("Ya existe un usuario registrado con ese ID.");
+                return;
+            }
+
+            sql = "INSERT INTO entrenador (id_entrenador, nombre, dinero, pass, id_mochila) VALUES (?,?,?,?,?)";
+            preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, nuevaId);
+            preparedStatement.setString(2, nombre);
+            preparedStatement.setInt(3, 500);
+            preparedStatement.setString(4, pass);
+            preparedStatement.setNull(5, Types.INTEGER);
+            int filasInsertadas = preparedStatement.executeUpdate();
+
+            if(filasInsertadas > 0) {
+                System.out.println("Registrado correctamente.");
+                registrado = true;
+            } else {
+                System.out.println("error en el registro.");
+                registrado = false;
+            }
+
+            db.close();
+
+        } catch (Exception e) {
+            System.out.println("Error al conectar.");
+            e.printStackTrace();
+        }
+
     }
 
 }
