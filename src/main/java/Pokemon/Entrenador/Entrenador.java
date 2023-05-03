@@ -1,6 +1,5 @@
 package Pokemon.Entrenador;
 
-import Pokemon.Main.Main;
 import Pokemon.Pokemon.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Pokedex;
@@ -35,8 +34,8 @@ public class Entrenador {
     public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
         this.nombre = nombre;
         this.dinero = dinero;
-        this.mochila = new HashMap<>();
-        this.contador = new HashMap<>();
+        this.mochila = new HashMap<>(); //Pasar a linkedList
+        this.contador = new HashMap<>(); //Ver si se quita o se deja.
         this.pass = contrasena;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;

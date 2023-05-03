@@ -1,16 +1,18 @@
-package Pokemon.Main;
+package Pokemon.Database;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 import Pokemon.Entrenador.Entrenador;
-import Pokemon.Entrenador.Entrenador.*;
-import Pokemon.Menus.Login.*;
 
-public class Main {
+public class MySQL {
 
     private static Connection conexion;
     public static boolean login;
     public static boolean registrado;
+
+
 
     public static void todoEntrenador() {
 
@@ -19,24 +21,6 @@ public class Main {
             // Crear conexión con la base de datos
 
             Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
-
-            // Crear objeto statement
-
-            Statement statement = db.createStatement();
-
-            // Ejecutar SQL
-
-            ResultSet rs = statement.executeQuery("SELECT * FROM entrenador");
-
-            // Recorrer el ResultSet
-
-
-            while (rs.next()) {
-                System.out.println("ID: " + rs.getString("id_entrenador") + " Nombre: " + rs.getString("nombre") + " Dinero: " + rs.getDouble("dinero")
-                        + " pass " + rs.getString("pass"));
-            }
-
-            rs.close(); //Cerrar siempre
 
 
         } catch (Exception e) {
@@ -68,6 +52,7 @@ public class Main {
 
                 if (pass.equals(passIngresada)) {
                     System.out.println("Acceso permitido");
+                    Entrenador usuarioLogueado = cargarEntrenador(usuario);
                     login = true;
                 } else {
                     System.out.println("Usuario o contraseña incorrectos.");
@@ -90,26 +75,38 @@ public class Main {
 
     }
 
-    public static Entrenador obtenerEntrenador(String usuario, String pass) throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
-        String sql = "SELECT * FROM entrenador WHERE nombre = ? AND pass = ?";
-        PreparedStatement statement = db.prepareStatement(sql);
-        statement.setString(1, usuario);
-        statement.setString(2, pass);
-        ResultSet resultSet = statement.executeQuery();
-        Entrenador entrenador = null;
-        if (resultSet.next()) {
-            String nombre = resultSet.getString("nombre");
-            int dinero = resultSet.getInt("dinero");
-            entrenador = new Entrenador();
-            Entrenador.setNombre(nombre);
-            Entrenador.setDinero(dinero);
+    public static Entrenador cargarEntrenador(String nombre) {
+        try {
+            Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
+            String sql = "SELECT * FROM entrenador WHERE nombre = ?";
+
+            PreparedStatement statement = db.prepareStatement(sql);
+            statement.setString(1, nombre);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            Entrenador entrenador = null;
+
+            if (resultSet.next()) {
+                // Obtener todos los detalles del usuario de la base de datos
+                String contrasena = resultSet.getString("pass");
+                int dinero = resultSet.getInt("dinero");
+
+                // Crear un objeto Entrenador con los detalles cargados
+                entrenador = new Entrenador(nombre, dinero, new HashMap<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+            }
+
+            resultSet.close();
+            statement.close();
+            db.close();
+
+            return entrenador;
+        } catch (Exception e) {
+            System.out.println("Error al cargar el entrenador.");
+            e.printStackTrace();
+            return null;
         }
-        resultSet.close();
-        statement.close();
-        db.close();
-        return entrenador;
     }
 
     public static void register(String nombre, String pass) {
@@ -141,20 +138,32 @@ public class Main {
                 return;
             }
 
-            sql = "INSERT INTO entrenador (id_entrenador, nombre, dinero, pass, id_mochila) VALUES (?,?,?,?,?)";
+            sql = "INSERT INTO entrenador (id_entrenador, nombre, dinero, pass) VALUES (?,?,?,?)";
             preparedStatement = db.prepareStatement(sql);
             preparedStatement.setInt(1, nuevaId);
             preparedStatement.setString(2, nombre);
             preparedStatement.setInt(3, 500);
             preparedStatement.setString(4, pass);
-            preparedStatement.setNull(5, Types.INTEGER);
-            int filasInsertadas = preparedStatement.executeUpdate();
+            int filasInsertadasEntrenador = preparedStatement.executeUpdate();
 
-            if(filasInsertadas > 0) {
+            sql = "INSERT INTO mochila (id_mochila, id_entrenador, objeto1, objeto2, objeto3, objeto4, objeto5, objeto6) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, nuevaId);
+            preparedStatement.setInt(2, nuevaId);
+            preparedStatement.setNull(3, Types.INTEGER);
+            preparedStatement.setNull(4, Types.INTEGER);
+            preparedStatement.setNull(5, Types.INTEGER);
+            preparedStatement.setNull(6, Types.INTEGER);
+            preparedStatement.setNull(7, Types.INTEGER);
+            preparedStatement.setNull(8, Types.INTEGER);
+            int filasInsertadasMochila = preparedStatement.executeUpdate();
+
+            if(filasInsertadasEntrenador > 0 && filasInsertadasMochila > 0) {
                 System.out.println("Registrado correctamente.");
                 registrado = true;
             } else {
-                System.out.println("error en el registro.");
+                System.out.println("Error en el registro.");
                 registrado = false;
             }
 
@@ -164,6 +173,7 @@ public class Main {
             System.out.println("Error al conectar.");
             e.printStackTrace();
         }
+
 
     }
 
