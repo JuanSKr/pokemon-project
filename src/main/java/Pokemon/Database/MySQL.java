@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import Pokemon.Entrenador.Entrenador;
-
 import Pokemon.Pokemon.ListaEstados;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
@@ -122,8 +121,6 @@ public class MySQL {
             int ultimaId = 0;
 
             if (rs.next()) {
-            if(rs.next()) {
-
                 ultimaId = rs.getInt(1);
             }
 
@@ -135,16 +132,10 @@ public class MySQL {
             rs = preparedStatement.executeQuery();
             int numUsuarios = 0;
 
-
             if (rs.next()) {
                 numUsuarios = rs.getInt(1);
             }
             if (numUsuarios > 0) {
-
-            if(rs.next()) {
-                numUsuarios = rs.getInt(1);
-            }
-            if(numUsuarios > 0) {
                 System.out.println("Ya existe un usuario registrado con ese ID.");
                 return;
             }
@@ -170,8 +161,7 @@ public class MySQL {
             preparedStatement.setNull(8, Types.INTEGER);
             int filasInsertadasMochila = preparedStatement.executeUpdate();
 
-        if (filasInsertadasEntrenador > 0 && filasInsertadasMochila > 0) {
-            if(filasInsertadasEntrenador > 0 && filasInsertadasMochila > 0) {
+            if (filasInsertadasEntrenador > 0 && filasInsertadasMochila > 0) {
                 System.out.println("Registrado correctamente.");
                 registrado = true;
             } else {
@@ -228,9 +218,5 @@ public class MySQL {
         return null;
     }
 
-
-
-
-    }
 
 }
