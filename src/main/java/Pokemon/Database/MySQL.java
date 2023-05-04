@@ -15,6 +15,11 @@ public class MySQL {
     public static boolean login;
     public static boolean registrado;
 
+    public static Connection getConnection() throws SQLException {
+        if (conexion == null)
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
+        return conexion;
+    }
 
     public static void todoEntrenador() {
 
@@ -148,17 +153,14 @@ public class MySQL {
             preparedStatement.setString(4, pass);
             int filasInsertadasEntrenador = preparedStatement.executeUpdate();
 
-            sql = "INSERT INTO mochila (id_mochila, id_entrenador, objeto1, objeto2, objeto3, objeto4, objeto5, objeto6) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO mochila (id_mochila, id_entrenador, id_objeto, cantidad) " +
+                    "VALUES (?, ?, ?, ?)";
             preparedStatement = db.prepareStatement(sql);
             preparedStatement.setInt(1, nuevaId);
             preparedStatement.setInt(2, nuevaId);
             preparedStatement.setNull(3, Types.INTEGER);
             preparedStatement.setNull(4, Types.INTEGER);
-            preparedStatement.setNull(5, Types.INTEGER);
-            preparedStatement.setNull(6, Types.INTEGER);
-            preparedStatement.setNull(7, Types.INTEGER);
-            preparedStatement.setNull(8, Types.INTEGER);
+
             int filasInsertadasMochila = preparedStatement.executeUpdate();
 
             if (filasInsertadasEntrenador > 0 && filasInsertadasMochila > 0) {
@@ -210,6 +212,7 @@ public class MySQL {
                 return pokemon;
             }
 
+
         } catch (SQLException e) {
             System.out.println("Error al conectar.");
             e.printStackTrace();
@@ -217,6 +220,7 @@ public class MySQL {
 
         return null;
     }
+
 
 
 }
