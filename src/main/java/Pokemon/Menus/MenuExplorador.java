@@ -31,7 +31,7 @@ public class MenuExplorador extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Generar Pokemon Random
-        pokemon = pokeRandom();
+//        pokemon = pokeRandom();
 
         // Crear la circunferencia entrenador
         trainerCircle = new Circle(300, 200, 20, Color.BLUE);

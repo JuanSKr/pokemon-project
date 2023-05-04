@@ -1,5 +1,6 @@
 package Pokemon.Menus;
 
+import Pokemon.Database.MySQL;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -22,10 +23,14 @@ import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import Pokemon.Pokemon.Pokemon;
+
+import java.util.Objects;
+
 public class MenuEntrenador extends Application {
     private static final int SCENE_WIDTH = 1080;
     private static final int SCENE_HEIGHT = 650;
-    private static final int PADDING_SIZE = 10;  
+    private static final int PADDING_SIZE = 10;
     private static final int GAP_SIZE = 8;
     private Stage primaryStage;
     private Scene previousScene;
@@ -42,20 +47,20 @@ public class MenuEntrenador extends Application {
     }
 
     public Scene getScene() {
-    	 GridPane gridPane = new GridPane();
-         gridPane.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
-         gridPane.setPadding(new Insets(PADDING_SIZE));
-         BackgroundImage backgroundImage = new BackgroundImage(image,
-         	    BackgroundRepeat.NO_REPEAT,
-         	    BackgroundRepeat.NO_REPEAT,
-         	    BackgroundPosition.CENTER,
-         	    BackgroundSize.DEFAULT
-         	);
-         	gridPane.setBackground(new Background(backgroundImage));
-         	gridPane.setVgap(GAP_SIZE);
-         	gridPane.setHgap(GAP_SIZE);
-         	ImageView imagenLogo = new ImageView(image);
-        
+        GridPane gridPane = new GridPane();
+        gridPane.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+        gridPane.setPadding(new Insets(PADDING_SIZE));
+        BackgroundImage backgroundImage = new BackgroundImage(image,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT
+        );
+        gridPane.setBackground(new Background(backgroundImage));
+        gridPane.setVgap(GAP_SIZE);
+        gridPane.setHgap(GAP_SIZE);
+        ImageView imagenLogo = new ImageView(image);
+
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
         Media audioMedia = new Media(getClass().getResource("/aud/Prueba.wav").toExternalForm());
         MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
@@ -80,7 +85,7 @@ public class MenuEntrenador extends Application {
                 audioMediaPlayer.setMute(true);
             }
         });
-      //BOTON DE MUTE
+        //BOTON DE MUTE
         gridPane.add(muteButton, 1, 0);
         GridPane.setHalignment(muteButton, HPos.RIGHT);
         // MÉTODO DE INICIO DE LA APLICACIÓN

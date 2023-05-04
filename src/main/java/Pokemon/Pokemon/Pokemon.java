@@ -9,13 +9,13 @@ public class Pokemon {
     protected Tipo tipo1;
     protected Tipo tipo2;
     protected char sexo;
-    protected double vitalidad;
-    protected double ataque;
-    protected double defensa;
-    protected double ataqueEspecial;
-    protected double defensaEspecial;
-    protected double estamina;
-    protected double velocidad;
+    protected int vitalidad;
+    protected int ataque;
+    protected int defensa;
+    protected int ataqueEspecial;
+    protected int defensaEspecial;
+    protected int estamina;
+    protected int velocidad;
     protected ListaEstados estado;
     protected int fertilidad;
     protected Objeto obj;
@@ -23,12 +23,13 @@ public class Pokemon {
     protected String movimiento2;
     protected String movimiento3;
     protected String movimiento4;
+    protected String foto;
 
     // Constructor con todos los parámetros
 
-    public Pokemon(String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, double vitalidad,
-                   double ataque, double defensa, double ataqueEspecial, double defensaEspecial, double estamina, double velocidad,
-                   ListaEstados estado, int fertilidad, Objeto obj, String movimiento1, String movimiento2, String movimiento3, String movimiento4) {
+    public Pokemon(String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, int vitalidad,
+                   int ataque, int defensa, int ataqueEspecial, int defensaEspecial, int estamina, int velocidad,
+                   ListaEstados estado, int fertilidad, Objeto obj, String movimiento1, String movimiento2, String movimiento3, String movimiento4, String foto) {
         this.nombre = nombre;
         this.mote = mote;
         this.nivel = nivel;
@@ -50,6 +51,7 @@ public class Pokemon {
         this.movimiento2 = movimiento2;
         this.movimiento3 = movimiento3;
         this.movimiento4 = movimiento4;
+        this.foto = foto;
     }
 
     // Constructor por defecto
@@ -76,6 +78,7 @@ public class Pokemon {
         this.movimiento2 = "";
         this.movimiento3 = "";
         this.movimiento4 = "";
+        this.foto = "";
     }
 
     // Constructor copia
@@ -102,6 +105,7 @@ public class Pokemon {
         this.movimiento2 = capturado.movimiento2;
         this.movimiento3 = capturado.movimiento3;
         this.movimiento4 = capturado.movimiento4;
+        this.foto = capturado.foto;
     }
 
     public String getNombre() {
@@ -152,59 +156,67 @@ public class Pokemon {
         this.sexo = sexo;
     }
 
-    public double getVitalidad() {
+    public int getVitalidad() {
         return vitalidad;
     }
 
-    public void setVitalidad(double vitalidad) {
+    public void setVitalidad(int vitalidad) {
         this.vitalidad = vitalidad;
     }
 
-    public double getAtaque() {
+    public int getAtaque() {
         return ataque;
     }
 
-    public void setAtaque(double ataque) {
+    public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
 
-    public double getDefensa() {
+    public int getDefensa() {
         return defensa;
     }
 
-    public void setDefensa(double defensa) {
+    public void setDefensa(int defensa) {
         this.defensa = defensa;
     }
 
-    public double getAtaqueEspecial() {
+    public int getAtaqueEspecial() {
         return ataqueEspecial;
     }
 
-    public void setAtaqueEspecial(double ataqueEspecial) {
+    public void setAtaqueEspecial(int ataqueEspecial) {
         this.ataqueEspecial = ataqueEspecial;
     }
 
-    public double getDefensaEspecial() {
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public int getDefensaEspecial() {
         return defensaEspecial;
     }
 
-    public void setDefensaEspecial(double defensaEspecial) {
+    public void setDefensaEspecial(int defensaEspecial) {
         this.defensaEspecial = defensaEspecial;
     }
 
-    public double getEstamina() {
+    public int getEstamina() {
         return estamina;
     }
 
-    public void setEstamina(double estamina) {
+    public void setEstamina(int estamina) {
         this.estamina = estamina;
     }
 
-    public double getVelocidad() {
+    public int getVelocidad() {
         return velocidad;
     }
 
-    public void setVelocidad(double velocidad) {
+    public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
 
@@ -272,14 +284,49 @@ public class Pokemon {
         this.xp = xp;
     }
 
-    @Override
+
     public String toString() {
-        if(this.mote == null) {
-            return this.nombre;
+
+        if (this.mote == null) {
+            return "Pokemon{" +
+                    ", mote='" + mote + '\'' +
+                    ", vitalidad=" + vitalidad +
+                    ", velocidad=" + velocidad +
+                    ", estamina=" + estamina +
+                    ", ataque=" + ataque +
+                    ", defensa=" + defensa +
+                    ", ataqueEspecial=" + ataqueEspecial +
+                    ", defensaEspecial=" + defensaEspecial +
+                    ", tipo1=" + tipo1 +
+                    ", tipo2=" + tipo2 +
+                    '}';
+
         } else {
-            return this.mote;
+
+            return "Pokemon{" +
+                    "nombre='" + nombre + '\'' +
+                    ", vitalidad=" + vitalidad +
+                    ", velocidad=" + velocidad +
+                    ", estamina=" + estamina +
+                    ", ataque=" + ataque +
+                    ", defensa=" + defensa +
+                    ", ataqueEspecial=" + ataqueEspecial +
+                    ", defensaEspecial=" + defensaEspecial +
+                    ", tipo1=" + tipo1 +
+                    ", tipo2=" + tipo2 +
+                    '}';
+
         }
     }
+
+//    @Override
+//    public String toString() {
+//        if (this.mote == null) {
+//            return this.nombre;
+//        } else {
+//            return this.mote;
+//        }
+//    }
 
 }
 

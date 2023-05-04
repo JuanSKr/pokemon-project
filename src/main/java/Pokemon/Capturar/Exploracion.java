@@ -2,7 +2,6 @@ package Pokemon.Capturar;
 
 
 import javafx.application.Application;
-import Pokemon.Pokemon.Pokedex;
 import Pokemon.Pokemon.Pokemon;
 
 import java.util.Scanner;
@@ -78,35 +77,35 @@ public class Exploracion extends Application {
     }
 
 
-    public static Pokemon pokeRandom() {
-
-        Pokemon[] pokemons = {
-                Pokedex.Pikachu,
-                Pokedex.Raichu,
-                Pokedex.Bulbasaur,
-                Pokedex.Ivysaur,
-                Pokedex.Venusaur,
-                Pokedex.Charmander,
-                Pokedex.Charmeleon,
-                Pokedex.Charizard,
-                Pokedex.Squirtle,
-                Pokedex.Wartortle,
-                Pokedex.Butterfree,
-                Pokedex.Weedle,
-                Pokedex.Kakuna,
-                Pokedex.Beedrill,
-                Pokedex.Pidgey,
-                Pokedex.Pidgeotto,
-                Pokedex.Pidgeot,
-                Pokedex.Rattata,
-                Pokedex.Raticate,
-                Pokedex.Spearow
-        };
-
-        int random = (int) (Math.random() * 19 + 0);
-
-        return pokemons[random];
-    }
+//    public static Pokemon pokeRandom() {
+//
+//        Pokemon[] pokemons = {
+//                Pokedex.Pikachu,
+//                Pokedex.Raichu,
+//                Pokedex.Bulbasaur,
+//                Pokedex.Ivysaur,
+//                Pokedex.Venusaur,
+//                Pokedex.Charmander,
+//                Pokedex.Charmeleon,
+//                Pokedex.Charizard,
+//                Pokedex.Squirtle,
+//                Pokedex.Wartortle,
+//                Pokedex.Butterfree,
+//                Pokedex.Weedle,
+//                Pokedex.Kakuna,
+//                Pokedex.Beedrill,
+//                Pokedex.Pidgey,
+//                Pokedex.Pidgeotto,
+//                Pokedex.Pidgeot,
+//                Pokedex.Rattata,
+//                Pokedex.Raticate,
+//                Pokedex.Spearow
+//        };
+//
+//        int random = (int) (Math.random() * 19 + 0);
+//
+//        return pokemons[random];
+//    }
 
 
 //    public Exploracion(Stage primaryStage, Scene previousScene) {

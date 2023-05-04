@@ -1,10 +1,7 @@
 package Pokemon.Entrenador;
 
-import Pokemon.Main.Main;
 import Pokemon.Pokemon.Objeto;
 import Pokemon.Pokemon.Pokemon;
-import Pokemon.Pokemon.Pokedex;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -35,8 +32,8 @@ public class Entrenador {
     public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
         this.nombre = nombre;
         this.dinero = dinero;
-        this.mochila = new HashMap<>();
-        this.contador = new HashMap<>();
+        this.mochila = new HashMap<>(); //Pasar a linkedList
+        this.contador = new HashMap<>(); //Ver si se quita o se deja.
         this.pass = contrasena;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
@@ -160,40 +157,40 @@ public class Entrenador {
      * @return Metodo para darle al usuario la opción de elegir su Pokémon inicial entre 3.
      */
 
-    public static void primerPokemon() {
-
-        System.out.println("-----------------------");
-        System.out.println("   PRIMER POKEMON");
-        System.out.println("-----------------------");
-        System.out.println("1.Pikachu\n2.Charmander\n3.Bulbasaur");
-        System.out.print("Elige tu primer pokemon: ");
-        int opcion = sc.nextInt();
-
-        switch (opcion) {
-
-            case 1:
-
-                equipo1.add(Pokedex.Pikachu);
-
-                System.out.println(Pokedex.Pikachu.getNombre() + " se ha añadido a equipo1.");
-                break;
-
-            case 2:
-
-                equipo1.add(Pokedex.Raichu);
-                System.out.println(Pokedex.Raichu.getNombre() + " se ha añadido a equipo1.");
-
-                break;
-
-            case 3:
-
-                equipo1.add(Pokedex.Bulbasaur);
-                System.out.println(Pokedex.Bulbasaur.getNombre() + " se ha añadido a equipo1.");
-
-                break;
-        }
-
-    }
+//    public static void primerPokemon() {
+//
+//        System.out.println("-----------------------");
+//        System.out.println("   PRIMER POKEMON");
+//        System.out.println("-----------------------");
+//        System.out.println("1.Pikachu\n2.Charmander\n3.Bulbasaur");
+//        System.out.print("Elige tu primer pokemon: ");
+//        int opcion = sc.nextInt();
+//
+//        switch (opcion) {
+//
+//            case 1:
+//
+//                equipo1.add(Pokedex.Pikachu);
+//
+//                System.out.println(Pokedex.Pikachu.getNombre() + " se ha añadido a equipo1.");
+//                break;
+//
+//            case 2:
+//
+//                equipo1.add(Pokedex.Raichu);
+//                System.out.println(Pokedex.Raichu.getNombre() + " se ha añadido a equipo1.");
+//
+//                break;
+//
+//            case 3:
+//
+//                equipo1.add(Pokedex.Bulbasaur);
+//                System.out.println(Pokedex.Bulbasaur.getNombre() + " se ha añadido a equipo1.");
+//
+//                break;
+//        }
+//
+//    }
 
     public static void verEquipos() {
 

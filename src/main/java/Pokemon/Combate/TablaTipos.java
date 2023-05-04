@@ -1,6 +1,5 @@
 package Pokemon.Combate;
 
-import Pokemon.Pokemon.Pokedex;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
 
@@ -363,12 +362,7 @@ public enum TablaTipos {
         }
 
     }
-
-
-
-    public static void main(String[] args) {
-        aplicarTipos(Pokedex.Lapras, Pokedex.Charmander);
-    }
+    
 
 
 }
