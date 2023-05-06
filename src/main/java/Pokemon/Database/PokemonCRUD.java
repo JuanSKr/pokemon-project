@@ -14,11 +14,17 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PokemonCRUD {
 
     public static boolean login;
     public static boolean registrado;
+
+    /**
+     * Método que lee inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
+     * @param pokemon
+     */
 
     public static void createCapturado(Pokemon pokemon) {
 
@@ -65,6 +71,68 @@ public class PokemonCRUD {
         }
     }
 
+    /**
+     * Método para obtener toda la información de un Pokemon en la base de datos.
+     * Hay que pasarle la ID del Pokemon por parámetro para indicarle que Pokemon quieres.
+     * @param id
+     * @return
+     */
+
+    public static Pokemon getPokemon(int id) {
+        Pokemon pokemon = new Pokemon();
+        try {
+            Connection db = MySQL.getConexion();
+            String sql = "SELECT * FROM capturado WHERE id_capturado = ?";
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                pokemon.setId(rs.getInt("id_capturado"));
+                pokemon.setNombre(rs.getString("nombre"));
+                pokemon.setMote(rs.getString("mote"));
+                pokemon.setVitalidad(rs.getInt("vitalidad"));
+                pokemon.setFertilidad(rs.getInt("fertilidad"));
+                pokemon.setVelocidad(rs.getInt("velocidad"));
+                pokemon.setEstamina(rs.getInt("estamina"));
+                pokemon.setAtaque(rs.getInt("ataque"));
+                pokemon.setDefensa(rs.getInt("defensa"));
+                pokemon.setAtaqueEspecial(rs.getInt("ataque_especial"));
+                pokemon.setDefensaEspecial(rs.getInt("defensa_especial"));
+                pokemon.setTipo1(Tipo.valueOf(rs.getString("tipo1").toUpperCase()));
+                String tipo2 = rs.getString("tipo2");
+                if (tipo2 != null) { // Controlar si tipo2 es nulo o no.
+                    try {
+                        pokemon.setTipo2(Tipo.valueOf(tipo2.toUpperCase()));
+                    } catch (IllegalArgumentException e) {
+
+                    }
+                }
+                pokemon.setNivel(rs.getInt("nivel"));
+                pokemon.setXp(rs.getInt("xp"));
+                pokemon.setFoto(rs.getString("foto"));
+                pokemon.setMovimiento1(obtenerMovimiento(rs.getInt("movimiento1")));
+                pokemon.setMovimiento2(obtenerMovimiento(rs.getInt("movimiento2")));
+                pokemon.setMovimiento3(obtenerMovimiento(rs.getInt("movimiento3")));
+                pokemon.setMovimiento4(obtenerMovimiento(rs.getInt("movimiento4")));
+                return pokemon;
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pokemon;
+
+    }
+
+    /**
+     * Método para rellenar la lista de equipo1 del Entrenador con los Pokemons de la tabla capturado.
+     * @param equipo1
+     * @return
+     */
+
     public static List<Pokemon> getEquipo1(LinkedList<Pokemon> equipo1) {
 
         try {
@@ -74,7 +142,7 @@ public class PokemonCRUD {
             PreparedStatement preparedStatement = db.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 Pokemon pokemon = new Pokemon();
                 pokemon.setId(rs.getInt("id_capturado"));
                 pokemon.setNombre(rs.getString("nombre"));
@@ -111,6 +179,12 @@ public class PokemonCRUD {
 
     }
 
+    /**
+     * Método para rellenar la lista de equipo2 del Entrenador con los Pokemons de la tabla capturado.
+     * @param equipo2
+     * @return
+     */
+
     public static List<Pokemon> getEquipo2(LinkedList<Pokemon> equipo2) {
 
         try {
@@ -120,7 +194,7 @@ public class PokemonCRUD {
             PreparedStatement preparedStatement = db.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 Pokemon pokemon = new Pokemon();
                 pokemon.setId(rs.getInt("id_capturado"));
                 pokemon.setNombre(rs.getString("nombre"));
@@ -157,6 +231,12 @@ public class PokemonCRUD {
 
     }
 
+    /**
+     * Método para rellenar la lista de la caja del Entrenador con los Pokemons de la tabla capturado.
+     * @param caja
+     * @return
+     */
+
     public static List<Pokemon> getCaja(LinkedList<Pokemon> caja) {
 
         try {
@@ -166,7 +246,7 @@ public class PokemonCRUD {
             PreparedStatement preparedStatement = db.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 Pokemon pokemon = new Pokemon();
                 pokemon.setId(rs.getInt("id_capturado"));
                 pokemon.setNombre(rs.getString("nombre"));
@@ -203,7 +283,13 @@ public class PokemonCRUD {
 
     }
 
-
+    /**
+     * Método que comprueba el nombre y la contraseña que se han ingresado en los parametros.
+     * Si el login = true se ejecuta el método cargarEntrenador para cargar toda su información.
+     * Si el login = false no entrará en el programa.
+     * @param usuarioIngresado
+     * @param passIngresada
+     */
 
     public static void login(String usuarioIngresado, String passIngresada) {
         try {
@@ -237,10 +323,10 @@ public class PokemonCRUD {
     }
 
     /**
-     * POR DOCUMENTAR
+     * Método para cargar la información del entrenador de la base de datos en el programa.
      *
-     * @param nombre Nombre de usuario
-     * @return
+     * @param nombre
+     * @return Entrenador
      */
 
     public static Entrenador cargarEntrenador(String nombre) {
@@ -502,7 +588,8 @@ public class PokemonCRUD {
     }
 
     /**
-     * Introduciendo la ID del Ataque, te devuelve un objeto Ataque.
+     * Introduciendo la ID del Ataque, te devuelve un objeto de tipo Ataque.
+     *
      * @param id
      * @return Ataque
      */
@@ -533,6 +620,13 @@ public class PokemonCRUD {
         return null;
     }
 
+    /**
+     * Introduciendo la ID del Estado, te devuelve un objeto de tipo Estado.
+     *
+     * @param id
+     * @return Estado
+     */
+
     public static Movimiento obtenerEstado(int id) { //ID Estado: 61-84
         try {
             Connection db = MySQL.getConexion();
@@ -560,6 +654,13 @@ public class PokemonCRUD {
         return null;
     }
 
+    /**
+     * Introduciendo la ID de la Mejora, te devuelve un objeto de tipo Mejora.
+     *
+     * @param id
+     * @return Mejora
+     */
+
     public static Movimiento obtenerMejora(int id) { //ID Estado: 51-60
         try {
             Connection db = MySQL.getConexion();
@@ -585,6 +686,12 @@ public class PokemonCRUD {
         return null;
     }
 
+    /**
+     * Actúa como si fuese un valueOf para convertir un objeto de tipo "int" a un objeto en tipo "Movimiento".
+     * @param id
+     * @return
+     */
+
     public static Movimiento obtenerMovimiento(int id) {
 
         try {
@@ -596,14 +703,14 @@ public class PokemonCRUD {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 String tipoMovimiento = rs.getString("tipo_movimiento").toLowerCase();
 
                 Movimiento movimiento;
 
-                if(tipoMovimiento.equals("ataque")) {
+                if (tipoMovimiento.equals("ataque")) {
                     return obtenerAtaque(id);
-                } else if(tipoMovimiento.equals("estado")) {
+                } else if (tipoMovimiento.equals("estado")) {
                     return obtenerEstado(id);
                 } else {
                     return obtenerMejora(id);
@@ -686,12 +793,10 @@ public class PokemonCRUD {
 
     }
 
+    
     public static void main(String[] args) {
 
-        Pokemon p = generarPokemon();
-
-
-        createCapturado(p);
+        System.out.println(Pokemon.mostrarPokemon());
 
     }
 

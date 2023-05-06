@@ -2,7 +2,10 @@ package Pokemon.Pokemon;
 
 import Pokemon.Combate.Movimiento;
 import Pokemon.Database.PokemonCRUD;
+import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
+
+import java.util.Scanner;
 
 public class Pokemon {
 
@@ -382,6 +385,11 @@ public class Pokemon {
 
     }
 
+    /**
+     * Sube el nivel de un Pokemon y le sube las estadisticas.
+     * @param pokemon
+     */
+
     public static void subirNivel(Pokemon pokemon) {
 
         int xpNecesario = (pokemon.getNivel() * 10);
@@ -393,6 +401,11 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Sube la estadisticas del pokemon en un valor entre 1 y 5.
+     * @param pokemon
+     */
+
     public static void subirStats(Pokemon pokemon) {
 
         pokemon.setVitalidad(pokemon.getVitalidad() + Funcion.random(1, 5));
@@ -403,6 +416,38 @@ public class Pokemon {
         pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + Funcion.random(1, 5));
         pokemon.setDefensaEspecial(pokemon.getDefensaEspecial() + Funcion.random(1, 5));
 
+    }
+
+    public static Pokemon mostrarPokemon() {
+
+        PokemonCRUD.getEquipo1(Entrenador.equipo1);
+
+        System.out.println("Lista de pokemons:");
+        for (Pokemon pokemon : Entrenador.equipo1) {
+            System.out.println(pokemon.getId() + ". " + pokemon.getNombre());
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Selecciona un pokemon (1-6):");
+        int opcion = scanner.nextInt();
+
+        switch (opcion) {
+            case 1:
+                return PokemonCRUD.getPokemon(Entrenador.equipo1.get(0).getId());
+            case 2:
+                return PokemonCRUD.getPokemon(Entrenador.equipo1.get(1).getId());
+            case 3:
+                return PokemonCRUD.getPokemon(Entrenador.equipo1.get(2).getId());
+            case 4:
+                return PokemonCRUD.getPokemon(Entrenador.equipo1.get(3).getId());
+            case 5:
+                return PokemonCRUD.getPokemon(Entrenador.equipo1.get(4).getId());
+            case 6:
+                return PokemonCRUD.getPokemon(Entrenador.equipo1.get(5).getId());
+            default:
+                System.out.println("Opción no válida.");
+                return null;
+        }
     }
 
     public static void main(String[] args) {

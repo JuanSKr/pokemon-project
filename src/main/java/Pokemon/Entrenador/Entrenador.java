@@ -224,6 +224,10 @@ public class Entrenador {
 
     public static void verEquipos() {
 
+        PokemonCRUD.getEquipo1(equipo1);
+        PokemonCRUD.getEquipo2(equipo2);
+        PokemonCRUD.getCaja(caja);
+
         System.out.println("Equipo 1:");
         for (Pokemon mostrarEquipo : equipo1) {
             System.out.println(mostrarEquipo.toString());
@@ -244,14 +248,12 @@ public class Entrenador {
 
     public static void main(String[] args) {
 
-        Pokemon p = PokemonCRUD.generarPokemon();
+        PokemonCRUD.getEquipo1(equipo1);
+        PokemonCRUD.getEquipo2(equipo2);
+        PokemonCRUD.getCaja(caja);
 
 
-
-
-        System.out.println(equipo1);
-        System.out.println(equipo2);
-        System.out.println(caja);
+        verEquipos();
 
 
     }
