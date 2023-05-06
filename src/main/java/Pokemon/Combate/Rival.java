@@ -1,6 +1,8 @@
 package Pokemon.Combate;
 
 import Pokemon.Database.MySQL;
+import Pokemon.Database.PokemonCRUD;
+import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.Pokemon;
 
 import java.util.LinkedList;
@@ -26,19 +28,35 @@ public class Rival {
                 "Entrenador Guti",
                 "Entrenador Hamilton",
                 "Montañero Marín",
-                "Entrenadora Paquita"
+                "Campista Puja"
         };
 
-        int random = (int) (Math.random() * 4 + 0);
+        int random = Funcion.random(0,4);
 
         String nombreRival = rivales[random];
 
         rival.setNombre(nombreRival);
+        rival.setEquipo(equipoRival());
 
         return rival;
 
     }
 
+    /**
+     * Crea una LinkedList y le añade 6 pokemons aleatorios de la DB.
+     * @return LinkedList con 6 pokemons
+     */
+
+    public static LinkedList<Pokemon> equipoRival() {
+        LinkedList<Pokemon> equipo = new LinkedList<Pokemon>();
+
+        for (int i = 0; i < 6; i++) {
+            Pokemon pokemon = PokemonCRUD.generarPokemon();
+            equipo.add(pokemon);
+        }
+
+        return equipo;
+    }
 
     public Rival(String nombre, String foto, LinkedList<Pokemon> equipo) {
         this.nombre = nombre;
@@ -78,15 +96,17 @@ public class Rival {
 
     @Override
     public String toString() {
-        return nombre;
+        return "Nombre: " + nombre + '\n' +
+                "Equipo: " + equipo;
     }
 
     public static void main(String[] args) {
-//        System.out.println(generarRival());
 
-        Pokemon pokemon = MySQL.generarPokemon();
+        Rival rival = generarRival();
 
-        System.out.println(pokemon);
+        System.out.println(rival);
+
+
     }
 }
 

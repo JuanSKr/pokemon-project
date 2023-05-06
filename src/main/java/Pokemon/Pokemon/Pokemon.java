@@ -1,5 +1,9 @@
 package Pokemon.Pokemon;
 
+import Pokemon.Combate.Movimiento;
+import Pokemon.Database.PokemonCRUD;
+import Pokemon.Funcionalidad.Funcion;
+
 public class Pokemon {
 
     protected String nombre;
@@ -19,17 +23,17 @@ public class Pokemon {
     protected ListaEstados estado;
     protected int fertilidad;
     protected Objeto obj;
-    protected String movimiento1;
-    protected String movimiento2;
-    protected String movimiento3;
-    protected String movimiento4;
+    protected Movimiento movimiento1;
+    protected Movimiento movimiento2;
+    protected Movimiento movimiento3;
+    protected Movimiento movimiento4;
     protected String foto;
 
     // Constructor con todos los parámetros
 
     public Pokemon(String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, int vitalidad,
                    int ataque, int defensa, int ataqueEspecial, int defensaEspecial, int estamina, int velocidad,
-                   ListaEstados estado, int fertilidad, Objeto obj, String movimiento1, String movimiento2, String movimiento3, String movimiento4, String foto) {
+                   ListaEstados estado, int fertilidad, Objeto obj, Movimiento movimiento1, Movimiento movimiento2, Movimiento movimiento3, Movimiento movimiento4, String foto) {
         this.nombre = nombre;
         this.mote = mote;
         this.nivel = nivel;
@@ -74,10 +78,10 @@ public class Pokemon {
         this.estado = null;
         this.fertilidad = 0;
         this.obj = null;
-        this.movimiento1 = "";
-        this.movimiento2 = "";
-        this.movimiento3 = "";
-        this.movimiento4 = "";
+        this.movimiento1 = null;
+        this.movimiento2 = null;
+        this.movimiento3 = null;
+        this.movimiento4 = null;
         this.foto = "";
     }
 
@@ -244,35 +248,35 @@ public class Pokemon {
         this.obj = obj;
     }
 
-    public String getMovimiento1() {
+    public Movimiento getMovimiento1() {
         return movimiento1;
     }
 
-    public void setMovimiento1(String movimiento1) {
+    public void setMovimiento1(Movimiento movimiento1) {
         this.movimiento1 = movimiento1;
     }
 
-    public String getMovimiento2() {
+    public Movimiento getMovimiento2() {
         return movimiento2;
     }
 
-    public void setMovimiento2(String movimiento2) {
+    public void setMovimiento2(Movimiento movimiento2) {
         this.movimiento2 = movimiento2;
     }
 
-    public String getMovimiento3() {
+    public Movimiento getMovimiento3() {
         return movimiento3;
     }
 
-    public void setMovimiento3(String movimiento3) {
+    public void setMovimiento3(Movimiento movimiento3) {
         this.movimiento3 = movimiento3;
     }
 
-    public String getMovimiento4() {
+    public Movimiento getMovimiento4() {
         return movimiento4;
     }
 
-    public void setMovimiento4(String movimiento4) {
+    public void setMovimiento4(Movimiento movimiento4) {
         this.movimiento4 = movimiento4;
     }
 
@@ -285,48 +289,115 @@ public class Pokemon {
     }
 
 
+    /**
+     * Si el pokemon tiene mote se mostrará el mote en lugar del nombre, si no tiene mote se mostrará el nombre.
+     * @return toString con condicional
+     */
+    @Override
     public String toString() {
+        return "Pokemon{" +
+                "nombre='" + nombre + '\'' +
+                ", mote='" + mote + '\'' +
+                ", nivel=" + nivel +
+                ", xp=" + xp +
+                ", tipo1=" + tipo1 +
+                ", tipo2=" + tipo2 +
+                ", sexo=" + sexo +
+                ", vitalidad=" + vitalidad +
+                ", ataque=" + ataque +
+                ", defensa=" + defensa +
+                ", ataqueEspecial=" + ataqueEspecial +
+                ", defensaEspecial=" + defensaEspecial +
+                ", estamina=" + estamina +
+                ", velocidad=" + velocidad +
+                ", estado=" + estado +
+                ", fertilidad=" + fertilidad +
+                ", obj=" + obj +
+                ", movimiento1=" + movimiento1 +
+                ", movimiento2=" + movimiento2 +
+                ", movimiento3=" + movimiento3 +
+                ", movimiento4=" + movimiento4 +
+                ", foto='" + foto + '\'' +
+                '}';
+    }
 
-        if (this.mote == null) {
-            return "Pokemon{" +
-                    ", mote='" + mote + '\'' +
-                    ", vitalidad=" + vitalidad +
-                    ", velocidad=" + velocidad +
-                    ", estamina=" + estamina +
-                    ", ataque=" + ataque +
-                    ", defensa=" + defensa +
-                    ", ataqueEspecial=" + ataqueEspecial +
-                    ", defensaEspecial=" + defensaEspecial +
-                    ", tipo1=" + tipo1 +
-                    ", tipo2=" + tipo2 +
-                    '}';
+// Metodos propios
 
-        } else {
+    /**
+     * Un Pokemon aprende un nuevo movimiento cada 3 niveles.
+     * Si el nivel del Pokemon es múltiplo de 3, llama al método addMovimiento().
+     * @param pokemon
+     */
 
-            return "Pokemon{" +
-                    "nombre='" + nombre + '\'' +
-                    ", vitalidad=" + vitalidad +
-                    ", velocidad=" + velocidad +
-                    ", estamina=" + estamina +
-                    ", ataque=" + ataque +
-                    ", defensa=" + defensa +
-                    ", ataqueEspecial=" + ataqueEspecial +
-                    ", defensaEspecial=" + defensaEspecial +
-                    ", tipo1=" + tipo1 +
-                    ", tipo2=" + tipo2 +
-                    '}';
+    public static void aprenderMovimiento(Pokemon pokemon) {
 
+        if((pokemon.getNivel() % 3) == 0) {
+            addMovimiento(pokemon);
+        }
+
+    }
+
+    /**
+     * Este método, dependiendo del valor que se le pase a opción asigna el movimiento.
+     * Es un método para complementar el método aprenderMovimiento().
+     * @param pokemon
+     */
+
+    public static void addMovimiento(Pokemon pokemon) {
+
+        Movimiento movimiento = PokemonCRUD.generarMovimiento();
+
+        int opcion = 1; //Cambiar -> Hay que hacer esto en botones
+
+        switch (opcion) {
+
+            case 1:
+                pokemon.setMovimiento1(movimiento);
+                break;
+
+            case 2:
+                pokemon.setMovimiento2(movimiento);
+                break;
+
+            case 3:
+                pokemon.setMovimiento3(movimiento);
+                break;
+
+            case 4:
+                pokemon.setMovimiento4(movimiento);
+                break;
+
+        }
+
+    }
+
+    public static void subirNivel(Pokemon pokemon) {
+
+        int xpNecesario = (pokemon.getNivel() * 10);
+        int nuevoNivel = (pokemon.getNivel() + 1);
+
+        if(pokemon.getXp() == xpNecesario) {
+            pokemon.setNivel(nuevoNivel);
+            subirStats(pokemon);
         }
     }
 
-//    @Override
-//    public String toString() {
-//        if (this.mote == null) {
-//            return this.nombre;
-//        } else {
-//            return this.mote;
-//        }
-//    }
+    public static void subirStats(Pokemon pokemon) {
+
+        pokemon.setVitalidad(pokemon.getVitalidad() + Funcion.random(1, 5));
+        pokemon.setVelocidad(pokemon.getVelocidad() + Funcion.random(1, 5));
+        pokemon.setEstamina(pokemon.getEstamina() + Funcion.random(1, 5));
+        pokemon.setAtaque(pokemon.getAtaque() + Funcion.random(1, 5));
+        pokemon.setDefensa(pokemon.getDefensa() + Funcion.random(1, 5));
+        pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + Funcion.random(1, 5));
+        pokemon.setDefensaEspecial(pokemon.getDefensaEspecial() + Funcion.random(1, 5));
+
+    }
+
+    public static void main(String[] args) {
+
+
+    }
 
 }
 

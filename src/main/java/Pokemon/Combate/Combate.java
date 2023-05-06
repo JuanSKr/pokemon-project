@@ -1,6 +1,7 @@
 package Pokemon.Combate;
 
 import Pokemon.Database.MySQL;
+import Pokemon.Database.PokemonCRUD;
 import Pokemon.Pokemon.Pokemon;
 
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class Combate {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Pokemon pokemon = MySQL.generarPokemon();
+        Pokemon pokemon = PokemonCRUD.generarPokemon();
 
         System.out.println("El rival ha sacado un " + pokemon.getNombre());
         System.out.println("--------------------------------");

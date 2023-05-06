@@ -1,6 +1,7 @@
 package Pokemon.Menus;
 
 import Pokemon.Database.MySQL;
+import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Tienda.Tienda;
 import javafx.application.Application;
@@ -75,7 +76,7 @@ public class Menu extends Application {
 		});
 		pokedexButton.setOnAction(e -> {
 			// AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
-			System.out.println(MySQL.generarPokemon());
+			System.out.println(PokemonCRUD.generarPokemon());
 
 		});
 		entrenadorButton.setOnAction(e -> {

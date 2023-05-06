@@ -7,23 +7,28 @@ POR HACER:
 3. Métodos
  */
 
+import Pokemon.Pokemon.Tipo;
+
 public abstract class Movimiento {
 
     // Atributos de la clase
 
     protected String nombreMovimiento;
+    protected Tipo tipo;
 
 
     // Constructor con todos los parametros
 
-    public Movimiento(String nombreMovimiento) {
+    public Movimiento(String nombreMovimiento, Tipo tipo) {
         this.nombreMovimiento = nombreMovimiento;
+        this.tipo = tipo;
     }
 
     // Constructor por defecto
 
     public Movimiento() {
         this.nombreMovimiento = "";
+        this.tipo = null;
     }
 
     // Constructor copia
@@ -44,4 +49,13 @@ public abstract class Movimiento {
     public void setNombreMovimiento(String nombreMovimiento) {
         this.nombreMovimiento = nombreMovimiento;
     }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+
 }

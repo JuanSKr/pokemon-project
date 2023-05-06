@@ -132,7 +132,8 @@ public class Entrenador {
     /**
      * @param pokemon
      * @param equipo1
-     * @return Se le pasan dos parametros al método, el Pokemon que se quiere añadir, y el equipo al que se quiere añadir. Si el equipo contiene < 6 integrantes se añade, si no, no.
+     * @return Se le pasan dos parametros al método, el Pokemon que se quiere añadir, y el equipo al que se quiere añadir.
+     * Si el equipo contiene < 6 integrantes se añade, si no, prueba en el equipo2, y si tampoco cabe lo mete en la caja.
      */
 
     public static void addPokemon(Pokemon pokemon, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {

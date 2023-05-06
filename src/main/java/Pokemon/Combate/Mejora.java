@@ -4,21 +4,20 @@ package Pokemon.Combate;
  - CAMBIAR TODOS LOS VALORES DE LOS ATAQUES
  */
 
+import Pokemon.Pokemon.Tipo;
+
 public class Mejora extends Movimiento {
 
     protected int turnos;
 
-    static Mejora absorver = new Mejora("Absorver", 5);
-    static Mejora danzapetalo = new Mejora("Danza petalo", 3);
-    static Mejora rayosolar = new Mejora("Rayo solar", 2);
-
 
     // Constructor con todos los parámetros
 
-    public Mejora(String nombreMovimiento, int turnos) {
-        super(nombreMovimiento);
+    public Mejora(String nombreMovimiento, int turnos, int nivelAprendizaje, Tipo tipo) {
+        super(nombreMovimiento, tipo);
         this.nombreMovimiento = nombreMovimiento;
         this.turnos = turnos;
+        this.tipo = tipo;
     }
 
     // Construtor por defecto
@@ -26,6 +25,7 @@ public class Mejora extends Movimiento {
     public Mejora() {
         this.nombreMovimiento = "";
         this.turnos = 0;
+        this.tipo = null;
     }
 
     // Constructor copia
@@ -33,6 +33,7 @@ public class Mejora extends Movimiento {
     public Mejora(Mejora m) {
         this.nombreMovimiento = m.nombreMovimiento;
         this.turnos = m.turnos;
+        this.tipo = m.tipo;
     }
 
     // Metodos
@@ -41,4 +42,20 @@ public class Mejora extends Movimiento {
 
     // Getters y Setters
 
+
+    public int getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(int turnos) {
+        this.turnos = turnos;
+    }
+
+    @Override
+    public String toString() {
+        return "Mejora{" +
+                "nombreMovimiento='" + nombreMovimiento + '\'' +
+                "turnos=" + turnos +
+                '}';
+    }
 }

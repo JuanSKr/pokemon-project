@@ -1,5 +1,6 @@
 package Pokemon.Menus;
 
+import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Database.MySQL;
 import javafx.application.Application;
@@ -100,12 +101,12 @@ public class Login extends Application {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
 
-        MySQL.login(nombre, password);
+        PokemonCRUD.login(nombre, password);
 
-        if (MySQL.login) {
+        if (PokemonCRUD.login) {
             Menu menu = new Menu();
             try {
-                MySQL.cargarEntrenador(nombre);
+                PokemonCRUD.cargarEntrenador(nombre);
                 menu.start(new Stage());
                 ((Stage) nombreUsuario.getScene().getWindow()).close();
             } catch (Exception e) {
@@ -123,7 +124,7 @@ public class Login extends Application {
         if (nombre.isEmpty() || password.isEmpty()) {
             mensaje.setText("Debes rellenar todos los campos.");
         } else {
-            MySQL.register(nombre, password);
+            PokemonCRUD.register(nombre, password);
             mensaje.setText("Te has registrado correctamente.");
         }
 
