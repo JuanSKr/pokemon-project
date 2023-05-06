@@ -122,7 +122,7 @@ public class MenuExplorador extends Application {
                     ponerMoteButton.setOnAction(event -> {
                         String apodo = textField.getText();
                         copia.setMote(apodo); // Asignar el mote al Pokemon
-                        addPokemon(copia, equipo1, equipo2, caja);
+                        addPokemon(copia);
                         verEquipos();
                         dialog.close();
                         dialog.setResult("cerrar");
@@ -130,7 +130,7 @@ public class MenuExplorador extends Application {
 
                     //Cierra la ventana de diálogo y añade al Pokemon al equipo.
                     noMoteButton.setOnAction(event -> {
-                        addPokemon(copia, equipo1, equipo2, caja);
+                        addPokemon(copia);
                         verEquipos();
                         dialog.close();
                         dialog.setResult("cerrar");

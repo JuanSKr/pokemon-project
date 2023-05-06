@@ -6,6 +6,7 @@ import Pokemon.Funcionalidad.Funcion;
 
 public class Pokemon {
 
+    protected int id;
     protected String nombre;
     protected String mote;
     protected int nivel;
@@ -31,9 +32,10 @@ public class Pokemon {
 
     // Constructor con todos los parámetros
 
-    public Pokemon(String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, int vitalidad,
+    public Pokemon(int id, String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, int vitalidad,
                    int ataque, int defensa, int ataqueEspecial, int defensaEspecial, int estamina, int velocidad,
                    ListaEstados estado, int fertilidad, Objeto obj, Movimiento movimiento1, Movimiento movimiento2, Movimiento movimiento3, Movimiento movimiento4, String foto) {
+        this.id = id;
         this.nombre = nombre;
         this.mote = mote;
         this.nivel = nivel;
@@ -61,6 +63,7 @@ public class Pokemon {
     // Constructor por defecto
 
     public Pokemon() {
+        this.id = 0;
         this.nombre = "";
         this.mote = "";
         this.nivel = 0;
@@ -88,6 +91,7 @@ public class Pokemon {
     // Constructor copia
 
     public Pokemon(Pokemon capturado) {
+        this.id = capturado.id;
         this.nombre = capturado.nombre;
         this.mote = capturado.mote;
         this.nivel = capturado.nivel;
@@ -288,6 +292,13 @@ public class Pokemon {
         this.xp = xp;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * Si el pokemon tiene mote se mostrará el mote en lugar del nombre, si no tiene mote se mostrará el nombre.

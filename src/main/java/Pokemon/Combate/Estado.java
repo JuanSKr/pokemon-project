@@ -1,8 +1,10 @@
 package Pokemon.Combate;
 
+import Pokemon.Pokemon.ListaEstados;
 import Pokemon.Pokemon.Tipo;
 
 import java.util.HashMap;
+import java.util.List;
 
 /*
 - CAMBIAR TODOS LOS VALORES DE LOS ATAQUES
@@ -11,13 +13,15 @@ import java.util.HashMap;
 public class Estado extends Movimiento {
 
     protected int turnos;
+    protected ListaEstados estado;
 
     // Constructor con todos los parámetros
-    public Estado(String nombreMovimiento, int turnos, Tipo tipo) {
+    public Estado(String nombreMovimiento, int turnos, Tipo tipo, ListaEstados estado) {
         super(nombreMovimiento, tipo);
         this.nombreMovimiento = nombreMovimiento;
         this.turnos = turnos;
         this.tipo = tipo;
+        this.estado = estado;
     }
 
     // Constructor por defecto
@@ -25,6 +29,7 @@ public class Estado extends Movimiento {
         this.nombreMovimiento = "";
         this.turnos = 0;
         this.tipo = null;
+        this.estado = null;
     }
 
     // Constructor copia
@@ -32,6 +37,7 @@ public class Estado extends Movimiento {
         this.nombreMovimiento = e.nombreMovimiento;
         this.turnos = e.turnos;
         this.tipo = e.tipo;
+        this.estado = e.estado;
     }
 
     // Métodos
@@ -43,6 +49,14 @@ public class Estado extends Movimiento {
 
     public void setTurnos(int turnos) {
         this.turnos = turnos;
+    }
+
+    public ListaEstados getEstado() {
+        return estado;
+    }
+
+    public void setEstado(ListaEstados estado) {
+        this.estado = estado;
     }
 
     @Override

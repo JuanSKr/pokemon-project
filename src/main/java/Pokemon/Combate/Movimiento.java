@@ -37,6 +37,7 @@ public abstract class Movimiento {
         this.nombreMovimiento = m.nombreMovimiento;
     }
 
+
     // Metodos
 
     // Getters y Setters

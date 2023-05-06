@@ -1,5 +1,6 @@
 package Pokemon.Entrenador;
 
+import Pokemon.Database.PokemonCRUD;
 import Pokemon.Pokemon.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import java.sql.ResultSet;
@@ -35,9 +36,7 @@ public class Entrenador {
         this.mochila = new HashMap<>(); //Pasar a linkedList
         this.contador = new HashMap<>(); //Ver si se quita o se deja.
         this.pass = contrasena;
-        this.equipo1 = equipo1;
-        this.equipo2 = equipo2;
-        this.caja = caja;
+
     }
 
     // Constructor por defecto:
@@ -47,9 +46,6 @@ public class Entrenador {
         this.dinero = 500;
         this.mochila = null;
         this.contador = null;
-        this.equipo1 = new LinkedList<>();
-        this.equipo2 = new LinkedList<>();
-        this.caja = new LinkedList<>();
     }
 
 
@@ -104,7 +100,34 @@ public class Entrenador {
         Entrenador.contador = contador;
     }
 
+    public static LinkedList<Pokemon> getEquipo1() {
+        return equipo1;
+    }
+
+    public static void setEquipo1(LinkedList<Pokemon> equipo1) {
+        Entrenador.equipo1 = equipo1;
+    }
+
+    public static LinkedList<Pokemon> getEquipo2() {
+        return equipo2;
+    }
+
+    public static void setEquipo2(LinkedList<Pokemon> equipo2) {
+        Entrenador.equipo2 = equipo2;
+    }
+
+    public static LinkedList<Pokemon> getCaja() {
+        return caja;
+    }
+
+    public static void setCaja(LinkedList<Pokemon> caja) {
+        Entrenador.caja = caja;
+    }
+
     public static void setContrasena(String contrasena) {
+
+
+
         // TODO Auto-generated method stub
 
     }
@@ -131,28 +154,34 @@ public class Entrenador {
 
     /**
      * @param pokemon
-     * @param equipo1
      * @return Se le pasan dos parametros al método, el Pokemon que se quiere añadir, y el equipo al que se quiere añadir.
      * Si el equipo contiene < 6 integrantes se añade, si no, prueba en el equipo2, y si tampoco cabe lo mete en la caja.
      */
 
-    public static void addPokemon(Pokemon pokemon, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
+    public static int addPokemon(Pokemon pokemon) {
+        int equipo;
 
-        try {
-            if (equipo1.size() < 6) {
-                equipo1.add(pokemon);
-                System.out.println("Se ha añadido a " + pokemon.toString() + " al equipo titular.");
-            } else if (equipo2.size() < 6) {
-                equipo2.add(pokemon);
-                System.out.println(pokemon.toString() + " no cabe en el equipo titular. Ha sido agregado al equipo suplente.");
-            } else {
-                caja.add(pokemon);
-                System.out.println(pokemon.toString() + " no cabe en ningún equipo. Ha sido agregado a la caja.");
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Error: No tienes capacidad para almacenar a " + pokemon.toString());
+        PokemonCRUD.getEquipo1(Entrenador.equipo1);
+        PokemonCRUD.getEquipo2(Entrenador.equipo2);
+        PokemonCRUD.getCaja(Entrenador.caja);
+
+        if (equipo1.size() < 6) {
+            equipo1.add(pokemon);
+            equipo = 1;
+            System.out.println(equipo1);
+        } else if (equipo2.size() < 6) {
+            equipo2.add(pokemon);
+            equipo = 2;
+            System.out.println(equipo2);
+        } else {
+            caja.add(pokemon);
+            equipo = 3;
         }
+
+        return equipo;
     }
+
+
 
     /**
      * @return Metodo para darle al usuario la opción de elegir su Pokémon inicial entre 3.
@@ -214,6 +243,15 @@ public class Entrenador {
 
 
     public static void main(String[] args) {
+
+        Pokemon p = PokemonCRUD.generarPokemon();
+
+
+
+
+        System.out.println(equipo1);
+        System.out.println(equipo2);
+        System.out.println(caja);
 
 
     }
