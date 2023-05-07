@@ -13,8 +13,8 @@ public class Estado extends Movimiento {
     protected ListaEstados estado;
 
     // Constructor con todos los parámetros
-    public Estado(String nombreMovimiento, int turnos, Tipo tipo, ListaEstados estado) {
-        super(nombreMovimiento, tipo);
+    public Estado(String nombreMovimiento, int turnos, Tipo tipo, ListaEstados estado, int potencia) {
+        super(nombreMovimiento, tipo, potencia);
         this.nombreMovimiento = nombreMovimiento;
         this.turnos = turnos;
         this.tipo = tipo;

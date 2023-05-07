@@ -15,14 +15,10 @@ import Pokemon.Pokemon.Tipo;
 
 public class Ataque extends Movimiento {
 
-    protected int potencia;
-
-
-
     // Constructor con todos los parámetros
 
     public Ataque(String nombreMovimiento, int potencia, int nivelAprendizaje, Tipo tipo) {
-        super(nombreMovimiento, tipo);
+        super(nombreMovimiento, tipo, potencia);
         this.nombreMovimiento = nombreMovimiento;
         this.potencia = potencia;
         this.tipo = tipo;

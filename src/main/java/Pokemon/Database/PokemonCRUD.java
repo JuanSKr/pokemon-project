@@ -74,7 +74,8 @@ public class PokemonCRUD {
      * Método para obtener toda la información de un Pokemon en la base de datos.
      * Hay que pasarle la ID del Pokemon por parámetro para indicarle que Pokemon quieres.
      * @param id
-     * @return
+     * @return Pokemon
+     * @usage getPokemon(55);
      */
 
     public static Pokemon getPokemon(int id) {
@@ -593,7 +594,7 @@ public class PokemonCRUD {
      * @return Ataque
      */
 
-    public static Movimiento obtenerAtaque(int id) { //ID ataque: 1-50
+    public static Ataque obtenerAtaque(int id) { //ID ataque: 1-50
         try {
             Connection db = MySQL.getConexion();
             String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'Ataque'";
@@ -626,7 +627,7 @@ public class PokemonCRUD {
      * @return Estado
      */
 
-    public static Movimiento obtenerEstado(int id) { //ID Estado: 61-84
+    public static Estado obtenerEstado(int id) { //ID Estado: 61-84
         try {
             Connection db = MySQL.getConexion();
             String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'Estado'";
@@ -660,7 +661,7 @@ public class PokemonCRUD {
      * @return Mejora
      */
 
-    public static Movimiento obtenerMejora(int id) { //ID Estado: 51-60
+    public static Mejora obtenerMejora(int id) { //ID Estado: 51-60
         try {
             Connection db = MySQL.getConexion();
             String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'Mejora'";
@@ -723,13 +724,6 @@ public class PokemonCRUD {
         return null;
     }
 
-    public static Movimiento obtenerMovimiento() {
-
-        Movimiento movimiento = generarMovimiento();
-
-        return movimiento;
-
-    }
 
     /**
      * Método que busca el movimiento por nombre en la DB y devuelve su ID.
@@ -803,7 +797,7 @@ public class PokemonCRUD {
 
     public static void main(String[] args) {
 
-        System.out.println(Pokemon.mostrarPokemon());
+        System.out.println(generarMovimiento());
 
     }
 

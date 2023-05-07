@@ -13,8 +13,8 @@ public class Mejora extends Movimiento {
 
     // Constructor con todos los parámetros
 
-    public Mejora(String nombreMovimiento, int turnos, int nivelAprendizaje, Tipo tipo) {
-        super(nombreMovimiento, tipo);
+    public Mejora(String nombreMovimiento, int turnos, int nivelAprendizaje, Tipo tipo, int potencia) {
+        super(nombreMovimiento, tipo, potencia);
         this.nombreMovimiento = nombreMovimiento;
         this.turnos = turnos;
         this.tipo = tipo;
@@ -28,13 +28,6 @@ public class Mejora extends Movimiento {
         this.tipo = null;
     }
 
-    // Constructor copia
-
-    public Mejora(Mejora m) {
-        this.nombreMovimiento = m.nombreMovimiento;
-        this.turnos = m.turnos;
-        this.tipo = m.tipo;
-    }
 
     // Metodos
 

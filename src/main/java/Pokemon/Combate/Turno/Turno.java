@@ -24,11 +24,6 @@ public class Turno {
         this.accionRival = null;
     }
 
-    public static void guardarAccion(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
-
-
-
-    }
 
 
     public int getNumTurno() {

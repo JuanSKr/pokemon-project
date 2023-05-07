@@ -48,15 +48,43 @@ public class Rival {
         int random = Funcion.random(0, 5);
 
         Pokemon pokemon = equipo.get(random);
-        pokemon.setMovimiento1(PokemonCRUD.obtenerMovimiento());
-        pokemon.setMovimiento2(PokemonCRUD.obtenerMovimiento());
-        pokemon.setMovimiento3(PokemonCRUD.obtenerMovimiento());
-        pokemon.setMovimiento4(PokemonCRUD.obtenerMovimiento());
+        asignarMovimiento(pokemon);
+
 
         return pokemon;
     }
 
+    public static void asignarMovimiento(Pokemon pokemon) {
+
+        pokemon.setMovimiento1(PokemonCRUD.generarMovimiento());
+        pokemon.setMovimiento2(PokemonCRUD.generarMovimiento());
+        pokemon.setMovimiento3(PokemonCRUD.generarMovimiento());
+        pokemon.setMovimiento4(PokemonCRUD.generarMovimiento());
+
+    }
+
+    public static Movimiento cogerMovimiento(Pokemon pokemon) {
+
+        Movimiento movimiento;
+
+        int random = Funcion.random(1, 4);
+
+        if(random == 1) {
+            movimiento = pokemon.getMovimiento1();
+        } else if (random == 2) {
+            movimiento = pokemon.getMovimiento2();
+        } else if (random == 3) {
+            movimiento = pokemon.getMovimiento3();
+        } else {
+            movimiento = pokemon.getMovimiento4();
+        }
+
+        return movimiento;
+    }
+
     public static Movimiento movimientoRandom(Pokemon pokemon) {
+
+        pokemonRival();
 
         int random = Funcion.random(1, 4);
 
@@ -133,6 +161,7 @@ public class Rival {
 
     public static void main(String[] args) {
 
+        pokemonRival();
 
 
     }

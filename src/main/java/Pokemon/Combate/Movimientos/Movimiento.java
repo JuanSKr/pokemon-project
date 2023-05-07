@@ -15,13 +15,15 @@ public abstract class Movimiento {
 
     protected String nombreMovimiento;
     protected Tipo tipo;
+    protected int potencia;
 
 
     // Constructor con todos los parametros
 
-    public Movimiento(String nombreMovimiento, Tipo tipo) {
+    public Movimiento(String nombreMovimiento, Tipo tipo, int potencia) {
         this.nombreMovimiento = nombreMovimiento;
         this.tipo = tipo;
+        this.potencia = potencia;
     }
 
     // Constructor por defecto
@@ -29,13 +31,9 @@ public abstract class Movimiento {
     public Movimiento() {
         this.nombreMovimiento = "";
         this.tipo = null;
+        this.potencia = 0;
     }
 
-    // Constructor copia
-
-    public Movimiento(Movimiento m) {
-        this.nombreMovimiento = m.nombreMovimiento;
-    }
 
 
     // Metodos
@@ -59,4 +57,11 @@ public abstract class Movimiento {
         this.tipo = tipo;
     }
 
+    public int getPotencia() {
+        return potencia;
+    }
+
+    public void setPotencia(int potencia) {
+        this.potencia = potencia;
+    }
 }
