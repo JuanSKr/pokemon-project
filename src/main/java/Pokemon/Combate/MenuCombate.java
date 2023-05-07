@@ -25,7 +25,6 @@ public class MenuCombate extends Application {
     private static final int SCENE_HEIGHT = 650;
     private static final int PADDING_SIZE = 10;  
     private static final int GAP_SIZE = 8;
-
     private Stage primaryStage;
     private Scene previousScene;
     Image image = new Image(getClass().getResourceAsStream("/img/Prueba.gif"));
@@ -39,7 +38,6 @@ public class MenuCombate extends Application {
     public void start(Stage primaryStage) {
         // Este método ya no es necesario
     }
-
     public Scene getScene() {
         GridPane gridPane = new GridPane();
         gridPane.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -54,15 +52,13 @@ public class MenuCombate extends Application {
         	gridPane.setVgap(GAP_SIZE);
         	gridPane.setHgap(GAP_SIZE);
         	ImageView imagenLogo = new ImageView(image);
-
-        // Agregar botón para regresar al menú anterior
+        // AGREGAR BOTÓN PARA REGRESAR AL MENÚ ANTERIOR
         Button backButton = new Button(" <-- ");
         backButton.setOnAction(e -> {
             primaryStage.setScene(previousScene);
         });
         gridPane.add(backButton, 0, 0);
         GridPane.setHalignment(backButton, HPos.RIGHT);
-
         // Método de inicio de la aplicación
         Scene scene = new Scene(gridPane, SCENE_WIDTH, SCENE_HEIGHT);
         return scene;

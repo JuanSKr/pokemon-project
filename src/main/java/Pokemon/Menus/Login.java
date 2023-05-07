@@ -1,6 +1,8 @@
 package Pokemon.Menus;
 
+import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
+import Pokemon.Database.MySQL;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -65,7 +67,8 @@ public class Login extends Application {
         GridPane.setConstraints(crearCuenta, 1, 3);
 
         mensaje = new Label();
-        GridPane.setConstraints(mensaje, 1, 4);
+        mensaje.setId("error");
+        GridPane.setConstraints(mensaje, 1, 3);
 
         grid.getChildren().addAll(nombreUsuarioTxt, nombreUsuario, contrasenaTxt, contrasena,
                 iniciarSesion, crearCuenta, mensaje);
@@ -76,30 +79,55 @@ public class Login extends Application {
         primaryStage.show();
     }
 
+//    private void iniciarSesion() {
+//        String nombre = nombreUsuario.getText();
+//        String password = contrasena.getText();
+//        if (nombre.equals("test") && password.equals("1234")) {
+//            mensaje.setText("Inicio de sesión exitoso.");
+//            Entrenador.setNombre(nombre);
+//            Menu menu = new Menu();
+//            try {
+//                menu.start(new Stage());
+//                ((Stage) nombreUsuario.getScene().getWindow()).close();
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//            }
+//        } else {
+//            mensaje.setText("Nombre de usuario o contraseña incorrectos.");
+//        }
+//    }
+
     private void iniciarSesion() {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
-        if (nombre.equals(entrenador.getNombre()) && password.equals(entrenador.getContrasena())) {
-            mensaje.setText("Inicio de sesión exitoso.");
-            Entrenador.setNombre(nombre);
-            entrenador = new Entrenador(nombre, password);
+
+        PokemonCRUD.login(nombre, password);
+
+        if (PokemonCRUD.login) {
             Menu menu = new Menu();
             try {
+                PokemonCRUD.cargarEntrenador(nombre);
                 menu.start(new Stage());
                 ((Stage) nombreUsuario.getScene().getWindow()).close();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         } else {
-            mensaje.setText("Nombre de usuario o contraseña incorrectos.");
+            mensaje.setText("Usuario o contraseña incorrectos.");
         }
     }
 
     private void crearCuenta() {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
-        entrenador = new Entrenador(nombre, password);
-        mensaje.setText("Cuenta creada exitosamente.");
+
+        if (nombre.isEmpty() || password.isEmpty()) {
+            mensaje.setText("Debes rellenar todos los campos.");
+        } else {
+            PokemonCRUD.register(nombre, password);
+            mensaje.setText("Te has registrado correctamente.");
+        }
+
     }
 
     public static void main(String[] args) {

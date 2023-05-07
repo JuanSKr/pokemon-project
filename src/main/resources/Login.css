@@ -75,6 +75,14 @@
 
 }
 
+#error {
+-fx-translate-x: -550px;
+-fx-translate-y: -340px;
+-fx-font: bold 20px Bahnschrift;
+-fx-text-fill: rgb(255, 255, 255);
+-fx-effect: dropshadow(gaussian, rgba(255,0,0,0.5), 4, 0.5, 4, 0.5);
+}
+
 
 /*
 Valores del hover:
@@ -90,4 +98,4 @@ rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparenc
 .button:hover {
 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 4.5, 8);
 -fx-text-fill: white;
-}}
+}

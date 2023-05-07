@@ -14,9 +14,12 @@ public enum Tipo {
     NORMAL,
     PLANTA,
     PSIQUICO,
+    PSQUICO,
     ROCA,
     SINIESTRO,
     TIERRA,
     VENENO,
-    VOLADOR;
+    VIENTO,
+    VOLADOR,
+    ATRAPADO;
 }

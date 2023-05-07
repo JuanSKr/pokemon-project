@@ -1,11 +1,9 @@
 package Pokemon.Menus;
 
-import Pokemon.Capturar.Exploracion;
-import Pokemon.Capturar.MenuExplorador;
-import Pokemon.Combate.MenuCombate;
+import Pokemon.Database.MySQL;
+import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
-import Pokemon.Entrenador.MenuEntrenador;
-import Pokemon.Tienda.MenuTienda;
+import Pokemon.Tienda.Tienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -78,7 +76,7 @@ public class Menu extends Application {
 		});
 		pokedexButton.setOnAction(e -> {
 			// AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
-			System.out.println("Pokedex");
+			System.out.println(PokemonCRUD.generarPokemon());
 
 		});
 		entrenadorButton.setOnAction(e -> {
