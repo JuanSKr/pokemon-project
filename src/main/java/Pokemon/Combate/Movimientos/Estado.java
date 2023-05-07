@@ -1,10 +1,7 @@
-package Pokemon.Combate;
+package Pokemon.Combate.Movimientos;
 
 import Pokemon.Pokemon.ListaEstados;
 import Pokemon.Pokemon.Tipo;
-
-import java.util.HashMap;
-import java.util.List;
 
 /*
 - CAMBIAR TODOS LOS VALORES DE LOS ATAQUES

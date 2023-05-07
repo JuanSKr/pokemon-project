@@ -1,44 +1,56 @@
-package Pokemon.Combate;
+package Pokemon.Combate.Turno;
 
+
+import Pokemon.Combate.Movimientos.Movimiento;
+import Pokemon.Pokemon.Pokemon;
 
 public class Turno {
     protected int numTurno;
     protected Movimiento accionEntrenador;
     protected Movimiento accionRival;
-    
-    // CONSTRUCTOR DE LA CLASE TURNO
+
+    // CONSTRUCTOR CON TODOS LOS PARAMETROS
     public Turno(int numTurno, Movimiento accionEntrenador, Movimiento accionRival) {
         this.numTurno = numTurno;
         this.accionEntrenador = accionEntrenador;
         this.accionRival = accionRival;
     }
-    
-    // GETTER DEL NÚMERO DE TURNO
+
+    // CONSTRUCTOR POR DEFECTO
+
+    public Turno() {
+        this.numTurno = 0;
+        this.accionEntrenador = null;
+        this.accionRival = null;
+    }
+
+    public static void guardarAccion(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+
+
+
+    }
+
+
     public int getNumTurno() {
         return numTurno;
     }
 
-    // SETTER DEL NÚMERO DE TURNO
     public void setNumTurno(int numTurno) {
         this.numTurno = numTurno;
     }
 
-    // GETTER DE LA ACCIÓN DEL ENTRENADOR
     public Movimiento getAccionEntrenador() {
         return accionEntrenador;
     }
 
-    // SETTER DE LA ACCIÓN DEL ENTRENADOR
     public void setAccionEntrenador(Movimiento accionEntrenador) {
         this.accionEntrenador = accionEntrenador;
     }
 
-    // GETTER DE LA ACCIÓN DEL RIVAL
     public Movimiento getAccionRival() {
         return accionRival;
     }
 
-    // SETTER DE LA ACCIÓN DEL RIVAL
     public void setAccionRival(Movimiento accionRival) {
         this.accionRival = accionRival;
     }

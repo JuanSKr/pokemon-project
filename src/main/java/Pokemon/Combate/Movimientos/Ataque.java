@@ -5,7 +5,7 @@ POR HACER:
 3. Métodos
  */
 
-package Pokemon.Combate;
+package Pokemon.Combate.Movimientos;
 
 import Pokemon.Pokemon.Tipo;
 

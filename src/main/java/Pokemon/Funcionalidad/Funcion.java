@@ -1,7 +1,6 @@
 package Pokemon.Funcionalidad;
 
-import Pokemon.Combate.Movimiento;
-import Pokemon.Database.MySQL;
+import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.PokemonCRUD;
 
 import java.util.Random;

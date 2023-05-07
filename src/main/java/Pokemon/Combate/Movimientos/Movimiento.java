@@ -1,4 +1,4 @@
-package Pokemon.Combate;
+package Pokemon.Combate.Movimientos;
 
 /*
 POR HACER:

@@ -1,4 +1,4 @@
-package Pokemon.Combate;
+package Pokemon.Combate.Movimientos;
 
 /*
  - CAMBIAR TODOS LOS VALORES DE LOS ATAQUES

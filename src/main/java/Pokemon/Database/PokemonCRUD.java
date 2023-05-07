@@ -1,9 +1,9 @@
 package Pokemon.Database;
 
-import Pokemon.Combate.Ataque;
-import Pokemon.Combate.Estado;
-import Pokemon.Combate.Mejora;
-import Pokemon.Combate.Movimiento;
+import Pokemon.Combate.Movimientos.Ataque;
+import Pokemon.Combate.Movimientos.Estado;
+import Pokemon.Combate.Movimientos.Mejora;
+import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.ListaEstados;
@@ -14,7 +14,6 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
 public class PokemonCRUD {
 
@@ -111,10 +110,10 @@ public class PokemonCRUD {
                 pokemon.setNivel(rs.getInt("nivel"));
                 pokemon.setXp(rs.getInt("xp"));
                 pokemon.setFoto(rs.getString("foto"));
-                pokemon.setMovimiento1(obtenerMovimiento(rs.getInt("movimiento1")));
-                pokemon.setMovimiento2(obtenerMovimiento(rs.getInt("movimiento2")));
-                pokemon.setMovimiento3(obtenerMovimiento(rs.getInt("movimiento3")));
-                pokemon.setMovimiento4(obtenerMovimiento(rs.getInt("movimiento4")));
+                pokemon.setMovimiento1(selectMovimiento(rs.getInt("movimiento1")));
+                pokemon.setMovimiento2(selectMovimiento(rs.getInt("movimiento2")));
+                pokemon.setMovimiento3(selectMovimiento(rs.getInt("movimiento3")));
+                pokemon.setMovimiento4(selectMovimiento(rs.getInt("movimiento4")));
                 return pokemon;
 
             }
@@ -692,7 +691,7 @@ public class PokemonCRUD {
      * @return
      */
 
-    public static Movimiento obtenerMovimiento(int id) {
+    public static Movimiento selectMovimiento(int id) {
 
         try {
 
@@ -722,6 +721,14 @@ public class PokemonCRUD {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Movimiento obtenerMovimiento() {
+
+        Movimiento movimiento = generarMovimiento();
+
+        return movimiento;
+
     }
 
     /**
@@ -793,7 +800,7 @@ public class PokemonCRUD {
 
     }
 
-    
+
     public static void main(String[] args) {
 
         System.out.println(Pokemon.mostrarPokemon());

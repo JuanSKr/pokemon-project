@@ -3,369 +3,199 @@ package Pokemon.Combate;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
 
-/*
-POR HACER:
-    - AÑADIR LA DOBLE_VENTANA [PR 1]
-    - TERMINAR EL METODO QUE AUMENTE LAS STATS [PR 2]
- */
 
-public enum TablaTipos {
+public class TablaTipos {
 
-    NEUTRO,
-    VENTAJA,
-    DOBLE_VENTAJA,
-    DESVENTAJA;
+    private double[][] tabla;
+    boolean esSuperior;
+    boolean esDebil;
+    boolean esIgual;
+    static TablaTipos tablaTipos = new TablaTipos();
+
+    public TablaTipos() {
+        // Se inicializan los valores de la tabla
+        tabla = new double[Tipo.values().length][Tipo.values().length];
+
+        inicializarTabla();
+    }
 
     /**
-     * @param pokemon1
-     * @param pokemon2
-     * @return Este método te pide dos Pokemons por parámetro y compara los tipos, devuelve un ENUM.
+     * Inicializa la tabla de tipos según las reglas de Pokémon. Los valores normales se inicializan con el método inicializarNormal().
+     * Los valores fuertes se inicializan con el método inicializarFuerte(Tipo atacante, Tipo defensor).
+     * Los valores débiles se inicializan con el método inicializarDebil(Tipo atacante, Tipo defensor).
+     * Los valores iguales se inicializan con el método inicializarIgual(Tipo tipo).
      */
 
-    public static TablaTipos tablaTipos(Pokemon pokemon1, Pokemon pokemon2) {
+    private void inicializarTabla() {
+        // Inicializar la tabla de tipos según las reglas de Pokémon
+        // Valores normales
+        inicializarNormal();
+        // Valores fuertes
+        inicializarFuerte(Tipo.AGUA, Tipo.FUEGO);
+        inicializarFuerte(Tipo.BICHO, Tipo.SINIESTRO);
+        inicializarFuerte(Tipo.DRAGON, Tipo.DRAGON);
+        inicializarFuerte(Tipo.ELECTRICO, Tipo.AGUA);
+        inicializarFuerte(Tipo.FANTASMA, Tipo.PSIQUICO);
+        inicializarFuerte(Tipo.FUEGO, Tipo.PLANTA);
+        inicializarFuerte(Tipo.HADA, Tipo.DRAGON);
+        inicializarFuerte(Tipo.HIELO, Tipo.PLANTA);
+        inicializarFuerte(Tipo.LUCHA, Tipo.SINIESTRO);
+        inicializarFuerte(Tipo.PLANTA, Tipo.AGUA);
+        inicializarFuerte(Tipo.PSIQUICO, Tipo.LUCHA);
+        inicializarFuerte(Tipo.TIERRA, Tipo.ELECTRICO);
+        inicializarFuerte(Tipo.VENENO, Tipo.PLANTA);
+        inicializarFuerte(Tipo.VOLADOR, Tipo.PLANTA);
+        // Valores débiles
+        inicializarDebil(Tipo.AGUA, Tipo.PLANTA);
+        inicializarDebil(Tipo.BICHO, Tipo.PLANTA);
+        inicializarDebil(Tipo.DRAGON, Tipo.HADA);
+        inicializarDebil(Tipo.ELECTRICO, Tipo.TIERRA);
+        inicializarDebil(Tipo.FANTASMA, Tipo.SINIESTRO);
+        inicializarDebil(Tipo.FUEGO, Tipo.AGUA);
+        inicializarDebil(Tipo.HADA, Tipo.SINIESTRO);
+        inicializarDebil(Tipo.HIELO, Tipo.FUEGO);
+        inicializarDebil(Tipo.LUCHA, Tipo.PSIQUICO);
+        inicializarDebil(Tipo.NORMAL, Tipo.FANTASMA);
+        inicializarDebil(Tipo.PLANTA, Tipo.FUEGO);
+        inicializarDebil(Tipo.PSIQUICO, Tipo.SINIESTRO);
+        inicializarDebil(Tipo.TIERRA, Tipo.VOLADOR);
+        inicializarDebil(Tipo.VENENO, Tipo.TIERRA);
+        inicializarDebil(Tipo.VOLADOR, Tipo.ELECTRICO);
+        // Valores iguales
+        inicializarIgual(Tipo.AGUA);
+        inicializarIgual(Tipo.BICHO);
+        inicializarIgual(Tipo.DRAGON);
+        inicializarIgual(Tipo.ELECTRICO);
+        inicializarIgual(Tipo.FANTASMA);
+        inicializarIgual(Tipo.FUEGO);
+        inicializarIgual(Tipo.HADA);
+        inicializarIgual(Tipo.HIELO);
+        inicializarIgual(Tipo.LUCHA);
+        inicializarIgual(Tipo.NORMAL);
+        inicializarIgual(Tipo.PLANTA);
+        inicializarIgual(Tipo.PSIQUICO);
+        inicializarIgual(Tipo.ROCA);
+        inicializarIgual(Tipo.SINIESTRO);
+        inicializarIgual(Tipo.TIERRA);
+        inicializarIgual(Tipo.VENENO);
+        inicializarIgual(Tipo.VOLADOR);
+    }
 
-        // Tipo ACERO
+    private void inicializarNormal() {
+        for (Tipo tipo1 : Tipo.values()) {
+            for (Tipo tipo2 : Tipo.values()) {
+                tabla[tipo1.ordinal()][tipo2.ordinal()] = 1.0;
+            }
+        }
+    }
 
-        // Efectivo contra:
-        if (pokemon1.getTipo1() == Tipo.ACERO && pokemon2.getTipo1() == Tipo.HADA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ACERO && pokemon2.getTipo1() == Tipo.HIELO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ACERO && pokemon2.getTipo1() == Tipo.ROCA) {
-            return VENTAJA;
+    /**
+     * Inicializa los valores de la tabla de tipos para los casos en que un tipo es fuerte contra otro tipo.
+     * Se asigna el valor 1.5 en la posición correspondiente de la tabla de tipos.
+     * Este método se utilizará en el método inicializarTabla().
+     *
+     * @param tipo1
+     * @param tipo2
+     */
 
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.ACERO && pokemon2.getTipo1() == Tipo.LUCHA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ACERO && pokemon2.getTipo1() == Tipo.FUEGO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ACERO && pokemon2.getTipo1() == Tipo.TIERRA) {
-            return DESVENTAJA;
+    private void inicializarFuerte(Tipo tipo1, Tipo tipo2) {
+        tabla[tipo1.ordinal()][tipo2.ordinal()] = 1.5;
+        esSuperior = true;
+        esDebil = false;
+        esIgual = false;
+    }
 
-            // Tipo AGUA
+    /**
+     * Inicializa los valores de la tabla de tipos para los casos en que un tipo es débil contra otro tipo.
+     * Se asigna el valor 0.5 en la posición correspondiente de la tabla de tipos.
+     * Este método se utilizará en el método inicializarTabla().
+     *
+     * @param tipo1
+     * @param tipo2
+     */
 
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.AGUA && pokemon2.getTipo1() == Tipo.FUEGO) {
-            return VENTAJA;
+    private void inicializarDebil(Tipo tipo1, Tipo tipo2) {
+        tabla[tipo1.ordinal()][tipo2.ordinal()] = 0.5;
+        esDebil = true;
+        esIgual = false;
+        esSuperior = false;
+    }
 
-        } else if (pokemon1.getTipo1() == Tipo.AGUA && pokemon2.getTipo1() == Tipo.TIERRA) {
-            return VENTAJA;
+    /**
+     * Inicializa los valores de la tabla de tipos para los casos en que un tipo es igual a otro tipo.
+     * Se asigna el valor 1.5 en la posición correspondiente de la tabla de tipos.
+     * Este método se utilizará en el método inicializarTabla().
+     *
+     * @param tipo
+     */
 
-        } else if (pokemon1.getTipo1() == Tipo.AGUA && pokemon2.getTipo1() == Tipo.ROCA) {
-            return VENTAJA;
+    private void inicializarIgual(Tipo tipo) {
+        tabla[tipo.ordinal()][tipo.ordinal()] = 1.5;
+        esIgual = true;
+        esDebil = false;
+        esSuperior = false;
+    }
 
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.AGUA && pokemon2.getTipo1() == Tipo.ELECTRICO) {
-            return DESVENTAJA;
+    /**
+     * Devuelve el multiplicador de daño que se debe aplicar a un ataque dependiendo del Tipo que se le pase por parámetro.
+     * Si devuelve 1.5: El ataque es muy efectivo.
+     * Si devuelve 1.0: El ataque es normal.
+     * Si devuelve 0.5: El ataque no es muy efectivo.
+     *
+     * @param tipoAtacante
+     * @param tipoDefensor
+     * @return
+     */
 
-        } else if (pokemon1.getTipo1() == Tipo.AGUA && pokemon2.getTipo1() == Tipo.PLANTA) {
-            return DESVENTAJA;
+    public double obtenerMultiplicador(Tipo tipoAtacante, Tipo tipoDefensor) {
+        return tabla[tipoAtacante.ordinal()][tipoDefensor.ordinal()];
+    }
 
-            // Tipo BICHO
+    /**
+     * Esté método devuelve un String con la efectividad en la comparación de tipos.
+     * Necesita que antes se utilice el método obtenerMultiplicador para que funcione.
+     * @param multiplicador
+     * @return
+     */
 
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.BICHO && pokemon2.getTipo1() == Tipo.PLANTA) {
-            return VENTAJA;
-
-        } else if (pokemon1.getTipo1() == Tipo.BICHO && pokemon2.getTipo1() == Tipo.SINIESTRO) {
-            return VENTAJA;
-
-        } else if (pokemon1.getTipo1() == Tipo.BICHO && pokemon2.getTipo1() == Tipo.PSIQUICO) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.BICHO && pokemon2.getTipo1() == Tipo.FUEGO) {
-            return DESVENTAJA;
-
-        } else if (pokemon1.getTipo1() == Tipo.BICHO && pokemon2.getTipo1() == Tipo.VOLADOR) {
-            return DESVENTAJA;
-
-        } else if (pokemon1.getTipo1() == Tipo.BICHO && pokemon2.getTipo1() == Tipo.ROCA) {
-            return DESVENTAJA;
-
-            // Tipo DRAGON
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.DRAGON && pokemon2.getTipo1() == Tipo.DRAGON) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.DRAGON && pokemon2.getTipo1() == Tipo.HADA) {
-            return DESVENTAJA;
-
-        } else if (pokemon1.getTipo1() == Tipo.DRAGON && pokemon2.getTipo1() == Tipo.HIELO) {
-            return DESVENTAJA;
-
-            // Tipo ELÉCTRICO
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.ELECTRICO && pokemon2.getTipo1() == Tipo.VOLADOR) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ELECTRICO && pokemon2.getTipo1() == Tipo.AGUA) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.ELECTRICO && pokemon2.getTipo1() == Tipo.TIERRA) {
-            return DESVENTAJA;
-
-            // Tipo FANTASMA
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.FANTASMA && pokemon2.getTipo1() == Tipo.FANTASMA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.FANTASMA && pokemon2.getTipo1() == Tipo.PSIQUICO) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.FANTASMA && pokemon2.getTipo1() == Tipo.FANTASMA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.FANTASMA && pokemon2.getTipo1() == Tipo.SINIESTRO) {
-            return DESVENTAJA;
-
-            // Tipo FUEGO
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.FUEGO && pokemon2.getTipo1() == Tipo.BICHO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.FUEGO && pokemon2.getTipo1() == Tipo.PLANTA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.FUEGO && pokemon2.getTipo1() == Tipo.ACERO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.FUEGO && pokemon2.getTipo1() == Tipo.HIELO) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.FUEGO && pokemon2.getTipo1() == Tipo.TIERRA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.FUEGO && pokemon2.getTipo1() == Tipo.ROCA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.FUEGO && pokemon2.getTipo1() == Tipo.AGUA) {
-            return DESVENTAJA;
-
-            // Tipo HADA
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.HADA && pokemon2.getTipo1() == Tipo.LUCHA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HADA && pokemon2.getTipo1() == Tipo.SINIESTRO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HADA && pokemon2.getTipo1() == Tipo.DRAGON) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.HADA && pokemon2.getTipo1() == Tipo.VENENO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HADA && pokemon2.getTipo1() == Tipo.ACERO) {
-            return DESVENTAJA;
-
-            // Tipo HIELO
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.HIELO && pokemon2.getTipo1() == Tipo.DRAGON) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HIELO && pokemon2.getTipo1() == Tipo.VOLADOR) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HIELO && pokemon2.getTipo1() == Tipo.PLANTA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HIELO && pokemon2.getTipo1() == Tipo.TIERRA) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.HIELO && pokemon2.getTipo1() == Tipo.LUCHA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HIELO && pokemon2.getTipo1() == Tipo.FUEGO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HIELO && pokemon2.getTipo1() == Tipo.ROCA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.HIELO && pokemon2.getTipo1() == Tipo.ACERO) {
-            return DESVENTAJA;
-
-            // Tipo LUCHA
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.LUCHA && pokemon2.getTipo1() == Tipo.SINIESTRO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.LUCHA && pokemon2.getTipo1() == Tipo.HIELO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.LUCHA && pokemon2.getTipo1() == Tipo.NORMAL) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.LUCHA && pokemon2.getTipo1() == Tipo.ROCA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.LUCHA && pokemon2.getTipo1() == Tipo.AGUA) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.LUCHA && pokemon2.getTipo1() == Tipo.HADA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.LUCHA && pokemon2.getTipo1() == Tipo.VOLADOR) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.LUCHA && pokemon2.getTipo1() == Tipo.PSIQUICO) {
-            return DESVENTAJA;
-
-            // Tipo NORMAL
-
-            // Efectivo contra:
-            // Nadie
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.NORMAL && pokemon2.getTipo1() == Tipo.LUCHA) {
-            return DESVENTAJA;
-
-            // Tipo PLANTA
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.PLANTA && pokemon2.getTipo1() == Tipo.TIERRA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PLANTA && pokemon2.getTipo1() == Tipo.ROCA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PLANTA && pokemon2.getTipo1() == Tipo.AGUA) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.PLANTA && pokemon2.getTipo1() == Tipo.BICHO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PLANTA && pokemon2.getTipo1() == Tipo.FUEGO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PLANTA && pokemon2.getTipo1() == Tipo.VOLADOR) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PLANTA && pokemon2.getTipo1() == Tipo.HIELO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PLANTA && pokemon2.getTipo1() == Tipo.VENENO) {
-            return DESVENTAJA;
-
-            // Tipo PSÍQUICO
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.PSIQUICO && pokemon2.getTipo1() == Tipo.LUCHA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PSIQUICO && pokemon2.getTipo1() == Tipo.VENENO) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.PSIQUICO && pokemon2.getTipo1() == Tipo.BICHO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PSIQUICO && pokemon2.getTipo1() == Tipo.SINIESTRO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.PSIQUICO && pokemon2.getTipo1() == Tipo.FANTASMA) {
-            return DESVENTAJA;
-
-            // Tipo ROCA
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.BICHO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.FUEGO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.VOLADOR) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.HIELO) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.LUCHA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.PLANTA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.TIERRA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.ACERO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.ROCA && pokemon2.getTipo1() == Tipo.AGUA) {
-            return DESVENTAJA;
-
-            // Tipo SINIESTRO
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.SINIESTRO && pokemon2.getTipo1() == Tipo.FANTASMA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.SINIESTRO && pokemon2.getTipo1() == Tipo.PSIQUICO) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.SINIESTRO && pokemon2.getTipo1() == Tipo.BICHO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.SINIESTRO && pokemon2.getTipo1() == Tipo.HADA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.SINIESTRO && pokemon2.getTipo1() == Tipo.LUCHA) {
-            return DESVENTAJA;
-
-            // Tipo TIERRA
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.TIERRA && pokemon2.getTipo1() == Tipo.ELECTRICO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.TIERRA && pokemon2.getTipo1() == Tipo.FUEGO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.TIERRA && pokemon2.getTipo1() == Tipo.VENENO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.TIERRA && pokemon2.getTipo1() == Tipo.ROCA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.TIERRA && pokemon2.getTipo1() == Tipo.ACERO) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.TIERRA && pokemon2.getTipo1() == Tipo.PLANTA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.TIERRA && pokemon2.getTipo1() == Tipo.HIELO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.TIERRA && pokemon2.getTipo1() == Tipo.AGUA) {
-            return DESVENTAJA;
-
-            // Tipo VENENO
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.VENENO && pokemon2.getTipo1() == Tipo.PLANTA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.VENENO && pokemon2.getTipo1() == Tipo.HADA) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.VENENO && pokemon2.getTipo1() == Tipo.TIERRA) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.VENENO && pokemon2.getTipo1() == Tipo.PSIQUICO) {
-            return DESVENTAJA;
-
-            // Tipo VOLADOR
-
-            // Efectivo contra:
-        } else if (pokemon1.getTipo1() == Tipo.VOLADOR && pokemon2.getTipo1() == Tipo.BICHO) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.VOLADOR && pokemon2.getTipo1() == Tipo.LUCHA) {
-            return VENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.VOLADOR && pokemon2.getTipo1() == Tipo.PLANTA) {
-            return VENTAJA;
-
-            // Débil contra:
-        } else if (pokemon1.getTipo1() == Tipo.VOLADOR && pokemon2.getTipo1() == Tipo.ELECTRICO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.VOLADOR && pokemon2.getTipo1() == Tipo.HIELO) {
-            return DESVENTAJA;
-        } else if (pokemon1.getTipo1() == Tipo.VOLADOR && pokemon2.getTipo1() == Tipo.ROCA) {
-            return DESVENTAJA;
+    public static String efectividadMovimiento(double multiplicador) {
+        if (multiplicador > 1.0) {
+            return "muy efectivo";
+        } else if (multiplicador < 1.0) {
+            return "débil";
         } else {
-            return NEUTRO;
-
+            return "normal";
         }
     }
 
-    public static void aplicarTipos(Pokemon pokemon1, Pokemon pokemon2) {
-
-        Pokemon pokemonJugador = new Pokemon(pokemon1);
-        Pokemon pokemonRival = new Pokemon(pokemon2);
-
-        if (tablaTipos(pokemon1, pokemon2) == DESVENTAJA) {
-            System.out.println("Desventaja de tipo");
-        } else if (tablaTipos(pokemon2, pokemon1) == VENTAJA) {
-            System.out.println("Ventaja de tipo");
-        } else if (tablaTipos(pokemon1, pokemon2) == DOBLE_VENTAJA) {
-            System.out.println("Doble ventaja de tipo");
+    public static String efectividadPokemon(double multiplicador) {
+        if (multiplicador > 1.0) {
+            return "es superior";
+        } else if (multiplicador < 1.0) {
+            return "es débil";
+        } else {
+            return "no tiene ventaja";
         }
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+
+
+
+
+
+
+
+
 
     }
-    
-
 
 }
+
 
 
 

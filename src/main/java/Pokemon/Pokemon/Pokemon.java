@@ -1,6 +1,6 @@
 package Pokemon.Pokemon;
 
-import Pokemon.Combate.Movimiento;
+import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
@@ -421,14 +421,15 @@ public class Pokemon {
     public static Pokemon mostrarPokemon() {
 
         PokemonCRUD.getEquipo1(Entrenador.equipo1);
+        int contador = 0;
 
-        System.out.println("Lista de pokemons:");
         for (Pokemon pokemon : Entrenador.equipo1) {
-            System.out.println(pokemon.getId() + ". " + pokemon.getNombre());
+            contador++;
+            System.out.println(contador + ". " + pokemon.getNombre());
         }
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Selecciona un pokemon (1-6):");
+        System.out.print("Selecciona un pokemon: ");
         int opcion = scanner.nextInt();
 
         switch (opcion) {

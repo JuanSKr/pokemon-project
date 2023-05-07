@@ -1,5 +1,6 @@
 package Pokemon.Combate;
 
+import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.MySQL;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Funcionalidad.Funcion;
@@ -11,7 +12,7 @@ public class Rival {
 
     protected String nombre;
     protected String foto;
-    protected LinkedList<Pokemon> equipo;
+    protected static LinkedList<Pokemon> equipo;
 
 
     /**
@@ -42,6 +43,35 @@ public class Rival {
 
     }
 
+    public static Pokemon pokemonRival() {
+
+        int random = Funcion.random(0, 5);
+
+        Pokemon pokemon = equipo.get(random);
+        pokemon.setMovimiento1(PokemonCRUD.obtenerMovimiento());
+        pokemon.setMovimiento2(PokemonCRUD.obtenerMovimiento());
+        pokemon.setMovimiento3(PokemonCRUD.obtenerMovimiento());
+        pokemon.setMovimiento4(PokemonCRUD.obtenerMovimiento());
+
+        return pokemon;
+    }
+
+    public static Movimiento movimientoRandom(Pokemon pokemon) {
+
+        int random = Funcion.random(1, 4);
+
+        if(random == 1) {
+            return pokemon.getMovimiento1();
+        } else if(random == 2) {
+            return pokemon.getMovimiento2();
+        } else if (random == 3) {
+            return pokemon.getMovimiento3();
+        } else {
+            return pokemon.getMovimiento4();
+        }
+    }
+
+
     /**
      * Crea una LinkedList y le añade 6 pokemons aleatorios de la DB.
      * @return LinkedList con 6 pokemons
@@ -52,6 +82,7 @@ public class Rival {
 
         for (int i = 0; i < 6; i++) {
             Pokemon pokemon = PokemonCRUD.generarPokemon();
+            System.out.println(pokemon);
             equipo.add(pokemon);
         }
 
@@ -102,9 +133,6 @@ public class Rival {
 
     public static void main(String[] args) {
 
-        Rival rival = generarRival();
-
-        System.out.println(rival);
 
 
     }
