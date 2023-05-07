@@ -79,10 +79,9 @@ public class Login extends Application {
     private void iniciarSesion() {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
-        if (nombre.equals(entrenador.getNombre()) && password.equals(entrenador.getContrasena())) {
+        if (nombre.equals("user") && password.equals("1234")) {
             mensaje.setText("Inicio de sesión exitoso.");
             Entrenador.setNombre(nombre);
-            entrenador = new Entrenador(nombre, password);
             Menu menu = new Menu();
             try {
                 menu.start(new Stage());
@@ -98,7 +97,6 @@ public class Login extends Application {
     private void crearCuenta() {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();
-        entrenador = new Entrenador(nombre, password);
         mensaje.setText("Cuenta creada exitosamente.");
     }
 

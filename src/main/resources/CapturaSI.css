@@ -1,0 +1,29 @@
+REVISAR POR QUE NO FUNCIONA CON LA RUTA
+
+#root {
+    -fx-background-color: #f0f0f0;
+}
+
+#label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+}
+
+#button {
+    -fx-background-color: #333333;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#button:hover {
+    -fx-background-color: #555555;
+}
+
+#text-field {
+       -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
