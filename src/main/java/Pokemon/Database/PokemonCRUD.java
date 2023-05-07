@@ -797,7 +797,10 @@ public class PokemonCRUD {
 
     public static void main(String[] args) {
 
-        System.out.println(generarMovimiento());
+        Pokemon pokemon = generarPokemon();
+
+        createCapturado(pokemon);
+        System.out.println("Se ha insertado: " + pokemon);
 
     }
 
