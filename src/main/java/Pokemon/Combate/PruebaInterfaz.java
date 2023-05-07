@@ -17,6 +17,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 //AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
 public class PruebaInterfaz extends Application {
 
@@ -44,12 +46,12 @@ public class PruebaInterfaz extends Application {
 		root.getChildren().add(topContainer);
 
 		// CREAR UNA IMAGEN PARA EL POKÉMON RIVAL
-//		Image rivalImage = new Image("img/Gif/machop.gif");
-//		ImageView rivalImageView = new ImageView(rivalImage);
-//		rivalImageView.setFitWidth(200);
-//		rivalImageView.setPreserveRatio(true);
-//		HBox.setMargin(rivalImageView, new Insets(0, 0, 0, 50)); // Margen izquierdo de 20px
-//		topContainer.getChildren().add(rivalImageView);
+		Image rivalImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/psyduck.gif")));
+		ImageView rivalImageView = new ImageView(rivalImage);
+		rivalImageView.setFitWidth(200);
+		rivalImageView.setPreserveRatio(true);
+		HBox.setMargin(rivalImageView, new Insets(0, 0, 0, 50)); // Margen izquierdo de 20px
+		topContainer.getChildren().add(rivalImageView);
 
 		// CREAR UNA BARRA DE VIDA PARA EL POKÉMON RIVAL
 		ProgressBar rivalHealthBar = new ProgressBar();
@@ -64,12 +66,12 @@ public class PruebaInterfaz extends Application {
 		root.getChildren().add(bottomContainer);
 
 		// CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
-//		Image playerImage = new Image("img/Gif/psyduck.gif");
-//		ImageView playerImageView = new ImageView(playerImage);
-//		playerImageView.setFitWidth(300);
-//		playerImageView.setPreserveRatio(true);
-//		HBox.setMargin(playerImageView, new Insets(0, 20, 0, 0)); // Margen derecho de 20px
-//		bottomContainer.getChildren().add(playerImageView);
+		Image playerImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/pikachu.gif")));
+		ImageView playerImageView = new ImageView(playerImage);
+		playerImageView.setFitWidth(300);
+		playerImageView.setPreserveRatio(true);
+		HBox.setMargin(playerImageView, new Insets(0, 20, 0, 0)); // Margen derecho de 20px
+		bottomContainer.getChildren().add(playerImageView);
 
 		// CREAR UNA BARRA DE VIDA PARA EL POKÉMON DEL JUGADOR
 		ProgressBar playerHealthBar = new ProgressBar();
