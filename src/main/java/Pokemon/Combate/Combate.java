@@ -129,13 +129,17 @@ public class Combate {
         int random = Funcion.random(1, 4);
         setMovimiento(pokemonRival);
 
+        if(rivalDebilitado(rival, pokemonRival)) {
+
         if (random == 1) {
             Ataque ataque = (Ataque) pokemonRival.getMovimiento1();
             System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + ataque.getNombreMovimiento());
+            pokemonEntrenador.setVitalidad(setAtaque(ataque, pokemonEntrenador));
 
         } else if (random == 2) {
             Ataque ataque = (Ataque) pokemonRival.getMovimiento2();
             System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + ataque.getNombreMovimiento());
+            pokemonEntrenador.setVitalidad(setAtaque(ataque, pokemonEntrenador));
         } else if (random == 3) {
             Estado estado = (Estado) pokemonRival.getMovimiento3();
             System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + estado.getNombreMovimiento());
@@ -143,6 +147,20 @@ public class Combate {
             Mejora mejora = (Mejora) pokemonRival.getMovimiento4();
             System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + mejora.getNombreMovimiento());
         }
+
+        }
+
+    }
+
+    public static int setAtaque(Ataque ataque, Pokemon pokemonAfectado) {
+
+        int pokemonVida = pokemonAfectado.getVitalidad();
+
+        int potenciaAtaque = ataque.getPotencia();
+
+        return pokemonVida - potenciaAtaque;
+
+
 
     }
 
@@ -201,28 +219,29 @@ public class Combate {
         System.out.println("----------------------------------");
         System.out.println("Vas a enfrentarte a " + rival.getNombre());
         System.out.println("----------------------------------");
-        pokemonEntrenador = elegirPokemon();
         pokemonElegido = pokemonEntrenador.getId();
         double multiplicador = TablaTipos.tablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
         System.out.println(rival.getNombre() + " ha elegido a " + pokemonRival.getNombre() + ".");
         System.out.println("Tu " + pokemonEntrenador.getNombre() + " " + TablaTipos.efectividadPokemon(multiplicador) + " contra el " + pokemonRival.getNombre() + " enemigo.");
-        estadisticas(pokemonEntrenador, pokemonRival);
 
 
     }
 
-    public static void rivalDebilitado(Rival rival, Pokemon pokemonRival) {
+    public static boolean rivalDebilitado(Rival rival, Pokemon pokemonRival) {
 
         if(contadorRival <= 6) {
             if (pokemonRival.getVitalidad() == 0) {
                 System.out.println(pokemonRival.getNombre() + " se ha debilitado.");
+                contadorRival++;
                 pokemonRival = Rival.pokemonRival();
                 System.out.println(rival.getNombre() + " utilizará a " + pokemonRival.getNombre());
+                return false;
             }
         } else {
             System.out.println("Has ganado");
+            return true;
         }
-
+            return false;
     }
 
 
@@ -230,19 +249,21 @@ public class Combate {
 
         Rival rival = Rival.generarRival();
         Pokemon pokemonRival = Rival.pokemonRival();
-        Pokemon pokemonEntrenador = new Pokemon();
+        Pokemon pokemonEntrenador = elegirPokemon();
 
         iniciarCombate(rival, pokemonRival, pokemonEntrenador);
+        estadisticas(pokemonEntrenador, pokemonRival);
         accionEntrenador(pokemonEntrenador, pokemonRival);
         accionRival(rival, pokemonEntrenador, pokemonRival);
 
         System.out.println("*******************************");
 
+        do {
         accionEntrenador(pokemonEntrenador, pokemonRival);
-
-        pokemonRival.setVitalidad(0);
-
         accionRival(rival, pokemonEntrenador, pokemonRival);
+        estadisticas(pokemonEntrenador, pokemonRival);
+
+        } while(contadorRival <=6);
 
     }
 
