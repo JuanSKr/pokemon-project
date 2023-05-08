@@ -40,7 +40,6 @@ public class MenuExplorador extends Application {
 
 		System.out.println(pokemon);
 		// GENERAR POKEMON RANDOM
-//		pokemon = pokeRandom();
 		// CARGAR LA IMAGEN DE FONDO
 		Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Prueba1.jpeg")));
 		ImageView backgroundImageView = new ImageView(backgroundImage);
@@ -52,9 +51,9 @@ public class MenuExplorador extends Application {
 		pokemonCircle = new Circle(350, 300, 40);
 		// CARGAR LA IMAGEN POKEMON
 		String ruta = pokemon.getFoto();
-		Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(ruta)));
+		Image imagePokemon = new Image(Objects.requireNonNull(getClass().getResourceAsStream(ruta)));
 		// CREAR EL IMAGEVIEW Y AJUSTAR SU TAMAÑO Y POSICIÓN
-		ImageView imageView = new ImageView(image);
+		ImageView imageView = new ImageView(imagePokemon);
 		imageView.setFitWidth(pokemonCircle.getRadius() * 2);
 		imageView.setFitHeight(pokemonCircle.getRadius() * 2);
 		imageView.setX(pokemonCircle.getCenterX() - pokemonCircle.getRadius());
