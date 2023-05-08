@@ -31,8 +31,8 @@ public class PokemonCRUD {
 
             Connection db = MySQL.getConexion();
             String sql = "INSERT INTO capturado (id_capturado, nombre, mote, equipo, vitalidad, fertilidad, velocidad, estamina, ataque, defensa, ataque_especial," +
-                    "defensa_especial, tipo1, tipo2, movimiento1, id_entrenador, id_pokedex, nivel, xp, foto)" +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "defensa_especial, tipo1, tipo2, movimiento1, id_entrenador, id_pokedex, nivel, xp, foto, foto_espalda)" +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             int nuevaId = pokemon.getId() + Funcion.random(1, 9999);
             int equipo = Entrenador.addPokemon(pokemon);
@@ -59,6 +59,7 @@ public class PokemonCRUD {
             preparedStatement.setInt(18, 1);
             preparedStatement.setInt(19, 0);
             preparedStatement.setString(20, pokemon.getFoto());
+            preparedStatement.setString(21, pokemon.getFotoEspalda());
 
             preparedStatement.executeUpdate();
 
@@ -111,6 +112,7 @@ public class PokemonCRUD {
                 pokemon.setNivel(rs.getInt("nivel"));
                 pokemon.setXp(rs.getInt("xp"));
                 pokemon.setFoto(rs.getString("foto"));
+                pokemon.setFotoEspalda(rs.getString("foto_espalda"));
                 pokemon.setMovimiento1(selectMovimiento(rs.getInt("movimiento1")));
                 pokemon.setMovimiento2(selectMovimiento(rs.getInt("movimiento2")));
                 pokemon.setMovimiento3(selectMovimiento(rs.getInt("movimiento3")));
@@ -444,7 +446,6 @@ public class PokemonCRUD {
                 Pokemon pokemon = new Pokemon();
 
                 pokemon.setId(rs.getInt("id_pokedex"));
-                pokemon.setFoto(rs.getString("foto"));
                 pokemon.setNombre(rs.getString("nombre"));
                 pokemon.setVitalidad(rs.getInt("vitalidad"));
                 pokemon.setVelocidad(rs.getInt("velocidad"));
@@ -458,6 +459,8 @@ public class PokemonCRUD {
                 if (tipo2 != null) {
                     pokemon.setTipo2(Tipo.valueOf(tipo2.toUpperCase()));
                 }
+                pokemon.setFoto(rs.getString("foto"));
+                pokemon.setFotoEspalda(rs.getString("foto_espalda"));
 
                 return pokemon;
             }

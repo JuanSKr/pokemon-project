@@ -32,12 +32,14 @@ public class Pokemon {
     protected Movimiento movimiento3;
     protected Movimiento movimiento4;
     protected String foto;
+    protected String fotoEspalda;
 
     // Constructor con todos los parámetros
 
     public Pokemon(int id, String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, int vitalidad,
                    int ataque, int defensa, int ataqueEspecial, int defensaEspecial, int estamina, int velocidad,
-                   ListaEstados estado, int fertilidad, Objeto obj, Movimiento movimiento1, Movimiento movimiento2, Movimiento movimiento3, Movimiento movimiento4, String foto) {
+                   ListaEstados estado, int fertilidad, Objeto obj, Movimiento movimiento1, Movimiento movimiento2,
+                   Movimiento movimiento3, Movimiento movimiento4, String foto, String fotoEspalda) {
         this.id = id;
         this.nombre = nombre;
         this.mote = mote;
@@ -61,6 +63,7 @@ public class Pokemon {
         this.movimiento3 = movimiento3;
         this.movimiento4 = movimiento4;
         this.foto = foto;
+        this.fotoEspalda = fotoEspalda;
     }
 
     // Constructor por defecto
@@ -89,6 +92,7 @@ public class Pokemon {
         this.movimiento3 = null;
         this.movimiento4 = null;
         this.foto = "";
+        this.fotoEspalda = "";
     }
 
     // Constructor copia
@@ -117,6 +121,7 @@ public class Pokemon {
         this.movimiento3 = capturado.movimiento3;
         this.movimiento4 = capturado.movimiento4;
         this.foto = capturado.foto;
+        this.fotoEspalda = capturado.fotoEspalda;
     }
 
     public String getNombre() {
@@ -229,6 +234,14 @@ public class Pokemon {
 
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
+    }
+
+    public String getFotoEspalda() {
+        return fotoEspalda;
+    }
+
+    public void setFotoEspalda(String fotoEspalda) {
+        this.fotoEspalda = fotoEspalda;
     }
 
     public ListaEstados getEstado() {
