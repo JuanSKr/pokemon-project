@@ -66,7 +66,7 @@ public class PruebaInterfaz extends Application {
 		root.getChildren().add(bottomContainer);
 
 		// CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
-		Image playerImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/geodudeespalda.gif")));
+		Image playerImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/pikachu.gif")));
 		ImageView playerImageView = new ImageView(playerImage);
 		playerImageView.setFitWidth(300);
 		playerImageView.setPreserveRatio(true);

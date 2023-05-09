@@ -807,11 +807,6 @@ public class PokemonCRUD {
 
     }
 
-	public static List<Pokemon> getPokemons() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
 
 

@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import Pokemon.Pokemon.Pokemon;
 import static Pokemon.Entrenador.Entrenador.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
@@ -150,8 +149,6 @@ public class MenuExplorador extends Application {
 				// MOVER EL POKÉMON EN LA DIRECCIÓN ACTUAL
 				pokemonCircle.setCenterX(pokemonCircle.getCenterX() + pokemonSpeedX);
 				pokemonCircle.setCenterY(pokemonCircle.getCenterY() + pokemonSpeedY);
-				
-				
 
 //------------------------------------------------------------------------------------------------------------			
 				// SI CONSIGUE CAPTURA EL POKEMON NUESTRA LA SIGUIENTE ESCENA
@@ -299,10 +296,7 @@ public class MenuExplorador extends Application {
 		pokemonCircle.setCenterY(randomY);
 		pokemonSpeedX = 0.5;
 		pokemonSpeedY = 0.10;
-		
 		// GENERAR UN NUEVO POKÉMON ALEATORIO
-				pokemon = pokeRandom();
-		
 
 	}
 
@@ -344,15 +338,11 @@ public class MenuExplorador extends Application {
 	}
 
 //--------------------------------------------------------------------------------------------------------------------------
-	public static Pokemon pokeRandom() {
-	    // OBTENER LA LISTA DE POKÉMONS DE LA CLASE POKEMONCRUD
-	    List<Pokemon> pokemons = PokemonCRUD.getPokemons();
-	    // GENERAR UN NÚMERO ALEATORIO ENTRE 0 Y EL TAMAÑO DE LA LISTA DE POKÉMONS
-	    int random = (int) (Math.random() * pokemons.size());
-	    // OBTENER EL POKÉMON ALEATORIO DE LA LISTA
-	    Pokemon pokemonRandom = pokemons.get(random);
-	    return pokemonRandom;
+	private void loadImages() {
+		// INTRODICIR AQUI EL BLOQUE DE DE IMAGENES DE CIRCUNFERENCIA
 	}
+
+//--------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------
 	public static void main(String[] args) {
 		launch(args);
