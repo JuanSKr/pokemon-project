@@ -4,18 +4,16 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -32,13 +30,9 @@ public class PruebaInterfaz extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fondocombate.jpg")));
-
         ImageView backgroundImageView = new ImageView(backgroundImage);
-
         backgroundImageView.setFitWidth(1080);
-
         backgroundImageView.setFitHeight(650);
 
 
@@ -50,24 +44,20 @@ public class PruebaInterfaz extends Application {
         root.getChildren().add(backgroundImageView);
 
 
-        // CREAR UN MENÚ DESPLEGABLE PARA EL EQUIPO
-        MenuButton teamMenu = new MenuButton("EQUIPO");
-        teamMenu.getItems().addAll(new MenuItem("Pikachu"), new MenuItem("Charmander"), new MenuItem("Squirtle"));
-        root.getChildren().add(teamMenu);
-
-
-        // CREAR UN CONTENEDOR PARA LA PARTE SUPERIOR
-        HBox topContainer = new HBox();
-        topContainer.setSpacing(10);
-        topContainer.setAlignment(Pos.CENTER);
+// CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
+        Pane topContainer = new Pane(); // Cambiado de HBox a Pane
+        topContainer.setPrefWidth(SCENE_WIDTH);
+        topContainer.setPrefHeight(200);
+        topContainer.setLayoutY(SCENE_HEIGHT - 200);
         root.getChildren().add(topContainer);
 
         // CREAR UNA IMAGEN PARA EL POKÉMON RIVAL
-        Image pokemonRival = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/onix.gif")));
+        Image pokemonRival = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/gyarados.gif")));
         ImageView rivalView = new ImageView(pokemonRival);
-        rivalView.setFitWidth(200);
-        rivalView.setPreserveRatio(true);
-        HBox.setMargin(rivalView, new Insets(0, 0, 0, 50));
+        rivalView.setFitWidth(170);
+        rivalView.setFitHeight(110);
+        rivalView.setLayoutX(800);
+        rivalView.setLayoutY(170);
         topContainer.getChildren().add(rivalView);
 
         // CREAR UNA BARRA DE VIDA PARA EL POKÉMON RIVAL
@@ -79,18 +69,20 @@ public class PruebaInterfaz extends Application {
         topContainer.getChildren().add(vidaRival);
         vidaRival.setStyle("-fx-background-color: lightgray; -fx-accent: #62EA14;");
 
-        // CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
-        HBox bottomContainer = new HBox();
-        bottomContainer.setSpacing(10);
-        bottomContainer.setAlignment(Pos.CENTER);
+// CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
+        Pane bottomContainer = new Pane(); // Cambiado de HBox a Pane
+        bottomContainer.setPrefWidth(SCENE_WIDTH);
+        bottomContainer.setPrefHeight(200);
+        bottomContainer.setLayoutY(SCENE_HEIGHT - 200);
         root.getChildren().add(bottomContainer);
 
-        // CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
-        Image pokemonJugador = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/gyaradosespalda.gif")));
+// CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
+        Image pokemonJugador = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/geodudeespalda.gif")));
         ImageView jugadorView = new ImageView(pokemonJugador);
-        jugadorView.setFitWidth(150);
-        jugadorView.setPreserveRatio(true);
-        HBox.setMargin(jugadorView, new Insets(0, 20, 0, 0));
+        jugadorView.setFitWidth(190);
+        jugadorView.setFitHeight(130);
+        jugadorView.setLayoutX(100);
+        jugadorView.setLayoutY(18);
         bottomContainer.getChildren().add(jugadorView);
 
         // CREAR UNA BARRA DE VIDA PARA EL POKÉMON DEL JUGADOR
@@ -104,19 +96,24 @@ public class PruebaInterfaz extends Application {
 
 
         // CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
-        Button atacarButton = new Button("Atacar");
+        Button atacarButton = new Button("Luchar");
+        atacarButton.setId("atacar");
         atacarButton.setOnAction(event -> {
             System.out.println("Atacar");
         });
+
         Button descansarButton = new Button("Descansar");
+        descansarButton.setId("descansar");
         descansarButton.setOnAction(event -> {
             System.out.println("Descansar");
         });
-        Button mochilaButton = new Button("Mochila");
+        Button mochilaButton = new Button("Pokémon");
+        mochilaButton.setId("mochila");
         mochilaButton.setOnAction(event -> {
             System.out.println("Mochila");
         });
         Button rendirseButton = new Button("Rendirse");
+        rendirseButton.setId("rendirse");
         rendirseButton.setOnAction(event -> {
             System.out.println("Rendirse");
         });
@@ -126,17 +123,25 @@ public class PruebaInterfaz extends Application {
         movesContainer.setSpacing(10);
         bottomContainer.getChildren().add(movesContainer);
         // CREAR UN CAJÓN RECTANGULAR PARA MOSTRAR TEXTO
-        Label textLabel = new Label("HOOOOOHOHOOHOOHOH");
-        Rectangle textBackground = new Rectangle(SCENE_WIDTH - 20, 40);
-        textBackground.setOpacity(0.3);
-        StackPane textContainer = new StackPane(textBackground, textLabel);
-        root.getChildren().add(textContainer);
+        // Creamos el rectángulo de fondo blanco opaco
+        Rectangle rectangle = new Rectangle(750, 200);
+        rectangle.setFill(Color.WHITE);
+        rectangle.setOpacity(0.8);
+        rectangle.setStroke(Color.GRAY);
+        rectangle.setStrokeWidth(2);
+        rectangle.setStrokeType(StrokeType.INSIDE);
+        rectangle.setLayoutX(9.5);
+        rectangle.setLayoutY(543.5);
 
-        // MOSTRAR LA ESCENA
-        Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
+        StackPane stackPane = new StackPane();
+        Pane rectPane = new Pane(rectangle);
+        stackPane.getChildren().addAll(backgroundImageView, rectPane, root); // El orden se modificó aquí
+        root.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(stackPane, SCENE_WIDTH, SCENE_HEIGHT);
+        scene.getStylesheets().add("Combate.css");
+
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {
