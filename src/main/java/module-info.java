@@ -13,10 +13,11 @@ module Pokemon.Menus {
 
     opens Pokemon.Menus to javafx.fxml;
     exports Pokemon.Menus;
-    exports Pokemon.Combate to javafx.graphics;
     exports Pokemon.Capturar to javafx.graphics;
     exports Pokemon.Entrenador to javafx.graphics;
-    exports Pokemon.Tienda to javafx.graphics;
+    exports Pokemon.Combate to javafx.graphics;
     exports Pokemon.Pokemon;
     opens Pokemon.Pokemon to javafx.fxml;
+    exports Pokemon.Tienda;
+    opens Pokemon.Tienda to javafx.fxml;
 }

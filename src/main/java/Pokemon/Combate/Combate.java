@@ -5,6 +5,7 @@ import Pokemon.Combate.Movimientos.Estado;
 import Pokemon.Combate.Movimientos.Mejora;
 import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.PokemonCRUD;
+import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.Pokemon;
 
@@ -17,6 +18,7 @@ public class Combate {
 
     static int pokemonElegido;
     static int contadorRival = 0;
+    static int contadorEntrenador = 0;
 
     public static Pokemon elegirPokemon() {
         //El sout del equipo del Rival está aquí dentro, es equipoRival().
@@ -131,32 +133,32 @@ public class Combate {
 
         if(rivalDebilitado(rival, pokemonRival)) {
 
-        if (random == 1) {
-            Ataque ataque = (Ataque) pokemonRival.getMovimiento1();
-            System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + ataque.getNombreMovimiento());
-            pokemonEntrenador.setVitalidad(setAtaque(ataque, pokemonEntrenador));
+            if (random == 1) {
+                Ataque ataque = (Ataque) pokemonRival.getMovimiento1();
+                System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + ataque.getNombreMovimiento());
+                pokemonEntrenador.setVitalidad(setAtaque(ataque, pokemonEntrenador));
 
-        } else if (random == 2) {
-            Ataque ataque = (Ataque) pokemonRival.getMovimiento2();
-            System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + ataque.getNombreMovimiento());
-            pokemonEntrenador.setVitalidad(setAtaque(ataque, pokemonEntrenador));
-        } else if (random == 3) {
-            Estado estado = (Estado) pokemonRival.getMovimiento3();
-            System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + estado.getNombreMovimiento());
-        } else {
-            Mejora mejora = (Mejora) pokemonRival.getMovimiento4();
-            System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + mejora.getNombreMovimiento());
-        }
+            } else if (random == 2) {
+                Ataque ataque = (Ataque) pokemonRival.getMovimiento2();
+                System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + ataque.getNombreMovimiento());
+                pokemonEntrenador.setVitalidad(setAtaque(ataque, pokemonEntrenador));
+            } else if (random == 3) {
+                Estado estado = (Estado) pokemonRival.getMovimiento3();
+                System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + estado.getNombreMovimiento());
+            } else {
+                Mejora mejora = (Mejora) pokemonRival.getMovimiento4();
+                System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + mejora.getNombreMovimiento());
+            }
 
         }
 
     }
 
-    public static int setAtaque(Ataque ataque, Pokemon pokemonAfectado) {
+    public static double setAtaque(Ataque ataque, Pokemon pokemonAfectado) {
 
-        int pokemonVida = pokemonAfectado.getVitalidad();
+        double pokemonVida = pokemonAfectado.getVitalidad();
 
-        int potenciaAtaque = ataque.getPotencia();
+        double potenciaAtaque = ataque.getPotencia();
 
         return pokemonVida - potenciaAtaque;
 
@@ -241,7 +243,25 @@ public class Combate {
             System.out.println("Has ganado");
             return true;
         }
-            return false;
+        return false;
+    }
+
+    public static boolean pokemonDebilitado(Pokemon pokemonEntrenador) {
+
+        if(contadorEntrenador <= 6) {
+            if(pokemonEntrenador.getVitalidad() == 0) {
+                System.out.println(pokemonEntrenador.getNombre() + " se ha debilitado.");
+                contadorEntrenador++;
+                pokemonEntrenador = elegirPokemon();
+                System.out.println(Entrenador.getNombre() + " utilizará a " + pokemonEntrenador.getNombre());
+                return false;
+            }
+        } else {
+            System.out.println("Has perdido");
+            return true;
+        }
+        return false;
+
     }
 
 
@@ -259,11 +279,12 @@ public class Combate {
         System.out.println("*******************************");
 
         do {
-        accionEntrenador(pokemonEntrenador, pokemonRival);
-        accionRival(rival, pokemonEntrenador, pokemonRival);
-        estadisticas(pokemonEntrenador, pokemonRival);
+            accionEntrenador(pokemonEntrenador, pokemonRival);
+            accionRival(rival, pokemonEntrenador, pokemonRival);
+            estadisticas(pokemonEntrenador, pokemonRival);
 
         } while(contadorRival <=6);
+
 
     }
 
