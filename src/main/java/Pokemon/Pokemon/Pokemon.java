@@ -432,9 +432,9 @@ public class Pokemon {
 
     }
 
-    public static Pokemon mostrarPokemon() {
+    public static Pokemon mostrarPokemon(int idEntrenador) {
 
-        PokemonCRUD.getEquipo1(Entrenador.equipo1);
+        PokemonCRUD.getEquipo1(Entrenador.equipo1, idEntrenador);
         int contador = 0;
 
         for (Pokemon pokemon : Entrenador.equipo1) {

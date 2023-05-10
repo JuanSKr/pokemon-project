@@ -24,7 +24,7 @@ public class Combate {
         //El sout del equipo del Rival está aquí dentro, es equipoRival().
 
         System.out.println("¿Con qué Pokemon quieres empezar?");
-        Pokemon pokemon = Pokemon.mostrarPokemon();
+        Pokemon pokemon = Pokemon.mostrarPokemon(Entrenador.getId());
         System.out.println("----------------------------------");
         System.out.println("¡Has seleccionado a " + pokemon.getNombre() + "!");
         return pokemon;

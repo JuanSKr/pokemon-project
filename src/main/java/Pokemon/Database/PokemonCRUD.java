@@ -18,6 +18,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import static Pokemon.Entrenador.Entrenador.*;
+
 public class PokemonCRUD {
 
     public static boolean login;
@@ -136,16 +138,18 @@ public class PokemonCRUD {
     /**
      * Método para rellenar la lista de equipo1 del Entrenador con los Pokemons de la tabla capturado.
      * @param equipo1
+     * @param idEntrenador
      * @return
      */
 
-    public static List<Pokemon> getEquipo1(LinkedList<Pokemon> equipo1) {
+    public static List<Pokemon> getEquipo1(LinkedList<Pokemon> equipo1, int idEntrenador) {
 
         try {
 
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM capturado WHERE equipo = 1";
+            String sql = "SELECT * FROM capturado WHERE id_entrenador = ? AND equipo = 1";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idEntrenador);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -189,16 +193,18 @@ public class PokemonCRUD {
     /**
      * Método para rellenar la lista de equipo2 del Entrenador con los Pokemons de la tabla capturado.
      * @param equipo2
+     * @param idEntrenador
      * @return
      */
 
-    public static List<Pokemon> getEquipo2(LinkedList<Pokemon> equipo2) {
+    public static List<Pokemon> getEquipo2(LinkedList<Pokemon> equipo2, int idEntrenador) {
 
         try {
 
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM capturado WHERE equipo = 2";
+            String sql = "SELECT * FROM capturado WHERE id_entrenador = ? AND equipo = 2";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idEntrenador);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -242,16 +248,18 @@ public class PokemonCRUD {
     /**
      * Método para rellenar la lista de la caja del Entrenador con los Pokemons de la tabla capturado.
      * @param caja
+     * @param idEntrenador
      * @return
      */
 
-    public static List<Pokemon> getCaja(LinkedList<Pokemon> caja) {
+    public static List<Pokemon> getCaja(LinkedList<Pokemon> caja, int idEntrenador) {
 
         try {
 
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM capturado WHERE equipo = 1";
+            String sql = "SELECT * FROM capturado WHERE id_entrenador = ? AND equipo = 3";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idEntrenador);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -356,7 +364,7 @@ public class PokemonCRUD {
                 int dinero = rs.getInt("dinero");
 
                 // Crear un objeto Entrenador con los detalles cargados
-                entrenador = new Entrenador(nombre, dinero, new LinkedList<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+                entrenador = new Entrenador(id, nombre, dinero, new LinkedList<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
             }
 
             return entrenador;
@@ -879,55 +887,55 @@ public class PokemonCRUD {
 
 
 
-    public static String mostrarMochila(int idObjeto) {
+//    public static String mostrarMochila(int idObjeto) {
+//
+//        try {
+//
+//            Connection db = MySQL.getConexion();
+//            String sql = "SELECT nombre FROM objeto WHERE id_mochila = ?";
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//    }
 
-        try {
-
-            Connection db = MySQL.getConexion();
-            String sql = "SELECT nombre FROM objeto WHERE id_mochila = ?";
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    public static Movimiento selectMovimiento(int id) {
-
-        try {
-
-            Connection db = MySQL.getConexion();
-
-            String sql = "SELECT tipo_movimiento FROM movimiento WHERE id_movimiento = ?";
-            PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if (rs.next()) {
-                String tipoMovimiento = rs.getString("tipo_movimiento").toLowerCase();
-
-                Movimiento movimiento;
-
-                if (tipoMovimiento.equals("ataque")) {
-                    return obtenerAtaque(id);
-                } else if (tipoMovimiento.equals("estado")) {
-                    return obtenerEstado(id);
-                } else {
-                    return obtenerMejora(id);
-                }
-
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    public static Movimiento selectMovimiento(int id) {
+//
+//        try {
+//
+//            Connection db = MySQL.getConexion();
+//
+//            String sql = "SELECT tipo_movimiento FROM movimiento WHERE id_movimiento = ?";
+//            PreparedStatement preparedStatement = db.prepareStatement(sql);
+//            preparedStatement.setInt(1, id);
+//            ResultSet rs = preparedStatement.executeQuery();
+//
+//            if (rs.next()) {
+//                String tipoMovimiento = rs.getString("tipo_movimiento").toLowerCase();
+//
+//                Movimiento movimiento;
+//
+//                if (tipoMovimiento.equals("ataque")) {
+//                    return obtenerAtaque(id);
+//                } else if (tipoMovimiento.equals("estado")) {
+//                    return obtenerEstado(id);
+//                } else {
+//                    return obtenerMejora(id);
+//                }
+//
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     public static Pokemon mostrarPokemon() {
 
-        PokemonCRUD.getEquipo1(Entrenador.equipo1);
+        PokemonCRUD.getEquipo1(Entrenador.equipo1, Entrenador.getId());
         int contador = 0;
 
         for (Pokemon pokemon : Entrenador.equipo1) {
@@ -967,8 +975,9 @@ public class PokemonCRUD {
 
     public static void main(String[] args) {
 
+        Entrenador.setId(6);
 
-        System.out.println(getMochila(1));
+        verEquipos();
 
     }
 
