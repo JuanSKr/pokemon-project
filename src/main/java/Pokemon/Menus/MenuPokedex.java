@@ -1,6 +1,6 @@
 package Pokemon.Menus;
 
-import Pokemon.Database.MySQL;
+
 import Pokemon.Pokemon.Tipo;
 import javafx.application.Application;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -11,8 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -112,5 +110,4 @@ public class MenuPokedex extends Application {
             ex.printStackTrace();
         }
     }
-
 }

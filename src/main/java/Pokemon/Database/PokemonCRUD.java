@@ -770,7 +770,7 @@ public class PokemonCRUD {
 
     public static int idEntrenador() {
 
-        Entrenador.setNombre("El pepe"); //Se cambia esto
+        Entrenador.setNombre("El pepe"); //SE CAMBIA ESTO
 
         try {
 
@@ -806,6 +806,7 @@ public class PokemonCRUD {
         System.out.println("Se ha insertado: " + pokemon);
 
     }
+
 
 }
 

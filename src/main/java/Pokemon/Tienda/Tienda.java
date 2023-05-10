@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 //CLASE TIENDA
 public class Tienda {
-	private static Map<Integer, Objeto> inventario;
+	static Map<Integer, Objeto> inventario;
 
 	// CONSTRUCTOR
 	public  Tienda() {

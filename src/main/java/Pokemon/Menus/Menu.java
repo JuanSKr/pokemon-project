@@ -3,7 +3,6 @@ package Pokemon.Menus;
 import Pokemon.Database.MySQL;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
-import Pokemon.Tienda.Tienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -63,9 +62,6 @@ public class Menu extends Application {
 //			Scene ExploradorScene = Exploracion.getScene();
 //			primaryStage.setScene(ExploradorScene);
 //
-		
-		
-		
 //		});
 		
 		exploracionButton.setOnAction(e -> {
@@ -102,7 +98,7 @@ public class Menu extends Application {
 //			primaryStage.setScene(menuTiendaScene);
 			
 			//Muestrar por Consola
-			Tienda.abrirTienda();
+			//Tienda.abrirTienda();
 		});
 		
 

@@ -2,6 +2,8 @@ package Pokemon.Capturar;
 
 package Pokemon.Capturar;
 
+package Pokemon.Capturar;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -16,7 +18,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import Pokemon.Pokemon.Pokedex;
 import Pokemon.Pokemon.Pokemon;
 import static Pokemon.Entrenador.Entrenador.*;
 import java.util.HashSet;
@@ -348,16 +349,9 @@ public class MenuExplorador3 extends Application {
 //--------------------------------------------------------------------------------------------------------------------------
 	//Pokemons Ramdon
 	public static Pokemon pokeRandom() {
-		Pokemon[] pokemons = { pokemon.Raichu, Pokedex.Bulbasaur, Pokedex.Ivysaur, Pokedex.Venusaur,
-				Charmander, Pokedex.Charmeleon, Pokedex.Charizard, Pokedex.Squirtle, Pokedex.Wartortle,
-				Pokedex.Butterfree, Pokedex.Weedle, Pokedex.Kakuna, Pokedex.Beedrill, Pokedex.Pidgey, Pokedex.Pidgeotto,
-				Pokedex.Pidgeot, Pokedex.Rattata, Pokedex.Raticate, Pokedex.Spearow };
+		
 
-		int random = (int) (Math.random() * 19 + 0);
-
-		Pokemon pokemonRandom = pokemons[random];
-
-		return pokemonRandom;
+		return pokeRandom();
 	}
 //-----------------------------------------------------------------------------------------------------------------------------
 	public static void main(String[] args) {

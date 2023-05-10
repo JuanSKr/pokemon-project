@@ -203,13 +203,13 @@ public class MenuExplorador extends Application {
 						ponerMoteButton.setOnAction(event -> {
 							String apodo = textField.getText();
 							pokemon.setMote(apodo); // ASIGNAR EL MOTE AL POKEMON
-//							addPokemon(copia, equipo1, equipo2, caja);
+							PokemonCRUD.createCapturado(pokemon);
 							verEquipos();
 							primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// CIERRA LA VENTANA DE DIÁLOGO Y AÑADE AL POKEMON AL EQUIPO.
 						noMoteButton.setOnAction(event -> {
-//							addPokemon(copia, equipo1, equipo2, caja);
+							PokemonCRUD.createCapturado(pokemon);
 							verEquipos();
 							primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
@@ -297,7 +297,8 @@ public class MenuExplorador extends Application {
 		pokemonSpeedX = 0.5;
 		pokemonSpeedY = 0.10;
 		// GENERAR UN NUEVO POKÉMON ALEATORIO
-
+		 pokemon = PokemonCRUD.generarPokemon();
+		 
 	}
 
 //----------------------------------------------------------------------------------------------------------------------------
