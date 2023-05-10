@@ -5,15 +5,18 @@ import Pokemon.Combate.Movimientos.Estado;
 import Pokemon.Combate.Movimientos.Mejora;
 import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Entrenador.Entrenador;
+import Pokemon.Entrenador.Mochila;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.ListaEstados;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
+import Pokemon.Tienda.Objeto;
 
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PokemonCRUD {
 
@@ -21,7 +24,7 @@ public class PokemonCRUD {
     public static boolean registrado;
 
     /**
-     * Método que lee inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
+     * Método que inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
      * @param pokemon
      */
 
@@ -43,14 +46,14 @@ public class PokemonCRUD {
             preparedStatement.setString(2, pokemon.getNombre());
             preparedStatement.setString(3, pokemon.getMote());
             preparedStatement.setInt(4, equipo);
-            preparedStatement.setInt(5, pokemon.getVitalidad());
+            preparedStatement.setDouble(5, pokemon.getVitalidad());
             preparedStatement.setInt(6, 5);
-            preparedStatement.setInt(7, pokemon.getVelocidad());
-            preparedStatement.setInt(8, pokemon.getEstamina());
-            preparedStatement.setInt(9, pokemon.getAtaque());
-            preparedStatement.setInt(10, pokemon.getDefensa());
-            preparedStatement.setInt(11, pokemon.getAtaqueEspecial());
-            preparedStatement.setInt(12, pokemon.getDefensaEspecial());
+            preparedStatement.setDouble(7, pokemon.getVelocidad());
+            preparedStatement.setDouble(8, pokemon.getEstamina());
+            preparedStatement.setDouble(9, pokemon.getAtaque());
+            preparedStatement.setDouble(10, pokemon.getDefensa());
+            preparedStatement.setDouble(11, pokemon.getAtaqueEspecial());
+            preparedStatement.setDouble(12, pokemon.getDefensaEspecial());
             preparedStatement.setString(13, String.valueOf(pokemon.getTipo1()));
             preparedStatement.setString(14, String.valueOf(pokemon.getTipo2()));
             preparedStatement.setInt(15, idMovimiento(generarMovimiento()));
@@ -92,14 +95,15 @@ public class PokemonCRUD {
                 pokemon.setId(rs.getInt("id_capturado"));
                 pokemon.setNombre(rs.getString("nombre"));
                 pokemon.setMote(rs.getString("mote"));
-                pokemon.setVitalidad(rs.getInt("vitalidad"));
+                pokemon.setVitalidad(rs.getDouble("vitalidad"));
                 pokemon.setFertilidad(rs.getInt("fertilidad"));
-                pokemon.setVelocidad(rs.getInt("velocidad"));
-                pokemon.setEstamina(rs.getInt("estamina"));
-                pokemon.setAtaque(rs.getInt("ataque"));
-                pokemon.setDefensa(rs.getInt("defensa"));
-                pokemon.setAtaqueEspecial(rs.getInt("ataque_especial"));
-                pokemon.setDefensaEspecial(rs.getInt("defensa_especial"));
+                pokemon.setVelocidad(rs.getDouble("velocidad"));
+                pokemon.setEstamina(rs.getDouble("estamina"));
+                pokemon.setAtaque(rs.getDouble("ataque"));
+                pokemon.setDefensa(rs.getDouble("defensa"));
+                pokemon.setAtaqueEspecial(rs.getDouble("ataque_especial"));
+                pokemon.setDefensaEspecial(rs.getDouble
+                        ("defensa_especial"));
                 pokemon.setTipo1(Tipo.valueOf(rs.getString("tipo1").toUpperCase()));
                 String tipo2 = rs.getString("tipo2");
                 if (tipo2 != null) { // Controlar si tipo2 es nulo o no.
@@ -149,14 +153,14 @@ public class PokemonCRUD {
                 pokemon.setId(rs.getInt("id_capturado"));
                 pokemon.setNombre(rs.getString("nombre"));
                 pokemon.setMote(rs.getString("mote"));
-                pokemon.setVitalidad(rs.getInt("vitalidad"));
+                pokemon.setVitalidad(rs.getDouble("vitalidad"));
                 pokemon.setFertilidad(rs.getInt("fertilidad"));
-                pokemon.setVelocidad(rs.getInt("velocidad"));
-                pokemon.setEstamina(rs.getInt("estamina"));
-                pokemon.setAtaque(rs.getInt("ataque"));
-                pokemon.setDefensa(rs.getInt("defensa"));
-                pokemon.setAtaqueEspecial(rs.getInt("ataque_especial"));
-                pokemon.setDefensaEspecial(rs.getInt("defensa_especial"));
+                pokemon.setVelocidad(rs.getDouble("velocidad"));
+                pokemon.setEstamina(rs.getDouble("estamina"));
+                pokemon.setAtaque(rs.getDouble("ataque"));
+                pokemon.setDefensa(rs.getDouble("defensa"));
+                pokemon.setAtaqueEspecial(rs.getDouble("ataque_especial"));
+                pokemon.setDefensaEspecial(rs.getDouble("defensa_especial"));
                 pokemon.setTipo1(Tipo.valueOf(rs.getString("tipo1").toUpperCase()));
                 String tipo2 = rs.getString("tipo2");
                 if (tipo2 != null) { // Controlar si tipo2 es nulo o no.
@@ -169,6 +173,7 @@ public class PokemonCRUD {
                 pokemon.setNivel(rs.getInt("nivel"));
                 pokemon.setXp(rs.getInt("xp"));
                 pokemon.setFoto(rs.getString("foto"));
+                pokemon.setFotoEspalda(rs.getString("foto_espalda"));
 
                 equipo1.add(pokemon);
             }
@@ -201,14 +206,14 @@ public class PokemonCRUD {
                 pokemon.setId(rs.getInt("id_capturado"));
                 pokemon.setNombre(rs.getString("nombre"));
                 pokemon.setMote(rs.getString("mote"));
-                pokemon.setVitalidad(rs.getInt("vitalidad"));
+                pokemon.setVitalidad(rs.getDouble("vitalidad"));
                 pokemon.setFertilidad(rs.getInt("fertilidad"));
-                pokemon.setVelocidad(rs.getInt("velocidad"));
-                pokemon.setEstamina(rs.getInt("estamina"));
-                pokemon.setAtaque(rs.getInt("ataque"));
-                pokemon.setDefensa(rs.getInt("defensa"));
-                pokemon.setAtaqueEspecial(rs.getInt("ataque_especial"));
-                pokemon.setDefensaEspecial(rs.getInt("defensa_especial"));
+                pokemon.setVelocidad(rs.getDouble("velocidad"));
+                pokemon.setEstamina(rs.getDouble("estamina"));
+                pokemon.setAtaque(rs.getDouble("ataque"));
+                pokemon.setDefensa(rs.getDouble("defensa"));
+                pokemon.setAtaqueEspecial(rs.getDouble("ataque_especial"));
+                pokemon.setDefensaEspecial(rs.getDouble("defensa_especial"));
                 pokemon.setTipo1(Tipo.valueOf(rs.getString("tipo1").toUpperCase()));
                 String tipo2 = rs.getString("tipo2");
                 if (tipo2 != null) { // Controlar si tipo2 es nulo o no.
@@ -221,6 +226,7 @@ public class PokemonCRUD {
                 pokemon.setNivel(rs.getInt("nivel"));
                 pokemon.setXp(rs.getInt("xp"));
                 pokemon.setFoto(rs.getString("foto"));
+                pokemon.setFotoEspalda(rs.getString("foto_espalda"));
 
                 equipo2.add(pokemon);
             }
@@ -253,14 +259,14 @@ public class PokemonCRUD {
                 pokemon.setId(rs.getInt("id_capturado"));
                 pokemon.setNombre(rs.getString("nombre"));
                 pokemon.setMote(rs.getString("mote"));
-                pokemon.setVitalidad(rs.getInt("vitalidad"));
+                pokemon.setVitalidad(rs.getDouble("vitalidad"));
                 pokemon.setFertilidad(rs.getInt("fertilidad"));
-                pokemon.setVelocidad(rs.getInt("velocidad"));
-                pokemon.setEstamina(rs.getInt("estamina"));
-                pokemon.setAtaque(rs.getInt("ataque"));
-                pokemon.setDefensa(rs.getInt("defensa"));
-                pokemon.setAtaqueEspecial(rs.getInt("ataque_especial"));
-                pokemon.setDefensaEspecial(rs.getInt("defensa_especial"));
+                pokemon.setVelocidad(rs.getDouble("velocidad"));
+                pokemon.setEstamina(rs.getDouble("estamina"));
+                pokemon.setAtaque(rs.getDouble("ataque"));
+                pokemon.setDefensa(rs.getDouble("defensa"));
+                pokemon.setAtaqueEspecial(rs.getDouble("ataque_especial"));
+                pokemon.setDefensaEspecial(rs.getDouble("defensa_especial"));
                 pokemon.setTipo1(Tipo.valueOf(rs.getString("tipo1").toUpperCase()));
                 String tipo2 = rs.getString("tipo2");
                 if (tipo2 != null) { // Controlar si tipo2 es nulo o no.
@@ -273,6 +279,7 @@ public class PokemonCRUD {
                 pokemon.setNivel(rs.getInt("nivel"));
                 pokemon.setXp(rs.getInt("xp"));
                 pokemon.setFoto(rs.getString("foto"));
+                pokemon.setFotoEspalda(rs.getString("foto_espalda"));
 
                 caja.add(pokemon);
             }
@@ -349,7 +356,7 @@ public class PokemonCRUD {
                 int dinero = rs.getInt("dinero");
 
                 // Crear un objeto Entrenador con los detalles cargados
-                entrenador = new Entrenador(nombre, dinero, new HashMap<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+                entrenador = new Entrenador(nombre, dinero, new LinkedList<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
             }
 
             return entrenador;
@@ -447,13 +454,13 @@ public class PokemonCRUD {
 
                 pokemon.setId(rs.getInt("id_pokedex"));
                 pokemon.setNombre(rs.getString("nombre"));
-                pokemon.setVitalidad(rs.getInt("vitalidad"));
-                pokemon.setVelocidad(rs.getInt("velocidad"));
-                pokemon.setEstamina(rs.getInt("estamina"));
-                pokemon.setAtaque(rs.getInt("ataque"));
-                pokemon.setDefensa(rs.getInt("defensa"));
-                pokemon.setAtaqueEspecial(rs.getInt("ataque_especial"));
-                pokemon.setDefensaEspecial(rs.getInt("defensa_especial"));
+                pokemon.setVitalidad(rs.getDouble("vitalidad"));
+                pokemon.setVelocidad(rs.getDouble("velocidad"));
+                pokemon.setEstamina(rs.getDouble("estamina"));
+                pokemon.setAtaque(rs.getDouble("ataque"));
+                pokemon.setDefensa(rs.getDouble("defensa"));
+                pokemon.setAtaqueEspecial(rs.getDouble("ataque_especial"));
+                pokemon.setDefensaEspecial(rs.getDouble("defensa_especial"));
                 pokemon.setTipo1(Tipo.valueOf(rs.getString("tipo1").toUpperCase()));
                 String tipo2 = rs.getString("tipo2");
                 if (tipo2 != null) {
@@ -770,7 +777,7 @@ public class PokemonCRUD {
 
     public static int idEntrenador() {
 
-        Entrenador.setNombre("El pepe"); //Se cambia esto
+        Entrenador.setNombre("Juan"); //Se cambia esto
 
         try {
 
@@ -797,13 +804,171 @@ public class PokemonCRUD {
 
     }
 
+    public static Objeto getObjeto (int idObjeto) {
+
+        Objeto objeto = new Objeto();
+
+        try {
+            Connection db = MySQL.getConexion();
+
+            String sql = "SELECT * FROM objeto WHERE id_objeto = ?";
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idObjeto);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if(rs.next()) {
+                objeto.setId(rs.getInt("id_objeto"));
+                objeto.setNombre(rs.getString("nombre"));
+                objeto.setPrecio(rs.getInt("precio"));
+                objeto.setDescripcion(rs.getString("descripcion"));
+                objeto.setAtaque(rs.getDouble("ataque"));
+                objeto.setDefensa(rs.getDouble("defensa"));
+                objeto.setDefensaEspecial(rs.getDouble("defensa_especial"));
+                objeto.setVelocidad(rs.getDouble("velocidad"));
+                objeto.setEstamina(rs.getDouble("estamina"));
+                return objeto;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * Método que devuelve la mochila pero muestra las IDs.
+     * Se utiliza como método complementario para mostrarMochila().
+     * @param idEntrenador
+     * @return mochila (en IDs)
+     */
+
+    public static Mochila getMochila(int idEntrenador) {
+
+        Mochila mochila = new Mochila();
+
+        try {
+
+            Connection db = MySQL.getConexion();
+            String sql = "SELECT * FROM mochila WHERE id_entrenador = ?";
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idEntrenador);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+
+                mochila.setIdMochila(rs.getInt("id_mochila"));
+                mochila.setIdObjeto(rs.getInt("id_objeto"));
+                mochila.setIdObjeto2(rs.getInt("id_objeto2"));
+                mochila.setIdObjeto3(rs.getInt("id_objeto3"));
+                mochila.setIdObjeto4(rs.getInt("id_objeto4"));
+                mochila.setIdObjeto5(rs.getInt("id_objeto5"));
+                mochila.setIdObjeto6(rs.getInt("id_objeto6"));
+                mochila.setIdEntrenador(rs.getInt("id_entrenador"));
+
+                return mochila;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+
+
+    public static String mostrarMochila(int idObjeto) {
+
+        try {
+
+            Connection db = MySQL.getConexion();
+            String sql = "SELECT nombre FROM objeto WHERE id_mochila = ?";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public static Movimiento selectMovimiento(int id) {
+
+        try {
+
+            Connection db = MySQL.getConexion();
+
+            String sql = "SELECT tipo_movimiento FROM movimiento WHERE id_movimiento = ?";
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                String tipoMovimiento = rs.getString("tipo_movimiento").toLowerCase();
+
+                Movimiento movimiento;
+
+                if (tipoMovimiento.equals("ataque")) {
+                    return obtenerAtaque(id);
+                } else if (tipoMovimiento.equals("estado")) {
+                    return obtenerEstado(id);
+                } else {
+                    return obtenerMejora(id);
+                }
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Pokemon mostrarPokemon() {
+
+        PokemonCRUD.getEquipo1(Entrenador.equipo1);
+        int contador = 0;
+
+        for (Pokemon pokemon : Entrenador.equipo1) {
+            contador++;
+            System.out.println(contador + ". " + pokemon.getNombre());
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Selecciona un pokemon: ");
+        int opcion = scanner.nextInt();
+
+        if (Entrenador.equipo1.size() >= opcion) {
+            switch (opcion) {
+                case 1:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(0).getId());
+                case 2:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(1).getId());
+                case 3:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(2).getId());
+                case 4:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(3).getId());
+                case 5:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(4).getId());
+                case 6:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(5).getId());
+                default:
+                    System.out.println("Opción no válida.");
+                    return null;
+            }
+        } else {
+            System.out.println("Opción no válida.");
+            return null;
+        }
+    }
+
+
 
     public static void main(String[] args) {
 
-        Pokemon pokemon = generarPokemon();
 
-        createCapturado(pokemon);
-        System.out.println("Se ha insertado: " + pokemon);
+        System.out.println(getMochila(1));
 
     }
 

@@ -1,10 +1,9 @@
 package Pokemon.Entrenador;
 
 import Pokemon.Database.PokemonCRUD;
-import Pokemon.Pokemon.Objeto;
+import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -18,7 +17,7 @@ public class Entrenador {
 
     protected static String nombre;
     private static int dinero;
-    private static Map<Integer, Objeto> mochila;
+    public static LinkedList<Objeto> mochila = new LinkedList<>();
     private static Map<Objeto, Integer> contador; // nuevo HashMap
     public static LinkedList<Pokemon> equipo1 = new LinkedList<>();
     public static LinkedList<Pokemon> equipo2 = new LinkedList<>();
@@ -30,10 +29,9 @@ public class Entrenador {
 
     // Constructor con todos los parametros
 
-    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
+    public Entrenador(String nombre, int dinero, LinkedList<Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
         this.nombre = nombre;
         this.dinero = dinero;
-        this.mochila = new HashMap<>(); //Pasar a linkedList
         this.contador = new HashMap<>(); //Ver si se quita o se deja.
         this.pass = contrasena;
 
@@ -53,7 +51,7 @@ public class Entrenador {
     public static void comprarObjeto(Objeto objeto) {
         if (dinero >= objeto.getPrecio()) {
             dinero -= objeto.getPrecio();
-            mochila.put(objeto.getId(), objeto);
+            mochila.add(objeto.getId(), objeto);
             System.out.println("¡Objeto  " + objeto.getNombre() + " comprado y añadido a la mochila!");
             // Incrementar el contador del objeto comprado
             if (contador.containsKey(objeto)) {
@@ -72,9 +70,6 @@ public class Entrenador {
         return dinero;
     }
 
-    public static Map<Integer, Objeto> getMochila() {
-        return mochila;
-    }
 
     public static Map<Objeto, Integer> getContador() {
         return contador;
@@ -92,43 +87,15 @@ public class Entrenador {
         Entrenador.dinero = dinero;
     }
 
-    public static void setMochila(Map<Integer, Objeto> mochila) {
-        Entrenador.mochila = mochila;
-    }
 
     public static void setContador(Map<Objeto, Integer> contador) {
         Entrenador.contador = contador;
     }
 
-    public static LinkedList<Pokemon> getEquipo1() {
-        return equipo1;
-    }
-
-    public static void setEquipo1(LinkedList<Pokemon> equipo1) {
-        Entrenador.equipo1 = equipo1;
-    }
-
-    public static LinkedList<Pokemon> getEquipo2() {
-        return equipo2;
-    }
-
-    public static void setEquipo2(LinkedList<Pokemon> equipo2) {
-        Entrenador.equipo2 = equipo2;
-    }
-
-    public static LinkedList<Pokemon> getCaja() {
-        return caja;
-    }
-
-    public static void setCaja(LinkedList<Pokemon> caja) {
-        Entrenador.caja = caja;
-    }
 
     public static void setContrasena(String contrasena) {
 
 
-
-        // TODO Auto-generated method stub
 
     }
 
@@ -248,12 +215,7 @@ public class Entrenador {
 
     public static void main(String[] args) {
 
-        PokemonCRUD.getEquipo1(equipo1);
-        PokemonCRUD.getEquipo2(equipo2);
-        PokemonCRUD.getCaja(caja);
-
-
-        verEquipos();
+        PokemonCRUD.mostrarPokemon();
 
 
     }

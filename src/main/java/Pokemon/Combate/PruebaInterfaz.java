@@ -12,12 +12,16 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.util.Objects;
+
+import static Pokemon.Entrenador.Entrenador.addPokemon;
+import static Pokemon.Entrenador.Entrenador.verEquipos;
 
 //AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
 public class PruebaInterfaz extends Application {
@@ -27,17 +31,27 @@ public class PruebaInterfaz extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/pruebafondo.png")));
+		ImageView backgroundImageView = new ImageView(backgroundImage);
+		backgroundImageView.setFitWidth(SCENE_WIDTH);
+		backgroundImageView.setFitHeight(SCENE_HEIGHT);
+		StackPane backgroundPane = new StackPane(backgroundImageView);
+		backgroundPane.setPrefSize(SCENE_WIDTH, SCENE_HEIGHT);
+
+
 		// CREAR UN CONTENEDOR PRINCIPAL
 		VBox root = new VBox();
-		//AJUSTANDO ESTOS PARAMETROS SE UBICAN EL CONJUNTO DE ELEMENTOS
 		root.setSpacing(30);
 		root.setPadding(new Insets(10));
 		root.setAlignment(Pos.TOP_LEFT);
+		root.getChildren().add(backgroundPane);
+
 
 		// CREAR UN MENÚ DESPLEGABLE PARA EL EQUIPO
 		MenuButton teamMenu = new MenuButton("EQUIPO");
 		teamMenu.getItems().addAll(new MenuItem("Pikachu"), new MenuItem("Charmander"), new MenuItem("Squirtle"));
 		root.getChildren().add(teamMenu);
+
 
 		// CREAR UN CONTENEDOR PARA LA PARTE SUPERIOR
 		HBox topContainer = new HBox();
@@ -46,18 +60,21 @@ public class PruebaInterfaz extends Application {
 		root.getChildren().add(topContainer);
 
 		// CREAR UNA IMAGEN PARA EL POKÉMON RIVAL
-		Image rivalImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/psyduck.gif")));
-		ImageView rivalImageView = new ImageView(rivalImage);
-		rivalImageView.setFitWidth(200);
-		rivalImageView.setPreserveRatio(true);
-		HBox.setMargin(rivalImageView, new Insets(0, 0, 0, 50)); // Margen izquierdo de 20px
-		topContainer.getChildren().add(rivalImageView);
+		Image pokemonRival = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/onix.gif")));
+		ImageView rivalView = new ImageView(pokemonRival);
+		rivalView.setFitWidth(200);
+		rivalView.setPreserveRatio(true);
+		HBox.setMargin(rivalView, new Insets(0, 0, 0, 50));
+		topContainer.getChildren().add(rivalView);
 
 		// CREAR UNA BARRA DE VIDA PARA EL POKÉMON RIVAL
-		ProgressBar rivalHealthBar = new ProgressBar();
-		rivalHealthBar.setPrefWidth(250);
-		HBox.setMargin(rivalHealthBar, new Insets(0, 0, 0, 50)); // Margen izquierdo de 20px
-		topContainer.getChildren().add(rivalHealthBar);
+		ProgressBar vidaRival = new ProgressBar();
+		double test = 70;
+		vidaRival.setProgress(test / 100);
+		vidaRival.setPrefWidth(150);
+		HBox.setMargin(vidaRival, new Insets(0, 0, 0, 50));
+		topContainer.getChildren().add(vidaRival);
+		vidaRival.setStyle("-fx-background-color: lightgray; -fx-accent: #62EA14;");
 
 		// CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
 		HBox bottomContainer = new HBox();
@@ -66,26 +83,42 @@ public class PruebaInterfaz extends Application {
 		root.getChildren().add(bottomContainer);
 
 		// CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
-		Image playerImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/pikachu.gif")));
-		ImageView playerImageView = new ImageView(playerImage);
-		playerImageView.setFitWidth(300);
-		playerImageView.setPreserveRatio(true);
-		HBox.setMargin(playerImageView, new Insets(0, 20, 0, 0)); // Margen derecho de 20px
-		bottomContainer.getChildren().add(playerImageView);
+		Image pokemonJugador = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/gyaradosespalda.gif")));
+		ImageView jugadorView = new ImageView(pokemonJugador);
+		jugadorView.setFitWidth(150);
+		jugadorView.setPreserveRatio(true);
+		HBox.setMargin(jugadorView, new Insets(0, 20, 0, 0));
+		bottomContainer.getChildren().add(jugadorView);
 
 		// CREAR UNA BARRA DE VIDA PARA EL POKÉMON DEL JUGADOR
-		ProgressBar playerHealthBar = new ProgressBar();
-		playerHealthBar.setPrefWidth(300);
-		HBox.setMargin(playerHealthBar, new Insets(0, 20, 0, 0)); // Margen derecho de 20px
-		bottomContainer.getChildren().add(playerHealthBar);
+		ProgressBar vidaJugador = new ProgressBar();
+		double test2 = 70;
+		vidaJugador.setProgress(test2 / 100);
+		vidaJugador.setPrefWidth(150);
+		HBox.setMargin(vidaJugador, new Insets(0, 0, 0, 50)); // Margen izquierdo de 20px
+		bottomContainer.getChildren().add(vidaJugador);
+		vidaJugador.setStyle("-fx-background-color: lightgray; -fx-accent: #62EA14;");
+
 
 		// CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
-		Button move1Button = new Button("Movimiento 1");
-		Button move2Button = new Button("Movimiento 2");
-		Button move3Button = new Button("Movimiento 3");
-		Button move4Button = new Button("Movimiento 4");
+		Button atacarButton = new Button("Atacar");
+		atacarButton.setOnAction(event -> {
+			System.out.println("Atacar");
+		});
+		Button descansarButton = new Button("Descansar");
+		descansarButton.setOnAction(event -> {
+			System.out.println("Descansar");
+		});
+		Button mochilaButton = new Button("Mochila");
+		mochilaButton.setOnAction(event -> {
+			System.out.println("Mochila");
+		});
+		Button rendirseButton = new Button("Rendirse");
+		rendirseButton.setOnAction(event -> {
+			System.out.println("Rendirse");
+		});
 		VBox movesContainer = new VBox();
-		movesContainer.getChildren().addAll(move1Button, move2Button, move3Button, move4Button);
+		movesContainer.getChildren().addAll(atacarButton, descansarButton, mochilaButton, rendirseButton);
 		movesContainer.setAlignment(Pos.BASELINE_RIGHT);
 		movesContainer.setSpacing(10);
 		bottomContainer.getChildren().add(movesContainer);
@@ -100,6 +133,7 @@ public class PruebaInterfaz extends Application {
 		Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+
 	}
 
 	public static void main(String[] args) {
