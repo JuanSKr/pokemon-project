@@ -997,6 +997,9 @@ public class PokemonCRUD {
 
     public static void main(String[] args) {
 
+        Pokemon p = generarPokemon();
+
+        createCapturado(p);
 
     }
 

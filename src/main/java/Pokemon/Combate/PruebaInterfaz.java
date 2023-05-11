@@ -1,5 +1,7 @@
 package Pokemon.Combate;
 
+import Pokemon.Database.PokemonCRUD;
+import Pokemon.Pokemon.Pokemon;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,6 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 
+import java.io.InputStream;
 import java.util.Objects;
 
 import static Pokemon.Entrenador.Entrenador.addPokemon;
@@ -21,8 +24,12 @@ import static Pokemon.Entrenador.Entrenador.verEquipos;
 //AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
 public class PruebaInterfaz extends Application {
 
+
     private static final int SCENE_WIDTH = 1080;
     private static final int SCENE_HEIGHT = 650;
+    Pokemon pRival = PokemonCRUD.generarPokemon();
+
+    Pokemon pEntrenador = Combate.elegirPokemon();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -58,7 +65,9 @@ public class PruebaInterfaz extends Application {
         topContainer.getChildren().add(statsRivalView);
 
         // CREAR UNA IMAGEN PARA EL POKÉMON RIVAL
-        Image pokemonRival = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/gyarados.gif")));
+        String foto = pRival.getFoto();
+        System.out.println(foto); //TEST
+        Image pokemonRival = new Image(Objects.requireNonNull(getClass().getResourceAsStream(foto)));
         ImageView rivalView = new ImageView(pokemonRival);
         rivalView.setFitWidth(170);
         rivalView.setFitHeight(110);
@@ -85,7 +94,9 @@ public class PruebaInterfaz extends Application {
         root.getChildren().add(bottomContainer);
 
 // CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
-        Image pokemonJugador = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/dragoniteespalda.gif")));
+        String rutaEntrenador = pEntrenador.getFotoEspalda();
+        System.out.println(rutaEntrenador);
+        Image pokemonJugador = new Image(Objects.requireNonNull(getClass().getResourceAsStream(rutaEntrenador)));
         ImageView jugadorView = new ImageView(pokemonJugador);
         jugadorView.setFitWidth(190);
         jugadorView.setFitHeight(130);
@@ -112,6 +123,13 @@ public class PruebaInterfaz extends Application {
         vidaJugador.setLayoutY(-35);
         bottomContainer.getChildren().add(vidaJugador);
         vidaJugador.setStyle("-fx-background-color: lightgray; -fx-accent: #ff6600;");
+
+        // Nombre pokemon entrenador
+
+        String nombreEntrenador = pEntrenador.getNombre();
+        Label entrenadorTxt = new Label(nombreEntrenador);
+        entrenadorTxt.setId("entrenadorLabel");
+        GridPane.setConstraints(entrenadorTxt, 0, 0);
 
 
         // CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
@@ -152,12 +170,20 @@ public class PruebaInterfaz extends Application {
         rectangle.setLayoutX(9.5);
         rectangle.setLayoutY(543.5);
 
+        // Nombre pokemon rival
+
+        String nombre = pRival.getNombre();
+        Label rivalTxt = new Label(nombre);
+        rivalTxt.setId("rivalLabel");
+        GridPane.setConstraints(rivalTxt, 0, 0);
+
         StackPane stackPane = new StackPane();
         Pane rectPane = new Pane(rectangle);
-        stackPane.getChildren().addAll(backgroundImageView, rectPane, root);
+        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(stackPane, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add("Combate.css");
+
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -166,6 +192,7 @@ public class PruebaInterfaz extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
 
 

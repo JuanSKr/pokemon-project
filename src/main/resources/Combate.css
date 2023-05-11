@@ -37,6 +37,32 @@
     -fx-min-height: 42px;
 }
 
+#rivalLabel {
+-fx-background-color: transparent;
+-fx-translate-x: 552px;
+-fx-translate-y: -165px;
+-fx-min-width: 370px;
+-fx-min-height: 50px;
+-fx-font-size: 20px;
+-fx-text-fill: #993399;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#entrenadorLabel {
+-fx-background-color: transparent;
+-fx-translate-x: -279px;
+-fx-translate-y: -41px;
+-fx-min-width: 370px;
+-fx-min-height: 50px;
+-fx-font-size: 20px;
+-fx-text-fill: #ff6600;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+
+
 
 /*
 Hover: Estilo de cuando tienes el ratón encima del botón:
