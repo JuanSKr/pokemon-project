@@ -27,6 +27,7 @@ public class PokemonCRUD {
 
     /**
      * Método que inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
+     *
      * @param pokemon
      */
 
@@ -79,6 +80,7 @@ public class PokemonCRUD {
     /**
      * Método para obtener toda la información de un Pokemon en la base de datos.
      * Hay que pasarle la ID del Pokemon por parámetro para indicarle que Pokemon quieres.
+     *
      * @param id
      * @return Pokemon
      * @usage getPokemon(55);
@@ -137,6 +139,7 @@ public class PokemonCRUD {
 
     /**
      * Método para rellenar la lista de equipo1 del Entrenador con los Pokemons de la tabla capturado.
+     *
      * @param equipo1
      * @param idEntrenador
      * @return
@@ -192,6 +195,7 @@ public class PokemonCRUD {
 
     /**
      * Método para rellenar la lista de equipo2 del Entrenador con los Pokemons de la tabla capturado.
+     *
      * @param equipo2
      * @param idEntrenador
      * @return
@@ -247,6 +251,7 @@ public class PokemonCRUD {
 
     /**
      * Método para rellenar la lista de la caja del Entrenador con los Pokemons de la tabla capturado.
+     *
      * @param caja
      * @param idEntrenador
      * @return
@@ -304,6 +309,7 @@ public class PokemonCRUD {
      * Método que comprueba el nombre y la contraseña que se han ingresado en los parametros.
      * Si el login = true se ejecuta el método cargarEntrenador para cargar toda su información.
      * Si el login = false no entrará en el programa.
+     *
      * @param usuarioIngresado
      * @param passIngresada
      */
@@ -706,6 +712,7 @@ public class PokemonCRUD {
 
     /**
      * Actúa como si fuese un valueOf para convertir un objeto de tipo "int" a un objeto en tipo "Movimiento".
+     *
      * @param id
      * @return
      */
@@ -812,7 +819,7 @@ public class PokemonCRUD {
 
     }
 
-    public static Objeto getObjeto (int idObjeto) {
+    public static Objeto getObjeto(int idObjeto) {
 
         Objeto objeto = new Objeto();
 
@@ -824,7 +831,7 @@ public class PokemonCRUD {
             preparedStatement.setInt(1, idObjeto);
             ResultSet rs = preparedStatement.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 objeto.setId(rs.getInt("id_objeto"));
                 objeto.setNombre(rs.getString("nombre"));
                 objeto.setPrecio(rs.getInt("precio"));
@@ -847,6 +854,7 @@ public class PokemonCRUD {
     /**
      * Método que devuelve la mochila pero muestra las IDs.
      * Se utiliza como método complementario para mostrarMochila().
+     *
      * @param idEntrenador
      * @return mochila (en IDs)
      */
@@ -884,7 +892,6 @@ public class PokemonCRUD {
         return null;
 
     }
-
 
 
 //    public static String mostrarMochila(int idObjeto) {
@@ -971,13 +978,28 @@ public class PokemonCRUD {
         }
     }
 
+    public static void cambioEquipo(int equipo, Pokemon pokemon) {
+        try {
+
+            Connection db = MySQL.getConexion();
+            int id = pokemon.getId();
+            String sql = "UPDATE capturado SET equipo = ? WHERE id_capturado = ?";
+            PreparedStatement ps = db.prepareStatement(sql);
+            ps.setInt(1, equipo);
+            ps.setInt(2, id);
+            int updateCampo = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public static void main(String[] args) {
 
-        Entrenador.setId(6);
+        Pokemon p = generarPokemon();
 
-        verEquipos();
+        createCapturado(p);
 
     }
 

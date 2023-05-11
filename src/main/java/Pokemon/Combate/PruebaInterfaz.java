@@ -1,5 +1,7 @@
 package Pokemon.Combate;
 
+import Pokemon.Database.PokemonCRUD;
+import Pokemon.Pokemon.Pokemon;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -7,15 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 
+import java.io.InputStream;
 import java.util.Objects;
 
 import static Pokemon.Entrenador.Entrenador.addPokemon;
@@ -24,8 +24,12 @@ import static Pokemon.Entrenador.Entrenador.verEquipos;
 //AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
 public class PruebaInterfaz extends Application {
 
+
     private static final int SCENE_WIDTH = 1080;
     private static final int SCENE_HEIGHT = 650;
+    Pokemon pRival = PokemonCRUD.generarPokemon();
+
+    Pokemon pEntrenador = Combate.elegirPokemon();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -51,8 +55,19 @@ public class PruebaInterfaz extends Application {
         topContainer.setLayoutY(SCENE_HEIGHT - 200);
         root.getChildren().add(topContainer);
 
+        // Imagen para las stats del Rival
+        Image statsRival = new Image(getClass().getResourceAsStream("/img/statsrival.png"));
+        ImageView statsRivalView = new ImageView(statsRival);
+        statsRivalView.setFitWidth(250);
+        statsRivalView.setFitHeight(100);
+        statsRivalView.setLayoutX(828);
+        statsRivalView.setLayoutY(7);
+        topContainer.getChildren().add(statsRivalView);
+
         // CREAR UNA IMAGEN PARA EL POKÉMON RIVAL
-        Image pokemonRival = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/gyarados.gif")));
+        String foto = pRival.getFoto();
+        System.out.println(foto); //TEST
+        Image pokemonRival = new Image(Objects.requireNonNull(getClass().getResourceAsStream(foto)));
         ImageView rivalView = new ImageView(pokemonRival);
         rivalView.setFitWidth(170);
         rivalView.setFitHeight(110);
@@ -65,9 +80,11 @@ public class PruebaInterfaz extends Application {
         double test = 70;
         vidaRival.setProgress(test / 100);
         vidaRival.setPrefWidth(150);
-        HBox.setMargin(vidaRival, new Insets(0, 0, 0, 50));
+        VBox.setMargin(vidaRival, new Insets(0, 0, 0, 50));
+        vidaRival.setLayoutX(892);
+        vidaRival.setLayoutY(68);
         topContainer.getChildren().add(vidaRival);
-        vidaRival.setStyle("-fx-background-color: lightgray; -fx-accent: #62EA14;");
+        vidaRival.setStyle("-fx-background-color: lightgray; -fx-accent: #993399;");
 
 // CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
         Pane bottomContainer = new Pane(); // Cambiado de HBox a Pane
@@ -77,7 +94,9 @@ public class PruebaInterfaz extends Application {
         root.getChildren().add(bottomContainer);
 
 // CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
-        Image pokemonJugador = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Gif/geodudeespalda.gif")));
+        String rutaEntrenador = pEntrenador.getFotoEspalda();
+        System.out.println(rutaEntrenador);
+        Image pokemonJugador = new Image(Objects.requireNonNull(getClass().getResourceAsStream(rutaEntrenador)));
         ImageView jugadorView = new ImageView(pokemonJugador);
         jugadorView.setFitWidth(190);
         jugadorView.setFitHeight(130);
@@ -85,14 +104,32 @@ public class PruebaInterfaz extends Application {
         jugadorView.setLayoutY(18);
         bottomContainer.getChildren().add(jugadorView);
 
+        // Imagen para las stats del entrenador del Pokemon
+        Image statsEntrenador = new Image(getClass().getResourceAsStream("/img/stats.png"));
+        ImageView statsEntrenadorView = new ImageView(statsEntrenador);
+        statsEntrenadorView.setFitWidth(250);
+        statsEntrenadorView.setFitHeight(100);
+        statsEntrenadorView.setLayoutX(-22);
+        statsEntrenadorView.setLayoutY(-100);
+        bottomContainer.getChildren().add(statsEntrenadorView);
+
         // CREAR UNA BARRA DE VIDA PARA EL POKÉMON DEL JUGADOR
         ProgressBar vidaJugador = new ProgressBar();
-        double test2 = 70;
+        double test2 = 20;
         vidaJugador.setProgress(test2 / 100);
         vidaJugador.setPrefWidth(150);
-        HBox.setMargin(vidaJugador, new Insets(0, 0, 0, 50)); // Margen izquierdo de 20px
+        VBox.setMargin(vidaJugador, new Insets(0, 0, 0, 50)); // Margen izquierdo de 20px
+        vidaJugador.setLayoutX(10);
+        vidaJugador.setLayoutY(-35);
         bottomContainer.getChildren().add(vidaJugador);
-        vidaJugador.setStyle("-fx-background-color: lightgray; -fx-accent: #62EA14;");
+        vidaJugador.setStyle("-fx-background-color: lightgray; -fx-accent: #ff6600;");
+
+        // Nombre pokemon entrenador
+
+        String nombreEntrenador = pEntrenador.getNombre();
+        Label entrenadorTxt = new Label(nombreEntrenador);
+        entrenadorTxt.setId("entrenadorLabel");
+        GridPane.setConstraints(entrenadorTxt, 0, 0);
 
 
         // CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
@@ -133,12 +170,20 @@ public class PruebaInterfaz extends Application {
         rectangle.setLayoutX(9.5);
         rectangle.setLayoutY(543.5);
 
+        // Nombre pokemon rival
+
+        String nombre = pRival.getNombre();
+        Label rivalTxt = new Label(nombre);
+        rivalTxt.setId("rivalLabel");
+        GridPane.setConstraints(rivalTxt, 0, 0);
+
         StackPane stackPane = new StackPane();
         Pane rectPane = new Pane(rectangle);
-        stackPane.getChildren().addAll(backgroundImageView, rectPane, root); // El orden se modificó aquí
+        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(stackPane, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add("Combate.css");
+
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -147,4 +192,7 @@ public class PruebaInterfaz extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
+
+

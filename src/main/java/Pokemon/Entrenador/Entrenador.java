@@ -154,6 +154,7 @@ public class Entrenador {
         equipoInicial.remove(pokemon);
         equipoFinal.add(pokemon);
 
+
     }
 
 

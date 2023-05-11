@@ -21,6 +21,8 @@ public class Combate {
     static int contadorEntrenador = 0;
 
     public static Pokemon elegirPokemon() {
+
+        Entrenador.setId(6);
         //El sout del equipo del Rival está aquí dentro, es equipoRival().
 
         System.out.println("¿Con qué Pokemon quieres empezar?");
@@ -33,6 +35,7 @@ public class Combate {
 
     /**
      * Son las acciones del entrenador (sin terminar)
+     *
      * @param pokemonEntrenador
      * @param pokemonRival
      */
@@ -40,6 +43,7 @@ public class Combate {
     public static void accionEntrenador(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
 
         Movimiento movimiento;
+        Double calculoAtaque;
 
         pokemonEntrenador = PokemonCRUD.getPokemon(pokemonElegido);
 
@@ -83,18 +87,26 @@ public class Combate {
 
                     case 1:
                         System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento1.getNombreMovimiento());
+                        calculoAtaque = pokemonRival.getVitalidad() - movimiento1.getPotencia();
+                        pokemonRival.setVitalidad(calculoAtaque);
                         break;
 
                     case 2:
                         System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento2.getNombreMovimiento());
+                        calculoAtaque = pokemonRival.getVitalidad() - movimiento1.getPotencia();
+                        pokemonRival.setVitalidad(calculoAtaque);
                         break;
 
                     case 3:
                         System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento3.getNombreMovimiento());
+                        calculoAtaque = pokemonRival.getVitalidad() - movimiento1.getPotencia();
+                        pokemonRival.setVitalidad(calculoAtaque);
                         break;
 
                     case 4:
                         System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento4.getNombreMovimiento());
+                        calculoAtaque = pokemonRival.getVitalidad() - movimiento1.getPotencia();
+                        pokemonRival.setVitalidad(calculoAtaque);
                         break;
 
                 }
@@ -114,7 +126,7 @@ public class Combate {
                 break;
 
             case 5:
-                System.out.println("descansar");
+                descansar(pokemonEntrenador);
                 break;
         }
 
@@ -122,6 +134,7 @@ public class Combate {
 
     /**
      * Son las acciones del rival (sin terminar)
+     *
      * @param rival
      * @param pokemonEntrenador
      * @param pokemonRival
@@ -131,7 +144,7 @@ public class Combate {
         int random = Funcion.random(1, 4);
         setMovimiento(pokemonRival);
 
-        if(rivalDebilitado(rival, pokemonRival)) {
+        if (rivalDebilitado(rival, pokemonRival)) {
 
             if (random == 1) {
                 Ataque ataque = (Ataque) pokemonRival.getMovimiento1();
@@ -163,11 +176,11 @@ public class Combate {
         return pokemonVida - potenciaAtaque;
 
 
-
     }
 
     /**
      * Hacer un setMovimiento para el Pokemon Rival.
+     *
      * @param pokemon
      */
 
@@ -209,6 +222,7 @@ public class Combate {
      * Selecciona un rival aleatorio al que enfrentarte y saca un pokemon random.
      * También llama al método elegirPokemon para que el entrenador elija su Pokemon.
      * Además, guarda la ID en una variable estática y después es utilazada en el método accionEntrenador().
+     *
      * @param rival
      * @param pokemonRival
      * @param pokemonEntrenador
@@ -231,7 +245,7 @@ public class Combate {
 
     public static boolean rivalDebilitado(Rival rival, Pokemon pokemonRival) {
 
-        if(contadorRival <= 6) {
+        if (contadorRival <= 6) {
             if (pokemonRival.getVitalidad() == 0) {
                 System.out.println(pokemonRival.getNombre() + " se ha debilitado.");
                 contadorRival++;
@@ -248,8 +262,8 @@ public class Combate {
 
     public static boolean pokemonDebilitado(Pokemon pokemonEntrenador) {
 
-        if(contadorEntrenador <= 6) {
-            if(pokemonEntrenador.getVitalidad() == 0) {
+        if (contadorEntrenador <= 6) {
+            if (pokemonEntrenador.getVitalidad() == 0) {
                 System.out.println(pokemonEntrenador.getNombre() + " se ha debilitado.");
                 contadorEntrenador++;
                 pokemonEntrenador = elegirPokemon();
@@ -264,6 +278,22 @@ public class Combate {
 
     }
 
+    /**
+     * Este método suma una cantidad random de estamina (entre 10 y 35) al Pokemon
+     * que se le pase por parámetro.
+     * @param pokemon
+     */
+
+    public static void descansar(Pokemon pokemon) {
+
+        int addEstamina = Funcion.random(10, 35);
+
+        double idEstamina = pokemon.getEstamina();
+
+        pokemon.setEstamina(idEstamina + addEstamina);
+
+    }
+
 
     public static void main(String[] args) {
 
@@ -275,6 +305,7 @@ public class Combate {
         estadisticas(pokemonEntrenador, pokemonRival);
         accionEntrenador(pokemonEntrenador, pokemonRival);
         accionRival(rival, pokemonEntrenador, pokemonRival);
+        estadisticas(pokemonEntrenador, pokemonRival);
 
         System.out.println("*******************************");
 
@@ -283,12 +314,10 @@ public class Combate {
             accionRival(rival, pokemonEntrenador, pokemonRival);
             estadisticas(pokemonEntrenador, pokemonRival);
 
-        } while(contadorRival <=6);
+        } while (contadorRival <= 6);
 
 
     }
-
-
 
 
 }
