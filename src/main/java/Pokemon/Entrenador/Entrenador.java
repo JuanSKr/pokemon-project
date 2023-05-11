@@ -182,46 +182,6 @@ public class Entrenador {
     }
 
 
-
-    /**
-     * @return Metodo para darle al usuario la opción de elegir su Pokémon inicial entre 3.
-     */
-
-//    public static void primerPokemon() {
-//
-//        System.out.println("-----------------------");
-//        System.out.println("   PRIMER POKEMON");
-//        System.out.println("-----------------------");
-//        System.out.println("1.Pikachu\n2.Charmander\n3.Bulbasaur");
-//        System.out.print("Elige tu primer pokemon: ");
-//        int opcion = sc.nextInt();
-//
-//        switch (opcion) {
-//
-//            case 1:
-//
-//                equipo1.add(Pokedex.Pikachu);
-//
-//                System.out.println(Pokedex.Pikachu.getNombre() + " se ha añadido a equipo1.");
-//                break;
-//
-//            case 2:
-//
-//                equipo1.add(Pokedex.Raichu);
-//                System.out.println(Pokedex.Raichu.getNombre() + " se ha añadido a equipo1.");
-//
-//                break;
-//
-//            case 3:
-//
-//                equipo1.add(Pokedex.Bulbasaur);
-//                System.out.println(Pokedex.Bulbasaur.getNombre() + " se ha añadido a equipo1.");
-//
-//                break;
-//        }
-//
-//    }
-
     public static void verEquipos() {
 
         PokemonCRUD.getEquipo1(equipo1);
@@ -258,4 +218,8 @@ public class Entrenador {
 
     }
 
+	public static void setFoto(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 }

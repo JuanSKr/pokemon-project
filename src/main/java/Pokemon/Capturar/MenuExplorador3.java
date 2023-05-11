@@ -1,8 +1,6 @@
 package Pokemon.Capturar;
 
-package Pokemon.Capturar;
 
-package Pokemon.Capturar;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;

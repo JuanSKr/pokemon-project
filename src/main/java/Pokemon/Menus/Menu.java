@@ -1,11 +1,13 @@
 package Pokemon.Menus;
 
+import Pokemon.Capturar.MenuExplorador;
 import Pokemon.Database.MySQL;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -67,29 +69,24 @@ public class Menu extends Application {
 		exploracionButton.setOnAction(e -> {
 		    // CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
 		    // POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
-		    MenuExplorador menuExplorador = new MenuExplorador();
-		    menuExplorador.start(primaryStage);
+//		    MenuExplorador menuExplorador = new MenuExplorador();
+//		    menuExplorador.start(primaryStage);
 		});
 		pokedexButton.setOnAction(e -> {
 			// AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
 			System.out.println(PokemonCRUD.generarPokemon());
+			MenuPokedex menuPokedex = new MenuPokedex();
+			menuPokedex.start(primaryStage);
 
 		});
 		entrenadorButton.setOnAction(e -> {
-			// CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
-			// POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
-			audioMediaPlayer.setAutoPlay(true);
-			Scene currentScene = primaryStage.getScene();
-			MenuEntrenador menuEntrenador = new MenuEntrenador(primaryStage, currentScene);
-			Scene menuEntrenadorScene = menuEntrenador.getScene();
-			primaryStage.setScene(menuEntrenadorScene);
+			// DETENEMOS LA REPRODUCCIÓN DEL AUDIO
+		    audioMediaPlayer.stop();
+		    audioMediaPlayer.setAutoPlay(true);
+		    MenuEntrenador menuEntrenador = new MenuEntrenador(primaryStage, primaryStage.getScene());
+		    menuEntrenador.start(primaryStage);
 		});
-
-//        mochilaButton.setOnAction(e -> {
-//            // AQUÍ PUEDES LLAMAR A LA CLASE MOCHILA
-//            System.out.println("Mocihla");
-//
-//        });
+	
 
 		tiendaButton.setOnAction(e -> {
 //			Scene currentScene = primaryStage.getScene();

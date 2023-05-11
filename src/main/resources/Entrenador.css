@@ -1,0 +1,20 @@
+.container {
+    -fx-background-color: #E8E8E8;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+.label {
+    -fx-font-size: 15pt;
+}
+.list-view {
+    -fx-pref-height: 200;
+    -fx-pref-width: 50;
+    -fx-background-color: #FFFFFF;
+}
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14pt;
+    -fx-padding: 5 10;
+    -fx-background-radius: 5;
+}
