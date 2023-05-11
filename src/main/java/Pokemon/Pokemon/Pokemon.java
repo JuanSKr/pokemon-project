@@ -37,12 +37,8 @@ public class Pokemon {
 
     // Constructor con todos los parámetros
 
-    public Pokemon(int id, String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, int vitalidad,
-                   int ataque, int defensa, int ataqueEspecial, int defensaEspecial, int estamina, int velocidad,
-
     public Pokemon(int id, String nombre, String mote, int nivel, int xp, Tipo tipo1, Tipo tipo2, char sexo, double vitalidad,
                    double ataque, double defensa, double ataqueEspecial, double defensaEspecial, double estamina, double velocidad,
-
                    ListaEstados estado, int fertilidad, Objeto obj, Movimiento movimiento1, Movimiento movimiento2,
                    Movimiento movimiento3, Movimiento movimiento4, String foto, String fotoEspalda) {
         this.id = id;
@@ -436,9 +432,9 @@ public class Pokemon {
 
     }
 
-    public static Pokemon mostrarPokemon() {
+    public static Pokemon mostrarPokemon(int idEntrenador) {
 
-        PokemonCRUD.getEquipo1(Entrenador.equipo1);
+        PokemonCRUD.getEquipo1(Entrenador.equipo1, idEntrenador);
         int contador = 0;
 
         for (Pokemon pokemon : Entrenador.equipo1) {
