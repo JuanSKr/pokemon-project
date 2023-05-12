@@ -6,7 +6,7 @@ import Pokemon.Pokemon.Tipo;
 
 public class TablaTipos {
 
-    private double[][] tabla;
+    private static double[][] tabla;
     boolean esSuperior;
     boolean esDebil;
     boolean esIgual;
@@ -147,7 +147,7 @@ public class TablaTipos {
      * @return
      */
 
-    public double obtenerMultiplicador(Tipo tipoAtacante, Tipo tipoDefensor) {
+    public static double obtenerMultiplicador(Tipo tipoAtacante, Tipo tipoDefensor) {
         return tabla[tipoAtacante.ordinal()][tipoDefensor.ordinal()];
     }
 

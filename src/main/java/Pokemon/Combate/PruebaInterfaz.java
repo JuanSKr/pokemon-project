@@ -1,5 +1,6 @@
 package Pokemon.Combate;
 
+import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Pokemon.Pokemon;
 import javafx.application.Application;
@@ -15,29 +16,64 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 
-import java.io.InputStream;
 import java.util.Objects;
-
-import static Pokemon.Entrenador.Entrenador.addPokemon;
-import static Pokemon.Entrenador.Entrenador.verEquipos;
 
 //AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
 public class PruebaInterfaz extends Application {
 
+    private static boolean movimientoUsado = false;
+
+    int contador = 0;
+
+    // Declaramos los botones que se van a utilizar en la clase
+
+    static Button descansarButton = new Button();
+    static Button atacarButton = new Button();
+    static Button mochilaButton = new Button();
+    static Button rendirseButton = new Button();
+
+    static Button movimiento1Button = new Button();
+    static Button movimiento2Button = new Button();
+    static Button movimiento3Button = new Button();
+    static Button movimiento4Button = new Button();
+
+    // Declaramos el ancho y el laro de la ventana como constante.
 
     private static final int SCENE_WIDTH = 1080;
     private static final int SCENE_HEIGHT = 650;
-    Pokemon pRival = PokemonCRUD.generarPokemon();
 
-    Pokemon pEntrenador = Combate.elegirPokemon();
+    // Declaramos tanto el pokemon del rival como el del entrenador.
+
+    static Pokemon pRival = PokemonCRUD.generarPokemon();
+
+    static Pokemon pEntrenador = Combate.elegirPokemon();
+
+    // Declaramos los objetos Label para los movimientos.
+
+    static Label movimiento1Txt = new Label();
+    static Label movimiento2Txt = new Label();
+    static Label movimiento3Txt = new Label();
+    static Label movimiento4Txt = new Label();
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        restaurarBotones();
 
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fondocombate.jpg")));
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.setFitWidth(1080);
         backgroundImageView.setFitHeight(650);
+
+        movimiento1Button.setMouseTransparent(true);
+        movimiento1Button.setId("movimiento1");
+        movimiento2Button.setMouseTransparent(true);
+        movimiento2Button.setId("movimiento2");
+        movimiento3Button.setMouseTransparent(true);
+        movimiento3Button.setId("movimiento3");
+        movimiento4Button.setMouseTransparent(true);
+        movimiento4Button.setId("movimiento4");
 
 
         // CREAR UN CONTENEDOR PRINCIPAL
@@ -67,8 +103,8 @@ public class PruebaInterfaz extends Application {
         // CREAR UNA IMAGEN PARA EL POKÉMON RIVAL
         String foto = pRival.getFoto();
         System.out.println(foto); //TEST
-        Image pokemonRival = new Image(Objects.requireNonNull(getClass().getResourceAsStream(foto)));
-        ImageView rivalView = new ImageView(pokemonRival);
+        Image pRivalImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(foto)));
+        ImageView rivalView = new ImageView(pRivalImage);
         rivalView.setFitWidth(170);
         rivalView.setFitHeight(110);
         rivalView.setLayoutX(800);
@@ -77,8 +113,8 @@ public class PruebaInterfaz extends Application {
 
         // CREAR UNA BARRA DE VIDA PARA EL POKÉMON RIVAL
         ProgressBar vidaRival = new ProgressBar();
-        double test = 70;
-        vidaRival.setProgress(test / 100);
+        double vidaR = pRival.getVitalidad();
+        vidaRival.setProgress(vidaR / 100);
         vidaRival.setPrefWidth(150);
         VBox.setMargin(vidaRival, new Insets(0, 0, 0, 50));
         vidaRival.setLayoutX(892);
@@ -96,13 +132,20 @@ public class PruebaInterfaz extends Application {
 // CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
         String rutaEntrenador = pEntrenador.getFotoEspalda();
         System.out.println(rutaEntrenador);
-        Image pokemonJugador = new Image(Objects.requireNonNull(getClass().getResourceAsStream(rutaEntrenador)));
-        ImageView jugadorView = new ImageView(pokemonJugador);
+        Image pJugadorImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(rutaEntrenador)));
+        ImageView jugadorView = new ImageView(pJugadorImage);
         jugadorView.setFitWidth(190);
         jugadorView.setFitHeight(130);
         jugadorView.setLayoutX(100);
         jugadorView.setLayoutY(18);
         bottomContainer.getChildren().add(jugadorView);
+
+        VBox movimientoButtonsContainer = new VBox();
+        movimientoButtonsContainer.getChildren().addAll(movimiento1Button, movimiento2Button, movimiento3Button, movimiento4Button);
+        movimientoButtonsContainer.setAlignment(Pos.BASELINE_RIGHT);
+        movimientoButtonsContainer.setSpacing(10);
+        bottomContainer.getChildren().add(movimientoButtonsContainer);
+
 
         // Imagen para las stats del entrenador del Pokemon
         Image statsEntrenador = new Image(getClass().getResourceAsStream("/img/stats.png"));
@@ -115,8 +158,8 @@ public class PruebaInterfaz extends Application {
 
         // CREAR UNA BARRA DE VIDA PARA EL POKÉMON DEL JUGADOR
         ProgressBar vidaJugador = new ProgressBar();
-        double test2 = 20;
-        vidaJugador.setProgress(test2 / 100);
+        double vidaJ = pRival.getVitalidad();
+        vidaJugador.setProgress(vidaJ / 100);
         vidaJugador.setPrefWidth(150);
         VBox.setMargin(vidaJugador, new Insets(0, 0, 0, 50)); // Margen izquierdo de 20px
         vidaJugador.setLayoutX(10);
@@ -133,23 +176,66 @@ public class PruebaInterfaz extends Application {
 
 
         // CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
-        Button atacarButton = new Button("Luchar");
+
+
         atacarButton.setId("atacar");
         atacarButton.setOnAction(event -> {
-            System.out.println("Atacar");
+            // Oculta el botón "atacar"
+            atacarButton.setVisible(false);
+            descansarButton.setVisible(false);
+            mochilaButton.setVisible(false);
+            rendirseButton.setVisible(false);
+
+            // Muestra los botones de movimiento
+            botonesMovimiento();
+
+            obtenerMovimientos(pEntrenador, pRival);
         });
 
-        Button descansarButton = new Button("Descansar");
+        movimiento1Button.setOnAction(event -> {
+            // Realiza la acción del movimiento 1
+            Combate.ejecMovimiento1(pEntrenador, pRival);
+            vidaRival.setProgress(pRival.getVitalidad() / 100);
+
+            // Restaura los botones originales
+            restaurarBotones();
+        });
+
+        movimiento2Button.setOnAction(event -> {
+            // Realiza la acción del movimiento 2
+            Combate.ejecMovimiento2(pEntrenador, pRival);
+
+            // Restaura los botones originales
+            restaurarBotones();
+        });
+
+        movimiento3Button.setOnAction(event -> {
+            // Realiza la acción del movimiento 3
+            Combate.ejecMovimiento3(pEntrenador, pRival);
+
+            // Restaura los botones originales
+            restaurarBotones();
+        });
+
+        movimiento4Button.setOnAction(event -> {
+            // Realiza la acción del movimiento 4
+            Combate.ejecMovimiento4(pEntrenador, pRival);
+
+            // Restaura los botones originales
+            restaurarBotones();
+        });
+
+
         descansarButton.setId("descansar");
         descansarButton.setOnAction(event -> {
             System.out.println("Descansar");
         });
-        Button mochilaButton = new Button("Pokémon");
+
         mochilaButton.setId("mochila");
         mochilaButton.setOnAction(event -> {
             System.out.println("Mochila");
         });
-        Button rendirseButton = new Button("Rendirse");
+
         rendirseButton.setId("rendirse");
         rendirseButton.setOnAction(event -> {
             System.out.println("Rendirse");
@@ -177,9 +263,10 @@ public class PruebaInterfaz extends Application {
         rivalTxt.setId("rivalLabel");
         GridPane.setConstraints(rivalTxt, 0, 0);
 
+
         StackPane stackPane = new StackPane();
         Pane rectPane = new Pane(rectangle);
-        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt);
+        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt, movimiento1Txt, movimiento2Txt, movimiento3Txt, movimiento4Txt);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(stackPane, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add("Combate.css");
@@ -189,9 +276,102 @@ public class PruebaInterfaz extends Application {
         primaryStage.show();
     }
 
+
+    public static void obtenerMovimientos(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+
+        String nombre;
+        Movimiento movimiento1 = pokemonEntrenador.getMovimiento1();
+        Movimiento movimiento2 = pokemonEntrenador.getMovimiento2();
+        Movimiento movimiento3 = pokemonEntrenador.getMovimiento3();
+        Movimiento movimiento4 = pokemonEntrenador.getMovimiento4();
+
+        if (movimiento1 != null) {
+            nombre = movimiento1.getNombreMovimiento().toUpperCase();
+            movimiento1Txt.setText(nombre);  // Establecer el texto del movimiento2Txt
+            movimiento1Txt.setId("movimiento1Label");
+            GridPane.setConstraints(movimiento1Txt, 0, 0);
+
+        } else { //El movimiento1 nunca debería estar vació, pero se pone un else por si acaso
+            movimiento1Txt.setId("movimiento1Vacio");
+            GridPane.setConstraints(movimiento1Txt, 0, 0);
+            movimiento1Txt.setText("SLOT VACIO");  // Establecer el texto del movimiento2Txt
+        }
+
+        if (movimiento2 != null) {
+            nombre = movimiento2.getNombreMovimiento().toUpperCase();
+            movimiento2Txt.setText(nombre);
+            movimiento2Txt.setId("movimiento2Label");
+            GridPane.setConstraints(movimiento2Txt, 0, 0);
+        } else {
+            movimiento2Txt.setId("movimiento2Vacio");
+            GridPane.setConstraints(movimiento2Txt, 0, 0);
+            movimiento2Txt.setText("SLOT VACIO");
+        }
+        if (movimiento3 != null) {
+            nombre = movimiento3.getNombreMovimiento().toUpperCase();
+            movimiento3Txt.setText(nombre);
+            movimiento3Txt.setId("movimiento3Label");
+            GridPane.setConstraints(movimiento3Txt, 0, 0);
+        } else {
+            movimiento3Txt.setId("movimiento3Vacio");
+            GridPane.setConstraints(movimiento3Txt, 0, 0);
+            movimiento3Txt.setText("SLOT VACIO");
+        }
+        if (movimiento4 != null) {
+            nombre = movimiento4.getNombreMovimiento().toUpperCase();
+            movimiento4Txt.setText(nombre);
+            movimiento4Txt.setId("movimiento4Label");
+            GridPane.setConstraints(movimiento4Txt, 0, 0);
+        } else {
+            movimiento4Txt.setId("movimiento4Vacio");
+            GridPane.setConstraints(movimiento4Txt, 0, 0);
+            movimiento4Txt.setText("SLOT VACIO");
+        }
+
+    }
+
+    public void botonesMovimiento() {
+        movimiento1Button.setVisible(true);
+        movimiento2Button.setVisible(true);
+        movimiento3Button.setVisible(true);
+        movimiento4Button.setVisible(true);
+        movimiento1Txt.setVisible(true);
+        movimiento2Txt.setVisible(true);
+        movimiento3Txt.setVisible(true);
+        movimiento4Txt.setVisible(true);
+        movimiento1Button.setMouseTransparent(false);
+        movimiento2Button.setMouseTransparent(false);
+        movimiento3Button.setMouseTransparent(false);
+        movimiento4Button.setMouseTransparent(false);
+        movimiento1Txt.setMouseTransparent(true);
+        movimiento2Txt.setMouseTransparent(true);
+        movimiento3Txt.setMouseTransparent(true);
+        movimiento4Txt.setMouseTransparent(true);
+    }
+
+    public void restaurarBotones() {
+        // Restaura la visibilidad de los botones originales
+        atacarButton.setVisible(true);
+        descansarButton.setVisible(true);
+        mochilaButton.setVisible(true);
+        rendirseButton.setVisible(true);
+
+        // Oculta los botones de movimiento
+        movimiento1Button.setVisible(false);
+        movimiento2Button.setVisible(false);
+        movimiento3Button.setVisible(false);
+        movimiento4Button.setVisible(false);
+        movimiento1Txt.setVisible(false);
+        movimiento2Txt.setVisible(false);
+        movimiento3Txt.setVisible(false);
+        movimiento4Txt.setVisible(false);
+
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
+
 
 }
 

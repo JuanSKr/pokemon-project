@@ -66,10 +66,7 @@ public class Combate {
                 Movimiento movimiento2 = pokemonEntrenador.getMovimiento2();
                 Movimiento movimiento3 = pokemonEntrenador.getMovimiento3();
                 Movimiento movimiento4 = pokemonEntrenador.getMovimiento4();
-                System.out.println("----------------------------------");
-                System.out.println("     Movimientos de " + pokemonEntrenador.getNombre());
-                System.out.println("----------------------------------");
-                System.out.println("1. " + movimiento1.getNombreMovimiento());
+
                 if (movimiento2 != null) {
                     System.out.println("2. " + movimiento2.getNombreMovimiento());
                 }
@@ -130,6 +127,49 @@ public class Combate {
                 break;
         }
 
+    }
+
+
+
+    public static void ejecMovimiento1(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+
+        Movimiento movimiento = pokemonEntrenador.getMovimiento1();
+
+        double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
+
+        double potenciaMultiplicada = multiplicador * movimiento.getPotencia();
+
+        System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+        double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
+        pokemonRival.setVitalidad(calculoAtaque);
+
+    }
+
+    public static void ejecMovimiento2(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+
+        Movimiento movimiento = pokemonEntrenador.getMovimiento2();
+
+        System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+        double calculoAtaque = pokemonRival.getVitalidad() - movimiento.getPotencia();
+        pokemonRival.setVitalidad(calculoAtaque);
+    }
+
+    public static void ejecMovimiento3(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+
+        Movimiento movimiento = pokemonEntrenador.getMovimiento3();
+
+        System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+        double calculoAtaque = pokemonRival.getVitalidad() - movimiento.getPotencia();
+        pokemonRival.setVitalidad(calculoAtaque);
+    }
+
+    public static void ejecMovimiento4(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+
+        Movimiento movimiento = pokemonEntrenador.getMovimiento4();
+
+        System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+        double calculoAtaque = pokemonRival.getVitalidad() - movimiento.getPotencia();
+        pokemonRival.setVitalidad(calculoAtaque);
     }
 
     /**
@@ -294,27 +334,8 @@ public class Combate {
 
     }
 
-
     public static void main(String[] args) {
-
-        Rival rival = Rival.generarRival();
-        Pokemon pokemonRival = Rival.pokemonRival();
-        Pokemon pokemonEntrenador = elegirPokemon();
-
-        iniciarCombate(rival, pokemonRival, pokemonEntrenador);
-        estadisticas(pokemonEntrenador, pokemonRival);
-        accionEntrenador(pokemonEntrenador, pokemonRival);
-        accionRival(rival, pokemonEntrenador, pokemonRival);
-        estadisticas(pokemonEntrenador, pokemonRival);
-
-        System.out.println("*******************************");
-
-        do {
-            accionEntrenador(pokemonEntrenador, pokemonRival);
-            accionRival(rival, pokemonEntrenador, pokemonRival);
-            estadisticas(pokemonEntrenador, pokemonRival);
-
-        } while (contadorRival <= 6);
+        
 
 
     }
