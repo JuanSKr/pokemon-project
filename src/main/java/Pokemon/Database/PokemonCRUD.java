@@ -633,6 +633,7 @@ public class PokemonCRUD {
                 ataque.setNombreMovimiento(rs.getString("nombre"));
                 ataque.setPotencia(rs.getInt("potencia"));
                 ataque.setTipo(Tipo.valueOf(rs.getString("tipo_ataque").toUpperCase()));
+                ataque.setTipoMovimiento(rs.getString("tipo_movimiento"));
 
                 return ataque;
             }
@@ -667,6 +668,7 @@ public class PokemonCRUD {
                 estado.setTurnos(rs.getInt("turno"));
                 estado.setTipo(Tipo.valueOf(rs.getString("tipo_ataque").toUpperCase()));
                 estado.setEstado(ListaEstados.valueOf((rs.getString("estado").toUpperCase())));
+                estado.setTipoMovimiento(rs.getString("tipo_movimiento"));
 
                 return estado;
             }
@@ -699,6 +701,7 @@ public class PokemonCRUD {
                 mejora.setNombreMovimiento(rs.getString("nombre"));
                 mejora.setTurnos(rs.getInt("turno"));
                 mejora.setTipo(Tipo.valueOf(rs.getString("tipo_ataque").toUpperCase()));
+                mejora.setTipoMovimiento(rs.getString("tipo_movimiento"));
 
                 return mejora;
             }
@@ -793,6 +796,8 @@ public class PokemonCRUD {
     public static int idEntrenador() {
 
         Entrenador.setNombre("Juan"); //Se cambia esto
+
+//   Lo bueno ->     Entrenador.getNombre();
 
         try {
 

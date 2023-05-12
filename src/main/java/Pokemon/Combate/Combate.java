@@ -7,6 +7,7 @@ import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
+import Pokemon.Pokemon.ListaEstados;
 import Pokemon.Pokemon.Pokemon;
 
 import java.util.Scanner;
@@ -131,9 +132,35 @@ public class Combate {
 
 
 
+
     public static void ejecMovimiento1(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento1();
+
+        if (movimiento.getTipoMovimiento().equals("ataque")) {
+
+            double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
+
+            double potenciaMultiplicada = multiplicador * movimiento.getPotencia();
+
+            System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+            double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
+            pokemonRival.setVitalidad(calculoAtaque);
+
+        } else if (movimiento.getTipoMovimiento().equals("estado")) {
+
+
+        } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+
+        } else {
+            System.out.println("Error.");
+        }
+
+    }
+
+    public static void ejecMovimiento2(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+
+        Movimiento movimiento = pokemonEntrenador.getMovimiento2();
 
         double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
 
@@ -142,24 +169,18 @@ public class Combate {
         System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
         double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
         pokemonRival.setVitalidad(calculoAtaque);
-
-    }
-
-    public static void ejecMovimiento2(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
-
-        Movimiento movimiento = pokemonEntrenador.getMovimiento2();
-
-        System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-        double calculoAtaque = pokemonRival.getVitalidad() - movimiento.getPotencia();
-        pokemonRival.setVitalidad(calculoAtaque);
     }
 
     public static void ejecMovimiento3(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento3();
 
+        double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
+
+        double potenciaMultiplicada = multiplicador * movimiento.getPotencia();
+
         System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-        double calculoAtaque = pokemonRival.getVitalidad() - movimiento.getPotencia();
+        double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
         pokemonRival.setVitalidad(calculoAtaque);
     }
 
@@ -167,8 +188,13 @@ public class Combate {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento4();
 
+
+        double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
+
+        double potenciaMultiplicada = multiplicador * movimiento.getPotencia();
+
         System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-        double calculoAtaque = pokemonRival.getVitalidad() - movimiento.getPotencia();
+        double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
         pokemonRival.setVitalidad(calculoAtaque);
     }
 
@@ -238,25 +264,6 @@ public class Combate {
 
     }
 
-    /**
-     * @param pokemonEntrenador Pokemon del entrenador
-     * @param pokemonRival      Pokemon del rival (bot)
-     */
-
-    public static void estadisticas(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
-
-        System.out.println("------------------------");
-        System.out.println("Stats de " + pokemonEntrenador.getNombre() + " (Tú)");
-        System.out.println("------------------------");
-        System.out.println("Vida: " + pokemonEntrenador.getVitalidad());
-        System.out.println("Estamina: " + pokemonEntrenador.getEstamina());
-        System.out.println("------------------------");
-        System.out.println("Stats de " + pokemonRival.getNombre() + " (Rival)");
-        System.out.println("------------------------");
-        System.out.println("Vida: " + pokemonRival.getVitalidad());
-        System.out.println("Estamina: " + pokemonRival.getEstamina());
-
-    }
 
     /**
      * Selecciona un rival aleatorio al que enfrentarte y saca un pokemon random.
@@ -276,7 +283,7 @@ public class Combate {
         System.out.println("Vas a enfrentarte a " + rival.getNombre());
         System.out.println("----------------------------------");
         pokemonElegido = pokemonEntrenador.getId();
-        double multiplicador = TablaTipos.tablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
+        double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
         System.out.println(rival.getNombre() + " ha elegido a " + pokemonRival.getNombre() + ".");
         System.out.println("Tu " + pokemonEntrenador.getNombre() + " " + TablaTipos.efectividadPokemon(multiplicador) + " contra el " + pokemonRival.getNombre() + " enemigo.");
 
@@ -321,6 +328,7 @@ public class Combate {
     /**
      * Este método suma una cantidad random de estamina (entre 10 y 35) al Pokemon
      * que se le pase por parámetro.
+     *
      * @param pokemon
      */
 
@@ -335,7 +343,10 @@ public class Combate {
     }
 
     public static void main(String[] args) {
-        
+
+        Movimiento movimiento = PokemonCRUD.generarMovimiento();
+
+        System.out.println(movimiento.getTipo());
 
 
     }

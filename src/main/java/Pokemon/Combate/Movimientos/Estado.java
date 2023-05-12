@@ -13,12 +13,13 @@ public class Estado extends Movimiento {
     protected ListaEstados estado;
 
     // Constructor con todos los parámetros
-    public Estado(String nombreMovimiento, int turnos, Tipo tipo, ListaEstados estado, int potencia) {
-        super(nombreMovimiento, tipo, potencia);
+    public Estado(String nombreMovimiento, int turnos, Tipo tipo, ListaEstados estado, int potencia, String tipoMovimiento) {
+        super(nombreMovimiento, tipo, potencia, tipoMovimiento);
         this.nombreMovimiento = nombreMovimiento;
         this.turnos = turnos;
         this.tipo = tipo;
         this.estado = estado;
+        this.tipoMovimiento = tipoMovimiento;
     }
 
     // Constructor por defecto
@@ -27,6 +28,7 @@ public class Estado extends Movimiento {
         this.turnos = 0;
         this.tipo = null;
         this.estado = null;
+        this.tipoMovimiento = "";
     }
 
     // Constructor copia
@@ -35,6 +37,7 @@ public class Estado extends Movimiento {
         this.turnos = e.turnos;
         this.tipo = e.tipo;
         this.estado = e.estado;
+        this.tipoMovimiento = e.tipoMovimiento;
     }
 
     // Métodos
