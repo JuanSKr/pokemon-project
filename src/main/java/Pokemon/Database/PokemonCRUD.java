@@ -702,6 +702,11 @@ public class PokemonCRUD {
                 mejora.setTurnos(rs.getInt("turno"));
                 mejora.setTipo(Tipo.valueOf(rs.getString("tipo_ataque").toUpperCase()));
                 mejora.setTipoMovimiento(rs.getString("tipo_movimiento"));
+                mejora.setAtaque(rs.getInt("ataque"));
+                mejora.setDefensa(rs.getInt("defensa"));
+                mejora.setAtaqueEspecial(rs.getInt("ataque_especial"));
+                mejora.setDefensaEspecial(rs.getInt("defensa_especial"));
+                mejora.setVitalidad(rs.getInt("vitalidad"));
 
                 return mejora;
             }

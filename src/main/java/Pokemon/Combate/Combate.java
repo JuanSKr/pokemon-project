@@ -9,8 +9,12 @@ import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.ListaEstados;
 import Pokemon.Pokemon.Pokemon;
+import javafx.scene.control.Label;
 
 import java.util.Scanner;
+
+import static Pokemon.Database.PokemonCRUD.generarAtaque;
+import static Pokemon.Database.PokemonCRUD.generarPokemon;
 
 
 public class Combate {
@@ -130,27 +134,64 @@ public class Combate {
 
     }
 
+    public static double calcularAtaque(Pokemon pokemonAtacante, Pokemon pokemonDefensor, Movimiento ataque) {
+
+        double ataqueStat = pokemonAtacante.getAtaque();
+        double defensaStat = pokemonDefensor.getDefensa();
+        double potencia = ataque.getPotencia();
+
+        double multiplicador = TablaTipos.obtenerMultiplicador(pokemonAtacante.getTipo1(), pokemonDefensor.getTipo1());
 
 
+        double calculado1 = (potencia * ataqueStat / defensaStat) / 2;
+
+        double calculoFinal = (calculado1 * multiplicador);
+
+        return calculoFinal;
+
+    }
+
+    /**
+     * Este método comprueba que el valor del movimiento no sea 0. Si es 0 no entra, si es distinto de 0 si.
+     * Se hace así porque en la tabla Movimiento el valor en lugar de nulo es 0.    
+     * @param pokemonEntrenador
+     * @param mejora
+     */
+
+    public static void setMejora(Pokemon pokemonEntrenador, Mejora mejora) {
+
+        if (mejora.getAtaque() != 0) {
+            pokemonEntrenador.setAtaque(pokemonEntrenador.getAtaque() + mejora.getAtaque());
+        } else if (mejora.getDefensa() != 0) {
+            pokemonEntrenador.setAtaque(pokemonEntrenador.getDefensa() + mejora.getDefensa());
+        } else if (mejora.getAtaqueEspecial() != 0) {
+            pokemonEntrenador.setAtaque(pokemonEntrenador.getAtaqueEspecial() + mejora.getAtaqueEspecial());
+        } else if (mejora.getDefensaEspecial() != 0) {
+            pokemonEntrenador.setAtaque(pokemonEntrenador.getDefensaEspecial() + mejora.getDefensaEspecial());
+        } else if (mejora.getVitalidad() != 0) {
+            pokemonEntrenador.setAtaque(pokemonEntrenador.getVitalidad() + mejora.getVitalidad());
+        } else {
+            System.out.println("Error.");
+        }
+
+    }
 
     public static void ejecMovimiento1(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento1();
 
         if (movimiento.getTipoMovimiento().equals("ataque")) {
+            String mensaje = pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento();
+            double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
+            pokemonRival.setVitalidad(nuevaVida);
 
-            double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
-
-            double potenciaMultiplicada = multiplicador * movimiento.getPotencia();
-
-            System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-            double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
-            pokemonRival.setVitalidad(calculoAtaque);
 
         } else if (movimiento.getTipoMovimiento().equals("estado")) {
 
+            ListaEstados.setEstado(pokemonEntrenador, pokemonRival, (Estado) movimiento);
 
         } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+
 
         } else {
             System.out.println("Error.");
@@ -162,40 +203,66 @@ public class Combate {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento2();
 
-        double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
+        if (movimiento.getTipoMovimiento().equals("ataque")) {
 
-        double potenciaMultiplicada = multiplicador * movimiento.getPotencia();
+            System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+            double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
 
-        System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-        double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
-        pokemonRival.setVitalidad(calculoAtaque);
+            pokemonRival.setVitalidad(nuevaVida);
+
+
+        } else if (movimiento.getTipoMovimiento().equals("estado")) {
+
+
+        } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+
+        } else {
+            System.out.println("Error.");
+        }
     }
 
     public static void ejecMovimiento3(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento3();
 
-        double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
+        if (movimiento.getTipoMovimiento().equals("ataque")) {
 
-        double potenciaMultiplicada = multiplicador * movimiento.getPotencia();
+            System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+            double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
 
-        System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-        double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
-        pokemonRival.setVitalidad(calculoAtaque);
+            pokemonRival.setVitalidad(nuevaVida);
+
+
+        } else if (movimiento.getTipoMovimiento().equals("estado")) {
+
+
+        } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+
+        } else {
+            System.out.println("Error.");
+        }
     }
 
     public static void ejecMovimiento4(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento4();
 
+        if (movimiento.getTipoMovimiento().equals("ataque")) {
 
-        double multiplicador = TablaTipos.obtenerMultiplicador(pokemonEntrenador.getTipo1(), pokemonRival.getTipo1());
+            System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+            double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
 
-        double potenciaMultiplicada = multiplicador * movimiento.getPotencia();
+            pokemonRival.setVitalidad(nuevaVida);
 
-        System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-        double calculoAtaque = pokemonRival.getVitalidad() - potenciaMultiplicada;
-        pokemonRival.setVitalidad(calculoAtaque);
+
+        } else if (movimiento.getTipoMovimiento().equals("estado")) {
+
+
+        } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+
+        } else {
+            System.out.println("Error.");
+        }
     }
 
     /**
@@ -344,9 +411,13 @@ public class Combate {
 
     public static void main(String[] args) {
 
-        Movimiento movimiento = PokemonCRUD.generarMovimiento();
+        Pokemon atacante = generarPokemon();
 
-        System.out.println(movimiento.getTipo());
+        Pokemon defensor = generarPokemon();
+
+        Ataque ataque = generarAtaque();
+
+        System.out.println(calcularAtaque(atacante, defensor, ataque));
 
 
     }

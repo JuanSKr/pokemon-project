@@ -168,6 +168,13 @@ public class TablaTipos {
         }
     }
 
+    /**
+     * Esté método devuelve un String con la efectividad en la comparación de tipos.
+     * Necesita que antes se utilice el método obtenerMultiplicador para que funcione.
+     * @param multiplicador
+     * @return
+     */
+
     public static String efectividadPokemon(double multiplicador) {
         if (multiplicador > 1.0) {
             return "es superior";

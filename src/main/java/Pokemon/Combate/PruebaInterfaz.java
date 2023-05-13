@@ -55,6 +55,8 @@ public class PruebaInterfaz extends Application {
     static Label movimiento3Txt = new Label();
     static Label movimiento4Txt = new Label();
 
+    static Label combateTxt = new Label();
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -195,7 +197,7 @@ public class PruebaInterfaz extends Application {
         movimiento1Button.setOnAction(event -> {
             // Realiza la acción del movimiento 1
             Combate.ejecMovimiento1(pEntrenador, pRival);
-            vidaRival.setProgress(pRival.getVitalidad() / 100);
+            modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
             restaurarBotones();
@@ -204,6 +206,7 @@ public class PruebaInterfaz extends Application {
         movimiento2Button.setOnAction(event -> {
             // Realiza la acción del movimiento 2
             Combate.ejecMovimiento2(pEntrenador, pRival);
+            modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
             restaurarBotones();
@@ -212,6 +215,7 @@ public class PruebaInterfaz extends Application {
         movimiento3Button.setOnAction(event -> {
             // Realiza la acción del movimiento 3
             Combate.ejecMovimiento3(pEntrenador, pRival);
+            modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
             restaurarBotones();
@@ -220,6 +224,7 @@ public class PruebaInterfaz extends Application {
         movimiento4Button.setOnAction(event -> {
             // Realiza la acción del movimiento 4
             Combate.ejecMovimiento4(pEntrenador, pRival);
+            modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
             restaurarBotones();
@@ -266,7 +271,7 @@ public class PruebaInterfaz extends Application {
 
         StackPane stackPane = new StackPane();
         Pane rectPane = new Pane(rectangle);
-        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt, movimiento1Txt, movimiento2Txt, movimiento3Txt, movimiento4Txt);
+        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt, movimiento1Txt, movimiento2Txt, movimiento3Txt, movimiento4Txt, combateTxt);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(stackPane, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add("Combate.css");
@@ -365,6 +370,35 @@ public class PruebaInterfaz extends Application {
         movimiento2Txt.setVisible(false);
         movimiento3Txt.setVisible(false);
         movimiento4Txt.setVisible(false);
+
+    }
+
+    /**
+     * Este método modifica la barra de vida el Pokemon que se le pase por parámetro.
+     * @param barra
+     * @param pokemon
+     */
+    public void modificarBarra(ProgressBar barra, Pokemon pokemon) {
+
+        barra.setProgress(pokemon.getVitalidad() / 100);
+
+        if (pokemon.getVitalidad() <= 60) {
+            barra.setStyle("-fx-background-color: lightgray; -fx-accent: #FFC300;");
+            if (pokemon.getVitalidad() <= 40) {
+                barra.setStyle("-fx-background-color: lightgray; -fx-accent: #FFB600;");
+                if (pokemon.getVitalidad() <= 27) {
+                    barra.setStyle("-fx-background-color: lightgray; -fx-accent: #BA0B0B;");
+                    if (pokemon.getVitalidad() <= 0) {
+                        barra.setProgress(0);
+                        barra.setStyle("-fx-background-color: lightgray; -fx-accent: #FFFFFF;");
+
+                    }
+
+                }
+            }
+
+        }
+
 
     }
 

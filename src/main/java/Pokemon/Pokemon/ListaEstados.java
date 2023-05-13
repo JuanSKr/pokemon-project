@@ -8,36 +8,28 @@ public enum ListaEstados {
 
     CONFUSO, MALDITO, ENAMORADO, DRENADO, PARALIZADO, ENVENENADO, CONGELADO, DORMIDO, QUEMADO;
 
-    public static void setEstado(Pokemon pokemonRival, Estado movimiento) {
+    public static void setEstado(Pokemon pokemonAfectado, Pokemon pokemonAtacante, Estado movimiento) {
 
 
         if (movimiento.getEstado().equals(ListaEstados.CONFUSO)) {
-            pokemonRival.setEstado(ListaEstados.CONFUSO);
-            // Efectos estado CONFUSO
+            pokemonAfectado.setEstado(ListaEstados.CONFUSO);
+            setConfuso(pokemonAfectado, movimiento);
+
         } else if (movimiento.getEstado().equals(ListaEstados.MALDITO)) {
-            pokemonRival.setEstado(ListaEstados.MALDITO);
-            // Efectos estado MALDITO
+            pokemonAfectado.setEstado(ListaEstados.MALDITO);
+            setMaldito(pokemonAfectado, movimiento);
+
         } else if (movimiento.getEstado().equals(ListaEstados.ENAMORADO)) {
-            pokemonRival.setEstado(ListaEstados.ENAMORADO);
-            // Efectos estado ENAMORADO
-        } else if (movimiento.getEstado().equals(ListaEstados.PARALIZADO)) {
-            pokemonRival.setEstado(ListaEstados.PARALIZADO);
-            // Efectos estado PARALIZADO
+            pokemonAfectado.setEstado(ListaEstados.ENAMORADO);
+            setEnamorado(pokemonAfectado, movimiento);
+
         } else if (movimiento.getEstado().equals(ListaEstados.DRENADO)) {
-            pokemonRival.setEstado(ListaEstados.DRENADO);
-            // Efectos estado DRENADO
+            pokemonAfectado.setEstado(ListaEstados.DRENADO);
+            setDrenaje(pokemonAfectado, pokemonAtacante, movimiento);
+
         } else if (movimiento.getEstado().equals(ListaEstados.ENVENENADO)) {
-            pokemonRival.setEstado(ListaEstados.ENVENENADO);
-            // Efectos estado ENVENENADO
-        } else if (movimiento.getEstado().equals(ListaEstados.CONGELADO)) {
-            pokemonRival.setEstado(ListaEstados.CONGELADO);
-            // Efectos estado CONGELADO
-        } else if (movimiento.getEstado().equals(ListaEstados.DORMIDO)) {
-            pokemonRival.setEstado(ListaEstados.DORMIDO);
-            // Efectos estado DORMIDO
-        } else if (movimiento.getEstado().equals(ListaEstados.QUEMADO)) {
-            pokemonRival.setEstado(ListaEstados.QUEMADO);
-            // Efectos estado QUEMADO
+            pokemonAfectado.setEstado(ListaEstados.ENVENENADO);
+            setEnvenenado(pokemonAfectado, movimiento);
         }
 
     }
@@ -45,79 +37,88 @@ public enum ListaEstados {
     /**
      * Este método aplica el estado CONFUSO a un Pokemon. Los turnos se deberán controlar aparte.
      *
-     * @param pokemonRival
+     * @param pokemonAfectado
      * @param movimiento
      */
 
-    public static void setConfuso(Pokemon pokemonRival, Estado movimiento) {
+    public static void setConfuso(Pokemon pokemonAfectado, Estado movimiento) {
 
         double random = Funcion.random(1, 3);
 
         if (random == 1) {
             double herida = Funcion.random(10, 20);
-            pokemonRival.setVitalidad(pokemonRival.getVitalidad() - herida);
+            pokemonAfectado.setVitalidad(pokemonAfectado.getVitalidad() - herida);
         }
     }
 
     /**
      * Este método aplica el estado MALDITO a un Pokemon. Los turnos se deberán controlar aparte.
      *
-     * @param pokemonRival
+     * @param pokemonAfectado
      * @param movimiento
      */
 
-    public static void setMaldito(Pokemon pokemonRival, Estado movimiento) {
+    public static void setMaldito(Pokemon pokemonAfectado, Estado movimiento) {
 
-        double vidaPerdida = pokemonRival.getVitalidad() / 4;
-        double cambiarVida = pokemonRival.getVitalidad() - vidaPerdida;
+        double vidaPerdida = pokemonAfectado.getVitalidad() / 4;
+        double cambiarVida = pokemonAfectado.getVitalidad() - vidaPerdida;
 
-        pokemonRival.setVitalidad(cambiarVida);
+        pokemonAfectado.setVitalidad(cambiarVida);
 
     }
 
-    public static void setEnamorado(Pokemon pokemonRival, Estado movimiento) {
+    /**
+     * Este método aplica el estado ENAMORADO a un Pokemon. Los turnos se deberán controlar aparte.
+     *
+     * @param pokemonAfectado
+     * @param movimiento
+     */
+
+    public static void setEnamorado(Pokemon pokemonAfectado, Estado movimiento) {
 
         double random = Funcion.random(1, 4);
 
         if (random == 1) {
-            System.out.println("El " + pokemonRival.getNombre() + " no ha atacado. Está enamorado.");
+            System.out.println("El " + pokemonAfectado.getNombre() + " no ha atacado. Está enamorado.");
         }
 
     }
 
-    public static void setParalizado(Pokemon pokemonRival, Estado movimiento) {
+    /**
+     * Este método aplica el estado DRENAJE a un Pokemon. Los turnos se deberán controlar aparte.
+     *
+     * @param pokemonAfectado
+     * @param pokemonAtacante
+     * @param movimiento
+     */
 
-        double random = Funcion.random(1, 4);
 
-        if (random == 1) {
-            System.out.println("El " + pokemonRival.getNombre() + " no ha atacado. Está paralizado.");
-            double nuevaVelocidad = pokemonRival.getVelocidad() / 2;
+    public static void setDrenaje(Pokemon pokemonAfectado, Pokemon pokemonAtacante, Estado movimiento) {
 
-            pokemonRival.setVelocidad(nuevaVelocidad);
-        }
+        double drenaje = (pokemonAfectado.getVitalidad() * 0.15);
 
-    }
+        pokemonAfectado.setVitalidad(pokemonAfectado.getVitalidad() - drenaje);
+        pokemonAtacante.setVitalidad(pokemonAtacante.getVitalidad() + drenaje);
 
-//    public static void setDrenado(Pokemon pokemonRival, Pokemon pokemonEntrenador, Estado movimiento) { NO VA
-//
-//        do {
-//
-//            double perdida = pokemonRival.getVitalidad() / 4;
-//            double ganancia = perdida + pokemonEntrenador.getVitalidad();
-//            pokemonRival.setVitalidad(perdida);
-//            pokemonEntrenador.setVitalidad(ganancia);
-//            movimiento.setTurnos(movimiento.getTurnos() - 1);
-//
-//        } while(movimiento.getTurnos() > 0);
-//
-//
-//    }
-
-    public static void main(String[] args) {
+        System.out.println(pokemonAtacante.getNombre() + " drenó " + drenaje + " puntos de vida de " + pokemonAfectado.getNombre());
+        System.out.println(pokemonAtacante.getNombre() + " ahora tiene " + pokemonAtacante.getVitalidad() + " puntos de vida");
+        System.out.println(pokemonAfectado.getNombre() + " ahora tiene " + pokemonAfectado.getVitalidad() + " puntos de vida");
 
     }
 
+    /**
+     * Este método aplica el estado ENVENENADO a un Pokemon. Los turnos se deberán controlar aparte.
+     *
+     * @param pokemonAfectado
+     * @param movimiento
+     */
 
+    public static void setEnvenenado(Pokemon pokemonAfectado, Estado movimiento) {
 
+        double veneno = pokemonAfectado.getVitalidad() * 0.125;
+
+        pokemonAfectado.setVitalidad(pokemonAfectado.getVitalidad() - veneno);
+
+    }
 
 }
