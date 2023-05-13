@@ -29,11 +29,11 @@ public class MenuPokedex extends Application {
 	private Scene previousScene;
 	private Stage primaryStage;
 
-
 	public MenuPokedex(Stage primaryStage, Scene previousScene) {
 		this.primaryStage = primaryStage;
 		this.previousScene = previousScene;
 	}
+
 	@Override
 	public void start(Stage primaryStage) {
 		Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/pokedex.png")));
@@ -41,16 +41,16 @@ public class MenuPokedex extends Application {
 		backgroundImageView.setFitWidth(1080);
 		backgroundImageView.setFitHeight(650);
 		// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-				Media audioMedia = new Media(getClass().getResource("/aud/MenuPokedex.wav").toExternalForm());
-				MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
-				audioMediaPlayer.setAutoPlay(true);
-				audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-		
-		// Crear el campo de texto y el botón de búsqueda
+		Media audioMedia = new Media(getClass().getResource("/aud/MenuPokedex.wav").toExternalForm());
+		MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
+		audioMediaPlayer.setAutoPlay(true);
+		audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+
+		// CREAR EL CAMPO DE TEXTO Y EL BOTÓN DE BÚSQUEDA
 		TextField searchField = new TextField();
 		Button searchButton = new Button("Buscar");
 
-		// Crear los controles para mostrar la información del Pokémon
+		// CREAR LOS CONTROLES PARA MOSTRAR LA INFORMACIÓN DEL POKÉMON
 		Label nameLabel = new Label();
 		ImageView imageView = new ImageView();
 		Label vitalityLabel = new Label();
@@ -61,23 +61,22 @@ public class MenuPokedex extends Application {
 		Label specialAttackLabel = new Label();
 		Label specialDefenseLabel = new Label();
 		Label noEncontradoLabel = new Label();
-		
+
 		// AGREGAR BOTÓN PARA REGRESAR AL MENÚ ANTERIOR
-				Button backButton = new Button(" <-- ");
-				backButton.setOnAction(e -> {
-					primaryStage.setScene(previousScene);
-					audioMediaPlayer.stop();
-				});
-				// AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
-				Button muteButton = new Button(" -ZzZ- ");
-				muteButton.setOnAction(e -> {
-					if (audioMediaPlayer.isMute()) {
-						audioMediaPlayer.setMute(false);
-					} else {
-						audioMediaPlayer.setMute(true);
-					}
-				});
-		
+		Button backButton = new Button(" <-- ");
+		backButton.setOnAction(e -> {
+			primaryStage.setScene(previousScene);
+			audioMediaPlayer.stop();
+		});
+		// AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
+		Button muteButton = new Button(" -ZzZ- ");
+		muteButton.setOnAction(e -> {
+			if (audioMediaPlayer.isMute()) {
+				audioMediaPlayer.setMute(false);
+			} else {
+				audioMediaPlayer.setMute(true);
+			}
+		});
 		// AGREGAR UN CONTROLADOR DE EVENTOS AL CAMPO DE TEXTO PARA REALIZAR LA BÚSQUEDA
 		// CUANDO SE PRESIONE LA TECLA ENTER
 		searchField.setOnKeyPressed(event -> {
@@ -93,7 +92,6 @@ public class MenuPokedex extends Application {
 
 			// RESTABLECER EL CAMPO DE TEXTO A VACÍO
 			searchField.clear();
-			
 
 			try {
 				// ESTABLECER CONEXIÓN A LA BASE DE DATOS
@@ -136,26 +134,25 @@ public class MenuPokedex extends Application {
 
 					int defensaEspecial = rs.getInt("defensa_especial");
 					specialDefenseLabel.setText("Defensa Especial: " + defensaEspecial);
-				} else { // falta poner la condicion para que si no aparece el nombre salte el mensaje
+				} else { // FALTA PONER LA CONDICION PARA QUE SI NO APARECE EL NOMBRE SALTE EL MENSAJE
 					noEncontradoLabel.setText("No se encontró el Pokémon en la base de datos");
 					System.out.println("No se encontró el Pokémon en la base de datos.");
 				}
 
-				// Cerrar la conexión a la base de datos
+				// CERRAR LA CONEXIÓN A LA BASE DE DATOS
 				db.close();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
 		});
-		
-		
-		// Crear el layout y agregar los controles a él
+
+		// CREAR EL LAYOUT Y AGREGAR LOS CONTROLES A ÉL
 		VBox searchBox = new VBox(13);
 		searchField.setPrefWidth(50);
 		searchField.setPrefHeight(50);
 		searchButton.setPrefWidth(100);
 		searchBox.getChildren().addAll(searchField, searchButton);
-		
+
 		VBox multimediaBox = new VBox(10);
 		searchBox.getChildren().addAll(backButton, muteButton);
 
@@ -165,18 +162,17 @@ public class MenuPokedex extends Application {
 
 		VBox root = new VBox(10);
 		root.getChildren().addAll(searchBox, infoBox);
-		
 
 		StackPane stackPane = new StackPane();
-		stackPane.getChildren().addAll(backgroundImageView, root );
+		stackPane.getChildren().addAll(backgroundImageView, root);
 		root.setAlignment(Pos.CENTER);
-		Scene scene = new Scene(stackPane,WINDOW_WIDTH, WINDOW_HEIGHT);
+		Scene scene = new Scene(stackPane, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-
-		// Mostrar la ventana
+		// MOSTRAR LA VENTANA
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+
 	public static void main(String[] args) {
 		launch(args);
 	}

@@ -1,6 +1,6 @@
 package Pokemon.Menus;
 
-import Pokemon.Capturar.MenuExplorador;
+
 import Pokemon.Database.MySQL;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
@@ -66,21 +66,12 @@ public class Menu extends Application {
 			primaryStage.setScene(menuCombateScene);
 
 		});
-//		exploracionButton.setOnAction(e -> {
-//			// CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
-//			// POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
-//			Scene currentScene = primaryStage.getScene();
-//			Exploracion Exploracion = new Exploracion(primaryStage, currentScene);
-//			Scene ExploradorScene = Exploracion.getScene();
-//			primaryStage.setScene(ExploradorScene);
-//
-//		});
-		
 		exploracionButton.setOnAction(e -> {
 		    // CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
 		    // POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
-//		    MenuExplorador menuExplorador = new MenuExplorador();
-//		    menuExplorador.start(primaryStage);
+			MenuExplorador menuExplorador = new MenuExplorador(primaryStage, primaryStage.getScene());
+			menuExplorador.start(primaryStage);
+			audioMediaPlayer.stop();
 		});
 		pokedexButton.setOnAction(e -> {
 			// AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
@@ -88,7 +79,6 @@ public class Menu extends Application {
 			 MenuPokedex menuPokedex = new MenuPokedex(primaryStage, primaryStage.getScene());
 			menuPokedex.start(primaryStage);
 			audioMediaPlayer.stop();
-
 		});
 		entrenadorButton.setOnAction(e -> {
 			// DETENEMOS LA REPRODUCCIÓN DEL AUDIO
@@ -96,8 +86,6 @@ public class Menu extends Application {
 		    menuEntrenador.start(primaryStage);
 		    audioMediaPlayer.stop();
 		});
-	
-
 		tiendaButton.setOnAction(e -> {
 			// DETENEMOS LA REPRODUCCIÓN DEL AUDIO
 		    MenuTienda menuTienda = new MenuTienda(primaryStage, primaryStage.getScene());
