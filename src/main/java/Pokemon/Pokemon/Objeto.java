@@ -14,7 +14,12 @@ public class Objeto {
         this.precio = precio;
         this.efecto = efecto;
     }
+	
 
+	// MÉTODO PARA OBTENER UN OBJETO DEL INVENTARIO DE LA TIENDA
+		public Objeto obtenerObjeto(Objeto id) {
+			return id;
+		}
 	// MÉTODO PARA OBTENER EL ID DEL OBJETO
 	public int getId() {
 		return id;
@@ -44,5 +49,5 @@ public class Objeto {
 	public void setNombre(String nombre2) {
 		// TODO Auto-generated method stub
 		
-	}
+	}	
 }

@@ -51,10 +51,9 @@ public class MenuEntrenador extends Application {
 		// AGREGAR BOTÓN PARA REGRESAR AL MENÚ ANTERIOR
 		Button backButton = new Button(" <-- ");
 		backButton.setOnAction(e -> {
-			primaryStage.setScene(previousScene);
-			audioMediaPlayer.play();
+		    primaryStage.setScene(previousScene);
+		    audioMediaPlayer.stop();	
 		});
-
 		// AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
 		Button muteButton = new Button(" -ZzZ- ");
 		muteButton.setOnAction(e -> {
@@ -75,13 +74,7 @@ public class MenuEntrenador extends Application {
 
 		ListView<String> equipo1ListView = new ListView<>();
 		// Añadir aqui configuraion de tamaño
-		equipo1ListView.getItems().addAll("Elemento 1", "Elemento 2", "Elemento 3");
-
-		/*
-		 * Button equipo1ToEquipo2Button = new Button("Mover Equipo1 a Equipo2");
-		 * 
-		 * Button equipo1ToCajaButton = new Button("Mover Equipo1 a Caja");
-		 */
+		equipo1ListView.getItems().addAll("Squirtle", "Wartortle", "Blastoise");
 
 		equipo1Container.getChildren().addAll(equipo1Label, equipo1ListView);
 
@@ -94,13 +87,7 @@ public class MenuEntrenador extends Application {
 		equipo2Label.setFont(new Font("Arial", 15));
 
 		ListView<String> equipo2ListView = new ListView<>();
-		equipo2ListView.getItems().addAll("Elemento 10", "Elemento 12", "Elemento 13");
-
-		/*
-		 * Button equipo2ToEquipo1Button = new Button("Mover Equipo2 a Equipo1");
-		 * 
-		 * Button equipo2ToCajaButton = new Button("Mover Equipo2 a Caja");
-		 */
+		equipo2ListView.getItems().addAll("Bulbasaur", "Ivysaur", "Venusaur");
 
 		equipo2Container.getChildren().addAll(equipo2Label, equipo2ListView);
 
@@ -113,13 +100,8 @@ public class MenuEntrenador extends Application {
 		cajaLabel.setFont(new Font("Arial", 15));
 
 		ListView<String> cajaListView = new ListView<>();
-		cajaListView.getItems().addAll("Elemento 21", "Elemento 22", "Elemento 23");
+		cajaListView.getItems().addAll("Charmander", "Charmeleon", "Charizard");
 
-		/*
-		 * Button cajaToEquipo1Button = new Button("Mover Caja a Equipo1");
-		 * 
-		 * Button cajaToEquipo2Button = new Button("Mover Caja a Equipo2");
-		 */
 
 		cajaContainer.getChildren().addAll(cajaLabel, cajaListView);
 
@@ -255,8 +237,5 @@ public class MenuEntrenador extends Application {
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
-	}
-	public static void main(String[] args) {
-		launch(args);
 	}
 }

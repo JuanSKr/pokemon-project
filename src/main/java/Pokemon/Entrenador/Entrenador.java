@@ -32,7 +32,7 @@ public class Entrenador {
 
     public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
         this.nombre = nombre;
-        this.dinero = dinero;
+        this.dinero = 500;
         this.mochila = new HashMap<>(); //Pasar a linkedList
         this.contador = new HashMap<>(); //Ver si se quita o se deja.
         this.pass = contrasena;
@@ -69,7 +69,7 @@ public class Entrenador {
 
     // MÉTODO PARA OBTENER EL DINERO DEL ENTRENADOR
     public static int getDinero() {
-        return dinero;
+        return  500;
     }
 
     public static Map<Integer, Objeto> getMochila() {
@@ -88,7 +88,7 @@ public class Entrenador {
         Entrenador.nombre = nombre;
     }
 
-    public static void setDinero(int dinero) {
+    public static void setDinero() {
         Entrenador.dinero = dinero;
     }
 

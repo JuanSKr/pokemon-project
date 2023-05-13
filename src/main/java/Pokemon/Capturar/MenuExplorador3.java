@@ -205,13 +205,13 @@ public class MenuExplorador3 extends Application {
 						ponerMoteButton.setOnAction(event -> {
 							String apodo = textField.getText();
 							copia.setMote(apodo); // ASIGNAR EL MOTE AL POKEMON
-							addPokemon(copia, equipo1, equipo2, caja);
+							//addPokemon(copia, equipo1, equipo2, caja);
 							verEquipos();
 							primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// CIERRA LA VENTANA DE DIÁLOGO Y AÑADE AL POKEMON AL EQUIPO.
 						noMoteButton.setOnAction(event -> {
-							addPokemon(copia, equipo1, equipo2, caja);
+							//addPokemon(copia, equipo1, equipo2, caja);
 							verEquipos();
 							primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});

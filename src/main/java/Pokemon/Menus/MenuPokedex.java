@@ -12,6 +12,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,17 +27,24 @@ public class MenuPokedex extends Application {
 	private static final double WINDOW_WIDTH = 1080;
 	private static final double WINDOW_HEIGHT = 650;
 	private Scene previousScene;
+	private Stage primaryStage;
 
-	public static void main(String[] args) {
-		launch(args);
+
+	public MenuPokedex(Stage primaryStage, Scene previousScene) {
+		this.primaryStage = primaryStage;
+		this.previousScene = previousScene;
 	}
-
 	@Override
 	public void start(Stage primaryStage) {
 		Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/pokedex.png")));
 		ImageView backgroundImageView = new ImageView(backgroundImage);
 		backgroundImageView.setFitWidth(1080);
 		backgroundImageView.setFitHeight(650);
+		// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
+				Media audioMedia = new Media(getClass().getResource("/aud/MenuPokedex.wav").toExternalForm());
+				MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
+				audioMediaPlayer.setAutoPlay(true);
+				audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		
 		// Crear el campo de texto y el botón de búsqueda
 		TextField searchField = new TextField();
@@ -53,6 +62,21 @@ public class MenuPokedex extends Application {
 		Label specialDefenseLabel = new Label();
 		Label noEncontradoLabel = new Label();
 		
+		// AGREGAR BOTÓN PARA REGRESAR AL MENÚ ANTERIOR
+				Button backButton = new Button(" <-- ");
+				backButton.setOnAction(e -> {
+					primaryStage.setScene(previousScene);
+					audioMediaPlayer.stop();
+				});
+				// AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
+				Button muteButton = new Button(" -ZzZ- ");
+				muteButton.setOnAction(e -> {
+					if (audioMediaPlayer.isMute()) {
+						audioMediaPlayer.setMute(false);
+					} else {
+						audioMediaPlayer.setMute(true);
+					}
+				});
 		
 		// AGREGAR UN CONTROLADOR DE EVENTOS AL CAMPO DE TEXTO PARA REALIZAR LA BÚSQUEDA
 		// CUANDO SE PRESIONE LA TECLA ENTER
@@ -126,8 +150,14 @@ public class MenuPokedex extends Application {
 		
 		
 		// Crear el layout y agregar los controles a él
-		HBox searchBox = new HBox(10);
+		VBox searchBox = new VBox(13);
+		searchField.setPrefWidth(50);
+		searchField.setPrefHeight(50);
+		searchButton.setPrefWidth(100);
 		searchBox.getChildren().addAll(searchField, searchButton);
+		
+		VBox multimediaBox = new VBox(10);
+		searchBox.getChildren().addAll(backButton, muteButton);
 
 		VBox infoBox = new VBox(10);
 		infoBox.getChildren().addAll(nameLabel, imageView, vitalityLabel, speedLabel, staminaLabel, attackLabel,
@@ -135,6 +165,7 @@ public class MenuPokedex extends Application {
 
 		VBox root = new VBox(10);
 		root.getChildren().addAll(searchBox, infoBox);
+		
 
 		StackPane stackPane = new StackPane();
 		stackPane.getChildren().addAll(backgroundImageView, root );
@@ -145,5 +176,8 @@ public class MenuPokedex extends Application {
 		// Mostrar la ventana
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
 	}
 }

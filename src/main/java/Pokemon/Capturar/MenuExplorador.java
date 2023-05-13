@@ -17,7 +17,7 @@ import java.io.IOException;
 import Pokemon.Pokemon.Pokemon;
 
 import static Pokemon.Entrenador.Entrenador.*;
-import static Pokemon.Capturar.Exploracion.*;
+
 
 public class MenuExplorador extends Application {
     private static final double WINDOW_WIDTH = 1080;
