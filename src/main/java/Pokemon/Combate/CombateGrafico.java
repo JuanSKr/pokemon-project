@@ -1,5 +1,6 @@
 package Pokemon.Combate;
 
+import Pokemon.Combate.Movimientos.Ataque;
 import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Pokemon.Pokemon;
@@ -18,10 +19,8 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-//AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
-public class PruebaInterfaz extends Application {
+public class CombateGrafico extends Application {
 
-    private static boolean movimientoUsado = false;
 
     int contador = 0;
 
@@ -86,7 +85,7 @@ public class PruebaInterfaz extends Application {
         root.getChildren().add(backgroundImageView);
 
 
-// CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
+        // CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
         Pane topContainer = new Pane(); // Cambiado de HBox a Pane
         topContainer.setPrefWidth(SCENE_WIDTH);
         topContainer.setPrefHeight(200);
@@ -124,14 +123,14 @@ public class PruebaInterfaz extends Application {
         topContainer.getChildren().add(vidaRival);
         vidaRival.setStyle("-fx-background-color: lightgray; -fx-accent: #993399;");
 
-// CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
+        // CREAR UN CONTENEDOR PARA LA PARTE INFERIOR
         Pane bottomContainer = new Pane(); // Cambiado de HBox a Pane
         bottomContainer.setPrefWidth(SCENE_WIDTH);
         bottomContainer.setPrefHeight(200);
         bottomContainer.setLayoutY(SCENE_HEIGHT - 200);
         root.getChildren().add(bottomContainer);
 
-// CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
+        // CREAR UNA IMAGEN PARA EL POKÉMON DEL JUGADOR
         String rutaEntrenador = pEntrenador.getFotoEspalda();
         System.out.println(rutaEntrenador);
         Image pJugadorImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(rutaEntrenador)));
@@ -176,6 +175,28 @@ public class PruebaInterfaz extends Application {
         entrenadorTxt.setId("entrenadorLabel");
         GridPane.setConstraints(entrenadorTxt, 0, 0);
 
+        // Mostrar estamina del Pokemon del entrenador
+
+        String estaminaE = "EST: " + pEntrenador.getEstamina();
+        Label estaminaEntrenador = new Label(estaminaE);
+        estaminaEntrenador.setId("estaminaEntrenador");
+        GridPane.setConstraints(estaminaEntrenador, 0, 0);
+
+
+        // Nombre pokemon rival
+
+        String nombre = pRival.getNombre();
+        Label rivalTxt = new Label(nombre);
+        rivalTxt.setId("rivalLabel");
+        GridPane.setConstraints(rivalTxt, 0, 0);
+
+        // Mostrar estamina del Pokemon del rival
+
+        String estaminaR = "EST: " + pRival.getEstamina();
+        Label estaminaRival = new Label(estaminaR);
+        estaminaRival.setId("estaminaRival");
+        GridPane.setConstraints(estaminaRival, 0, 0);
+
 
         // CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
 
@@ -194,18 +215,33 @@ public class PruebaInterfaz extends Application {
             obtenerMovimientos(pEntrenador, pRival);
         });
 
+
         movimiento1Button.setOnAction(event -> {
+
+
+
             // Realiza la acción del movimiento 1
-            Combate.ejecMovimiento1(pEntrenador, pRival);
-            modificarBarra(vidaRival, pRival);
+
+                Combate.ejecMovimiento1(pEntrenador, pRival, estaminaEntrenador);
+                actualizarEstaminaE(pEntrenador, estaminaEntrenador);
+                modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
             restaurarBotones();
         });
 
+
+
         movimiento2Button.setOnAction(event -> {
             // Realiza la acción del movimiento 2
-            Combate.ejecMovimiento2(pEntrenador, pRival);
+
+            if (pEntrenador.getEstamina() <= 0) {
+                System.out.println("No tienes estamina suficiente para hacer este ataque.");
+                restaurarBotones();
+                return;
+            }
+            Combate.ejecMovimiento1(pEntrenador, pRival, estaminaEntrenador); //Cambiar
+            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
             modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
@@ -214,7 +250,13 @@ public class PruebaInterfaz extends Application {
 
         movimiento3Button.setOnAction(event -> {
             // Realiza la acción del movimiento 3
-            Combate.ejecMovimiento3(pEntrenador, pRival);
+            if (pEntrenador.getEstamina() <= 0) {
+                System.out.println("No tienes estamina suficiente para hacer este ataque.");
+                restaurarBotones();
+                return;
+            }
+            Combate.ejecMovimiento1(pEntrenador, pRival, estaminaEntrenador); //Cambiar
+            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
             modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
@@ -223,7 +265,13 @@ public class PruebaInterfaz extends Application {
 
         movimiento4Button.setOnAction(event -> {
             // Realiza la acción del movimiento 4
-            Combate.ejecMovimiento4(pEntrenador, pRival);
+            if (pEntrenador.getEstamina() <= 0) {
+                System.out.println("No tienes estamina suficiente para hacer este ataque.");
+                restaurarBotones();
+                return;
+            }
+            Combate.ejecMovimiento1(pEntrenador, pRival, estaminaEntrenador); //Cambiar
+            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
             modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
@@ -233,7 +281,10 @@ public class PruebaInterfaz extends Application {
 
         descansarButton.setId("descansar");
         descansarButton.setOnAction(event -> {
-            System.out.println("Descansar");
+            double nuevaEstamina = Combate.descansar(pEntrenador);
+            pEntrenador.setEstamina(nuevaEstamina);
+            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
+
         });
 
         mochilaButton.setId("mochila");
@@ -261,21 +312,13 @@ public class PruebaInterfaz extends Application {
         rectangle.setLayoutX(9.5);
         rectangle.setLayoutY(543.5);
 
-        // Nombre pokemon rival
-
-        String nombre = pRival.getNombre();
-        Label rivalTxt = new Label(nombre);
-        rivalTxt.setId("rivalLabel");
-        GridPane.setConstraints(rivalTxt, 0, 0);
-
 
         StackPane stackPane = new StackPane();
         Pane rectPane = new Pane(rectangle);
-        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt, movimiento1Txt, movimiento2Txt, movimiento3Txt, movimiento4Txt, combateTxt);
+        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt, estaminaEntrenador, estaminaRival, movimiento1Txt, movimiento2Txt, movimiento3Txt, movimiento4Txt);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(stackPane, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add("Combate.css");
-
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -375,6 +418,7 @@ public class PruebaInterfaz extends Application {
 
     /**
      * Este método modifica la barra de vida el Pokemon que se le pase por parámetro.
+     *
      * @param barra
      * @param pokemon
      */
@@ -399,8 +443,19 @@ public class PruebaInterfaz extends Application {
 
         }
 
+    }
+
+    public static void actualizarEstaminaE(Pokemon pokemon, Label estaminaEntrenador) {
+
+
+            double nuevaEstamina = pokemon.getEstamina();
+
+            String estaminaE = "EST: " + nuevaEstamina;
+            estaminaEntrenador.setText(estaminaE);
+
 
     }
+
 
     public static void main(String[] args) {
         launch(args);

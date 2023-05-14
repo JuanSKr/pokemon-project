@@ -207,7 +207,27 @@
 -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
 }
 
+#estaminaEntrenador {
+-fx-background-color: transparent;
+-fx-translate-x: -498px;
+-fx-translate-y: -64px;
+-fx-font-size: 16px;
+-fx-text-fill: #FFA200;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,220,0,0.6), 0, 3, 1, 1.5);
+}
 
+#estaminaRival {
+-fx-background-color: transparent;
+-fx-translate-x: 639.5px;
+-fx-translate-y: -183px;
+-fx-min-width: 370px;
+-fx-min-height: 50px;
+-fx-font-size: 16px;
+-fx-text-fill: #8E057B;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,0,220,0.6), 0, 3, 1, 1.5);
+}
 
 
 /*

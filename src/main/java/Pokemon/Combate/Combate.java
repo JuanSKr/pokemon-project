@@ -153,7 +153,8 @@ public class Combate {
 
     /**
      * Este método comprueba que el valor del movimiento no sea 0. Si es 0 no entra, si es distinto de 0 si.
-     * Se hace así porque en la tabla Movimiento el valor en lugar de nulo es 0.    
+     * Se hace así porque en la tabla Movimiento el valor en lugar de nulo es 0.
+     *
      * @param pokemonEntrenador
      * @param mejora
      */
@@ -162,39 +163,60 @@ public class Combate {
 
         if (mejora.getAtaque() != 0) {
             pokemonEntrenador.setAtaque(pokemonEntrenador.getAtaque() + mejora.getAtaque());
+            System.out.println("Ahora la stat de ataque es: " + pokemonEntrenador.getAtaque());
         } else if (mejora.getDefensa() != 0) {
-            pokemonEntrenador.setAtaque(pokemonEntrenador.getDefensa() + mejora.getDefensa());
+            pokemonEntrenador.setDefensa(pokemonEntrenador.getDefensa() + mejora.getDefensa());
+            System.out.println("Ahora la stat de defensa es: " + pokemonEntrenador.getDefensa());
         } else if (mejora.getAtaqueEspecial() != 0) {
-            pokemonEntrenador.setAtaque(pokemonEntrenador.getAtaqueEspecial() + mejora.getAtaqueEspecial());
+            pokemonEntrenador.setAtaqueEspecial(pokemonEntrenador.getAtaqueEspecial() + mejora.getAtaqueEspecial());
+            System.out.println("Ahora la stat de ataque esp es: " + pokemonEntrenador.getAtaqueEspecial());
         } else if (mejora.getDefensaEspecial() != 0) {
             pokemonEntrenador.setAtaque(pokemonEntrenador.getDefensaEspecial() + mejora.getDefensaEspecial());
+            System.out.println("Ahora la stat de defensa esp es: " + pokemonEntrenador.getDefensaEspecial());
         } else if (mejora.getVitalidad() != 0) {
             pokemonEntrenador.setAtaque(pokemonEntrenador.getVitalidad() + mejora.getVitalidad());
+            System.out.println("Ahora la stat de vitalidad es: " + pokemonEntrenador.getVitalidad());
+
         } else {
             System.out.println("Error.");
         }
 
     }
 
-    public static void ejecMovimiento1(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+    public static void ejecMovimiento1(Pokemon pokemonEntrenador, Pokemon pokemonRival, Label estaminaEntrenador) {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento1();
+        double costeEstamnia = (movimiento.getPotencia() / 2);
 
-        if (movimiento.getTipoMovimiento().equals("ataque")) {
-            String mensaje = pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento();
-            double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
-            pokemonRival.setVitalidad(nuevaVida);
+        try {
 
+            if (movimiento.getTipoMovimiento().equals("ataque")) {
+                if(pokemonEntrenador.getEstamina() < costeEstamnia) {
+                    System.out.println("No estamina");
+                } else {
+                    String mensaje = pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento();
+                    double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
+                    double nuevaEstamina = Ataque.costeEstamina(pokemonEntrenador, (Ataque) movimiento);
+                    pokemonRival.setVitalidad(nuevaVida);
+                    pokemonEntrenador.setEstamina(nuevaEstamina);
+                }
 
-        } else if (movimiento.getTipoMovimiento().equals("estado")) {
+            } else if (movimiento.getTipoMovimiento().equals("estado")) {
 
-            ListaEstados.setEstado(pokemonEntrenador, pokemonRival, (Estado) movimiento);
+                ListaEstados.setEstado(pokemonEntrenador, pokemonRival, (Estado) movimiento);
+                //Coste estamina
 
-        } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+            } else if (movimiento.getTipoMovimiento().equals("mejora")) {
 
+                setMejora(pokemonEntrenador, (Mejora) movimiento);
+                //Coste estamina
 
-        } else {
-            System.out.println("Error.");
+            } else {
+                System.out.println("Error.");
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("Error: Slot de movimiento vacío.");
         }
 
     }
@@ -203,21 +225,29 @@ public class Combate {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento2();
 
-        if (movimiento.getTipoMovimiento().equals("ataque")) {
+        try {
 
-            System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-            double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
+            if (movimiento.getTipoMovimiento().equals("ataque")) {
 
-            pokemonRival.setVitalidad(nuevaVida);
+                System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+                double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
 
+                pokemonRival.setVitalidad(nuevaVida);
 
-        } else if (movimiento.getTipoMovimiento().equals("estado")) {
+            } else if (movimiento.getTipoMovimiento().equals("estado")) {
 
+                ListaEstados.setEstado(pokemonEntrenador, pokemonRival, (Estado) movimiento);
 
-        } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+            } else if (movimiento.getTipoMovimiento().equals("mejora")) {
 
-        } else {
-            System.out.println("Error.");
+                setMejora(pokemonEntrenador, (Mejora) movimiento);
+
+            } else {
+                System.out.println("Error.");
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("Error: Slot de movimiento vacío.");
         }
     }
 
@@ -225,21 +255,29 @@ public class Combate {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento3();
 
-        if (movimiento.getTipoMovimiento().equals("ataque")) {
+        try {
 
-            System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-            double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
+            if (movimiento.getTipoMovimiento().equals("ataque")) {
 
-            pokemonRival.setVitalidad(nuevaVida);
+                System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+                double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
 
+                pokemonRival.setVitalidad(nuevaVida);
 
-        } else if (movimiento.getTipoMovimiento().equals("estado")) {
+            } else if (movimiento.getTipoMovimiento().equals("estado")) {
 
+                ListaEstados.setEstado(pokemonEntrenador, pokemonRival, (Estado) movimiento);
 
-        } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+            } else if (movimiento.getTipoMovimiento().equals("mejora")) {
 
-        } else {
-            System.out.println("Error.");
+                setMejora(pokemonEntrenador, (Mejora) movimiento);
+
+            } else {
+                System.out.println("Error.");
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("Error: Slot de movimiento vacío.");
         }
     }
 
@@ -247,21 +285,29 @@ public class Combate {
 
         Movimiento movimiento = pokemonEntrenador.getMovimiento4();
 
-        if (movimiento.getTipoMovimiento().equals("ataque")) {
+        try {
 
-            System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
-            double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
+            if (movimiento.getTipoMovimiento().equals("ataque")) {
 
-            pokemonRival.setVitalidad(nuevaVida);
+                System.out.println(pokemonEntrenador.getNombre() + " ha utilizado " + movimiento.getNombreMovimiento());
+                double nuevaVida = pokemonRival.getVitalidad() - calcularAtaque(pokemonEntrenador, pokemonRival, movimiento);
 
+                pokemonRival.setVitalidad(nuevaVida);
 
-        } else if (movimiento.getTipoMovimiento().equals("estado")) {
+            } else if (movimiento.getTipoMovimiento().equals("estado")) {
 
+                ListaEstados.setEstado(pokemonEntrenador, pokemonRival, (Estado) movimiento);
 
-        } else if (movimiento.getTipoMovimiento().equals("mejora")) {
+            } else if (movimiento.getTipoMovimiento().equals("mejora")) {
 
-        } else {
-            System.out.println("Error.");
+                setMejora(pokemonEntrenador, (Mejora) movimiento);
+
+            } else {
+                System.out.println("Error.");
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("Error: Slot de movimiento vacío.");
         }
     }
 
@@ -399,13 +445,13 @@ public class Combate {
      * @param pokemon
      */
 
-    public static void descansar(Pokemon pokemon) {
+    public static double descansar(Pokemon pokemon) {
 
-        int addEstamina = Funcion.random(10, 35);
+        int addEstamina = Funcion.random(60, 100);
 
-        double idEstamina = pokemon.getEstamina();
+        double idEstamina = (pokemon.getEstamina() + addEstamina);
 
-        pokemon.setEstamina(idEstamina + addEstamina);
+        return idEstamina;
 
     }
 
@@ -418,7 +464,6 @@ public class Combate {
         Ataque ataque = generarAtaque();
 
         System.out.println(calcularAtaque(atacante, defensor, ataque));
-
 
     }
 

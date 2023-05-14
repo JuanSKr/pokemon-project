@@ -118,6 +118,7 @@ public enum ListaEstados {
         double veneno = pokemonAfectado.getVitalidad() * 0.125;
 
         pokemonAfectado.setVitalidad(pokemonAfectado.getVitalidad() - veneno);
+        System.out.println("Ahora "+pokemonAfectado.getNombre() + "está envenenado.");
 
     }
 
