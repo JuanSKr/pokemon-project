@@ -38,6 +38,7 @@ public class MenuExplorador extends Application {
 	static Pokemon pokemon;
 	private Scene previousScene;
 	private Stage primaryStage;
+	private boolean capturado;
 
 	public MenuExplorador(Stage primaryStage, Scene previousScene) {
 		this.primaryStage = primaryStage;
@@ -277,14 +278,12 @@ public class MenuExplorador extends Application {
 							String apodo = textField.getText();
 							pokemon.setMote(apodo); // ASIGNAR EL MOTE AL POKEMON
 							PokemonCRUD.createCapturado(pokemon);
-							verEquipos();
 							 primaryStage.setScene(previousScene);//VUELVE AL MENU PRINCIPAL
 							//primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// CIERRA LA VENTANA DE DIÁLOGO Y AÑADE AL POKEMON AL EQUIPO.
 						noMoteButton.setOnAction(event -> {
 							PokemonCRUD.createCapturado(pokemon);
-							verEquipos();
 							 primaryStage.setScene(previousScene);//VUELVE AL MENU PRINCIPAL
 								//primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
@@ -373,6 +372,7 @@ public class MenuExplorador extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+
 
 	public static void main(String[] args) {
 		launch(args);

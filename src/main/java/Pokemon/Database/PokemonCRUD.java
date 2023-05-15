@@ -46,6 +46,7 @@ public class PokemonCRUD {
 
             int nuevaId = pokemon.getId() + Funcion.random(1, 9999);
             int equipo = Entrenador.addPokemon(pokemon);
+            Movimiento movimiento = generarMovimiento();
 
 
             PreparedStatement preparedStatement = db.prepareStatement(sql);
@@ -63,7 +64,7 @@ public class PokemonCRUD {
             preparedStatement.setDouble(12, pokemon.getDefensaEspecial());
             preparedStatement.setString(13, String.valueOf(pokemon.getTipo1()));
             preparedStatement.setString(14, String.valueOf(pokemon.getTipo2()));
-            preparedStatement.setInt(15, idMovimiento(generarMovimiento()));
+            preparedStatement.setInt(15, idMovimiento(movimiento));
             preparedStatement.setInt(16, idEntrenador()); //CAMBIAR METODO DESPUES DE TERMINAR PRUEBAS
             preparedStatement.setInt(17, pokemon.getId());
             preparedStatement.setInt(18, 1);
@@ -680,7 +681,6 @@ public class PokemonCRUD {
      */
 
     public static Movimiento generarMovimiento() {
-
         Movimiento movimiento;
         int num = Funcion.random(1, 3);
 
@@ -691,7 +691,14 @@ public class PokemonCRUD {
         } else {
             movimiento = generarMejora();
         }
-        return movimiento;
+
+        if (movimiento != null) {
+            return movimiento;
+        } else {
+            // Manejar el caso en el que no se pueda generar un movimiento válido
+            // Puedes lanzar una excepción, mostrar un mensaje de error, etc.
+            throw new IllegalStateException("No se pudo generar un movimiento válido.");
+        }
     }
 
     /**
@@ -849,30 +856,24 @@ public class PokemonCRUD {
      */
 
     public static int idMovimiento(Movimiento movimiento) {
-
         try {
+            if (movimiento != null) {
+                Connection db = MySQL.getConexion();
+                int idMovimiento;
+                String sql = "SELECT id_movimiento FROM movimiento WHERE nombre = ?";
+                PreparedStatement preparedStatement = db.prepareStatement(sql);
+                preparedStatement.setString(1, movimiento.getNombreMovimiento());
+                ResultSet rs = preparedStatement.executeQuery();
 
-            Connection db = MySQL.getConexion();
-
-            int idMovimiento;
-            String sql = "SELECT id_movimiento FROM movimiento WHERE nombre = ?";
-            PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setString(1, movimiento.getNombreMovimiento());
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if (rs.next()) {
-                idMovimiento = rs.getInt("id_movimiento");
-                return idMovimiento;
+                if (rs.next()) {
+                    idMovimiento = rs.getInt("id_movimiento");
+                    return idMovimiento;
+                }
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
-
         return 0;
-
     }
 
 
