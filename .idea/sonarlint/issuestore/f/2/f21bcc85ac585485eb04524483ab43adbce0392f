@@ -1,0 +1,135 @@
+
+j
+java:S1192„"LDefine a constant instead of duplicating this literal "tipo_ataque" 6 times.(¨ÜŸÀ8©§‚‚1
+h
+java:S1192g"KDefine a constant instead of duplicating this literal "fertilidad" 4 times.(ñ˜Ø™8©§‚‚1
+i
+java:S1192¥"FDefine a constant instead of duplicating this literal "turno" 4 times.(æ‚Üıÿÿÿÿ8©§‚‚1
+j
+java:S1192c"MDefine a constant instead of duplicating this literal "id_capturado" 4 times.(ªÂŠÆ8©§‚‚1
+j
+java:S1192k"HDefine a constant instead of duplicating this literal "defensa" 7 times.(•µŸøûÿÿÿÿ8©§‚‚1
+m
+java:S1192l"PDefine a constant instead of duplicating this literal "ataque_especial" 6 times.(üºœ£8©§‚‚1
+n
+java:S1192ü"PDefine a constant instead of duplicating this literal "tipo_movimiento" 4 times.(ş¸üú8©§‚‚1
+c
+java:S1192x"FDefine a constant instead of duplicating this literal "nivel" 4 times.(À–€Ö8ª§‚‚1
+g
+java:S1192h"JDefine a constant instead of duplicating this literal "velocidad" 6 times.(ŠåÙ–8ª§‚‚1
+j
+java:S1192d"HDefine a constant instead of duplicating this literal "nombre" 13 times.(±ÂíÑşÿÿÿÿ8ª§‚‚1
+n
+java:S1192n"QDefine a constant instead of duplicating this literal "defensa_especial" 7 times.(Óíğı8ª§‚‚1
+f
+java:S1192i"IDefine a constant instead of duplicating this literal "estamina" 6 times.(·š˜…8ª§‚‚1
+i
+java:S1192j"GDefine a constant instead of duplicating this literal "ataque" 8 times.(É¿´äÿÿÿÿÿ8ª§‚‚1
+l
+java:S1192f"JDefine a constant instead of duplicating this literal "vitalidad" 6 times.(Àö¦úÿÿÿÿ8ª§‚‚1
+h
+java:S1192o"FDefine a constant instead of duplicating this literal "tipo1" 5 times.(ıŸ‚Çşÿÿÿÿ8ª§‚‚1
+h
+java:S1192p"FDefine a constant instead of duplicating this literal "tipo2" 5 times.(—•¬€øÿÿÿÿ8ª§‚‚1
+o
+java:S1192{"MDefine a constant instead of duplicating this literal "foto_espalda" 5 times.(£ß­âşÿÿÿÿ8ª§‚‚1
+†
+java:S1319”"hThe type of "equipo1" should be an interface such as "List" rather than the implementation "LinkedList".(è…¿‰8«§‚‚1
+†
+java:S1319Ì"hThe type of "equipo2" should be an interface such as "List" rather than the implementation "LinkedList".(àòş¥8¬§‚‚1
+ˆ
+java:S1319„"eThe type of "caja" should be an interface such as "List" rather than the implementation "LinkedList".(©óµ©ÿÿÿÿÿ8¬§‚‚1
+W
+java:S1141r"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¬§‚‚1
+X
+java:S1141®"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¬§‚‚1
+X
+java:S1141æ"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¬§‚‚1
+X
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¬§‚‚1
+s
+java:S1104"QMake login a static final constant or non-public and provide accessors if needed.(’Ø‹Èüÿÿÿÿ8­§‚‚1
+x
+java:S1104"VMake registrado a static final constant or non-public and provide accessors if needed.(™Èûµÿÿÿÿÿ8­§‚‚1
+M
+java:S1444"+Make this "public static login" field final(’Ø‹Èüÿÿÿÿ8®§‚‚1
+R
+java:S1444"0Make this "public static registrado" field final(™Èûµÿÿÿÿÿ8®§‚‚1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÂºàŞ8¾Ğâ‚1
+i
+java:S2259>"L"NullPointerException" will be thrown when invoking method "idMovimiento()".(¢üß’8‰’§‚‚1
+m
+java:S2259ô"O"NullPointerException" will be thrown when invoking method "createCapturado()".(Î°âè8‰’§‚‚1
+r
+java:S2095¤"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ì‡×ıüÿÿÿÿ8‰’§‚‚1
+m
+java:S2095š"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095å"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ü“ŠÈ8Š’§‚‚1
+m
+java:S2095Ò"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095è"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095ğ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8Š’§‚‚1
+m
+java:S2095¶"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8Š’§‚‚1
+m
+java:S2095Á"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095›"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8Š’§‚‚1
+m
+java:S2095ˆ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+l
+java:S2095^"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095Š"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8Š’§‚‚1
+m
+java:S2095ñ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095ß"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+r
+java:S2095­"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ì‡×ıüÿÿÿÿ8‰’§‚‚1
+m
+java:S2095Ë"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8Š’§‚‚1
+m
+java:S2095È"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095­"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095ú"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8Š’§‚‚1
+m
+java:S2095—"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+l
+java:S2095/"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095¼"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+m
+java:S2095“"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿š‡Í8‰’§‚‚1
+l
+java:S2095Œ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ñ›8Š’§‚‚1
+m
+java:S1845½"ORename method "login" to prevent any misunderstanding/clash with field "login".(¼­à8Œ’§‚‚1
+U	java:S106H"9Replace this use of System.out or System.err by a logger.(†ÀôŠ8—’§‚‚1
+J	java:S108t")Either remove or fill this block of code.(¥¨›ıÿÿÿÿ8›’§‚‚1
+K	java:S108°")Either remove or fill this block of code.(¥¨›ıÿÿÿÿ8 ’§‚‚1
+K	java:S108è")Either remove or fill this block of code.(¥¨›ıÿÿÿÿ8¥’§‚‚1
+K	java:S108 ")Either remove or fill this block of code.(¥¨›ıÿÿÿÿ8©’§‚‚1
+f
+java:S1854Ì"CRemove this useless assignment to local variable "usuarioLogueado".(ö‹’ùÿÿÿÿ8ª’§‚‚1
+V	java:S106Ë"9Replace this use of System.out or System.err by a logger.(–¯ğÑ8«’§‚‚1
+W
+java:S1481Ì"4Remove this unused "usuarioLogueado" local variable.(ö‹’ùÿÿÿÿ8«’§‚‚1
+M
+java:S1481æ"/Remove this unused "movimiento" local variable.(‡ÖŠó8Æ’§‚‚1
+^	java:S125¥"<This block of commented-out lines of code should be removed.(õ¬õ¿ûÿÿÿÿ8É’§‚‚1
+Y	java:S125‹"<This block of commented-out lines of code should be removed.(ñæöØ8Ï’§‚‚1
+Y	java:S125™"<This block of commented-out lines of code should be removed.(ã’˜Ç8Ï’§‚‚1
+U	java:S106À"9Replace this use of System.out or System.err by a logger.(©²Ë~8Ğ’§‚‚1
+V	java:S106Ä"9Replace this use of System.out or System.err by a logger.(ãŠå8Ò’§‚‚1
+V	java:S106Ö"9Replace this use of System.out or System.err by a logger.(·ƒé°8Ô’§‚‚1
+V	java:S106Ú"9Replace this use of System.out or System.err by a logger.(·ƒé°8Ô’§‚‚1
+b
+java:S1854è"?Remove this useless assignment to local variable "updateCampo".(œñ©üÿÿÿÿ8Ô’§‚‚1
+S
+java:S1481è"0Remove this unused "updateCampo" local variable.(œñ©üÿÿÿÿ8Õ’§‚‚1

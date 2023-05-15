@@ -1,0 +1,19 @@
+
+_
+java:S2184E"BCast one of the operands of this division operation to a "double".(±ü€Ç8ŞŠ¢‚‚1
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ƒø‚
+S
+java:S11722"1Remove this unused method parameter "movimiento".(™Ø¹Šûÿÿÿÿ8êŠ¢‚‚1
+S
+java:S1172C"1Remove this unused method parameter "movimiento".(ÌŞ¢ıÿÿÿÿ8ëŠ¢‚‚1
+N
+java:S1172S"1Remove this unused method parameter "movimiento".(Ë¸Å8ëŠ¢‚‚1
+U	java:S106X"9Replace this use of System.out or System.err by a logger.(íÏªœ8ìŠ¢‚‚1
+S
+java:S1172e"1Remove this unused method parameter "movimiento".(ÂêşĞşÿÿÿÿ8ìŠ¢‚‚1
+Z	java:S106l"9Replace this use of System.out or System.err by a logger.(‹—ëıÿÿÿÿ8íŠ¢‚‚1
+U	java:S106m"9Replace this use of System.out or System.err by a logger.(ŒŞàÇ8íŠ¢‚‚1
+Z	java:S106n"9Replace this use of System.out or System.err by a logger.(´Æ¬Ûüÿÿÿÿ8îŠ¢‚‚1
+S
+java:S1172y"1Remove this unused method parameter "movimiento".(›‘›şÿÿÿÿ8îŠ¢‚‚1
+Z	java:S106~"9Replace this use of System.out or System.err by a logger.(Ÿãİ™ÿÿÿÿÿ8ïŠ¢‚‚1

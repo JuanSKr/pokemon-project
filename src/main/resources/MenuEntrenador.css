@@ -1,0 +1,8 @@
+.back-button {
+    -fx-background-color: orange;
+        -fx-translate-x: -120px;
+        -fx-translate-y: 132px;
+        -fx-min-width: 180px;
+        -fx-min-height: 45px;
+        -fx-background-image: url('https://i.imgur.com/VVdKgVN.jpg');
+}
