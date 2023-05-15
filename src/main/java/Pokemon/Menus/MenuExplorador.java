@@ -11,7 +11,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -219,10 +223,13 @@ public class MenuExplorador extends Application {
 				if (trainerCircle.getBoundsInParent().intersects(pokemonCircle.getBoundsInParent())) {
 					Random rand = new Random();
 					if (rand.nextDouble() <= 0.500) {// PORCENTAJE DE POSIBILIDADES DE CONSEGUIR EL POKEMON
-
-						// CREAR EL CONTENIDO DE LA NUEVA ESCENA
+						// CREAR UN FONDO DE PANTALLA PARA LA NUEVA ESCENA
+						// AGREGAR IMAGEN DE FONDO A LA ESCENA
+						ImageView fondo = new ImageView(new Image(getClass().getResourceAsStream("/img/PokemonCaptura.gif")));
+						fondo.setFitHeight(650);
+						fondo.setFitWidth(1080);
 						// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-						Media audioMedia = new Media(getClass().getResource("/aud/Prueba.wav").toExternalForm());
+						Media audioMedia = new Media(getClass().getResource("/aud/PokemonCaptura.wav").toExternalForm());
 						MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
 						audioMediaPlayer.setAutoPlay(true);
 						Label mensajeLabel = new Label("¡Felicidades! Has capturado a " + pokemon.getNombre());
@@ -252,14 +259,15 @@ public class MenuExplorador extends Application {
 								"-fx-background-color:#555555;-fx-text-fill:white;-fx-font-size:16px;-fx-padding:10px 20px;-fx-border-radius:5px;-fx-background-radius:5px;"));
 						salirButton.setOnMouseExited(e -> salirButton.setStyle(
 								"-fx-background-color:#333333;-fx-text-fill:white;-fx-font-size:16px;-fx-padding:10px 20px;-fx-border-radius:5px;-fx-background-radius:5px;"));
+						
 						VBox vbox = new VBox();
 						vbox.setAlignment(Pos.CENTER); // ALINEAR LOS ELEMENTOS EN EL CENTRO
-						vbox.getChildren().addAll(mensajeLabel, preguntaLabel, textField, ponerMoteButton, noMoteButton,
-								salirButton);
+						vbox.getChildren().addAll(mensajeLabel, preguntaLabel, textField, ponerMoteButton, noMoteButton, salirButton);
 						vbox.setSpacing(10);
 						vbox.setPadding(new Insets(20));
-						// CREAR LA NUEVA ESCENA
-						Scene nuevaEscena = new Scene(vbox, 1080, 650);
+
+						StackPane stackPane = new StackPane(fondo, vbox); // AÑADIR EL FONDO Y EL VBOX AL STACKPANE
+						Scene nuevaEscena = new Scene(stackPane, 1080, 650); // CREAR LA NUEVA ESCENA CON EL STACKPANE
 						// AÑADIR LA NUEVA ESCENA A LA VENTANA PRINCIPAL
 						primaryStage.setScene(nuevaEscena);
 						// LE PONE UN MOTE AL POKEMON, LO AÑADE AL EQUIPO DISPONIBLE Y CIERRA LA
@@ -295,8 +303,11 @@ public class MenuExplorador extends Application {
 
 					} else {
 						// EL USUARIO NO PUDO CAPTURAR EL POKÉMON
+						ImageView fondo = new ImageView(new Image(getClass().getResourceAsStream("/img/Prueba1.gif")));
+						fondo.setFitHeight(650);
+						fondo.setFitWidth(1080);
 						// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-						Media audioMedia = new Media(getClass().getResource("/aud/PokemonCaptura.wav").toExternalForm());
+						Media audioMedia = new Media(getClass().getResource("/aud/PokemonNoCapturado.wav").toExternalForm());
 						MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
 						audioMediaPlayer.setAutoPlay(true);
 						Label mensajeLabel = new Label("Lo siento, no pudiste capturar a " + pokemon.getNombre());
@@ -313,11 +324,13 @@ public class MenuExplorador extends Application {
 						vbox.setSpacing(10);
 						vbox.setPadding(new Insets(20));
 						// CREAR LA NUEVA ESCENA
-						Scene nuevaEscena = new Scene(vbox, 1080, 650);
+						StackPane stackPane = new StackPane(fondo, vbox); // AÑADIR EL FONDO Y EL VBOX AL STACKPANE
+						Scene nuevaEscena = new Scene(stackPane, 1080, 650); // CREAR LA NUEVA ESCENA CON EL STACKPANE
 						// CIERRA LA VENTANA Y AÑADE AL POKEMON AL EQUIPO.
 						salirButton.setOnAction(event -> {
-
-							primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
+							
+							primaryStage.setScene(previousScene);
+							//primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// AÑADIR LA NUEVA ESCENA A LA VENTANA PRINCIPAL
 						primaryStage.setScene(nuevaEscena);
