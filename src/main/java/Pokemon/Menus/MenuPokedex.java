@@ -1,5 +1,6 @@
 package Pokemon.Menus;
 
+import Pokemon.Database.MySQL;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -95,8 +96,7 @@ public class MenuPokedex extends Application {
 
 			try {
 				// ESTABLECER CONEXIÓN A LA BASE DE DATOS
-				Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
-
+				Connection db = MySQL.getConexion();
 				// Crear un objeto Statement para ejecutar consultas SQL
 				Statement stmt = db.createStatement();
 

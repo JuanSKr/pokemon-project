@@ -1,14 +1,13 @@
 package Pokemon.Menus;
 
 
-import Pokemon.Database.MySQL;
+import Pokemon.Capturar.MenuEntrenador;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Tienda.MenuTienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -110,7 +109,6 @@ public class Menu extends Application {
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 		root.setBackground(new Background(backgroundImage));
-
 		// TAMAÑO VENTANA
 
 		Scene scene = new Scene(root, 1080, 650);

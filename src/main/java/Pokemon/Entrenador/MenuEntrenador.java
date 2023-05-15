@@ -36,8 +36,6 @@ public class MenuEntrenador extends Application {
     private Scene previousScene;
     Image image = new Image(getClass().getResourceAsStream("/img/Prueba1.gif"));
 
-    
-       
 
     @Override
     public void start(Stage primaryStage) {

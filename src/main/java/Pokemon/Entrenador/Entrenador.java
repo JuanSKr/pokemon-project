@@ -32,7 +32,7 @@ public class Entrenador {
 
     public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
         this.nombre = nombre;
-        this.dinero = 500;
+        this.dinero = dinero;
         this.mochila = new HashMap<>(); //Pasar a linkedList
         this.contador = new HashMap<>(); //Ver si se quita o se deja.
         this.pass = contrasena;
@@ -53,6 +53,7 @@ public class Entrenador {
     public static void comprarObjeto(Objeto objeto) {
         if (dinero >= objeto.getPrecio()) {
             dinero -= objeto.getPrecio();
+            PokemonCRUD.actualizarDinero(objeto);
             mochila.put(objeto.getId(), objeto);
             System.out.println("¡Objeto  " + objeto.getNombre() + " comprado y añadido a la mochila!");
             // Incrementar el contador del objeto comprado
@@ -69,7 +70,7 @@ public class Entrenador {
 
     // MÉTODO PARA OBTENER EL DINERO DEL ENTRENADOR
     public static int getDinero() {
-        return  500;
+        return dinero;
     }
 
     public static Map<Integer, Objeto> getMochila() {
@@ -161,9 +162,9 @@ public class Entrenador {
     public static int addPokemon(Pokemon pokemon) {
         int equipo;
 
-        PokemonCRUD.getEquipo1(Entrenador.equipo1);
-        PokemonCRUD.getEquipo2(Entrenador.equipo2);
-        PokemonCRUD.getCaja(Entrenador.caja);
+        PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
+        PokemonCRUD.getEquipo2(Entrenador.equipo2, PokemonCRUD.idEntrenador());
+        PokemonCRUD.getCaja(Entrenador.caja, PokemonCRUD.idEntrenador());
 
         if (equipo1.size() < 6) {
             equipo1.add(pokemon);
@@ -184,9 +185,9 @@ public class Entrenador {
 
     public static void verEquipos() {
 
-        PokemonCRUD.getEquipo1(equipo1);
-        PokemonCRUD.getEquipo2(equipo2);
-        PokemonCRUD.getCaja(caja);
+        PokemonCRUD.getEquipo1(equipo1, PokemonCRUD.idEntrenador());
+        PokemonCRUD.getEquipo2(equipo2, PokemonCRUD.idEntrenador());
+        PokemonCRUD.getCaja(caja, PokemonCRUD.idEntrenador());
 
         System.out.println("Equipo 1:");
         for (Pokemon mostrarEquipo : equipo1) {
@@ -208,9 +209,6 @@ public class Entrenador {
 
     public static void main(String[] args) {
 
-        PokemonCRUD.getEquipo1(equipo1);
-        PokemonCRUD.getEquipo2(equipo2);
-        PokemonCRUD.getCaja(caja);
 
 
         verEquipos();

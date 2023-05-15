@@ -7,6 +7,7 @@ import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.ListaEstados;
+import Pokemon.Pokemon.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
 
@@ -22,6 +23,7 @@ public class PokemonCRUD {
 
     /**
      * Método que lee inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
+     *
      * @param pokemon
      */
 
@@ -71,9 +73,50 @@ public class PokemonCRUD {
         }
     }
 
+    public static void actualizarDinero(Objeto objeto) {
+
+        try {
+
+            Connection db = MySQL.getConexion();
+            String sql = "UPDATE entrenador SET dinero = ? WHERE id_entrenador = ?";
+            PreparedStatement ps = db.prepareStatement(sql);
+            int dinero = Entrenador.getDinero();
+            int idEntrenador = idEntrenador();
+            ps.setInt(1, dinero);
+            ps.setInt(2, idEntrenador);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+        }
+
+    }
+
+    public static void actualizarPokemon(int equipo, int idPokemon) {
+
+        try {
+
+            Connection db = MySQL.getConexion();
+            String sql = "UPDATE capturado SET equipo = ? WHERE id_capturado = ?";
+            PreparedStatement ps = db.prepareStatement(sql);
+            int dinero = Entrenador.getDinero();
+            int idEntrenador = idEntrenador();
+            ps.setInt(1, equipo);
+            ps.setInt(2, idPokemon);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+        }
+
+    }
+
     /**
      * Método para obtener toda la información de un Pokemon en la base de datos.
      * Hay que pasarle la ID del Pokemon por parámetro para indicarle que Pokemon quieres.
+     *
      * @param id
      * @return Pokemon
      * @usage getPokemon(55);
@@ -131,17 +174,19 @@ public class PokemonCRUD {
 
     /**
      * Método para rellenar la lista de equipo1 del Entrenador con los Pokemons de la tabla capturado.
+     *
      * @param equipo1
      * @return
      */
 
-    public static List<Pokemon> getEquipo1(LinkedList<Pokemon> equipo1) {
+    public static List<Pokemon> getEquipo1(LinkedList<Pokemon> equipo1, int idEntrenador) {
 
         try {
 
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM capturado WHERE equipo = 1";
+            String sql = "SELECT * FROM capturado WHERE equipo = 1 AND id_entrenador = ?";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idEntrenador);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -183,17 +228,19 @@ public class PokemonCRUD {
 
     /**
      * Método para rellenar la lista de equipo2 del Entrenador con los Pokemons de la tabla capturado.
+     *
      * @param equipo2
      * @return
      */
 
-    public static List<Pokemon> getEquipo2(LinkedList<Pokemon> equipo2) {
+    public static List<Pokemon> getEquipo2(LinkedList<Pokemon> equipo2, int idEntrenador) {
 
         try {
 
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM capturado WHERE equipo = 2";
+            String sql = "SELECT * FROM capturado WHERE equipo = 2 AND id_entrenador = ?";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idEntrenador);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -235,17 +282,19 @@ public class PokemonCRUD {
 
     /**
      * Método para rellenar la lista de la caja del Entrenador con los Pokemons de la tabla capturado.
+     *
      * @param caja
      * @return
      */
 
-    public static List<Pokemon> getCaja(LinkedList<Pokemon> caja) {
+    public static List<Pokemon> getCaja(LinkedList<Pokemon> caja, int idEntrenador) {
 
         try {
 
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM capturado WHERE equipo = 1";
+            String sql = "SELECT * FROM capturado WHERE equipo = 3 AND id_entrenador = ?";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idEntrenador);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -289,6 +338,7 @@ public class PokemonCRUD {
      * Método que comprueba el nombre y la contraseña que se han ingresado en los parametros.
      * Si el login = true se ejecuta el método cargarEntrenador para cargar toda su información.
      * Si el login = false no entrará en el programa.
+     *
      * @param usuarioIngresado
      * @param passIngresada
      */
@@ -691,6 +741,7 @@ public class PokemonCRUD {
 
     /**
      * Actúa como si fuese un valueOf para convertir un objeto de tipo "int" a un objeto en tipo "Movimiento".
+     *
      * @param id
      * @return
      */
@@ -770,7 +821,7 @@ public class PokemonCRUD {
 
     public static int idEntrenador() {
 
-        Entrenador.setNombre("El pepe"); //SE CAMBIA ESTO
+        // Entrenador.setNombre("El pepe");
 
         try {
 
@@ -798,12 +849,39 @@ public class PokemonCRUD {
     }
 
 
+    public static int idPokemon(String nombrePokemon) {
+
+        try {
+
+            Connection db = MySQL.getConexion();
+
+            int idEntrenador;
+            String sql = "SELECT id_capturado FROM capturado WHERE nombre = ?";
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setString(1, nombrePokemon);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                idEntrenador = rs.getInt("id_capturado");
+                return idEntrenador;
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+
+        return 0;
+
+    }
+
+
     public static void main(String[] args) {
 
-        Pokemon pokemon = generarPokemon();
+        Entrenador.setNombre("El pepe");
 
-        createCapturado(pokemon);
-        System.out.println("Se ha insertado: " + pokemon);
+        System.out.println(idEntrenador());
 
     }
 

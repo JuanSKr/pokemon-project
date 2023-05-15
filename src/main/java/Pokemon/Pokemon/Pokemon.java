@@ -322,30 +322,7 @@ public class Pokemon {
      */
     @Override
     public String toString() {
-        return "Pokemon{" +
-                "nombre='" + nombre + '\'' +
-                ", mote='" + mote + '\'' +
-                ", nivel=" + nivel +
-                ", xp=" + xp +
-                ", tipo1=" + tipo1 +
-                ", tipo2=" + tipo2 +
-                ", sexo=" + sexo +
-                ", vitalidad=" + vitalidad +
-                ", ataque=" + ataque +
-                ", defensa=" + defensa +
-                ", ataqueEspecial=" + ataqueEspecial +
-                ", defensaEspecial=" + defensaEspecial +
-                ", estamina=" + estamina +
-                ", velocidad=" + velocidad +
-                ", estado=" + estado +
-                ", fertilidad=" + fertilidad +
-                ", obj=" + obj +
-                ", movimiento1=" + movimiento1 +
-                ", movimiento2=" + movimiento2 +
-                ", movimiento3=" + movimiento3 +
-                ", movimiento4=" + movimiento4 +
-                ", foto='" + foto + '\'' +
-                '}';
+        return nombre;
     }
 
 // Metodos propios
@@ -433,7 +410,7 @@ public class Pokemon {
 
     public static Pokemon mostrarPokemon() {
 
-        PokemonCRUD.getEquipo1(Entrenador.equipo1);
+        PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
         int contador = 0;
 
         for (Pokemon pokemon : Entrenador.equipo1) {

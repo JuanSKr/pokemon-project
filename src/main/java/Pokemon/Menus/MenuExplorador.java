@@ -35,7 +35,7 @@ public class MenuExplorador extends Application {
 	private Circle pokemonCircle;
 	private double pokemonSpeedX = 0;
 	private double pokemonSpeedY = 0;
-	static Pokemon pokemon = PokemonCRUD.generarPokemon();
+	static Pokemon pokemon;
 	private Scene previousScene;
 	private Stage primaryStage;
 
@@ -76,7 +76,6 @@ public class MenuExplorador extends Application {
 		pokemonSpeedX = 0.5;
 		pokemonSpeedY = 0.10;
 		// GENERAR UN NUEVO POKÉMON ALEATORIO
-		pokemon = PokemonCRUD.generarPokemon();
 
 	}
 
@@ -101,6 +100,8 @@ public class MenuExplorador extends Application {
 //--------------------------------------------------------------------------------------------------------------------------
 	@Override
 	public void start(Stage primaryStage) {
+
+		pokemon = PokemonCRUD.generarPokemon();
 
 		// AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
 		Button muteButton = new Button(" -ZzZ- ");
@@ -136,25 +137,25 @@ public class MenuExplorador extends Application {
 			imageView.setY(newValue.doubleValue() - pokemonCircle.getRadius());
 		});
 		// CARGAR LA IMAGEN ENTRENADOR
-		Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/alonso.png")));
+		Image imagenEntrenador = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/alonso.png")));
 		// CREAR EL IMAGEVIEW Y AJUSTAR SU TAMAÑO Y POSICIÓN
-		ImageView imageView1 = new ImageView(image1);
-		imageView1.setFitWidth(trainerCircle.getRadius() * 2);
-		imageView1.setFitHeight(trainerCircle.getRadius() * 2);
-		imageView1.setX(trainerCircle.getCenterX() - trainerCircle.getRadius());
-		imageView1.setY(trainerCircle.getCenterY() - trainerCircle.getRadius());
+		ImageView entrenadorView = new ImageView(imagenEntrenador);
+		entrenadorView.setFitWidth(trainerCircle.getRadius() * 2);
+		entrenadorView.setFitHeight(trainerCircle.getRadius() * 2);
+		entrenadorView.setX(trainerCircle.getCenterX() - trainerCircle.getRadius());
+		entrenadorView.setY(trainerCircle.getCenterY() - trainerCircle.getRadius());
 		// AGREGAR UN CHANGE LISTENER A LAS PROPIEDADES centerX Y centerY DE LA
 		// CIRCUNFERENCIA
 		trainerCircle.centerXProperty().addListener((observable, oldValue, newValue) -> {
-			imageView1.setX(newValue.doubleValue() - trainerCircle.getRadius());
+			entrenadorView.setX(newValue.doubleValue() - trainerCircle.getRadius());
 		});
 		trainerCircle.centerYProperty().addListener((observable, oldValue, newValue) -> {
-			imageView1.setY(newValue.doubleValue() - trainerCircle.getRadius());
+			entrenadorView.setY(newValue.doubleValue() - trainerCircle.getRadius());
 		});
 
 		// CREAMOS EL PANEL ESPECIAL Y SE AGREGAN LAS CIRCUNFERENCIAS.
 		Pane root = new Pane();
-		root.getChildren().addAll(backgroundImageView, imageView, imageView1);
+		root.getChildren().addAll(backgroundImageView, imageView, entrenadorView);
 
 		// ------------------------------------------------------------------------------------------------------------------
 		// CREAR LA ESCENA PRINCIPAL Y AGREGAR EL PANEL
@@ -233,9 +234,9 @@ public class MenuExplorador extends Application {
 						MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
 						audioMediaPlayer.setAutoPlay(true);
 						Label mensajeLabel = new Label("¡Felicidades! Has capturado a " + pokemon.getNombre());
-						mensajeLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: #333333;");
+						mensajeLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: #FFFFFF;");
 						Label preguntaLabel = new Label("¿Quieres darle un mote a tu " + pokemon.getNombre() + " ?");
-						preguntaLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: #333333;");
+						preguntaLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: #FFFFFF;");
 						TextField textField = new TextField();
 						textField.setStyle("-fx-padding: 10px;");
 						Button ponerMoteButton = new Button("Aplicar mote");
