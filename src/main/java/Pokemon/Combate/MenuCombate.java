@@ -51,7 +51,7 @@ public class MenuCombate extends Application {
         	gridPane.setBackground(new Background(backgroundImage));
         	gridPane.setVgap(GAP_SIZE);
         	gridPane.setHgap(GAP_SIZE);
-        	ImageView imagenLogo = new ImageView(image);
+        	
         // AGREGAR BOTÓN PARA REGRESAR AL MENÚ ANTERIOR
         Button backButton = new Button(" <-- ");
         backButton.setOnAction(e -> {
