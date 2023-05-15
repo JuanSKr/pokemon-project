@@ -4,11 +4,11 @@ package Pokemon.Combate.Movimientos;
  - CAMBIAR TODOS LOS VALORES DE LOS ATAQUES
  */
 
+import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
 
 public class Mejora extends Movimiento {
 
-    protected int turnos;
     protected int ataque;
     protected int defensa;
     protected int ataqueEspecial;
@@ -20,7 +20,7 @@ public class Mejora extends Movimiento {
 
     public Mejora(String nombreMovimiento, int turnos, Tipo tipo, int potencia, String tipoMovimiento,
                   int ataque, int defensa, int ataqueEspecial, int defensaEspecial, int vitalidad) {
-        super(nombreMovimiento, tipo, potencia, tipoMovimiento);
+        super(nombreMovimiento, tipo, potencia, tipoMovimiento, turnos);
         this.nombreMovimiento = nombreMovimiento;
         this.turnos = turnos;
         this.tipo = tipo;
@@ -50,6 +50,14 @@ public class Mejora extends Movimiento {
     // Metodos
 
     // Coste estamina (por crear)
+
+    public static double costeEstamina(Pokemon pokemon, Mejora mejora) {
+
+        double coste = (mejora.getTurnos() * 10);
+
+        return (pokemon.getEstamina() - coste);
+
+    }
 
     // Getters y Setters
 

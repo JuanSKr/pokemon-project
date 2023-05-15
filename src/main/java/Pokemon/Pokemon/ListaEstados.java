@@ -6,10 +6,16 @@ import Pokemon.Funcionalidad.Funcion;
 
 public enum ListaEstados {
 
-    CONFUSO, MALDITO, ENAMORADO, DRENADO, PARALIZADO, ENVENENADO, CONGELADO, DORMIDO, QUEMADO;
+    CONFUSO, MALDITO, ENAMORADO, DRENADO, ENVENENADO;
+
+    /**
+     * Procedimiento que aplica al Pokemon afectado el estado del movimiento que se le pasa por parámetro.
+     * @param pokemonAfectado Recibirá el estado
+     * @param pokemonAtacante Se beneficiará del estado
+     * @param movimiento Movimiento de tipo Estado
+     */
 
     public static void setEstado(Pokemon pokemonAfectado, Pokemon pokemonAtacante, Estado movimiento) {
-
 
         if (movimiento.getEstado().equals(ListaEstados.CONFUSO)) {
             pokemonAfectado.setEstado(ListaEstados.CONFUSO);
@@ -37,8 +43,8 @@ public enum ListaEstados {
     /**
      * Este método aplica el estado CONFUSO a un Pokemon. Los turnos se deberán controlar aparte.
      *
-     * @param pokemonAfectado
-     * @param movimiento
+     * @param pokemonAfectado - Pokemon que recibe el estado
+     * @param movimiento - Movimiento de tipo Estado
      */
 
     public static void setConfuso(Pokemon pokemonAfectado, Estado movimiento) {
@@ -54,8 +60,8 @@ public enum ListaEstados {
     /**
      * Este método aplica el estado MALDITO a un Pokemon. Los turnos se deberán controlar aparte.
      *
-     * @param pokemonAfectado
-     * @param movimiento
+     * @param pokemonAfectado - Pokemon que recibe el estado
+     * @param movimiento - Movimiento de tipo Estado
      */
 
     public static void setMaldito(Pokemon pokemonAfectado, Estado movimiento) {
@@ -70,8 +76,8 @@ public enum ListaEstados {
     /**
      * Este método aplica el estado ENAMORADO a un Pokemon. Los turnos se deberán controlar aparte.
      *
-     * @param pokemonAfectado
-     * @param movimiento
+     * @param pokemonAfectado - Pokemon que recibe el estado
+     * @param movimiento - Movimiento de tipo Estado
      */
 
     public static void setEnamorado(Pokemon pokemonAfectado, Estado movimiento) {
@@ -87,11 +93,10 @@ public enum ListaEstados {
     /**
      * Este método aplica el estado DRENAJE a un Pokemon. Los turnos se deberán controlar aparte.
      *
-     * @param pokemonAfectado
-     * @param pokemonAtacante
-     * @param movimiento
+     * @param pokemonAfectado - Pokemon que recibe el estado
+     * @param pokemonAtacante - Pokemon que se beneficia del movimiento
+     * @param movimiento - Movimiento de tipo Estado
      */
-
 
     public static void setDrenaje(Pokemon pokemonAfectado, Pokemon pokemonAtacante, Estado movimiento) {
 
@@ -118,7 +123,7 @@ public enum ListaEstados {
         double veneno = pokemonAfectado.getVitalidad() * 0.125;
 
         pokemonAfectado.setVitalidad(pokemonAfectado.getVitalidad() - veneno);
-        System.out.println("Ahora "+pokemonAfectado.getNombre() + "está envenenado.");
+        System.out.println("Ahora "+pokemonAfectado.getNombre() + " está envenenado.");
 
     }
 

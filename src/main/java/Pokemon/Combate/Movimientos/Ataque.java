@@ -18,8 +18,8 @@ public class Ataque extends Movimiento {
 
     // Constructor con todos los parámetros
 
-    public Ataque(String nombreMovimiento, int potencia, int nivelAprendizaje, Tipo tipo, String tipoMovimiento) {
-        super(nombreMovimiento, tipo, potencia, tipoMovimiento);
+    public Ataque(String nombreMovimiento, int potencia, int nivelAprendizaje, Tipo tipo, String tipoMovimiento, int turnos) {
+        super(nombreMovimiento, tipo, potencia, tipoMovimiento, turnos);
         this.nombreMovimiento = nombreMovimiento;
         this.potencia = potencia;
         this.tipo = tipo;

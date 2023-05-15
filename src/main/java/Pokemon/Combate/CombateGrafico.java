@@ -216,31 +216,22 @@ public class CombateGrafico extends Application {
         });
 
 
+        // Movimiento 1
         movimiento1Button.setOnAction(event -> {
 
-
-
-            // Realiza la acción del movimiento 1
-
-                Combate.ejecMovimiento1(pEntrenador, pRival, estaminaEntrenador);
-                actualizarEstaminaE(pEntrenador, estaminaEntrenador);
-                modificarBarra(vidaRival, pRival);
+            Combate.ejecMovimiento1(pEntrenador, pRival);
+            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
+            modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
             restaurarBotones();
         });
 
 
-
+        // Movimiento 2
         movimiento2Button.setOnAction(event -> {
-            // Realiza la acción del movimiento 2
 
-            if (pEntrenador.getEstamina() <= 0) {
-                System.out.println("No tienes estamina suficiente para hacer este ataque.");
-                restaurarBotones();
-                return;
-            }
-            Combate.ejecMovimiento1(pEntrenador, pRival, estaminaEntrenador); //Cambiar
+            Combate.ejecMovimiento2(pEntrenador, pRival); //Cambiar
             actualizarEstaminaE(pEntrenador, estaminaEntrenador);
             modificarBarra(vidaRival, pRival);
 
@@ -248,14 +239,10 @@ public class CombateGrafico extends Application {
             restaurarBotones();
         });
 
+        // Movimiento 3
         movimiento3Button.setOnAction(event -> {
-            // Realiza la acción del movimiento 3
-            if (pEntrenador.getEstamina() <= 0) {
-                System.out.println("No tienes estamina suficiente para hacer este ataque.");
-                restaurarBotones();
-                return;
-            }
-            Combate.ejecMovimiento1(pEntrenador, pRival, estaminaEntrenador); //Cambiar
+
+            Combate.ejecMovimiento3(pEntrenador, pRival); //Cambiar
             actualizarEstaminaE(pEntrenador, estaminaEntrenador);
             modificarBarra(vidaRival, pRival);
 
@@ -263,21 +250,16 @@ public class CombateGrafico extends Application {
             restaurarBotones();
         });
 
+        // Movimiento 4
         movimiento4Button.setOnAction(event -> {
-            // Realiza la acción del movimiento 4
-            if (pEntrenador.getEstamina() <= 0) {
-                System.out.println("No tienes estamina suficiente para hacer este ataque.");
-                restaurarBotones();
-                return;
-            }
-            Combate.ejecMovimiento1(pEntrenador, pRival, estaminaEntrenador); //Cambiar
+
+            Combate.ejecMovimiento4(pEntrenador, pRival); //Cambiar
             actualizarEstaminaE(pEntrenador, estaminaEntrenador);
             modificarBarra(vidaRival, pRival);
 
             // Restaura los botones originales
             restaurarBotones();
         });
-
 
         descansarButton.setId("descansar");
         descansarButton.setOnAction(event -> {
@@ -448,10 +430,10 @@ public class CombateGrafico extends Application {
     public static void actualizarEstaminaE(Pokemon pokemon, Label estaminaEntrenador) {
 
 
-            double nuevaEstamina = pokemon.getEstamina();
+        double nuevaEstamina = pokemon.getEstamina();
 
-            String estaminaE = "EST: " + nuevaEstamina;
-            estaminaEntrenador.setText(estaminaE);
+        String estaminaE = "EST: " + nuevaEstamina;
+        estaminaEntrenador.setText(estaminaE);
 
 
     }
