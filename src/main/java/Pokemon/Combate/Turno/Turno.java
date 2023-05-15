@@ -1,6 +1,7 @@
 package Pokemon.Combate.Turno;
 
 
+import Pokemon.Combate.Movimientos.Mejora;
 import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Pokemon.Pokemon;
 
@@ -23,6 +24,7 @@ public class Turno {
         this.accionEntrenador = null;
         this.accionRival = null;
     }
+
 
 
 

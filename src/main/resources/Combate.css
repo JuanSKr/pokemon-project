@@ -1,0 +1,250 @@
+.button {
+    -fx-font-size: 18px;
+    -fx-background-color: green;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#atacar {
+    -fx-background-color: transparent;
+    -fx-translate-x: 755px;
+    -fx-translate-y: 163px;
+    -fx-min-width: 155px;
+    -fx-min-height: 52px;
+    -fx-background-image: url('img/botones/atacar.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+#descansar {
+    -fx-background-color: transparent;
+    -fx-translate-x: 907px;
+    -fx-translate-y: 120px;
+    -fx-min-width: 140px;
+    -fx-min-height: 42px;
+    -fx-background-image: url('img/botones/descansar.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#mochila {
+    -fx-background-color: transparent;
+    -fx-translate-x: 750px;
+    -fx-translate-y: 115px;
+    -fx-min-width: 145px;
+    -fx-min-height: 52px;
+    -fx-background-image: url('img/botones/mochila.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#rendirse {
+    -fx-background-color: transparent;
+    -fx-translate-x: 909px;
+    -fx-translate-y: 57px;
+    -fx-min-width: 145px;
+    -fx-min-height: 50px;
+    -fx-background-image: url('img/botones/rendirse.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#movimiento1 {
+    -fx-background-color: transparent;
+    -fx-translate-x: 761px; /* izquierda-derecha */
+    -fx-translate-y: 173px; /* abajo-arriba */
+    -fx-min-width: 140px;
+    -fx-min-height: 52px;
+    -fx-background-image: url('img/botones/movimiento.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#movimiento2 {
+    -fx-background-color: transparent;
+    -fx-translate-x: 915px; /* izquierda-derecha */
+    -fx-translate-y: 125.5px; /* abajo-arriba */
+    -fx-min-width: 142px;
+    -fx-min-height: 42px;
+    -fx-background-image: url('img/botones/movimiento.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#movimiento3 {
+    -fx-background-color: transparent;
+    -fx-translate-x: 760px; /* izquierda-derecha */
+    -fx-translate-y: 115px; /* abajo-arriba */
+    -fx-min-width: 140px;
+    -fx-min-height: 52px;
+    -fx-background-image: url('img/botones/movimiento.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#movimiento4 {
+    -fx-background-color: transparent;
+    -fx-translate-x: 915px; /* izquierda-derecha */
+    -fx-translate-y: 55.7px; /* abajo-arriba */
+    -fx-min-width: 140px;
+    -fx-min-height: 50px;
+    -fx-background-image: url('img/botones/movimiento.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#movimiento1Label {
+-fx-background-color: transparent;
+-fx-translate-x: 302px;
+-fx-translate-y: 239px;
+-fx-font-size: 15px;
+-fx-text-fill: #FFFFFF;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#movimiento2Label {
+-fx-background-color: transparent;
+-fx-translate-x: 455px;
+-fx-translate-y: 239px;
+-fx-font-size: 15px;
+-fx-text-fill: #FFFFFF;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#movimiento3Label {
+-fx-background-color: transparent;
+-fx-translate-x: 302px;
+-fx-translate-y: 295px;
+-fx-font-size: 15px;
+-fx-text-fill: #FFFFFF;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#movimiento4Label {
+-fx-background-color: transparent;
+-fx-translate-x: 455px;
+-fx-translate-y: 295px;
+-fx-font-size: 15px;
+-fx-text-fill: #FFFFFF;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#movimiento1Vacio {
+-fx-background-color: transparent;
+-fx-translate-x: 302px;
+-fx-translate-y: 239px;
+-fx-font-size: 15px;
+-fx-text-fill: #FF0000;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#movimiento2Vacio {
+-fx-background-color: transparent;
+-fx-translate-x: 455px;
+-fx-translate-y: 239px;
+-fx-font-size: 15px;
+-fx-text-fill: #FF0000;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#movimiento3Vacio {
+-fx-background-color: transparent;
+-fx-translate-x: 302px;
+-fx-translate-y: 295px;
+-fx-font-size: 15px;
+-fx-text-fill: #FF0000;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#movimiento4Vacio {
+-fx-background-color: transparent;
+-fx-translate-x: 455px;
+-fx-translate-y: 295px;
+-fx-font-size: 15px;
+-fx-text-fill: #FF0000;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+
+#rivalLabel {
+-fx-background-color: transparent;
+-fx-translate-x: 552px;
+-fx-translate-y: -165px;
+-fx-min-width: 370px;
+-fx-min-height: 50px;
+-fx-font-size: 20px;
+-fx-text-fill: #993399;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#entrenadorLabel {
+-fx-background-color: transparent;
+-fx-translate-x: -279px;
+-fx-translate-y: -41px;
+-fx-min-width: 370px;
+-fx-min-height: 50px;
+-fx-font-size: 20px;
+-fx-text-fill: #ff6600;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 0, 3, 1, 1.5);
+}
+
+#estaminaEntrenador {
+-fx-background-color: transparent;
+-fx-translate-x: -498px;
+-fx-translate-y: -64px;
+-fx-font-size: 16px;
+-fx-text-fill: #FFA200;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,220,0,0.6), 0, 3, 1, 1.5);
+}
+
+#estaminaRival {
+-fx-background-color: transparent;
+-fx-translate-x: 639.5px;
+-fx-translate-y: -183px;
+-fx-min-width: 370px;
+-fx-min-height: 50px;
+-fx-font-size: 16px;
+-fx-text-fill: #8E057B;
+-fx-font-weight: bold;
+-fx-effect: dropshadow(gaussian, rgba(255,0,220,0.6), 0, 3, 1, 1.5);
+}
+
+
+/*
+Hover: Estilo de cuando tienes el ratón encima del botón:
+- Efecto de sombra.
+- Color del texto al tener el ratón encima del botón.
+
+Valores del hover:
+    gaussian: Tipo de sombra.
+    rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparencia.
+    x1: Distancia horizontal entre la sombra y el objeto.
+    x2: Distancia vertical entre la sombra y el objeto.
+    x3: Desenfoque de la sombra.
+    x4: Tamaño de la extensión de la sombra.
+*/
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 3, 5);
+    -fx-text-fill: white;
+}

@@ -1,0 +1,40 @@
+
+å
+java:S1192ÿ"ÍDefine a constant instead of duplicating this literal "-fx-background-color: #333333; -fx-text-fill:white;-fx-font-size:16px;-fx-padding:10px 20px;-fx-border-radius:5px;-fx-background-radius:5px;" 3 times.(†ô“û
+î
+java:S1192ô"ÖDefine a constant instead of duplicating this literal "-fx-background-color: #333333; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px;" 3 times.(õğ‚²
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡”…
+M
+java:S2589<"7Remove this expression which always evaluates to "true"( ‰É
+F
+java:S1172T"+Remove this unused method parameter "code".(ÒºÛ²ıÿÿÿÿ
+m
+java:S3776f"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(Éß÷øÿÿÿÿ
+L
+java:S2696h"6Make the enclosing method "static" or remove this set.(Æœß
+S	java:S106o"9Replace this use of System.out or System.err by a logger.(Ê·åıÿÿÿÿ
+H
+java:S1602…",Remove useless curly braces around statement(‹øïïşÿÿÿÿ
+C
+java:S1602ˆ",Remove useless curly braces around statement(â¨äœ
+C
+java:S1602•",Remove useless curly braces around statement(»Øë–
+C
+java:S1602˜",Remove useless curly braces around statement(Ï™ùà
+C
+java:S1602Ë",Remove useless curly braces around statement(î§„Ù
+:
+java:S2119á"Save and re-use this "Random".(šŸ«íøÿÿÿÿ
+B
+java:S1602¤",Remove useless curly braces around statement(áÂä
+B
+java:S1602Ë",Remove useless curly braces around statement(áÂä
+R	java:S125ï"<This block of commented-out lines of code should be removed.(ÙÆÕî
+V
+java:S1128";Remove this unused import 'javafx.scene.layout.Background'.(¤ä—ıÿÿÿÿ
+[
+java:S1128"@Remove this unused import 'javafx.scene.layout.BackgroundImage'.(Óúäİûÿÿÿÿ
+W
+java:S1128"ARemove this unused import 'javafx.scene.layout.BackgroundRepeat'.(¹ÒŒù
+K
+java:S1068("0Remove this unused "primaryStage" private field.(ˆ©äÔüÿÿÿÿ

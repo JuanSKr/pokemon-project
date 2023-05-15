@@ -14,7 +14,6 @@ public enum Tipo {
     NORMAL,
     PLANTA,
     PSIQUICO,
-    PSQUICO,
     ROCA,
     SINIESTRO,
     TIERRA,

@@ -1,7 +1,7 @@
 package Pokemon.Entrenador;
 
 import Pokemon.Database.PokemonCRUD;
-import Pokemon.Pokemon.Objeto;
+import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -216,8 +216,8 @@ public class Entrenador {
 
     }
 
-	public static void setFoto(String string) {
-		// TODO Auto-generated method stub
-		
-	}
+    public static void setFoto(String string) {
+        // TODO Auto-generated method stub
+
+    }
 }

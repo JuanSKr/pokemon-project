@@ -140,7 +140,6 @@ public class MenuPokedex extends Application {
 				}
 
 				// CERRAR LA CONEXIÓN A LA BASE DE DATOS
-				db.close();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}

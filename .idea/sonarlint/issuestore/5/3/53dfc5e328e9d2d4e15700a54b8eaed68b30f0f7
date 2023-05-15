@@ -1,0 +1,10 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ƒø‚
+˜
+java:S1186Ù"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Çµí‘
+^	java:S107("BConstructor has 24 parameters, which is greater than 7 authorized.(°‡8Š¢‚‚1
+?	java:S131ü""Add a default case to this switch.(°€àâ8ªŠ¢‚‚1
+U	java:S106º"9Replace this use of System.out or System.err by a logger.(©²Ë~8­Š¢‚‚1
+V	java:S106¾"9Replace this use of System.out or System.err by a logger.(ãŠå8¯Š¢‚‚1
+V	java:S106Ğ"9Replace this use of System.out or System.err by a logger.(·ƒé°8°Š¢‚‚1
+V	java:S106Ô"9Replace this use of System.out or System.err by a logger.(·ƒé°8°Š¢‚‚1

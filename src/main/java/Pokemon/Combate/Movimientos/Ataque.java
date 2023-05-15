@@ -7,6 +7,7 @@ POR HACER:
 
 package Pokemon.Combate.Movimientos;
 
+import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
 
 /*
@@ -17,11 +18,12 @@ public class Ataque extends Movimiento {
 
     // Constructor con todos los parámetros
 
-    public Ataque(String nombreMovimiento, int potencia, int nivelAprendizaje, Tipo tipo) {
-        super(nombreMovimiento, tipo, potencia);
+    public Ataque(String nombreMovimiento, int potencia, int nivelAprendizaje, Tipo tipo, String tipoMovimiento, int turnos) {
+        super(nombreMovimiento, tipo, potencia, tipoMovimiento, turnos);
         this.nombreMovimiento = nombreMovimiento;
         this.potencia = potencia;
         this.tipo = tipo;
+        this.tipoMovimiento = tipoMovimiento;
     }
 
     // Construtor por defecto
@@ -30,6 +32,7 @@ public class Ataque extends Movimiento {
         this.nombreMovimiento = "";
         this.potencia = 0;
         this.tipo = null;
+        this.tipoMovimiento = "";
 
     }
 
@@ -43,22 +46,16 @@ public class Ataque extends Movimiento {
 
     // Metodos
 
-    // Coste estamina (por crear)
+    // Coste estamina
 
-    public static int costeEstamina(int potencia, int estamina) {
+    public static double costeEstamina(Pokemon pokemon, Ataque ataque) {
 
-        int costeEstamina = (potencia / 2);
+       double coste = (ataque.getPotencia() / 2);
 
-        return estamina - costeEstamina;
-    }
-
-    public static int calcularAtaque(int vidaPokemon, Ataque ataque) {
-
-        int vidaFinal = vidaPokemon - ataque.getPotencia();
-
-        return vidaFinal;
+       return (pokemon.getEstamina() - coste);
 
     }
+
 
     // Getters y Setters
 
@@ -77,5 +74,9 @@ public class Ataque extends Movimiento {
                 "potencia=" + potencia +
                 "tipo=" + tipo +
                 '}';
+    }
+
+    public static void main(String[] args) {
+
     }
 }

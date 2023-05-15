@@ -16,14 +16,18 @@ public abstract class Movimiento {
     protected String nombreMovimiento;
     protected Tipo tipo;
     protected int potencia;
+    protected String tipoMovimiento;
+    protected int turnos;
 
 
     // Constructor con todos los parametros
 
-    public Movimiento(String nombreMovimiento, Tipo tipo, int potencia) {
+    public Movimiento(String nombreMovimiento, Tipo tipo, int potencia, String tipoMovimiento, int turnos) {
         this.nombreMovimiento = nombreMovimiento;
         this.tipo = tipo;
         this.potencia = potencia;
+        this.tipoMovimiento = tipoMovimiento;
+        this.turnos = turnos;
     }
 
     // Constructor por defecto
@@ -32,6 +36,8 @@ public abstract class Movimiento {
         this.nombreMovimiento = "";
         this.tipo = null;
         this.potencia = 0;
+        this.tipoMovimiento = "";
+        this.turnos = 0;
     }
 
 
@@ -63,5 +69,21 @@ public abstract class Movimiento {
 
     public void setPotencia(int potencia) {
         this.potencia = potencia;
+    }
+
+    public String getTipoMovimiento() {
+        return tipoMovimiento;
+    }
+
+    public void setTipoMovimiento(String tipoMovimiento) {
+        this.tipoMovimiento = tipoMovimiento;
+    }
+
+    public int getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(int turnos) {
+        this.turnos = turnos;
     }
 }

@@ -1,0 +1,10 @@
+
+s
+java:S1488C"]Immediately return this expression instead of assigning it to the temporary variable "scene".(£ΠΘ»
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡”…
+Y
+java:S18548">Remove this useless assignment to local variable "imagenLogo".(Εά°Έϋÿÿÿÿ
+J
+java:S14818"/Remove this unused "imagenLogo" local variable.(Εά°Έϋÿÿÿÿ
+B
+java:S1602<",Remove useless curly braces around statement(¤‹·µ

@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import Pokemon.Entrenador.Entrenador;
-import Pokemon.Pokemon.Objeto;
+import Pokemon.Tienda.Objeto;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;

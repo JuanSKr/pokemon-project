@@ -1,6 +1,7 @@
 package Pokemon.Combate.Movimientos;
 
 import Pokemon.Pokemon.ListaEstados;
+import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
 
 /*
@@ -9,16 +10,16 @@ import Pokemon.Pokemon.Tipo;
 
 public class Estado extends Movimiento {
 
-    protected int turnos;
     protected ListaEstados estado;
 
     // Constructor con todos los parámetros
-    public Estado(String nombreMovimiento, int turnos, Tipo tipo, ListaEstados estado, int potencia) {
-        super(nombreMovimiento, tipo, potencia);
+    public Estado(String nombreMovimiento, Tipo tipo, ListaEstados estado, int potencia, String tipoMovimiento, int turnos) {
+        super(nombreMovimiento, tipo, potencia, tipoMovimiento, turnos);
         this.nombreMovimiento = nombreMovimiento;
         this.turnos = turnos;
         this.tipo = tipo;
         this.estado = estado;
+        this.tipoMovimiento = tipoMovimiento;
     }
 
     // Constructor por defecto
@@ -27,6 +28,7 @@ public class Estado extends Movimiento {
         this.turnos = 0;
         this.tipo = null;
         this.estado = null;
+        this.tipoMovimiento = "";
     }
 
     // Constructor copia
@@ -35,9 +37,20 @@ public class Estado extends Movimiento {
         this.turnos = e.turnos;
         this.tipo = e.tipo;
         this.estado = e.estado;
+        this.tipoMovimiento = e.tipoMovimiento;
     }
 
     // Métodos
+
+    // Coste estamina (por crear)
+
+    public static double costeEstamina(Pokemon pokemon, Estado estado) {
+
+        double coste = (estado.getTurnos() * 10);
+
+        return (pokemon.getEstamina() - coste);
+
+    }
 
     // Getter y Setter para turnos
     public int getTurnos() {
@@ -64,6 +77,6 @@ public class Estado extends Movimiento {
                 '}';
     }
 
-    // Coste estamina (por crear)
+
 
 }

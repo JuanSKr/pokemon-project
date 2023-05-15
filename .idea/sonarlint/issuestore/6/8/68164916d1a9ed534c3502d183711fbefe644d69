@@ -1,0 +1,120 @@
+
+M
+java:S3740˜"/Provide the parametrized type for this generic.(†Àå€8’²¤‚‚1
+M
+java:S3740˜"/Provide the parametrized type for this generic.(†Àå€8’²¤‚‚1
+…
+java:S1319"hThe type of "mochila" should be an interface such as "List" rather than the implementation "LinkedList".(á¦¢¶8“²¤‚‚1
+Š
+java:S1319"hThe type of "equipo1" should be an interface such as "List" rather than the implementation "LinkedList".(“èÂ­ûÿÿÿÿ8“²¤‚‚1
+…
+java:S1319"hThe type of "equipo2" should be an interface such as "List" rather than the implementation "LinkedList".(šÈè¹8“²¤‚‚1
+‚
+java:S1319"eThe type of "caja" should be an interface such as "List" rather than the implementation "LinkedList".(Á´êÖ8“²¤‚‚1
+Š
+java:S1319 "hThe type of "mochila" should be an interface such as "List" rather than the implementation "LinkedList".(ºä“‰ıÿÿÿÿ8“²¤‚‚1
+Š
+java:S1319 "hThe type of "equipo1" should be an interface such as "List" rather than the implementation "LinkedList".(ºä“‰ıÿÿÿÿ8“²¤‚‚1
+Š
+java:S1319 "hThe type of "equipo2" should be an interface such as "List" rather than the implementation "LinkedList".(ºä“‰ıÿÿÿÿ8”²¤‚‚1
+‡
+java:S1319 "eThe type of "caja" should be an interface such as "List" rather than the implementation "LinkedList".(ºä“‰ıÿÿÿÿ8”²¤‚‚1
+
+java:S1319a"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(¤¼ù8”²¤‚‚1
+…
+java:S1319e"hThe type of "mochila" should be an interface such as "List" rather than the implementation "LinkedList".(¹¡ˆ8”²¤‚‚1
+“
+java:S1319q"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(¦¹´Äøÿÿÿÿ8”²¤‚‚1
+Š
+java:S1319u"hThe type of "equipo1" should be an interface such as "List" rather than the implementation "LinkedList".(ÖÏ€–ÿÿÿÿÿ8”²¤‚‚1
+“
+java:S1319y"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(¸ğßˆúÿÿÿÿ8”²¤‚‚1
+Š
+java:S1319}"hThe type of "equipo2" should be an interface such as "List" rather than the implementation "LinkedList".(ñâäüùÿÿÿÿ8”²¤‚‚1
+”
+java:S1319"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(Ô³à¨üÿÿÿÿ8”²¤‚‚1
+ƒ
+java:S1319…"eThe type of "caja" should be an interface such as "List" rather than the implementation "LinkedList".(ùÔÁŞ8”²¤‚‚1
+Œ
+java:S1319˜"nThe type of "equipoInicial" should be an interface such as "List" rather than the implementation "LinkedList".(†Àå€8”²¤‚‚1
+Š
+java:S1319˜"lThe type of "equipoFinal" should be an interface such as "List" rather than the implementation "LinkedList".(†Àå€8”²¤‚‚1
+p
+java:S1104"NMake id a static final constant or non-public and provide accessors if needed.(Ğ—¸şÿÿÿÿ8•²¤‚‚1
+p
+java:S1104"SMake mochila a static final constant or non-public and provide accessors if needed.(á¦¢¶8•²¤‚‚1
+u
+java:S1104"SMake equipo1 a static final constant or non-public and provide accessors if needed.(“èÂ­ûÿÿÿÿ8•²¤‚‚1
+p
+java:S1104"SMake equipo2 a static final constant or non-public and provide accessors if needed.(šÈè¹8•²¤‚‚1
+m
+java:S1104"PMake caja a static final constant or non-public and provide accessors if needed.(Á´êÖ8•²¤‚‚1
+J
+java:S1444"(Make this "public static id" field final(Ğ—¸şÿÿÿÿ8•²¤‚‚1
+J
+java:S1444"-Make this "public static mochila" field final(á¦¢¶8•²¤‚‚1
+O
+java:S1444"-Make this "public static equipo1" field final(“èÂ­ûÿÿÿÿ8•²¤‚‚1
+J
+java:S1444"-Make this "public static equipo2" field final(šÈè¹8•²¤‚‚1
+G
+java:S1444"*Make this "public static caja" field final(Á´êÖ8•²¤‚‚1
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ª­è½ıÿÿÿÿ
+:
+java:S2386"Make this member "protected".(á¦¢¶8’Ê¥‚‚1
+?
+java:S2386"Make this member "protected".(“èÂ­ûÿÿÿÿ8£²¤‚‚1
+:
+java:S2386"Make this member "protected".(šÈè¹8¤²¤‚‚1
+:
+java:S2386"Make this member "protected".(Á´êÖ8¥²¤‚‚1
+b	java:S107 "AConstructor has 9 parameters, which is greater than 7 authorized.(ºä“‰ıÿÿÿÿ8¨²¤‚‚1
+A
+java:S3010!"Remove this assignment of "id".(£©èÚşÿÿÿÿ8­²¤‚‚1
+E
+java:S3010""#Remove this assignment of "nombre".(´ú´Üøÿÿÿÿ8­²¤‚‚1
+@
+java:S3010#"#Remove this assignment of "dinero".(ç» æ8­²¤‚‚1
+B
+java:S3010$"%Remove this assignment of "contador".(†ÆÊˆ8­²¤‚‚1
+|
+java:S1172 "ZRemove these unused method parameters "mochila", "contador", "equipo1", "equipo2", "caja".(ºä“‰ıÿÿÿÿ8®²¤‚‚1
+W
+java:S2209!"5Change this instance-reference to a static reference.(£©èÚşÿÿÿÿ8¯²¤‚‚1
+W
+java:S2209""5Change this instance-reference to a static reference.(´ú´Üøÿÿÿÿ8°²¤‚‚1
+R
+java:S2209#"5Change this instance-reference to a static reference.(ç» æ8±²¤‚‚1
+R
+java:S2209$"5Change this instance-reference to a static reference.(†ÆÊˆ8²²¤‚‚1
+A
+java:S3010,"Remove this assignment of "id".(Òöóáşÿÿÿÿ8¶²¤‚‚1
+E
+java:S3010-"#Remove this assignment of "nombre".(ÒÂŸ–øÿÿÿÿ8¶²¤‚‚1
+@
+java:S3010."#Remove this assignment of "dinero".(âÖÏ8¶²¤‚‚1
+F
+java:S3010/"$Remove this assignment of "mochila".(•¼ß–øÿÿÿÿ8¶²¤‚‚1
+A
+java:S30100"%Remove this assignment of "contador".(‰«¡48¶²¤‚‚1
+W
+java:S2209,"5Change this instance-reference to a static reference.(Òöóáşÿÿÿÿ8¶²¤‚‚1
+W
+java:S2209-"5Change this instance-reference to a static reference.(ÒÂŸ–øÿÿÿÿ8¶²¤‚‚1
+R
+java:S2209."5Change this instance-reference to a static reference.(âÖÏ8¶²¤‚‚1
+W
+java:S2209/"5Change this instance-reference to a static reference.(•¼ß–øÿÿÿÿ8¶²¤‚‚1
+Q
+java:S22090"5Change this instance-reference to a static reference.(‰«¡48¶²¤‚‚1
+U	java:S1069"9Replace this use of System.out or System.err by a logger.(ğãÎ£8¸²¤‚‚1
+Z	java:S106A"9Replace this use of System.out or System.err by a logger.(øºÁîşÿÿÿÿ8¸²¤‚‚1
+V	java:S106±"9Replace this use of System.out or System.err by a logger.(¹«8¾²¤‚‚1
+V	java:S106µ"9Replace this use of System.out or System.err by a logger.(¡‘Ğ‹8¾²¤‚‚1
+Y	java:S125Ä"<This block of commented-out lines of code should be removed.(¸Ë“8¿²¤‚‚1
+U	java:S106ñ"9Replace this use of System.out or System.err by a logger.(şš½8¿²¤‚‚1
+[	java:S106ó"9Replace this use of System.out or System.err by a logger.(ÇÔ°àşÿÿÿÿ8¿²¤‚‚1
+V	java:S106ö"9Replace this use of System.out or System.err by a logger.(ê¡’8¿²¤‚‚1
+[	java:S106ø"9Replace this use of System.out or System.err by a logger.(ÇÔ°àşÿÿÿÿ8¿²¤‚‚1
+[	java:S106û"9Replace this use of System.out or System.err by a logger.(Â‚³„ıÿÿÿÿ8À²¤‚‚1
+[	java:S106ı"9Replace this use of System.out or System.err by a logger.(ÇÔ°àşÿÿÿÿ8À²¤‚‚1

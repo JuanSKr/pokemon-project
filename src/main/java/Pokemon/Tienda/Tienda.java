@@ -1,7 +1,7 @@
 package Pokemon.Tienda;
 
 import Pokemon.Entrenador.Entrenador;
-import Pokemon.Pokemon.Objeto;
+import Pokemon.Tienda.Objeto;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
