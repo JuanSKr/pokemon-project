@@ -3,7 +3,8 @@ package Pokemon.Entrenador;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -14,10 +15,10 @@ public class Entrenador {
 
     static Scanner sc = new Scanner(System.in);
 
-    public static int id;
+
     protected static String nombre;
     private static int dinero;
-    public static LinkedList<Objeto> mochila = new LinkedList<>();
+    private static Map<Integer, Objeto> mochila;
     private static Map<Objeto, Integer> contador; // nuevo HashMap
     public static LinkedList<Pokemon> equipo1 = new LinkedList<>();
     public static LinkedList<Pokemon> equipo2 = new LinkedList<>();
@@ -29,10 +30,10 @@ public class Entrenador {
 
     // Constructor con todos los parametros
 
-    public Entrenador(int id, String nombre, int dinero, LinkedList<Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
-        this.id = id;
+    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
         this.nombre = nombre;
         this.dinero = dinero;
+        this.mochila = new HashMap<>(); //Pasar a linkedList
         this.contador = new HashMap<>(); //Ver si se quita o se deja.
         this.pass = contrasena;
 
@@ -41,7 +42,6 @@ public class Entrenador {
     // Constructor por defecto:
 
     public Entrenador() {
-        this.id = 0;
         this.nombre = "";
         this.dinero = 500;
         this.mochila = null;
@@ -53,7 +53,8 @@ public class Entrenador {
     public static void comprarObjeto(Objeto objeto) {
         if (dinero >= objeto.getPrecio()) {
             dinero -= objeto.getPrecio();
-            mochila.add(objeto.getId(), objeto);
+            PokemonCRUD.actualizarDinero(objeto);
+            mochila.put(objeto.getId(), objeto);
             System.out.println("¡Objeto  " + objeto.getNombre() + " comprado y añadido a la mochila!");
             // Incrementar el contador del objeto comprado
             if (contador.containsKey(objeto)) {
@@ -68,14 +69,16 @@ public class Entrenador {
 
 
     // MÉTODO PARA OBTENER EL DINERO DEL ENTRENADOR
-
-
-    public static int getId() {
-        return id;
+    public static int getDinero() {
+        return dinero;
     }
 
-    public static void setId(int id) {
-        Entrenador.id = id;
+    public static Map<Integer, Objeto> getMochila() {
+        return mochila;
+    }
+
+    public static Map<Objeto, Integer> getContador() {
+        return contador;
     }
 
     public static String getNombre() {
@@ -86,24 +89,12 @@ public class Entrenador {
         Entrenador.nombre = nombre;
     }
 
-    public static int getDinero() {
-        return dinero;
-    }
-
-    public static void setDinero(int dinero) {
+    public static void setDinero() {
         Entrenador.dinero = dinero;
     }
 
-    public static LinkedList<Objeto> getMochila() {
-        return mochila;
-    }
-
-    public static void setMochila(LinkedList<Objeto> mochila) {
+    public static void setMochila(Map<Integer, Objeto> mochila) {
         Entrenador.mochila = mochila;
-    }
-
-    public static Map<Objeto, Integer> getContador() {
-        return contador;
     }
 
     public static void setContador(Map<Objeto, Integer> contador) {
@@ -134,12 +125,17 @@ public class Entrenador {
         Entrenador.caja = caja;
     }
 
-    public String getPass() {
-        return pass;
+    public static void setContrasena(String contrasena) {
+
+
+
+        // TODO Auto-generated method stub
+
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public static String getContrasena() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     /**
@@ -154,7 +150,6 @@ public class Entrenador {
         equipoInicial.remove(pokemon);
         equipoFinal.add(pokemon);
 
-
     }
 
 
@@ -167,9 +162,9 @@ public class Entrenador {
     public static int addPokemon(Pokemon pokemon) {
         int equipo;
 
-        PokemonCRUD.getEquipo1(Entrenador.equipo1, Entrenador.getId());
-        PokemonCRUD.getEquipo2(Entrenador.equipo2, Entrenador.getId());
-        PokemonCRUD.getCaja(Entrenador.caja, Entrenador.getId());
+        PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
+        PokemonCRUD.getEquipo2(Entrenador.equipo2, PokemonCRUD.idEntrenador());
+        PokemonCRUD.getCaja(Entrenador.caja, PokemonCRUD.idEntrenador());
 
         if (equipo1.size() < 6) {
             equipo1.add(pokemon);
@@ -188,55 +183,11 @@ public class Entrenador {
     }
 
 
-
-    /**
-     * @return Metodo para darle al usuario la opción de elegir su Pokémon inicial entre 3.
-     */
-
-//    public static void primerPokemon() {
-//
-//        System.out.println("-----------------------");
-//        System.out.println("   PRIMER POKEMON");
-//        System.out.println("-----------------------");
-//        System.out.println("1.Pikachu\n2.Charmander\n3.Bulbasaur");
-//        System.out.print("Elige tu primer pokemon: ");
-//        int opcion = sc.nextInt();
-//
-//        switch (opcion) {
-//
-//            case 1:
-//
-//                equipo1.add(Pokedex.Pikachu);
-//
-//                System.out.println(Pokedex.Pikachu.getNombre() + " se ha añadido a equipo1.");
-//                break;
-//
-//            case 2:
-//
-//                equipo1.add(Pokedex.Raichu);
-//                System.out.println(Pokedex.Raichu.getNombre() + " se ha añadido a equipo1.");
-//
-//                break;
-//
-//            case 3:
-//
-//                equipo1.add(Pokedex.Bulbasaur);
-//                System.out.println(Pokedex.Bulbasaur.getNombre() + " se ha añadido a equipo1.");
-//
-//                break;
-//        }
-//
-//    }
-
-    /**
-     * Método para ver los Pokemons de equipo1, equipo2 y caja.
-     */
-
     public static void verEquipos() {
 
-        PokemonCRUD.getEquipo1(equipo1, getId());
-        PokemonCRUD.getEquipo2(equipo2, getId());
-        PokemonCRUD.getCaja(caja, getId());
+        PokemonCRUD.getEquipo1(equipo1, PokemonCRUD.idEntrenador());
+        PokemonCRUD.getEquipo2(equipo2, PokemonCRUD.idEntrenador());
+        PokemonCRUD.getCaja(caja, PokemonCRUD.idEntrenador());
 
         System.out.println("Equipo 1:");
         for (Pokemon mostrarEquipo : equipo1) {
@@ -258,9 +209,15 @@ public class Entrenador {
 
     public static void main(String[] args) {
 
-        PokemonCRUD.mostrarPokemon();
+
+
+        verEquipos();
 
 
     }
 
+    public static void setFoto(String string) {
+        // TODO Auto-generated method stub
+
+    }
 }

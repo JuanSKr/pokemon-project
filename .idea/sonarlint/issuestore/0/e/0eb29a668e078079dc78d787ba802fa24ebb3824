@@ -1,0 +1,22 @@
+
+g
+java:S1192Ç"KDefine a constant instead of duplicating this literal "SLOT VACIO" 4 times.(´œ˜ßûÿÿÿÿ
+]
+java:S1192´"FDefine a constant instead of duplicating this literal "EST: " 3 times.(Å€ë‹
+`
+java:S2184\"ECast one of the operands of this subtraction operation to a "double".(æÀ×¸ıÿÿÿÿ
+a
+java:S2184‚"ECast one of the operands of this subtraction operation to a "double".(õ‚û˜ùÿÿÿÿ
+^
+java:S2184™"BCast one of the operands of this division operation to a "double".(¼ûå¬ıÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥ÔâÚ
+S	java:S106j"9Replace this use of System.out or System.err by a logger.(şØÙ¨ùÿÿÿÿ
+T	java:S106‡"9Replace this use of System.out or System.err by a logger.(Ì¢“Ñüÿÿÿÿ
+H
+java:S1602‘",Remove useless curly braces around statement(ÌÂéÄøÿÿÿÿ
+T	java:S106’"9Replace this use of System.out or System.err by a logger.(—ØòÊùÿÿÿÿ
+H
+java:S1602–",Remove useless curly braces around statement(»¸Ûùÿÿÿÿ
+O	java:S106—"9Replace this use of System.out or System.err by a logger.(…¼ô·
+J
+java:S1172¶"3Remove this unused method parameter "pokemonRival".(Ç’—‚

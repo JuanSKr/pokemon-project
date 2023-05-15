@@ -8,9 +8,9 @@ import Pokemon.Entrenador.Entrenador;
 import Pokemon.Entrenador.Mochila;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.ListaEstados;
+import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
-import Pokemon.Tienda.Objeto;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -18,12 +18,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-import static Pokemon.Entrenador.Entrenador.*;
-
 public class PokemonCRUD {
 
     public static boolean login;
     public static boolean registrado;
+
+    /**
+     * Método que lee inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
+     *
+     * @param pokemon
+     */
 
     /**
      * Método que inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
@@ -42,6 +46,7 @@ public class PokemonCRUD {
 
             int nuevaId = pokemon.getId() + Funcion.random(1, 9999);
             int equipo = Entrenador.addPokemon(pokemon);
+            Movimiento movimiento = generarMovimiento();
 
 
             PreparedStatement preparedStatement = db.prepareStatement(sql);
@@ -59,7 +64,7 @@ public class PokemonCRUD {
             preparedStatement.setDouble(12, pokemon.getDefensaEspecial());
             preparedStatement.setString(13, String.valueOf(pokemon.getTipo1()));
             preparedStatement.setString(14, String.valueOf(pokemon.getTipo2()));
-            preparedStatement.setInt(15, idMovimiento(generarMovimiento()));
+            preparedStatement.setInt(15, idMovimiento(movimiento));
             preparedStatement.setInt(16, idEntrenador()); //CAMBIAR METODO DESPUES DE TERMINAR PRUEBAS
             preparedStatement.setInt(17, pokemon.getId());
             preparedStatement.setInt(18, 1);
@@ -75,6 +80,46 @@ public class PokemonCRUD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void actualizarDinero(Objeto objeto) {
+
+        try {
+
+            Connection db = MySQL.getConexion();
+            String sql = "UPDATE entrenador SET dinero = ? WHERE id_entrenador = ?";
+            PreparedStatement ps = db.prepareStatement(sql);
+            int dinero = Entrenador.getDinero();
+            int idEntrenador = idEntrenador();
+            ps.setInt(1, dinero);
+            ps.setInt(2, idEntrenador);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+        }
+
+    }
+
+    public static void actualizarPokemon(int equipo, int idPokemon) {
+
+        try {
+
+            Connection db = MySQL.getConexion();
+            String sql = "UPDATE capturado SET equipo = ? WHERE id_capturado = ?";
+            PreparedStatement ps = db.prepareStatement(sql);
+            int dinero = Entrenador.getDinero();
+            int idEntrenador = idEntrenador();
+            ps.setInt(1, equipo);
+            ps.setInt(2, idPokemon);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+        }
+
     }
 
     /**
@@ -136,6 +181,45 @@ public class PokemonCRUD {
         return pokemon;
 
     }
+
+    public static Pokemon mostrarPokemon() {
+
+        PokemonCRUD.getEquipo1(Entrenador.equipo1, idEntrenador());
+        int contador = 0;
+
+        for (Pokemon pokemon : Entrenador.equipo1) {
+            contador++;
+            System.out.println(contador + ". " + pokemon.getNombre());
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Selecciona un pokemon: ");
+        int opcion = scanner.nextInt();
+
+        if (Entrenador.equipo1.size() >= opcion) {
+            switch (opcion) {
+                case 1:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(0).getId());
+                case 2:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(1).getId());
+                case 3:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(2).getId());
+                case 4:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(3).getId());
+                case 5:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(4).getId());
+                case 6:
+                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(5).getId());
+                default:
+                    System.out.println("Opción no válida.");
+                    return null;
+            }
+        } else {
+            System.out.println("Opción no válida.");
+            return null;
+        }
+    }
+
 
     /**
      * Método para rellenar la lista de equipo1 del Entrenador con los Pokemons de la tabla capturado.
@@ -370,7 +454,7 @@ public class PokemonCRUD {
                 int dinero = rs.getInt("dinero");
 
                 // Crear un objeto Entrenador con los detalles cargados
-                entrenador = new Entrenador(id, nombre, dinero, new LinkedList<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+                entrenador = new Entrenador(nombre, dinero, new HashMap<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
             }
 
             return entrenador;
@@ -597,7 +681,6 @@ public class PokemonCRUD {
      */
 
     public static Movimiento generarMovimiento() {
-
         Movimiento movimiento;
         int num = Funcion.random(1, 3);
 
@@ -608,7 +691,14 @@ public class PokemonCRUD {
         } else {
             movimiento = generarMejora();
         }
-        return movimiento;
+
+        if (movimiento != null) {
+            return movimiento;
+        } else {
+            // Manejar el caso en el que no se pueda generar un movimiento válido
+            // Puedes lanzar una excepción, mostrar un mensaje de error, etc.
+            throw new IllegalStateException("No se pudo generar un movimiento válido.");
+        }
     }
 
     /**
@@ -766,31 +856,27 @@ public class PokemonCRUD {
      */
 
     public static int idMovimiento(Movimiento movimiento) {
-
         try {
+            if (movimiento != null) {
+                Connection db = MySQL.getConexion();
+                int idMovimiento;
+                String sql = "SELECT id_movimiento FROM movimiento WHERE nombre = ?";
+                PreparedStatement preparedStatement = db.prepareStatement(sql);
+                preparedStatement.setString(1, movimiento.getNombreMovimiento());
+                ResultSet rs = preparedStatement.executeQuery();
 
-            Connection db = MySQL.getConexion();
-
-            int idMovimiento;
-            String sql = "SELECT id_movimiento FROM movimiento WHERE nombre = ?";
-            PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setString(1, movimiento.getNombreMovimiento());
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if (rs.next()) {
-                idMovimiento = rs.getInt("id_movimiento");
-                return idMovimiento;
+                if (rs.next()) {
+                    idMovimiento = rs.getInt("id_movimiento");
+                    return idMovimiento;
+                }
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
-
         return 0;
-
     }
+
+
     // ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇
     // CAMBIAR
     // DESPUES DE
@@ -800,9 +886,7 @@ public class PokemonCRUD {
 
     public static int idEntrenador() {
 
-        Entrenador.setNombre("Juan"); //Se cambia esto
-
-//   Lo bueno ->     Entrenador.getNombre();
+        // Entrenador.setNombre("El pepe");
 
         try {
 
@@ -829,37 +913,66 @@ public class PokemonCRUD {
 
     }
 
-    public static Objeto getObjeto(int idObjeto) {
 
-        Objeto objeto = new Objeto();
+    public static int idPokemon(String nombrePokemon) {
 
         try {
+
             Connection db = MySQL.getConexion();
 
-            String sql = "SELECT * FROM objeto WHERE id_objeto = ?";
+            int idEntrenador;
+            String sql = "SELECT id_capturado FROM capturado WHERE nombre = ?";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setInt(1, idObjeto);
+            preparedStatement.setString(1, nombrePokemon);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                objeto.setId(rs.getInt("id_objeto"));
-                objeto.setNombre(rs.getString("nombre"));
-                objeto.setPrecio(rs.getInt("precio"));
-                objeto.setDescripcion(rs.getString("descripcion"));
-                objeto.setAtaque(rs.getDouble("ataque"));
-                objeto.setDefensa(rs.getDouble("defensa"));
-                objeto.setDefensaEspecial(rs.getDouble("defensa_especial"));
-                objeto.setVelocidad(rs.getDouble("velocidad"));
-                objeto.setEstamina(rs.getDouble("estamina"));
-                return objeto;
+                idEntrenador = rs.getInt("id_capturado");
+                return idEntrenador;
             }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
+
         }
 
-        return null;
+        return 0;
+
     }
+
+
+//    public static Objeto getObjeto(int idObjeto) { //Pasar a la nueva clase Objeto tipo Miguel
+//
+//        Objeto objeto = new Objeto();
+//
+//        try {
+//            Connection db = MySQL.getConexion();
+//
+//            String sql = "SELECT * FROM objeto WHERE id_objeto = ?";
+//            PreparedStatement preparedStatement = db.prepareStatement(sql);
+//            preparedStatement.setInt(1, idObjeto);
+//            ResultSet rs = preparedStatement.executeQuery();
+//
+//            if (rs.next()) {
+//                objeto.setId(rs.getInt("id_objeto"));
+//                objeto.setNombre(rs.getString("nombre"));
+//                objeto.setPrecio(rs.getInt("precio"));
+//                objeto.setDescripcion(rs.getString("descripcion"));
+//                objeto.setAtaque(rs.getDouble("ataque"));
+//                objeto.setDefensa(rs.getDouble("defensa"));
+//                objeto.setDefensaEspecial(rs.getDouble("defensa_especial"));
+//                objeto.setVelocidad(rs.getDouble("velocidad"));
+//                objeto.setEstamina(rs.getDouble("estamina"));
+//                return objeto;
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//    }
 
     /**
      * Método que devuelve la mochila pero muestra las IDs.
@@ -950,68 +1063,15 @@ public class PokemonCRUD {
 //        return null;
 //    }
 
-    public static Pokemon mostrarPokemon() {
-
-        PokemonCRUD.getEquipo1(Entrenador.equipo1, Entrenador.getId());
-        int contador = 0;
-
-        for (Pokemon pokemon : Entrenador.equipo1) {
-            contador++;
-            System.out.println(contador + ". " + pokemon.getNombre());
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Selecciona un pokemon: ");
-        int opcion = scanner.nextInt();
-
-        if (Entrenador.equipo1.size() >= opcion) {
-            switch (opcion) {
-                case 1:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(0).getId());
-                case 2:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(1).getId());
-                case 3:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(2).getId());
-                case 4:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(3).getId());
-                case 5:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(4).getId());
-                case 6:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(5).getId());
-                default:
-                    System.out.println("Opción no válida.");
-                    return null;
-            }
-        } else {
-            System.out.println("Opción no válida.");
-            return null;
-        }
-    }
-
-    public static void cambioEquipo(int equipo, Pokemon pokemon) {
-        try {
-
-            Connection db = MySQL.getConexion();
-            int id = pokemon.getId();
-            String sql = "UPDATE capturado SET equipo = ? WHERE id_capturado = ?";
-            PreparedStatement ps = db.prepareStatement(sql);
-            ps.setInt(1, equipo);
-            ps.setInt(2, id);
-            int updateCampo = ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public static void main(String[] args) {
 
-        Pokemon p = generarPokemon();
+        Entrenador.setNombre("El pepe");
 
-        createCapturado(p);
+        System.out.println(idEntrenador());
 
     }
+
 
 }
 

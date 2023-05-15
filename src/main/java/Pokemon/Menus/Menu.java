@@ -1,9 +1,10 @@
 package Pokemon.Menus;
 
-import Pokemon.Database.MySQL;
+
+import Pokemon.Capturar.MenuEntrenador;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
-//import Pokemon.Tienda.Tienda;
+import Pokemon.Tienda.MenuTienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,7 +23,7 @@ public class Menu extends Application {
 	public void start(Stage primaryStage) throws IOException {
 
 		// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-		Media audioMedia = new Media(getClass().getResource("/aud/Base.wav").toExternalForm());
+		Media audioMedia = new Media(getClass().getResource("/aud/Menu.wav").toExternalForm());
 		MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
 		audioMediaPlayer.setAutoPlay(true);
 		audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -44,6 +45,15 @@ public class Menu extends Application {
 		tiendaButton.setId("tiendaButton");
 		Button salirButton = new Button("Salir");
 		salirButton.setId("salirButton");
+		// AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
+		Button muteButton = new Button(" -ZzZ- ");
+		muteButton.setOnAction(e -> {
+			if (audioMediaPlayer.isMute()) {
+				audioMediaPlayer.setMute(false);
+			} else {
+				audioMediaPlayer.setMute(true);
+			}
+		});
 
 		// -----------------------------------------------------------------------------------------------------------------
 
@@ -55,54 +65,34 @@ public class Menu extends Application {
 			primaryStage.setScene(menuCombateScene);
 
 		});
-//		exploracionButton.setOnAction(e -> {
-//			// CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
-//			// POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
-//			Scene currentScene = primaryStage.getScene();
-//			Exploracion Exploracion = new Exploracion(primaryStage, currentScene);
-//			Scene ExploradorScene = Exploracion.getScene();
-//			primaryStage.setScene(ExploradorScene);
-//
-		
-		
-		
-//		});
-		
 		exploracionButton.setOnAction(e -> {
 		    // CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
 		    // POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
-		    MenuExplorador menuExplorador = new MenuExplorador();
-		    menuExplorador.start(primaryStage);
+			MenuExplorador menuExplorador = new MenuExplorador(primaryStage, primaryStage.getScene());
+			menuExplorador.start(primaryStage);
+			audioMediaPlayer.stop();
 		});
 		pokedexButton.setOnAction(e -> {
 			// AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
 			System.out.println(PokemonCRUD.generarPokemon());
-
+			 MenuPokedex menuPokedex = new MenuPokedex(primaryStage, primaryStage.getScene());
+			menuPokedex.start(primaryStage);
+			audioMediaPlayer.stop();
 		});
 		entrenadorButton.setOnAction(e -> {
-			// CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
-			// POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
-			audioMediaPlayer.setAutoPlay(true);
-			Scene currentScene = primaryStage.getScene();
-			MenuEntrenador menuEntrenador = new MenuEntrenador(primaryStage, currentScene);
-			Scene menuEntrenadorScene = menuEntrenador.getScene();
-			primaryStage.setScene(menuEntrenadorScene);
+			// DETENEMOS LA REPRODUCCIÓN DEL AUDIO
+		    MenuEntrenador menuEntrenador = new MenuEntrenador(primaryStage, primaryStage.getScene());
+		    menuEntrenador.start(primaryStage);
+		    audioMediaPlayer.stop();
 		});
-
-//        mochilaButton.setOnAction(e -> {
-//            // AQUÍ PUEDES LLAMAR A LA CLASE MOCHILA
-//            System.out.println("Mocihla");
-//
-//        });
-
 		tiendaButton.setOnAction(e -> {
-//			Scene currentScene = primaryStage.getScene();
-//			MenuTienda menuTienda = new MenuTienda(primaryStage, currentScene);
-//			Scene menuTiendaScene = menuTienda.getScene();
-//			primaryStage.setScene(menuTiendaScene);
+			// DETENEMOS LA REPRODUCCIÓN DEL AUDIO
+		    MenuTienda menuTienda = new MenuTienda(primaryStage, primaryStage.getScene());
+		    menuTienda.start(primaryStage);
+		    audioMediaPlayer.stop();
 			
 			//Muestrar por Consola
-//			Tienda.abrirTienda();
+			//Tienda.abrirTienda();
 		});
 		
 
@@ -111,14 +101,14 @@ public class Menu extends Application {
 
 		// CREAMOS UN VBOX
 		VBox root = new VBox(10, combateButton, exploracionButton, pokedexButton, entrenadorButton, tiendaButton,
-				salirButton);
+				salirButton, muteButton);
+		
 		root.setAlignment(Pos.CENTER);
 		root.setPadding(new Insets(20));
 		BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/cDi4PvX.jpg"),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 		root.setBackground(new Background(backgroundImage));
-
 		// TAMAÑO VENTANA
 
 		Scene scene = new Scene(root, 1080, 650);

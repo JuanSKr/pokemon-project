@@ -319,34 +319,12 @@ public class Pokemon {
 
     /**
      * Si el pokemon tiene mote se mostrará el mote en lugar del nombre, si no tiene mote se mostrará el nombre.
+     *
      * @return toString con condicional
      */
     @Override
     public String toString() {
-        return "Pokemon{" +
-                "nombre='" + nombre + '\'' +
-                ", mote='" + mote + '\'' +
-                ", nivel=" + nivel +
-                ", xp=" + xp +
-                ", tipo1=" + tipo1 +
-                ", tipo2=" + tipo2 +
-                ", sexo=" + sexo +
-                ", vitalidad=" + vitalidad +
-                ", ataque=" + ataque +
-                ", defensa=" + defensa +
-                ", ataqueEspecial=" + ataqueEspecial +
-                ", defensaEspecial=" + defensaEspecial +
-                ", estamina=" + estamina +
-                ", velocidad=" + velocidad +
-                ", estado=" + estado +
-                ", fertilidad=" + fertilidad +
-                ", obj=" + obj +
-                ", movimiento1=" + movimiento1 +
-                ", movimiento2=" + movimiento2 +
-                ", movimiento3=" + movimiento3 +
-                ", movimiento4=" + movimiento4 +
-                ", foto='" + foto + '\'' +
-                '}';
+        return nombre;
     }
 
 // Metodos propios
@@ -354,12 +332,13 @@ public class Pokemon {
     /**
      * Un Pokemon aprende un nuevo movimiento cada 3 niveles.
      * Si el nivel del Pokemon es múltiplo de 3, llama al método addMovimiento().
+     *
      * @param pokemon
      */
 
     public static void aprenderMovimiento(Pokemon pokemon) {
 
-        if((pokemon.getNivel() % 3) == 0) {
+        if ((pokemon.getNivel() % 3) == 0) {
             addMovimiento(pokemon);
         }
 
@@ -368,6 +347,7 @@ public class Pokemon {
     /**
      * Este método, dependiendo del valor que se le pase a opción asigna el movimiento.
      * Es un método para complementar el método aprenderMovimiento().
+     *
      * @param pokemon
      */
 
@@ -401,6 +381,7 @@ public class Pokemon {
 
     /**
      * Sube el nivel de un Pokemon y le sube las estadisticas.
+     *
      * @param pokemon
      */
 
@@ -409,7 +390,7 @@ public class Pokemon {
         int xpNecesario = (pokemon.getNivel() * 10);
         int nuevoNivel = (pokemon.getNivel() + 1);
 
-        if(pokemon.getXp() == xpNecesario) {
+        if (pokemon.getXp() == xpNecesario) {
             pokemon.setNivel(nuevoNivel);
             subirStats(pokemon);
         }
@@ -417,6 +398,7 @@ public class Pokemon {
 
     /**
      * Sube la estadisticas del pokemon en un valor entre 1 y 5.
+     *
      * @param pokemon
      */
 

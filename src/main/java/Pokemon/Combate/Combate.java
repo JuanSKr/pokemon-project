@@ -13,8 +13,7 @@ import javafx.scene.control.Label;
 
 import java.util.Scanner;
 
-import static Pokemon.Database.PokemonCRUD.generarAtaque;
-import static Pokemon.Database.PokemonCRUD.generarPokemon;
+import static Pokemon.Database.PokemonCRUD.*;
 
 
 public class Combate {
@@ -27,11 +26,13 @@ public class Combate {
 
     public static Pokemon elegirPokemon() {
 
-        Entrenador.setId(6);
+        Entrenador.setNombre("El pepe");
+
+
         //El sout del equipo del Rival está aquí dentro, es equipoRival().
 
         System.out.println("¿Con qué Pokemon quieres empezar?");
-        Pokemon pokemon = Pokemon.mostrarPokemon(Entrenador.getId());
+        Pokemon pokemon = Pokemon.mostrarPokemon(PokemonCRUD.idEntrenador());
         System.out.println("----------------------------------");
         System.out.println("¡Has seleccionado a " + pokemon.getNombre() + "!");
         return pokemon;

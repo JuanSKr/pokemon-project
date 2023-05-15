@@ -1,0 +1,7 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡”…
+Q	java:S125R"<This block of commented-out lines of code should be removed.(ä–»¡
+I
+java:S1128"3Remove this unused import 'Pokemon.Database.MySQL'.(Œ¿ù”
+I
+java:S1068".Remove this unused "entrenador" private field.(ûší›ıÿÿÿÿ
