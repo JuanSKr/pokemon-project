@@ -1,68 +1,56 @@
-/*
-Configuración general de todos los botones:
-- Tamaño de fuente.
-- Ancho del botón.
-- Altura de botón.
-- Color del fondo del botón default.
-- Color del texto.
-*/
-
+/* Configuración general de todos los botones */
 .button {
     -fx-font-size: 18px;
     -fx-background-color: brown;
     -fx-text-fill: white;
 }
 
-/*
-Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...):
-- Color de fondo del botón.
-- Posición X del botón.
-- Posición Y del botón.
-*/
-
+/* Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...) */
 #combateButton {
-    -fx-background-color: orange;
-        -fx-translate-x: -120px;
-        -fx-translate-y: 132px;
-        -fx-min-width: 180px;
-        -fx-min-height: 45px;
-        -fx-background-image: url('https://i.imgur.com/VVdKgVN.jpg');
+    -fx-background-color: transparent;
+    -fx-translate-x: 150px;
+    -fx-translate-y: -150px;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
+    -fx-background-image: url('img/botones/menu-combate.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
 }
 
 #explorarButton {
-    -fx-background-color: #5b1cc1;
+    -fx-background-color: transparent;
     -fx-translate-x: 130px;
     -fx-translate-y: 75px;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
-
+    -fx-background-image: url('/img/botones/menu-explorar.png');
 }
 
 #pokedexButton {
-    -fx-background-color: #6d6875;
+    -fx-background-color: transparent;
     -fx-translate-x: -120px;
     -fx-translate-y: 105px;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
-
+    -fx-background-image: url('/img/botones/menu-pokedex.png');
 }
 
 #entrenadorButton {
-    -fx-background-color: #282c34;
+    -fx-background-color: transparent;
     -fx-translate-x: -400px;
     -fx-translate-y: -235px;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
+    -fx-background-image: url('/img/botones/menu-entrenador.png');
 }
 
-/*
-Mochila no se muestra en el inicio.
-*/
-
 #mochilaButton {
-    -fx-background-color: #20bf6b;
+    -fx-background-color: transparent;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
+    -fx-opacity: 0; /* Mochila no se muestra en el inicio */
 }
 
 #tiendaButton {
@@ -81,22 +69,15 @@ Mochila no se muestra en el inicio.
     -fx-min-height: 45px;
 }
 
-/*
-Hover: Estilo de cuando tienes el ratón encima del botón:
-- Efecto de sombra.
-- Color del texto al tener el ratón encima del botón.
-
-Valores del hover:
-    gaussian: Tipo de sombra.
-    rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparencia.
-    10: Distancia horizontal entre la sombra y el objeto.
-    0: Distancia vertical entre la sombra y el objeto.
-    0: Desenfoque de la sombra.
-    5: Tamaño de la extensión de la sombra.
-*/
-
-.button:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 3, 2, 0, 2);
-    -fx-text-fill: white;
+#barra {
+    -fx-translate-x: 65px;
+    -fx-translate-y: 0px;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
 }
 
+    /* Hover: Estilo cuando tienes el ratón encima del botón */
+    .button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 3, 2, 0, 2);
+    -fx-text-fill: white;
+    }
