@@ -18,6 +18,7 @@ public class Login extends Application {
     private PasswordField contrasena;
     private Label mensaje;
     private Entrenador entrenador = null;
+    Image imageBackground = new Image(getClass().getResourceAsStream("/img/Login.gif"));
 
     @Override
     public void start(Stage primaryStage) {
@@ -26,7 +27,7 @@ public class Login extends Application {
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         BackgroundSize backgroundSize = new BackgroundSize(1080, 650, false, false, false, false);
-        BackgroundImage backgroundImage = new BackgroundImage(new Image("https://i.imgur.com/6y651sN.gif"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        BackgroundImage backgroundImage = new BackgroundImage(imageBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         grid.setBackground(new Background(backgroundImage));
         grid.setVgap(8);
         grid.setHgap(10);
