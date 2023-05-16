@@ -231,7 +231,7 @@ public class MenuEntrenador extends Application {
         cajaListView.setOnDragDropped(event -> {
             Dragboard arrastrar = event.getDragboard();
             boolean completado = false;
-            if (arrastrar.hasString() && cajaListView.getItems().size() < 15) {
+            if (arrastrar.hasString() && caja.size() < 15 ) {
                 String pokemon = arrastrar.getString();
                 String nombrePokemon = pokemon;
                 int idPokemon = PokemonCRUD.idPokemon(nombrePokemon);
@@ -454,6 +454,7 @@ public class MenuEntrenador extends Application {
         }
 
     }
+
 
 
 }

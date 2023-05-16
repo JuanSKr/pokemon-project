@@ -160,7 +160,7 @@ public class Entrenador {
      */
 
     public static int addPokemon(Pokemon pokemon) {
-        int equipo;
+        int equipo = 0;
 
         PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
         PokemonCRUD.getEquipo2(Entrenador.equipo2, PokemonCRUD.idEntrenador());
@@ -174,9 +174,11 @@ public class Entrenador {
             equipo2.add(pokemon);
             equipo = 2;
             System.out.println(equipo2);
-        } else {
+        } else if(caja.size() < 15) {
             caja.add(pokemon);
             equipo = 3;
+        } else {
+            return equipo;
         }
 
         return equipo;
