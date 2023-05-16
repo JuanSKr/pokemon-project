@@ -212,7 +212,7 @@ public class CombateGrafico extends Application {
             // Muestra los botones de movimiento
             botonesMovimiento();
 
-            obtenerMovimientos(pEntrenador, pRival);
+            obtenerMovimientos(pEntrenador);
         });
 
 
@@ -307,7 +307,12 @@ public class CombateGrafico extends Application {
     }
 
 
-    public static void obtenerMovimientos(Pokemon pokemonEntrenador, Pokemon pokemonRival) {
+    /**
+     * Obtener los 4 movimientos del Pokemon del entrenador.
+     * @param pokemonEntrenador
+     */
+
+    public static void obtenerMovimientos(Pokemon pokemonEntrenador) {
 
         String nombre;
         Movimiento movimiento1 = pokemonEntrenador.getMovimiento1();
@@ -427,20 +432,21 @@ public class CombateGrafico extends Application {
 
     }
 
-    public static void actualizarEstaminaE(Pokemon pokemon, Label estaminaEntrenador) {
+    /**
+     * Este método actualiza la estamina del Pokemon que se le pase por parámetro, en el label que se le pase por parámetro
+     * @param pokemon
+     * @param estaminaLabel
+     */
+
+    public static void actualizarEstaminaE(Pokemon pokemon, Label estaminaLabel) {
 
 
         double nuevaEstamina = pokemon.getEstamina();
 
         String estaminaE = "EST: " + nuevaEstamina;
-        estaminaEntrenador.setText(estaminaE);
+        estaminaLabel.setText(estaminaE);
 
 
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
     }
 
 

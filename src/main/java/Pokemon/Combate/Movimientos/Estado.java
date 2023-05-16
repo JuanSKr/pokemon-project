@@ -42,7 +42,12 @@ public class Estado extends Movimiento {
 
     // Métodos
 
-    // Coste estamina (por crear)
+    /**
+     * Se calcula el coste de estamina del movimiento de tipo Estado mediante su fórmula
+     * @param pokemon
+     * @param estado
+     * @return
+     */
 
     public static double costeEstamina(Pokemon pokemon, Estado estado) {
 
