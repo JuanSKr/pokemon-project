@@ -3,6 +3,7 @@ package Pokemon.Menus;
 
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
+import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Tienda.MenuTienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -16,8 +17,37 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Menu extends Application {
+
+
+    Image imageBackground = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Login.gif")));
+    Image imageBackground2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Prueba1.gif")));
+    Image imageBackground3 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Prueba.gif")));
+
+
+    public static BackgroundImage backgroundRandom(Image foto1, Image foto2, Image foto3) {
+
+        int random = Funcion.random(1, 3);
+        BackgroundImage backgroundImage;
+        System.out.println("Metodo ejecutado");
+
+        if (random == 1) {
+            BackgroundSize backgroundSize = new BackgroundSize(1080, 650, false, false, false, false);
+            backgroundImage = new BackgroundImage(foto1, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        } else if (random == 2) {
+            BackgroundSize backgroundSize = new BackgroundSize(1080, 650, false, false, false, false);
+            backgroundImage = new BackgroundImage(foto2, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        } else {
+            BackgroundSize backgroundSize = new BackgroundSize(1080, 650, false, false, false, false);
+            backgroundImage = new BackgroundImage(foto3, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        }
+
+        return backgroundImage;
+    }
+
+
     @Override
     public void start(Stage primaryStage) throws IOException {
 
@@ -26,8 +56,6 @@ public class Menu extends Application {
         MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
         audioMediaPlayer.setAutoPlay(true);
         audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-
-        Image image = new Image(getClass().getResourceAsStream("/img/Prueba.gif"));
 
         // AQUI SE AÑADEN LOS BOTONES DEL MENU
         // El setId le asigna su ID dentro del css.
@@ -106,14 +134,10 @@ public class Menu extends Application {
 
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(20));
-        BackgroundImage backgroundImage = new BackgroundImage(image,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                BackgroundSize.DEFAULT
-        );
-        root.setBackground(new Background(backgroundImage));
-        // TAMAÑO VENTANA
+
+        BackgroundImage backgroundImage = backgroundRandom(imageBackground, imageBackground2, imageBackground3);
+        Background background = new Background(backgroundImage);
+        root.setBackground(background);
 
         Scene scene = new Scene(root, 1080, 650);
         scene.getStylesheets().add("Menu.css");

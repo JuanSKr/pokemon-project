@@ -18,7 +18,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-	//AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
+import java.io.IOException;
+
+//AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
 public class MenuCombate extends Application {
 
     private static final int SCENE_WIDTH = 1080;
@@ -58,7 +60,8 @@ public class MenuCombate extends Application {
         // Agregar botón para regresar al menú anterior
         Button backButton = new Button(" <-- ");
         backButton.setOnAction(e -> {
-            primaryStage.setScene(previousScene);
+            Menu.abrirMenu();
+
         });
         gridPane.add(backButton, 0, 0);
         GridPane.setHalignment(backButton, HPos.RIGHT);
