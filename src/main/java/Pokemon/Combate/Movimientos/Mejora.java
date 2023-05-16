@@ -49,7 +49,12 @@ public class Mejora extends Movimiento {
 
     // Metodos
 
-    // Coste estamina (por crear)
+    /**
+     * Se calcula el coste de estamina del movimiento de tipo Mejora mediante su fórmula
+     * @param pokemon
+     * @param mejora
+     * @return
+     */
 
     public static double costeEstamina(Pokemon pokemon, Mejora mejora) {
 

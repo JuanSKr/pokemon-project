@@ -186,21 +186,6 @@ public class TablaTipos {
     }
 
 
-
-
-    public static void main(String[] args) {
-
-
-
-
-
-
-
-
-
-
-    }
-
 }
 
 

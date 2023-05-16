@@ -82,7 +82,12 @@ public class PokemonCRUD {
         }
     }
 
-    public static void actualizarDinero(Objeto objeto) {
+    /**
+     * Este método actualiza el dinero del entrenador.
+     * Se le pasa un objeto por parámetro
+     */
+
+    public static void actualizarDinero() {
 
         try {
 
@@ -695,9 +700,10 @@ public class PokemonCRUD {
         if (movimiento != null) {
             return movimiento;
         } else {
+            return generarMovimiento();
             // Manejar el caso en el que no se pueda generar un movimiento válido
             // Puedes lanzar una excepción, mostrar un mensaje de error, etc.
-            throw new IllegalStateException("No se pudo generar un movimiento válido.");
+
         }
     }
 
@@ -876,13 +882,10 @@ public class PokemonCRUD {
         return 0;
     }
 
-
-    // ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇
-    // CAMBIAR
-    // DESPUES DE
-    // TERMINAR LAS
-    // PRUEBAS
-    // ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇
+    /**
+     * Este método devuelve la id del Entrenador buscando en la base de datos por su nombre.
+     * @return idEntrenador
+     */
 
     public static int idEntrenador() {
 
@@ -913,6 +916,11 @@ public class PokemonCRUD {
 
     }
 
+    /**
+     * Este método devuelve la id del Pokémon buscando en la base de datos por su nombre.
+     * @param nombrePokemon Pokemon que se busca su ID
+     * @return
+     */
 
     public static int idPokemon(String nombrePokemon) {
 
@@ -1063,14 +1071,6 @@ public class PokemonCRUD {
 //        return null;
 //    }
 
-
-    public static void main(String[] args) {
-
-        Entrenador.setNombre("El pepe");
-
-        System.out.println(idEntrenador());
-
-    }
 
 
 }

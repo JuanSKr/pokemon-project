@@ -181,7 +181,7 @@ public class MenuEntrenador extends Application {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
                 alert.setHeaderText(null);
-                alert.setContentText("El contenedor Equipo1 ha alcanzado su capacidad máxima de 6 elementos.");
+                alert.setContentText("Ya tienes 6 Pokémons almacenados en el equipo 1. No caben más.");
                 alert.showAndWait();
             }
             event.setDropCompleted(completado);
@@ -213,7 +213,7 @@ public class MenuEntrenador extends Application {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
                 alert.setHeaderText(null);
-                alert.setContentText("El contenedor Equipo2 ha alcanzado su capacidad máxima de 6 elementos.");
+                alert.setContentText("Ya tienes 6 Pokémons almacenados en el equipo 2. No caben más.");
                 alert.showAndWait();
             }
             event.setDropCompleted(completado);
@@ -231,7 +231,7 @@ public class MenuEntrenador extends Application {
         cajaListView.setOnDragDropped(event -> {
             Dragboard arrastrar = event.getDragboard();
             boolean completado = false;
-            if (arrastrar.hasString() && cajaListView.getItems().size() < 6) { //Cambiar a 15
+            if (arrastrar.hasString() && cajaListView.getItems().size() < 15) {
                 String pokemon = arrastrar.getString();
                 String nombrePokemon = pokemon;
                 int idPokemon = PokemonCRUD.idPokemon(nombrePokemon);
@@ -243,7 +243,7 @@ public class MenuEntrenador extends Application {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
                 alert.setHeaderText(null);
-                alert.setContentText("El contenedor Caja ha alcanzado su capacidad máxima de 6 elementos.");
+                alert.setContentText("Ya tienes 15 Pokémons almacenados en la caja. No caben más.");
                 alert.showAndWait();
             }
             event.setDropCompleted(completado);
@@ -268,6 +268,13 @@ public class MenuEntrenador extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    /**
+     * Método para obtener los Pokémos del equipo1 de manera gráfica, posición por posición.
+     *
+     * @param equipo1         LinkedList de equipo1
+     * @param equipo1ListView ListView de equipo1
+     */
 
     public static void obtenerEquipo1(LinkedList<Pokemon> equipo1, ListView<String> equipo1ListView) {
 
@@ -297,6 +304,13 @@ public class MenuEntrenador extends Application {
         }
 
     }
+
+    /**
+     * Método para obtener los Pokémos del equipo2 de manera gráfica, posición por posición.
+     *
+     * @param equipo2         LinkedList de equipo2
+     * @param equipo2ListView ListView de equipo2
+     */
 
     public static void obtenerEquipo2(LinkedList<Pokemon> equipo2, ListView<String> equipo2ListView) {
 
@@ -329,31 +343,114 @@ public class MenuEntrenador extends Application {
 
     }
 
-    public static void obtenerCaja(LinkedList<Pokemon> caja, ListView<String> equipo1ListView) {
+    /**
+     * Método para obtener los Pokémos de la caja de manera gráfica, posición por posición.
+     *
+     * @param caja         LinkedList de caja
+     * @param cajaListView ListView de caja
+     */
+
+    public static void obtenerCaja(LinkedList<Pokemon> caja, ListView<String> cajaListView) {
 
         if (caja.size() == 0) {
             System.out.println("Vacio");
         } else if (caja.size() == 1) {
-            equipo1ListView.getItems().addAll(String.valueOf(caja.get(0)));
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)));
         } else if (caja.size() == 2) {
-            equipo1ListView.getItems().addAll(String.valueOf(caja.get(0)),
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
                     String.valueOf(caja.get(1)));
         } else if (caja.size() == 3) {
-            equipo1ListView.getItems().addAll(String.valueOf(caja.get(0)),
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
                     String.valueOf(caja.get(1)), String.valueOf(caja.get(2)));
         } else if (caja.size() == 4) {
-            equipo1ListView.getItems().addAll(String.valueOf(caja.get(0)),
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
                     String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
                     String.valueOf(caja.get(3)));
         } else if (caja.size() == 5) {
-            equipo1ListView.getItems().addAll(String.valueOf(caja.get(0)),
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
                     String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
                     String.valueOf(caja.get(3)), String.valueOf(caja.get(4)));
         } else if (caja.size() == 6) {
-            equipo1ListView.getItems().addAll(String.valueOf(caja.get(0)),
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
                     String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
                     String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
                     String.valueOf(caja.get(5)));
+        } else if (caja.size() == 7) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)));
+        } else if (caja.size() == 8) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)));
+        } else if (caja.size() == 9) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)), String.valueOf(caja.get(8)));
+        } else if (caja.size() == 10) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)), String.valueOf(caja.get(8)),
+                    String.valueOf(caja.get(9)));
+        } else if (caja.size() == 11) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)), String.valueOf(caja.get(8)),
+                    String.valueOf(caja.get(9)), String.valueOf(caja.get(10)));
+        } else if (caja.size() == 12) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)), String.valueOf(caja.get(8)),
+                    String.valueOf(caja.get(9)), String.valueOf(caja.get(10)),
+                    String.valueOf(caja.get(11)));
+        } else if (caja.size() == 13) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)), String.valueOf(caja.get(8)),
+                    String.valueOf(caja.get(9)), String.valueOf(caja.get(10)),
+                    String.valueOf(caja.get(11)), String.valueOf(caja.get(12)));
+        } else if (caja.size() == 14) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)), String.valueOf(caja.get(8)),
+                    String.valueOf(caja.get(9)), String.valueOf(caja.get(10)),
+                    String.valueOf(caja.get(11)), String.valueOf(caja.get(12)),
+                    String.valueOf(caja.get(13)));
+        } else if (caja.size() == 15) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)), String.valueOf(caja.get(8)),
+                    String.valueOf(caja.get(9)), String.valueOf(caja.get(10)),
+                    String.valueOf(caja.get(11)), String.valueOf(caja.get(12)),
+                    String.valueOf(caja.get(13)), String.valueOf(caja.get(14)));
+
+        } else if (caja.size() == 16) {
+            cajaListView.getItems().addAll(String.valueOf(caja.get(0)),
+                    String.valueOf(caja.get(1)), String.valueOf(caja.get(2)),
+                    String.valueOf(caja.get(3)), String.valueOf(caja.get(4)),
+                    String.valueOf(caja.get(5)), String.valueOf(caja.get(6)),
+                    String.valueOf(caja.get(7)), String.valueOf(caja.get(8)),
+                    String.valueOf(caja.get(9)), String.valueOf(caja.get(10)),
+                    String.valueOf(caja.get(11)), String.valueOf(caja.get(12)),
+                    String.valueOf(caja.get(13)), String.valueOf(caja.get(14)),
+                    String.valueOf(caja.get(15)));
         }
 
     }

@@ -47,10 +47,14 @@ public class MenuExplorador extends Application {
 
 //---------------------------------------------------------------------------------------------------------------------------	
 	// MOVIMIENTO DIRECCION
+
+	/**
+	 * Este método captura la tecla que pulsas en el teclado y mueve la circuferencia, es decir, el entrenador
+	 * @param event
+	 */
 	private void handleEvent(KeyEvent event) {
 		KeyCode code = event.getCode();
 		if (code == KeyCode.UP || code == KeyCode.DOWN || code == KeyCode.LEFT || code == KeyCode.RIGHT) {
-			// MOVER LA CIRCUNFERENCIA ENTRENADOR
 			double moveDistance = 10;
 			if (code == KeyCode.UP) {
 				trainerCircle.setCenterY(trainerCircle.getCenterY() - moveDistance);
@@ -81,7 +85,14 @@ public class MenuExplorador extends Application {
 	}
 
 //----------------------------------------------------------------------------------------------------------------------------
-	// MOVIMIENTO EN DIAGONAL PRESIONANDO 2 TECLAS
+
+	/**
+	 * Este método mueve la circuferencia en diagonal dependiendo de las teclas que se pulsen.
+	 * @param code
+	 * @param circle
+	 * @param moveDistance
+	 * @param pressedKeys
+	 */
 	private void moveCircleDiagonally(KeyCode code, Circle circle, double moveDistance, Set<KeyCode> pressedKeys) {
 		if (pressedKeys.contains(KeyCode.UP) && pressedKeys.contains(KeyCode.LEFT)) {
 			circle.setCenterY(circle.getCenterY() - moveDistance);
