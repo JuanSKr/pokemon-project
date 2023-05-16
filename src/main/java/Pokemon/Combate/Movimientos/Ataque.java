@@ -46,7 +46,12 @@ public class Ataque extends Movimiento {
 
     // Metodos
 
-    // Coste estamina
+    /**
+     * Se calcula el coste de estamina del ataque mediante su fórmula
+     * @param pokemon
+     * @param ataque
+     * @return
+     */
 
     public static double costeEstamina(Pokemon pokemon, Ataque ataque) {
 

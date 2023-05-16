@@ -53,7 +53,7 @@ public class Entrenador {
     public static void comprarObjeto(Objeto objeto) {
         if (dinero >= objeto.getPrecio()) {
             dinero -= objeto.getPrecio();
-            PokemonCRUD.actualizarDinero(objeto);
+            PokemonCRUD.actualizarDinero();
             mochila.put(objeto.getId(), objeto);
             System.out.println("¡Objeto  " + objeto.getNombre() + " comprado y añadido a la mochila!");
             // Incrementar el contador del objeto comprado
