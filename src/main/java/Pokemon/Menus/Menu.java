@@ -1,7 +1,6 @@
 package Pokemon.Menus;
 
 
-import Pokemon.Capturar.MenuEntrenador;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Tienda.MenuTienda;

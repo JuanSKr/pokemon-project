@@ -1,4 +1,4 @@
-package Pokemon.Capturar;
+package Pokemon.Menus;
 
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
