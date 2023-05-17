@@ -8,14 +8,15 @@
 /* Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...) */
 #combateButton {
     -fx-background-color: transparent;
-    -fx-translate-x: 150px;
-    -fx-translate-y: -150px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
+    -fx-translate-x: 298.5px;
+    -fx-translate-y: -120px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
     -fx-background-image: url('img/botones/menu-combate.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+    -fx-rotate: 12deg;
 
 }
 
@@ -25,16 +26,21 @@
     -fx-translate-y: 75px;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
-    -fx-background-image: url('/img/botones/menu-explorar.png');
+ /*   -fx-background-image: url('img/botones/menu-explorar.png'); */
 }
 
 #pokedexButton {
     -fx-background-color: transparent;
     -fx-translate-x: -120px;
-    -fx-translate-y: 105px;
+    -fx-translate-y: -120px;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
-    -fx-background-image: url('/img/botones/menu-pokedex.png');
+    -fx-background-image: url('img/botones/menu-pokedex.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 12deg;
+
 }
 
 #entrenadorButton {
@@ -43,7 +49,11 @@
     -fx-translate-y: -235px;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
-    -fx-background-image: url('/img/botones/menu-entrenador.png');
+    -fx-background-image: url('img/botones/menu-entrenador.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 12deg;
 }
 
 #mochilaButton {
@@ -54,7 +64,7 @@
 }
 
 #tiendaButton {
-    -fx-background-color: #3867d6;
+    -fx-background-color: transparent;
     -fx-translate-x: 130px;
     -fx-translate-y: -7.5px;
     -fx-min-width: 180px;
@@ -62,7 +72,7 @@
 }
 
 #salirButton {
-    -fx-background-color: #eb3b5a;
+    -fx-background-color: transparent;
     -fx-translate-x: 0px;
     -fx-translate-y: 15px;
     -fx-min-width: 180px;
