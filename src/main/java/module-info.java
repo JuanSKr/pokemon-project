@@ -18,6 +18,4 @@ module Pokemon.Menus {
     exports Pokemon.Tienda to javafx.graphics;
     exports Pokemon.Pokemon;
     opens Pokemon.Pokemon to javafx.fxml;
-    exports Pokemon.Capturar;
-    opens Pokemon.Capturar to javafx.fxml;
 }

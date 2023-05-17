@@ -235,7 +235,7 @@ public class MenuExplorador extends Application {
 				// SI CONSIGUE CAPTURA EL POKEMON NUESTRA LA SIGUIENTE ESCENA
 				if (trainerCircle.getBoundsInParent().intersects(pokemonCircle.getBoundsInParent())) {
 					Random rand = new Random();
-					if (rand.nextDouble() <= 0.500) {// PORCENTAJE DE POSIBILIDADES DE CONSEGUIR EL POKEMON
+					if (rand.nextDouble() <= 1) {// PORCENTAJE DE POSIBILIDADES DE CONSEGUIR EL POKEMON /0.500
 						// CREAR UN FONDO DE PANTALLA PARA LA NUEVA ESCENA
 						// AGREGAR IMAGEN DE FONDO A LA ESCENA
 						ImageView fondo = new ImageView(new Image(getClass().getResourceAsStream("/img/PokemonCaptura.gif")));
