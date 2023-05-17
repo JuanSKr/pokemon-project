@@ -43,7 +43,14 @@ public class Menu extends Application {
         videoView.setFitWidth(1080);
         videoView.setFitHeight(650);
 
+        reproductor.setCycleCount(MediaPlayer.INDEFINITE);
         reproductor.play();
+
+        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png")));
+        ImageView imgView = new ImageView(logo);
+        imgView.setFitWidth(520);
+        imgView.setFitHeight(220);
+        imgView.setId("logo");
 
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
         Media audioMedia = new Media(getClass().getResource("/aud/Menu.wav").toExternalForm());
@@ -55,8 +62,8 @@ public class Menu extends Application {
         // El setId le asigna su ID dentro del css.
         Button combateButton = new Button();
         combateButton.setId("combateButton");
-        Button exploracionButton = new Button();
-        exploracionButton.setId("explorarButton");
+        Button capturarButton = new Button();
+        capturarButton.setId("capturarButton");
         Button pokedexButton = new Button();
         pokedexButton.setId("pokedexButton");
         Button entrenadorButton = new Button(Entrenador.getNombre());
@@ -64,7 +71,7 @@ public class Menu extends Application {
         // AÑADIR MOCHILA DENTRO DE ENTRENADOR
 //        Button mochilaButton = new Button("Mochila");
 //        mochilaButton.setId("mochilaButton");
-        Button tiendaButton = new Button("Tienda");
+        Button tiendaButton = new Button();
         tiendaButton.setId("tiendaButton");
         Button salirButton = new Button("Salir");
         salirButton.setId("salirButton");
@@ -88,7 +95,7 @@ public class Menu extends Application {
             primaryStage.setScene(menuCombateScene);
 
         });
-        exploracionButton.setOnAction(e -> {
+        capturarButton.setOnAction(e -> {
             // CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
             // POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
             MenuExplorador menuExplorador = new MenuExplorador(primaryStage, primaryStage.getScene());
@@ -124,8 +131,8 @@ public class Menu extends Application {
 
         // CREAMOS UN VBOX
         StackPane root = new StackPane();
-        root.getChildren().addAll(videoView, barraView,combateButton, exploracionButton, pokedexButton, entrenadorButton, tiendaButton,
-                salirButton, muteButton);
+        root.getChildren().addAll(videoView, barraView,combateButton, capturarButton, pokedexButton, entrenadorButton, tiendaButton,
+                salirButton, muteButton, imgView);
 
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(20));

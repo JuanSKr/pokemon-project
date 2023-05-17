@@ -3,19 +3,18 @@ package Pokemon.Menus;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Pokemon.Pokemon;
+import Pokemon.Tienda.Objeto;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -26,6 +25,7 @@ import javafx.stage.Stage;
 
 import java.util.LinkedList;
 import java.util.Objects;
+import java.util.Optional;
 
 public class MenuEntrenador extends Application {
     private static final double WINDOW_WIDTH = 1080;
@@ -186,6 +186,31 @@ public class MenuEntrenador extends Application {
             }
             event.setDropCompleted(completado);
             event.consume();
+        });
+
+// Agregar evento para eliminar un Pokémon al hacer clic derecho
+        equipo1ListView.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.SECONDARY) {
+                String pokemonSeleccionado = equipo1ListView.getSelectionModel().getSelectedItem();
+                String nombrePokemon = pokemonSeleccionado;
+                int idPokemon = PokemonCRUD.idPokemon(nombrePokemon);
+                if (pokemonSeleccionado != null) {
+                    // Mostrar un cuadro de diálogo de confirmación
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Eliminar Pokémon");
+                    alert.setHeaderText("¿Estás seguro de eliminar este Pokémon?");
+                    alert.setContentText("Pokémon: " + pokemonSeleccionado);
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        // Eliminar el Pokémon del registro y de la lista
+                        equipo1ListView.getItems().remove(pokemonSeleccionado);
+                        PokemonCRUD.eliminarPokemon(idPokemon);
+                        // Realizar las operaciones necesarias para eliminar el Pokémon del registro
+                        // ...
+                    }
+                }
+            }
         });
 
         // PERMITIR QUE LOS ELEMENTOS SEAN SOLTADOS EN EQUIPO2LISTVIEW

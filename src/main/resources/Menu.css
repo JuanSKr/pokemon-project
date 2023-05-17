@@ -8,67 +8,79 @@
 /* Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...) */
 #combateButton {
     -fx-background-color: transparent;
-    -fx-translate-x: 298.5px;
-    -fx-translate-y: -120px;
+    -fx-translate-x: 297px;
+    -fx-translate-y: -108px;
     -fx-min-width: 230px;
     -fx-min-height: 130px;
     -fx-background-image: url('img/botones/menu-combate.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-rotate: 12deg;
+    -fx-rotate: 13.5deg;
 
 }
 
-#explorarButton {
+#capturarButton {
     -fx-background-color: transparent;
-    -fx-translate-x: 130px;
-    -fx-translate-y: 75px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
- /*   -fx-background-image: url('img/botones/menu-explorar.png'); */
+    -fx-translate-x: 270.5px;
+    -fx-translate-y: -10px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/menu-capturar.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 14deg;
 }
+
 
 #pokedexButton {
     -fx-background-color: transparent;
-    -fx-translate-x: -120px;
-    -fx-translate-y: -120px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
+    -fx-translate-x: 245.5px;
+    -fx-translate-y: 88.5px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
     -fx-background-image: url('img/botones/menu-pokedex.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-rotate: 12deg;
+    -fx-rotate: 14deg;
 
 }
 
-#entrenadorButton {
+#tiendaButton {
     -fx-background-color: transparent;
-    -fx-translate-x: -400px;
-    -fx-translate-y: -235px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
-    -fx-background-image: url('img/botones/menu-entrenador.png');
+    -fx-translate-x: 222px;
+    -fx-translate-y: 186.2px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/menu-tienda.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-rotate: 12deg;
+    -fx-rotate: 14deg;
 }
+
+/*
 
 #mochilaButton {
     -fx-background-color: transparent;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
-    -fx-opacity: 0; /* Mochila no se muestra en el inicio */
+    -fx-opacity: 0;
 }
 
-#tiendaButton {
+#entrenadorButton {
     -fx-background-color: transparent;
-    -fx-translate-x: 130px;
-    -fx-translate-y: -7.5px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
+    -fx-translate-x: 298.5px;
+    -fx-translate-y: -120px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/menu-tienda.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 12deg;
 }
 
 #salirButton {
@@ -79,6 +91,10 @@
     -fx-min-height: 45px;
 }
 
+*/
+
+
+
 #barra {
     -fx-translate-x: 65px;
     -fx-translate-y: 0px;
@@ -86,8 +102,30 @@
     -fx-min-height: 45px;
 }
 
+#logo {
+    -fx-translate-x: 322px;
+    -fx-translate-y: -225px;
+    -fx-scale-x: 0.5;
+    -fx-scale-y: 0.5;
+    -fx-effect: dropshadow(gaussian, rgba(49,100,158,0.7), 4, 0, 7.5, 4);
+    -fx-rotate: 14.5deg
+}
+
+/*
+Hover: Estilo de cuando tienes el ratón encima del botón:
+- Efecto de sombra.
+- Color del texto al tener el ratón encima del botón.
+
+Valores del hover:
+    gaussian: Tipo de sombra.
+    rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparencia.
+    x1: Distancia horizontal entre la sombra y el objeto.
+    x2: Distancia vertical entre la sombra y el objeto.
+    x3: Desenfoque de la sombra.
+    x4: Tamaño de la extensión de la sombra.
+*/
+
     /* Hover: Estilo cuando tienes el ratón encima del botón */
     .button:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 3, 2, 0, 2);
-    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 3, 1, 4, 3);
     }
