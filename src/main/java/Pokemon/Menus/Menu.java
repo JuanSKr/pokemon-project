@@ -3,7 +3,6 @@ package Pokemon.Menus;
 
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
-import Pokemon.Tienda.MenuTienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
