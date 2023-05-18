@@ -44,6 +44,8 @@ public class MenuEntrenador extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        Entrenador.setNombre("El pepe");
+
         PokemonCRUD.getEquipo1(equipo1, PokemonCRUD.idEntrenador());
         PokemonCRUD.getEquipo2(equipo2, PokemonCRUD.idEntrenador());
         PokemonCRUD.getCaja(caja, PokemonCRUD.idEntrenador());

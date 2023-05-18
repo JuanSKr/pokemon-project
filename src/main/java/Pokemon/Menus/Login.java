@@ -35,11 +35,11 @@ public class Login extends Application {
         grid.setHgap(10);
 
         Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png")));
-        ImageView imgView = new ImageView(logo);
-        imgView.setFitWidth(900);
-        imgView.setFitHeight(350);
-        imgView.setId("logo");
-        grid.getChildren().add(imgView);
+        ImageView logoView = new ImageView(logo);
+        logoView.setFitWidth(900);
+        logoView.setFitHeight(350);
+        logoView.setId("logo");
+        grid.getChildren().add(logoView);
 
 
         Label nombreUsuarioTxt = new Label("Nombre de usuario:");

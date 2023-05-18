@@ -2,8 +2,6 @@ package Pokemon.Menus;
 
 
 import Pokemon.Database.PokemonCRUD;
-import Pokemon.Entrenador.Entrenador;
-import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Tienda.MenuTienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -47,10 +45,10 @@ public class Menu extends Application {
         reproductor.play();
 
         Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png")));
-        ImageView imgView = new ImageView(logo);
-        imgView.setFitWidth(520);
-        imgView.setFitHeight(220);
-        imgView.setId("logo");
+        ImageView logoView = new ImageView(logo);
+        logoView.setFitWidth(540);
+        logoView.setFitHeight(230);
+        logoView.setId("logo");
 
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
         Media audioMedia = new Media(getClass().getResource("/aud/Menu.wav").toExternalForm());
@@ -66,17 +64,13 @@ public class Menu extends Application {
         capturarButton.setId("capturarButton");
         Button pokedexButton = new Button();
         pokedexButton.setId("pokedexButton");
-        Button entrenadorButton = new Button(Entrenador.getNombre());
+        Button entrenadorButton = new Button();
         entrenadorButton.setId("entrenadorButton");
-        // AÑADIR MOCHILA DENTRO DE ENTRENADOR
-//        Button mochilaButton = new Button("Mochila");
-//        mochilaButton.setId("mochilaButton");
         Button tiendaButton = new Button();
         tiendaButton.setId("tiendaButton");
-        Button salirButton = new Button("Salir");
-        salirButton.setId("salirButton");
         // AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
-        Button muteButton = new Button(" -ZzZ- ");
+        Button muteButton = new Button();
+        muteButton.setId("muteButton");
         muteButton.setOnAction(e -> {
             if (audioMediaPlayer.isMute()) {
                 audioMediaPlayer.setMute(false);
@@ -102,6 +96,9 @@ public class Menu extends Application {
             menuExplorador.start(primaryStage);
             audioMediaPlayer.stop();
         });
+
+
+
         pokedexButton.setOnAction(e -> {
             // AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
             System.out.println(PokemonCRUD.generarPokemon());
@@ -126,13 +123,9 @@ public class Menu extends Application {
         });
 
 
-        // FUNCION PARA SALIR DEL PROGRAMA
-        salirButton.setOnAction(e -> primaryStage.close());
-
         // CREAMOS UN VBOX
         StackPane root = new StackPane();
-        root.getChildren().addAll(videoView, barraView,combateButton, capturarButton, pokedexButton, entrenadorButton, tiendaButton,
-                salirButton, muteButton, imgView);
+        root.getChildren().addAll(videoView, barraView,combateButton, capturarButton, entrenadorButton, pokedexButton, tiendaButton, muteButton, logoView);
 
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(20));
@@ -141,7 +134,7 @@ public class Menu extends Application {
         Scene scene = new Scene(root, 1080, 650);
         scene.getStylesheets().add("Menu.css");
 
-        primaryStage.setTitle("Menú de Inicio");
+        primaryStage.setTitle("Pokémon: Menu");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

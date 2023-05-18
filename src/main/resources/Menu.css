@@ -61,39 +61,32 @@
     -fx-rotate: 14deg;
 }
 
-/*
-
-#mochilaButton {
-    -fx-background-color: transparent;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
-    -fx-opacity: 0;
-}
 
 #entrenadorButton {
     -fx-background-color: transparent;
-    -fx-translate-x: 298.5px;
-    -fx-translate-y: -120px;
-    -fx-min-width: 230px;
-    -fx-min-height: 130px;
-    -fx-background-image: url('img/botones/menu-tienda.png');
+    -fx-translate-x: 135px;
+    -fx-translate-y: 240px;
+    -fx-min-width: 140px;
+    -fx-min-height: 140px;
+    -fx-background-image: url('img/botones/menu-entrenador.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-rotate: 12deg;
+    -fx-rotate: 14deg;
 }
 
-#salirButton {
+#muteButton {
     -fx-background-color: transparent;
-    -fx-translate-x: 0px;
-    -fx-translate-y: 15px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
+    -fx-translate-x: 284px;
+    -fx-translate-y: 277px;
+    -fx-min-width: 140px;
+    -fx-min-height: 140px;
+    -fx-background-image: url('img/botones/menu-mute.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 14deg;
 }
-
-*/
-
-
 
 #barra {
     -fx-translate-x: 65px;
@@ -103,7 +96,7 @@
 }
 
 #logo {
-    -fx-translate-x: 322px;
+    -fx-translate-x: 323.5px;
     -fx-translate-y: -225px;
     -fx-scale-x: 0.5;
     -fx-scale-y: 0.5;
