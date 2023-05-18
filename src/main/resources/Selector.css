@@ -1,0 +1,140 @@
+/* Configuración general de todos los botones */
+.button {
+    -fx-font-size: 18px;
+    -fx-background-color: brown;
+    -fx-text-fill: white;
+}
+
+/* Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...) */
+#opcion1 {
+    -fx-background-color: transparent;
+    -fx-translate-x: -435px;
+    -fx-translate-y: 110px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/selector-fondo.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+}
+
+#opcion2 {
+    -fx-background-color: transparent;
+    -fx-translate-x: -260px;
+    -fx-translate-y: 110px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/selector-fondo.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+#opcion3 {
+    -fx-background-color: transparent;
+    -fx-translate-x: -90px;
+    -fx-translate-y: 110px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/selector-fondo.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+}
+
+#opcion4 {
+    -fx-background-color: transparent;
+    -fx-translate-x: 80px;
+    -fx-translate-y: 110px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/selector-fondo.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+#opcion5 {
+    -fx-background-color: transparent;
+    -fx-translate-x: 252px;
+    -fx-translate-y: 110px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/selector-fondo.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#opcion6 {
+    -fx-background-color: transparent;
+    -fx-translate-x: 425px;
+    -fx-translate-y: 110px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/selector-fondo.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#lectorTxt {
+    -fx-translate-x: 0px;
+    -fx-translate-y: -140px;
+    -fx-effect: dropshadow(gaussian, rgba(49,100,158,0.7), 4, 0, 7.5, 4);
+}
+
+#pokemon1 {
+    -fx-translate-x: -440px;
+    -fx-translate-y: 100px;
+
+}
+#pokemon2 {
+    -fx-translate-x: -265px;
+    -fx-translate-y: 100px;
+
+}
+#pokemon3 {
+    -fx-translate-x: -95px;
+    -fx-translate-y: 100px;
+
+}
+#pokemon4 {
+    -fx-translate-x: 85px;
+    -fx-translate-y: 100px;
+
+}
+#pokemon5 {
+    -fx-translate-x: 245px;
+    -fx-translate-y: 100px;
+
+}
+
+#pokemon6 {
+    -fx-translate-x: 420px;
+    -fx-translate-y: 100px;
+
+}
+
+/*
+Hover: Estilo de cuando tienes el ratón encima del botón:
+- Efecto de sombra.
+- Color del texto al tener el ratón encima del botón.
+
+Valores del hover:
+    gaussian: Tipo de sombra.
+    rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparencia.
+    x1: Distancia horizontal entre la sombra y el objeto.
+    x2: Distancia vertical entre la sombra y el objeto.
+    x3: Desenfoque de la sombra.
+    x4: Tamaño de la extensión de la sombra.
+*/
+
+    /* Hover: Estilo cuando tienes el ratón encima del botón */
+    .button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(41, 96, 255, 0.7), 2, 2, 2, 2);
+    }

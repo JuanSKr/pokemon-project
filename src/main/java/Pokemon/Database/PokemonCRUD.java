@@ -8,10 +8,8 @@ import Pokemon.Entrenador.Entrenador;
 import Pokemon.Entrenador.Mochila;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.ListaEstados;
-import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
-import javafx.scene.control.ListView;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -108,22 +106,28 @@ public class PokemonCRUD {
 
     }
 
-    public static void actualizarPokemon(int equipo, int idPokemon) {
+    public static void actualizarPokemon(int numEquipo, int idPokemon) {
 
         try {
+
+            Pokemon pokemon = getPokemon(idPokemon);
+
+            getEquipo1(Entrenador.equipo1, idEntrenador());
+            getEquipo2(Entrenador.equipo2, idEntrenador());
+            getCaja(Entrenador.caja, idEntrenador());
 
             Connection db = MySQL.getConexion();
             String sql = "UPDATE capturado SET equipo = ? WHERE id_capturado = ?";
             PreparedStatement ps = db.prepareStatement(sql);
             int dinero = Entrenador.getDinero();
             int idEntrenador = idEntrenador();
-            ps.setInt(1, equipo);
+            ps.setInt(1, numEquipo);
             ps.setInt(2, idPokemon);
 
             ps.executeUpdate();
 
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
 
     }

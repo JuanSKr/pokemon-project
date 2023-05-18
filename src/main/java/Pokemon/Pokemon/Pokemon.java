@@ -5,6 +5,7 @@ import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Tienda.Objeto;
+import javafx.scene.image.Image;
 
 import java.util.Scanner;
 
@@ -329,20 +330,6 @@ public class Pokemon {
 
 // Metodos propios
 
-    /**
-     * Un Pokemon aprende un nuevo movimiento cada 3 niveles.
-     * Si el nivel del Pokemon es múltiplo de 3, llama al método addMovimiento().
-     *
-     * @param pokemon
-     */
-
-    public static void aprenderMovimiento(Pokemon pokemon) {
-
-        if ((pokemon.getNivel() % 3) == 0) {
-            addMovimiento(pokemon);
-        }
-
-    }
 
     /**
      * Este método, dependiendo del valor que se le pase a opción asigna el movimiento.
@@ -414,19 +401,9 @@ public class Pokemon {
 
     }
 
-    public static Pokemon mostrarPokemon(int idEntrenador) {
+    public static Pokemon mostrarPokemon(int idEntrenador, int opcion) {
 
         PokemonCRUD.getEquipo1(Entrenador.equipo1, idEntrenador);
-        int contador = 0;
-
-        for (Pokemon pokemon : Entrenador.equipo1) {
-            contador++;
-            System.out.println(contador + ". " + pokemon.getNombre());
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Selecciona un pokemon: ");
-        int opcion = scanner.nextInt();
 
         if (Entrenador.equipo1.size() >= opcion) {
             switch (opcion) {
@@ -452,10 +429,6 @@ public class Pokemon {
         }
     }
 
-    public static void main(String[] args) {
-
-
-    }
 
 }
 

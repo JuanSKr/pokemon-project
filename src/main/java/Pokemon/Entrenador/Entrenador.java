@@ -145,12 +145,6 @@ public class Entrenador {
      * @return Se le pasan 3 parametros al método, el Pokemon que se quiere mover, el equipo donde está y donde debe acabar
      */
 
-    public static void moverPokemon(Pokemon pokemon, LinkedList equipoInicial, LinkedList equipoFinal) {
-
-        equipoInicial.remove(pokemon);
-        equipoFinal.add(pokemon);
-
-    }
 
 
     /**
@@ -184,39 +178,6 @@ public class Entrenador {
         return equipo;
     }
 
-
-    public static void verEquipos() {
-
-        PokemonCRUD.getEquipo1(equipo1, PokemonCRUD.idEntrenador());
-        PokemonCRUD.getEquipo2(equipo2, PokemonCRUD.idEntrenador());
-        PokemonCRUD.getCaja(caja, PokemonCRUD.idEntrenador());
-
-        System.out.println("Equipo 1:");
-        for (Pokemon mostrarEquipo : equipo1) {
-            System.out.println(mostrarEquipo.toString());
-        }
-
-        System.out.println("Equipo 2:");
-        for (Pokemon mostrarEquipo : equipo2) {
-            System.out.println(mostrarEquipo.toString());
-        }
-
-        System.out.println("Caja:");
-        for (Pokemon mostrarEquipo : caja) {
-            System.out.println(mostrarEquipo.toString());
-        }
-    }
-
-
-
-    public static void main(String[] args) {
-
-
-
-        verEquipos();
-
-
-    }
 
     public static void setFoto(String string) {
         // TODO Auto-generated method stub

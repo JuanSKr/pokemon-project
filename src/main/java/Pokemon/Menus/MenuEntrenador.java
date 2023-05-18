@@ -23,6 +23,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Optional;
@@ -179,6 +180,15 @@ public class MenuEntrenador extends Application {
                 equipo1ListView.getItems().add(pokemon);
                 completado = true;
                 PokemonCRUD.actualizarPokemon(1, idPokemon);
+
+                // Actualizar la lista equipo1 después de agregar o eliminar un Pokémon
+                Entrenador.equipo1.clear();
+                for (String pokemonString : equipo1ListView.getItems()) {
+                    idPokemon = PokemonCRUD.idPokemon(pokemonString);
+                    Pokemon pokemonPoke = PokemonCRUD.getPokemon(idPokemon); // Obtén el objeto Pokemon desde la base de datos
+                    Entrenador.equipo1.add(pokemonPoke);
+                }
+
             } else if (arrastrar.hasString()) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
@@ -189,6 +199,12 @@ public class MenuEntrenador extends Application {
             event.setDropCompleted(completado);
             event.consume();
         });
+
+
+
+
+
+
 
 // Agregar evento para eliminar un Pokémon al hacer clic derecho
         equipo1ListView.setOnMouseClicked(event -> {
@@ -208,8 +224,6 @@ public class MenuEntrenador extends Application {
                         // Eliminar el Pokémon del registro y de la lista
                         equipo1ListView.getItems().remove(pokemonSeleccionado);
                         PokemonCRUD.eliminarPokemon(idPokemon);
-                        // Realizar las operaciones necesarias para eliminar el Pokémon del registro
-                        // ...
                     }
                 }
             }
@@ -236,16 +250,26 @@ public class MenuEntrenador extends Application {
                 equipo2ListView.getItems().add(pokemon);
                 completado = true;
                 PokemonCRUD.actualizarPokemon(2, idPokemon);
+
+                // Actualizar la lista equipo1 después de agregar o eliminar un Pokémon
+                Entrenador.equipo2.clear();
+                for (String pokemonString : equipo1ListView.getItems()) {
+                    idPokemon = PokemonCRUD.idPokemon(pokemonString);
+                    Pokemon pokemonPoke = PokemonCRUD.getPokemon(idPokemon); // Obtén el objeto Pokemon desde la base de datos
+                    Entrenador.equipo2.add(pokemonPoke);
+                }
+
             } else if (arrastrar.hasString()) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
                 alert.setHeaderText(null);
-                alert.setContentText("Ya tienes 6 Pokémons almacenados en el equipo 2. No caben más.");
+                alert.setContentText("Ya tienes 6 Pokémons almacenados en el equipo 1. No caben más.");
                 alert.showAndWait();
             }
             event.setDropCompleted(completado);
             event.consume();
         });
+
         // PERMITIR QUE LOS ELEMENTOS SEAN SOLTADOS EN CAJALISTVIEW
         cajaListView.setOnDragOver(event -> {
             if (event.getGestureSource() != cajaListView && event.getDragboard().hasString()) {
@@ -258,7 +282,7 @@ public class MenuEntrenador extends Application {
         cajaListView.setOnDragDropped(event -> {
             Dragboard arrastrar = event.getDragboard();
             boolean completado = false;
-            if (arrastrar.hasString() && caja.size() < 15 ) {
+            if (arrastrar.hasString() && cajaListView.getItems().size() < 15) {
                 String pokemon = arrastrar.getString();
                 String nombrePokemon = pokemon;
                 int idPokemon = PokemonCRUD.idPokemon(nombrePokemon);
@@ -266,16 +290,26 @@ public class MenuEntrenador extends Application {
                 cajaListView.getItems().add(pokemon);
                 completado = true;
                 PokemonCRUD.actualizarPokemon(3, idPokemon);
+
+                // Actualizar la lista equipo1 después de agregar o eliminar un Pokémon
+                Entrenador.equipo2.clear();
+                for (String pokemonString : cajaListView.getItems()) {
+                    idPokemon = PokemonCRUD.idPokemon(pokemonString);
+                    Pokemon pokemonPoke = PokemonCRUD.getPokemon(idPokemon); // Obtén el objeto Pokemon desde la base de datos
+                    Entrenador.caja.add(pokemonPoke);
+                }
+
             } else if (arrastrar.hasString()) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
                 alert.setHeaderText(null);
-                alert.setContentText("Ya tienes 15 Pokémons almacenados en la caja. No caben más.");
+                alert.setContentText("Ya tienes 6 Pokémons almacenados en el equipo 1. No caben más.");
                 alert.showAndWait();
             }
             event.setDropCompleted(completado);
             event.consume();
         });
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------
         VBox containers = new VBox();
@@ -481,7 +515,6 @@ public class MenuEntrenador extends Application {
         }
 
     }
-
 
 
 }

@@ -24,20 +24,16 @@ public class Combate {
     static int contadorRival = 0;
     static int contadorEntrenador = 0;
 
-    public static Pokemon elegirPokemon() {
+    public static Pokemon elegirPokemon(int opcionPokemon) {
 
-        Entrenador.setNombre("El pepe");
+//        Entrenador.setNombre("El pepe");
 
-
-        //El sout del equipo del Rival está aquí dentro, es equipoRival().
-
-        System.out.println("¿Con qué Pokemon quieres empezar?");
-        Pokemon pokemon = Pokemon.mostrarPokemon(PokemonCRUD.idEntrenador());
-        System.out.println("----------------------------------");
+        Pokemon pokemon = Pokemon.mostrarPokemon(PokemonCRUD.idEntrenador(), opcionPokemon);
         System.out.println("¡Has seleccionado a " + pokemon.getNombre() + "!");
         return pokemon;
 
     }
+
 
     /**
      * Son las acciones del entrenador (sin terminar)
@@ -484,7 +480,7 @@ public class Combate {
             if (pokemonEntrenador.getVitalidad() == 0) {
                 System.out.println(pokemonEntrenador.getNombre() + " se ha debilitado.");
                 contadorEntrenador++;
-                pokemonEntrenador = elegirPokemon();
+                pokemonEntrenador = elegirPokemon(1);
                 System.out.println(Entrenador.getNombre() + " utilizará a " + pokemonEntrenador.getNombre());
                 return false;
             }

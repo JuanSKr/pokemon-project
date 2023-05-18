@@ -1,12 +1,16 @@
 package Pokemon.Menus;
 
 
+import Pokemon.Combate.Selector;
 import Pokemon.Database.PokemonCRUD;
+import Pokemon.Entrenador.Entrenador;
+import Pokemon.Pokemon.Pokemon;
 import Pokemon.Tienda.MenuTienda;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +21,9 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
 public class Menu extends Application {
@@ -80,28 +87,36 @@ public class Menu extends Application {
         });
 
         // -----------------------------------------------------------------------------------------------------------------
-
+        PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
         combateButton.setOnAction(e -> {
-            // AQUÍ PUEDES LLAMAR A LA CLASE COMBATE
-            Scene currentScene = primaryStage.getScene();
-            MenuCombate menuCombate = new MenuCombate(primaryStage, currentScene);
-            Scene menuCombateScene = menuCombate.getScene();
-            primaryStage.setScene(menuCombateScene);
+            List<Pokemon> equipo1Copia = new ArrayList<>(Entrenador.equipo1); // Crear una copia de la lista
 
+            if (equipo1Copia.size() == 6) {
+                Selector selector = new Selector(primaryStage, primaryStage.getScene());
+                selector.start(primaryStage);
+                audioMediaPlayer.stop();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error: Completa tu equipo antes de combatir");
+                alert.setHeaderText(null);
+                alert.setContentText("Debes tener 6 Pokémons en tu equipo titular antes de iniciar un combate");
+                alert.showAndWait();
+            }
         });
+
+
+
+
+
         capturarButton.setOnAction(e -> {
-            // CÓDIGO PARA EJECUTAR CUANDO SE HACE CLIC EN EL BOTÓN
-            // POR EJEMPLO, PARA MOSTRAR LA ESCENA MENUENTRENADOR:
             MenuExplorador menuExplorador = new MenuExplorador(primaryStage, primaryStage.getScene());
             menuExplorador.start(primaryStage);
             audioMediaPlayer.stop();
         });
 
 
-
         pokedexButton.setOnAction(e -> {
             // AQUÍ PUEDES LLAMAR A LA CLASE POKEDEX
-            System.out.println(PokemonCRUD.generarPokemon());
             MenuPokedex menuPokedex = new MenuPokedex(primaryStage, primaryStage.getScene());
             menuPokedex.start(primaryStage);
             audioMediaPlayer.stop();
@@ -139,6 +154,7 @@ public class Menu extends Application {
         primaryStage.show();
     }
 
+
     public static void main(String[] args) {
         abrirMenu();
     }
@@ -146,4 +162,5 @@ public class Menu extends Application {
     public static void abrirMenu() {
         launch();
     }
+
 }
