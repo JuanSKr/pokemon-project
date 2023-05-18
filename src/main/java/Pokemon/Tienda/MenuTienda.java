@@ -1,4 +1,4 @@
-package Pokemon.Menus;
+package Pokemon.Tienda;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -114,14 +114,20 @@ public class MenuTienda extends Application {
 					tooltip.setText("ID: " + item.getId() + "\n" + "Nombre: " + item.getNombre() + "\n"
 							+ "Características: " + item.getDescripcion());
 					setTooltip(tooltip);
-					// HABILITAR EL ARRASTRE
+					// Habilitar el arrastre
 					setOnDragDetected(event -> {
 						Dragboard db = startDragAndDrop(TransferMode.MOVE);
 						ClipboardContent content = new ClipboardContent();
 						content.putString(item.getNombre());
 						db.setContent(content);
 						event.consume();
-					});		
+					});
+
+					// ELIMINAR EL OBJETO DEL INVENTARIO DESPUÉS DE SOLTARLO
+					/*
+					 * setOnDragDone(event -> { if (event.getTransferMode() == TransferMode.MOVE) {
+					 * inventarioListView.getItems().remove(item); } event.consume(); });
+					 */
 				}
 			}
 		});

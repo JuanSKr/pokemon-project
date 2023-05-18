@@ -1,84 +1,107 @@
-/*
-Configuración general de todos los botones:
-- Tamaño de fuente.
-- Ancho del botón.
-- Altura de botón.
-- Color del fondo del botón default.
-- Color del texto.
-*/
-
+/* Configuración general de todos los botones */
 .button {
     -fx-font-size: 18px;
     -fx-background-color: brown;
     -fx-text-fill: white;
 }
 
-/*
-Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...):
-- Color de fondo del botón.
-- Posición X del botón.
-- Posición Y del botón.
-*/
-
+/* Estilo del botón individual (combate, pokedex, entrenador, mochila, etc...) */
 #combateButton {
-    -fx-background-color: orange;
-        -fx-translate-x: -120px;
-        -fx-translate-y: 132px;
-        -fx-min-width: 180px;
-        -fx-min-height: 45px;
-        -fx-background-image: url('https://i.imgur.com/VVdKgVN.jpg');
-}
-
-#explorarButton {
-    -fx-background-color: #5b1cc1;
-    -fx-translate-x: 130px;
-    -fx-translate-y: 75px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
+    -fx-background-color: transparent;
+    -fx-translate-x: 297px;
+    -fx-translate-y: -108px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/menu-combate.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 13.5deg;
 
 }
+
+#capturarButton {
+    -fx-background-color: transparent;
+    -fx-translate-x: 270.5px;
+    -fx-translate-y: -10px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/menu-capturar.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 14deg;
+}
+
 
 #pokedexButton {
-    -fx-background-color: #6d6875;
-    -fx-translate-x: -120px;
-    -fx-translate-y: 105px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
+    -fx-background-color: transparent;
+    -fx-translate-x: 245.5px;
+    -fx-translate-y: 88.5px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/menu-pokedex.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 14deg;
 
-}
-
-#entrenadorButton {
-    -fx-background-color: #282c34;
-    -fx-translate-x: -400px;
-    -fx-translate-y: -235px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
-}
-
-/*
-Mochila no se muestra en el inicio.
-*/
-
-#mochilaButton {
-    -fx-background-color: #20bf6b;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
 }
 
 #tiendaButton {
-    -fx-background-color: #3867d6;
-    -fx-translate-x: 130px;
-    -fx-translate-y: -7.5px;
+    -fx-background-color: transparent;
+    -fx-translate-x: 222px;
+    -fx-translate-y: 186.2px;
+    -fx-min-width: 230px;
+    -fx-min-height: 130px;
+    -fx-background-image: url('img/botones/menu-tienda.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 14deg;
+}
+
+
+#entrenadorButton {
+    -fx-background-color: transparent;
+    -fx-translate-x: 135px;
+    -fx-translate-y: 240px;
+    -fx-min-width: 140px;
+    -fx-min-height: 140px;
+    -fx-background-image: url('img/botones/menu-entrenador.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 14deg;
+}
+
+#muteButton {
+    -fx-background-color: transparent;
+    -fx-translate-x: 284px;
+    -fx-translate-y: 277px;
+    -fx-min-width: 140px;
+    -fx-min-height: 140px;
+    -fx-background-image: url('img/botones/menu-mute.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 14deg;
+}
+
+#barra {
+    -fx-translate-x: 65px;
+    -fx-translate-y: 0px;
     -fx-min-width: 180px;
     -fx-min-height: 45px;
 }
 
-#salirButton {
-    -fx-background-color: #eb3b5a;
-    -fx-translate-x: 0px;
-    -fx-translate-y: 15px;
-    -fx-min-width: 180px;
-    -fx-min-height: 45px;
+#logo {
+    -fx-translate-x: 323.5px;
+    -fx-translate-y: -225px;
+    -fx-scale-x: 0.5;
+    -fx-scale-y: 0.5;
+    -fx-effect: dropshadow(gaussian, rgba(49,100,158,0.7), 4, 0, 7.5, 4);
+    -fx-rotate: 14.5deg
 }
 
 /*
@@ -89,14 +112,13 @@ Hover: Estilo de cuando tienes el ratón encima del botón:
 Valores del hover:
     gaussian: Tipo de sombra.
     rgba(0,0,0,0.8): Los tres primeros valores son el RGB, el último la transparencia.
-    10: Distancia horizontal entre la sombra y el objeto.
-    0: Distancia vertical entre la sombra y el objeto.
-    0: Desenfoque de la sombra.
-    5: Tamaño de la extensión de la sombra.
+    x1: Distancia horizontal entre la sombra y el objeto.
+    x2: Distancia vertical entre la sombra y el objeto.
+    x3: Desenfoque de la sombra.
+    x4: Tamaño de la extensión de la sombra.
 */
 
-.button:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 3, 2, 0, 2);
-    -fx-text-fill: white;
-}
-
+    /* Hover: Estilo cuando tienes el ratón encima del botón */
+    .button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 3, 1, 4, 3);
+    }

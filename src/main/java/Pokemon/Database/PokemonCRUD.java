@@ -11,6 +11,7 @@ import Pokemon.Pokemon.ListaEstados;
 import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
+import javafx.scene.control.ListView;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class PokemonCRUD {
                     "defensa_especial, tipo1, tipo2, movimiento1, id_entrenador, id_pokedex, nivel, xp, foto, foto_espalda)" +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            int nuevaId = pokemon.getId() + Funcion.random(1, 9999);
+            int nuevaId = pokemon.getId() + Funcion.random(1, 99999);
             int equipo = Entrenador.addPokemon(pokemon);
             Movimiento movimiento = generarMovimiento();
 
@@ -1024,6 +1025,20 @@ public class PokemonCRUD {
 
     }
 
+    public static void eliminarPokemon(int idPokemon) {
+        try {
+            Connection db = MySQL.getConexion();
+            String sql = "DELETE FROM capturado WHERE id_capturado = ?";
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idPokemon);
+            int filasAfectadas = preparedStatement.executeUpdate();
+            System.out.println("Se eliminaron " + filasAfectadas + " filas.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 //    public static String mostrarMochila(int idObjeto) {
 //
@@ -1071,7 +1086,11 @@ public class PokemonCRUD {
 //        return null;
 //    }
 
+    public static void main(String[] args) {
 
+
+
+    }
 
 }
 
