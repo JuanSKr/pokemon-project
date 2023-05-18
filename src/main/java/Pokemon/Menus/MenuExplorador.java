@@ -33,12 +33,13 @@ public class MenuExplorador extends Application {
 	private static final double WINDOW_HEIGHT = 650;
 	private Circle trainerCircle;
 	private Circle pokemonCircle;
-	private double pokemonSpeedX = 0;
-	private double pokemonSpeedY = 0;
+	private double pokemonSpeedX = 1;
+	private double pokemonSpeedY = 1;
 	static Pokemon pokemon;
 	private Scene previousScene;
 	private Stage primaryStage;
-	private boolean capturado;
+	private static final double TRAINER_RADIUS = 15; //20 REDUCE EL RADIO DE LA CIRCUNFERENCIA PARA SU COLISION
+	private static final double POKEMON_RADIUS = 25;//30 REDUCE EL RADIO DE LA CIRCUNFERENCIA PARA SU COLISION
 
 	public MenuExplorador(Stage primaryStage, Scene previousScene) {
 		this.primaryStage = primaryStage;
@@ -49,7 +50,9 @@ public class MenuExplorador extends Application {
 	// MOVIMIENTO DIRECCION
 
 	/**
-	 * Este método captura la tecla que pulsas en el teclado y mueve la circuferencia, es decir, el entrenador
+	 * Este método captura la tecla que pulsas en el teclado y mueve la
+	 * circuferencia, es decir, el entrenador
+	 * 
 	 * @param event
 	 */
 	private void handleEvent(KeyEvent event) {
@@ -70,24 +73,38 @@ public class MenuExplorador extends Application {
 
 //--------------------------------------------------------------------------------------------------------------------------	
 //----------------------------------------------------------------------------------------------------------------------------
-	// CAMBIAR EL POKÉMON ACTUAL POR UNO NUEVO
-	private void cambiarPokemon() {
-		// GENERAR NÚMEROS ALEATORIOS PARA LA POSICIÓN EN X E Y DEL NUEVO POKÉMON
-		double randomX = Math.random() * (WINDOW_WIDTH - 20) + 10;
-		double randomY = Math.random() * (WINDOW_HEIGHT - 20) + 10;
+	private void posicionPokemon() {
+		// ACTUALIZAR LA POSICIÓN DEL POKÉMON
+		double newX = pokemonCircle.getCenterX() + pokemonSpeedX;
+		double newY = pokemonCircle.getCenterY() + pokemonSpeedY;
+		// VERIFICAR SI EL POKÉMON HA SALIDO DE LA VENTANA
+		if (newX < 0) {
+			newX = WINDOW_WIDTH;
+		} else if (newX > WINDOW_WIDTH) {
+			newX = 0;
+		}
+		if (newY < 0) {
+			newY = WINDOW_HEIGHT;
+		} else if (newY > WINDOW_HEIGHT) {
+			newY = 0;
+		}
 		// ESTABLECER LA NUEVA POSICIÓN Y VELOCIDAD DEL POKÉMON
-		pokemonCircle.setCenterX(randomX);
-		pokemonCircle.setCenterY(randomY);
-		pokemonSpeedX = 0.5;
-		pokemonSpeedY = 0.10;
-		// GENERAR UN NUEVO POKÉMON ALEATORIO
+		pokemonCircle.setCenterX(newX);
+		pokemonCircle.setCenterY(newY);
 
+		// GENERAR VELOCIDADES ALEATORIAS PARA EL POKÉMON
+		double minSpeed = -2;
+		double maxSpeed = 2;
+		pokemonSpeedX = Math.random() * (maxSpeed - minSpeed) + minSpeed;
+		pokemonSpeedY = Math.random() * (maxSpeed - minSpeed) + minSpeed;
 	}
 
 //----------------------------------------------------------------------------------------------------------------------------
 
 	/**
-	 * Este método mueve la circuferencia en diagonal dependiendo de las teclas que se pulsen.
+	 * Este método mueve la circuferencia en diagonal dependiendo de las teclas que
+	 * se pulsen.
+	 * 
 	 * @param code
 	 * @param circle
 	 * @param moveDistance
@@ -115,11 +132,6 @@ public class MenuExplorador extends Application {
 
 		pokemon = PokemonCRUD.generarPokemon();
 
-		// AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
-		Button muteButton = new Button(" -ZzZ- ");
-		muteButton.setOnAction(e -> {
-		});
-
 		System.out.println(pokemon);
 		// GENERAR POKEMON RANDOM
 		// CARGAR LA IMAGEN DE FONDO
@@ -135,11 +147,18 @@ public class MenuExplorador extends Application {
 		String ruta = pokemon.getFoto();
 		Image imagePokemon = new Image(Objects.requireNonNull(getClass().getResourceAsStream(ruta)));
 		// CREAR EL IMAGEVIEW Y AJUSTAR SU TAMAÑO Y POSICIÓN
+		// GENERAR NÚMEROS ALEATORIOS PARA LA POSICIÓN EN X E Y DEL NUEVO POKÉMON
+		double randomX = Math.random() * (WINDOW_WIDTH - 20) + 10;
+		double randomY = Math.random() * (WINDOW_HEIGHT - 20) + 10;
+		// ESTABLECER LA NUEVA POSICIÓN DEL POKÉMON
+		pokemonCircle.setCenterX(randomX);
+		pokemonCircle.setCenterY(randomY);
 		ImageView imageView = new ImageView(imagePokemon);
 		imageView.setFitWidth(pokemonCircle.getRadius() * 2);
 		imageView.setFitHeight(pokemonCircle.getRadius() * 2);
 		imageView.setX(pokemonCircle.getCenterX() - pokemonCircle.getRadius());
 		imageView.setY(pokemonCircle.getCenterY() - pokemonCircle.getRadius());
+
 		// AGREGAR UN CHANGE LISTENER A LAS PROPIEDADES centerX Y centerY DE LA
 		// CIRCUNFERENCIA
 		pokemonCircle.centerXProperty().addListener((observable, oldValue, newValue) -> {
@@ -151,6 +170,12 @@ public class MenuExplorador extends Application {
 		// CARGAR LA IMAGEN ENTRENADOR
 		Image imagenEntrenador = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/alonso.png")));
 		// CREAR EL IMAGEVIEW Y AJUSTAR SU TAMAÑO Y POSICIÓN
+		// GENERAR NÚMEROS ALEATORIOS PARA LA POSICIÓN EN X E Y DEL NUEVO POKÉMON
+		double randomX1 = Math.random() * (WINDOW_WIDTH - 20) + 10;
+		double randomY1 = Math.random() * (WINDOW_HEIGHT - 20) + 10;
+		// ESTABLECER LA NUEVA POSICIÓN DEL POKÉMON
+		trainerCircle.setCenterX(randomX1);
+		trainerCircle.setCenterY(randomY1);
 		ImageView entrenadorView = new ImageView(imagenEntrenador);
 		entrenadorView.setFitWidth(trainerCircle.getRadius() * 2);
 		entrenadorView.setFitHeight(trainerCircle.getRadius() * 2);
@@ -208,7 +233,7 @@ public class MenuExplorador extends Application {
 
 			if (pokemonCircle.getCenterX() < minX1 || pokemonCircle.getCenterX() > maxX1
 					|| pokemonCircle.getCenterY() < minY1 || pokemonCircle.getCenterY() > maxY1) {
-				cambiarPokemon();
+				posicionPokemon();
 			}
 		});
 
@@ -233,16 +258,22 @@ public class MenuExplorador extends Application {
 
 //------------------------------------------------------------------------------------------------------------			
 				// SI CONSIGUE CAPTURA EL POKEMON NUESTRA LA SIGUIENTE ESCENA
-				if (trainerCircle.getBoundsInParent().intersects(pokemonCircle.getBoundsInParent())) {
+				if (trainerCircle.getCenterX() - pokemonCircle.getCenterX() <= TRAINER_RADIUS + POKEMON_RADIUS
+						&& pokemonCircle.getCenterX() - trainerCircle.getCenterX() <= TRAINER_RADIUS + POKEMON_RADIUS
+						&& trainerCircle.getCenterY() - pokemonCircle.getCenterY() <= TRAINER_RADIUS + POKEMON_RADIUS
+						&& pokemonCircle.getCenterY() - trainerCircle.getCenterY() <= TRAINER_RADIUS + POKEMON_RADIUS) {
+
 					Random rand = new Random();
-					if (rand.nextDouble() <= 1) {// PORCENTAJE DE POSIBILIDADES DE CONSEGUIR EL POKEMON /0.500
+					if (rand.nextDouble() <= 0.500) {// PORCENTAJE DE POSIBILIDADES DE CONSEGUIR EL POKEMON
 						// CREAR UN FONDO DE PANTALLA PARA LA NUEVA ESCENA
 						// AGREGAR IMAGEN DE FONDO A LA ESCENA
-						ImageView fondo = new ImageView(new Image(getClass().getResourceAsStream("/img/PokemonCaptura.gif")));
+						ImageView fondo = new ImageView(
+								new Image(getClass().getResourceAsStream("/img/PokemonCaptura.gif")));
 						fondo.setFitHeight(650);
 						fondo.setFitWidth(1080);
 						// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-						Media audioMedia = new Media(getClass().getResource("/aud/PokemonCaptura.wav").toExternalForm());
+						Media audioMedia = new Media(
+								getClass().getResource("/aud/PokemonCaptura.wav").toExternalForm());
 						MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
 						audioMediaPlayer.setAutoPlay(true);
 						Label mensajeLabel = new Label("¡Felicidades! Has capturado a " + pokemon.getNombre());
@@ -272,10 +303,11 @@ public class MenuExplorador extends Application {
 								"-fx-background-color:#555555;-fx-text-fill:white;-fx-font-size:16px;-fx-padding:10px 20px;-fx-border-radius:5px;-fx-background-radius:5px;"));
 						salirButton.setOnMouseExited(e -> salirButton.setStyle(
 								"-fx-background-color:#333333;-fx-text-fill:white;-fx-font-size:16px;-fx-padding:10px 20px;-fx-border-radius:5px;-fx-background-radius:5px;"));
-						
+
 						VBox vbox = new VBox();
 						vbox.setAlignment(Pos.CENTER); // ALINEAR LOS ELEMENTOS EN EL CENTRO
-						vbox.getChildren().addAll(mensajeLabel, preguntaLabel, textField, ponerMoteButton, noMoteButton, salirButton);
+						vbox.getChildren().addAll(mensajeLabel, preguntaLabel, textField, ponerMoteButton, noMoteButton,
+								salirButton);
 						vbox.setSpacing(10);
 						vbox.setPadding(new Insets(20));
 
@@ -289,28 +321,28 @@ public class MenuExplorador extends Application {
 							String apodo = textField.getText();
 							pokemon.setMote(apodo); // ASIGNAR EL MOTE AL POKEMON
 							PokemonCRUD.createCapturado(pokemon);
-							 primaryStage.setScene(previousScene);//VUELVE AL MENU PRINCIPAL
-							//primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
+							primaryStage.setScene(previousScene);// VUELVE AL MENU PRINCIPAL
+							// primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// CIERRA LA VENTANA DE DIÁLOGO Y AÑADE AL POKEMON AL EQUIPO.
 						noMoteButton.setOnAction(event -> {
 							PokemonCRUD.createCapturado(pokemon);
-							 primaryStage.setScene(previousScene);//VUELVE AL MENU PRINCIPAL
-								//primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
+							primaryStage.setScene(previousScene);// VUELVE AL MENU PRINCIPAL
+							// primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// CIERRA LA VENTANA Y AÑADE AL POKEMON AL EQUIPO.
 						salirButton.setOnAction(event -> {
-							 primaryStage.setScene(previousScene);//VUELVE AL MENU PRINCIPAL
-								//primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
+							primaryStage.setScene(previousScene);// VUELVE AL MENU PRINCIPAL
+							// primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// MOSTRAR LA NUEVA ESCENA
 						primaryStage.show();
 
-						// COLOCAR AL POKÉMON EN UNA POSICIÓN ALEATORIA DE LA VENTANA
-						pokemonCircle.setCenterX(Math.random() * (WINDOW_WIDTH - pokemonCircle.getRadius() * 2)
-								+ pokemonCircle.getRadius());
-						pokemonCircle.setCenterY(Math.random() * (WINDOW_HEIGHT - pokemonCircle.getRadius() * 2)
-								+ pokemonCircle.getRadius());
+						// REVISAR // COLOCAR AL POKÉMON EN UNA POSICIÓN ALEATORIA DE LA VENTANA
+						pokemonCircle
+								.setCenterX((WINDOW_WIDTH - pokemonCircle.getRadius()) + pokemonCircle.getRadius());
+						pokemonCircle
+								.setCenterY((WINDOW_HEIGHT - pokemonCircle.getRadius()) + pokemonCircle.getRadius());
 
 					} else {
 						// EL USUARIO NO PUDO CAPTURAR EL POKÉMON
@@ -318,7 +350,8 @@ public class MenuExplorador extends Application {
 						fondo.setFitHeight(650);
 						fondo.setFitWidth(1080);
 						// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
-						Media audioMedia = new Media(getClass().getResource("/aud/PokemonNoCapturado.wav").toExternalForm());
+						Media audioMedia = new Media(
+								getClass().getResource("/aud/PokemonNoCapturado.wav").toExternalForm());
 						MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
 						audioMediaPlayer.setAutoPlay(true);
 						Label mensajeLabel = new Label("Lo siento, no pudiste capturar a " + pokemon.getNombre());
@@ -339,19 +372,19 @@ public class MenuExplorador extends Application {
 						Scene nuevaEscena = new Scene(stackPane, 1080, 650); // CREAR LA NUEVA ESCENA CON EL STACKPANE
 						// CIERRA LA VENTANA Y AÑADE AL POKEMON AL EQUIPO.
 						salirButton.setOnAction(event -> {
-							
+
 							primaryStage.setScene(previousScene);
-							//primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
+							// primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// AÑADIR LA NUEVA ESCENA A LA VENTANA PRINCIPAL
 						primaryStage.setScene(nuevaEscena);
 						// MOSTRAR LA NUEVA ESCENA
 						primaryStage.show();
-						// COLOCAR AL POKÉMON EN UNA POSICIÓN ALEATORIA DE LA VENTANA
-						pokemonCircle.setCenterX(Math.random() * (WINDOW_WIDTH - pokemonCircle.getRadius() * 2)
-								+ pokemonCircle.getRadius());
-						pokemonCircle.setCenterY(Math.random() * (WINDOW_HEIGHT - pokemonCircle.getRadius() * 2)
-								+ pokemonCircle.getRadius());
+						// REVISAR // COLOCAR AL POKÉMON EN UNA POSICIÓN ALEATORIA DE LA VENTANA
+						pokemonCircle
+								.setCenterX((WINDOW_WIDTH - pokemonCircle.getRadius()) + pokemonCircle.getRadius());
+						pokemonCircle
+								.setCenterY((WINDOW_HEIGHT - pokemonCircle.getRadius()) + pokemonCircle.getRadius());
 					}
 				}
 //----------------------------------------------------------------------------------------------------------------------------
@@ -371,19 +404,10 @@ public class MenuExplorador extends Application {
 			}
 		};
 		timer.start();
-		// AÑADIR AQUI BOTÓN PARA REGRESAR AL MENÚ ANTERIOR
-		// AGREGAR BOTÓN PARA REGRESAR AL MENÚ ANTERIOR
-		/*
-		 * Button backButton = new Button(" <-- "); backButton.setOnAction(e -> {
-		 * primaryStage.setScene(previousScene);
-		 * 
-		 * }); root.getChildren().addAll(backButton);
-		 */
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
 
 	public static void main(String[] args) {
 		launch(args);
