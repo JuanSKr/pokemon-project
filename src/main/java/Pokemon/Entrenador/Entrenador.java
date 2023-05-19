@@ -23,6 +23,7 @@ public class Entrenador {
     public static LinkedList<Pokemon> equipo1 = new LinkedList<>();
     public static LinkedList<Pokemon> equipo2 = new LinkedList<>();
     public static LinkedList<Pokemon> caja = new LinkedList<>();
+    public static String foto;
     private String pass;
 
 //
@@ -30,12 +31,14 @@ public class Entrenador {
 
     // Constructor con todos los parametros
 
-    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena, LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja) {
+    public Entrenador(String nombre, int dinero, Map<Integer, Objeto> mochila, Map<Objeto, Integer> contador, String contrasena,
+                      LinkedList<Pokemon> equipo1, LinkedList<Pokemon> equipo2, LinkedList<Pokemon> caja, String foto) {
         this.nombre = nombre;
         this.dinero = dinero;
         this.mochila = new HashMap<>(); //Pasar a linkedList
         this.contador = new HashMap<>(); //Ver si se quita o se deja.
         this.pass = contrasena;
+        this.foto = foto;
 
     }
 
@@ -43,9 +46,10 @@ public class Entrenador {
 
     public Entrenador() {
         this.nombre = "";
-        this.dinero = 500;
+        this.dinero = 800;
         this.mochila = null;
         this.contador = null;
+        this.foto = null;
     }
 
 
@@ -101,6 +105,14 @@ public class Entrenador {
         Entrenador.contador = contador;
     }
 
+    public static String getFoto() {
+        return foto;
+    }
+
+    public static void setFoto(String foto) {
+        Entrenador.foto = foto;
+    }
+
     public static LinkedList<Pokemon> getEquipo1() {
         return equipo1;
     }
@@ -127,29 +139,10 @@ public class Entrenador {
 
     public static void setContrasena(String contrasena) {
 
-
-
-        // TODO Auto-generated method stub
-
     }
 
     public static String getContrasena() {
-        // TODO Auto-generated method stub
         return null;
-    }
-
-    /**
-     * @param pokemon
-     * @param equipoInicial
-     * @param equipoFinal
-     * @return Se le pasan 3 parametros al método, el Pokemon que se quiere mover, el equipo donde está y donde debe acabar
-     */
-
-    public static void moverPokemon(Pokemon pokemon, LinkedList equipoInicial, LinkedList equipoFinal) {
-
-        equipoInicial.remove(pokemon);
-        equipoFinal.add(pokemon);
-
     }
 
 
@@ -161,6 +154,11 @@ public class Entrenador {
 
     public static int addPokemon(Pokemon pokemon) {
         int equipo = 0;
+
+        Entrenador.equipo1.clear();
+        Entrenador.equipo2.clear();
+        Entrenador.caja.clear();
+
 
         PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
         PokemonCRUD.getEquipo2(Entrenador.equipo2, PokemonCRUD.idEntrenador());
@@ -184,44 +182,9 @@ public class Entrenador {
         return equipo;
     }
 
-
-    public static void verEquipos() {
-
-        PokemonCRUD.getEquipo1(equipo1, PokemonCRUD.idEntrenador());
-        PokemonCRUD.getEquipo2(equipo2, PokemonCRUD.idEntrenador());
-        PokemonCRUD.getCaja(caja, PokemonCRUD.idEntrenador());
-
-        System.out.println("Equipo 1:");
-        for (Pokemon mostrarEquipo : equipo1) {
-            System.out.println(mostrarEquipo.toString());
-        }
-
-        System.out.println("Equipo 2:");
-        for (Pokemon mostrarEquipo : equipo2) {
-            System.out.println(mostrarEquipo.toString());
-        }
-
-        System.out.println("Caja:");
-        for (Pokemon mostrarEquipo : caja) {
-            System.out.println(mostrarEquipo.toString());
-        }
-    }
-
     public static String fotoDefault() { //Método añadido post-tests.
-    	return "/img/alonso.png";
-    	}
-
-    public static void main(String[] args) {
-
-
-
-        verEquipos();
-
-
+        return "/img/alonso.png";
     }
 
-    public static void setFoto(String string) {
-        // TODO Auto-generated method stub
 
-    }
 }

@@ -22,7 +22,9 @@ import java.util.Objects;
 public class CombateGrafico extends Application {
 
 
-    int contador = 0;
+    private Stage primaryStage;
+    private Scene currentScene;
+    public static int opcion;
 
     // Declaramos los botones que se van a utilizar en la clase
 
@@ -45,7 +47,7 @@ public class CombateGrafico extends Application {
 
     static Pokemon pRival = PokemonCRUD.generarPokemon();
 
-    static Pokemon pEntrenador = Combate.elegirPokemon();
+    static Pokemon pEntrenador = Combate.elegirPokemon(Selector.getOpcionSeleccionada());
 
     // Declaramos los objetos Label para los movimientos.
 
@@ -56,9 +58,18 @@ public class CombateGrafico extends Application {
 
     static Label combateTxt = new Label();
 
+    public CombateGrafico(Stage primaryStage, Scene currentScene) {
+        this.primaryStage = primaryStage;
+        this.currentScene = currentScene;
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+    }
+
+    public Scene getScene() {
 
         restaurarBotones();
 
@@ -147,7 +158,6 @@ public class CombateGrafico extends Application {
         movimientoButtonsContainer.setSpacing(10);
         bottomContainer.getChildren().add(movimientoButtonsContainer);
 
-
         // Imagen para las stats del entrenador del Pokemon
         Image statsEntrenador = new Image(getClass().getResourceAsStream("/img/stats.png"));
         ImageView statsEntrenadorView = new ImageView(statsEntrenador);
@@ -182,7 +192,6 @@ public class CombateGrafico extends Application {
         estaminaEntrenador.setId("estaminaEntrenador");
         GridPane.setConstraints(estaminaEntrenador, 0, 0);
 
-
         // Nombre pokemon rival
 
         String nombre = pRival.getNombre();
@@ -197,9 +206,19 @@ public class CombateGrafico extends Application {
         estaminaRival.setId("estaminaRival");
         GridPane.setConstraints(estaminaRival, 0, 0);
 
+        // Combate rival
+
+        int primerAtaque = Combate.calcularVelocidad(pEntrenador, pRival);
+
+        if(primerAtaque == 0) {
+            System.out.println("Empiezas");
+        } else {
+            Combate.accionRival(pRival, pEntrenador);
+            modificarBarra(vidaJugador, pEntrenador);
+            actualizarEstaminaE(pRival, estaminaRival);
+        }
 
         // CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
-
 
         atacarButton.setId("atacar");
         atacarButton.setOnAction(event -> {
@@ -304,11 +323,12 @@ public class CombateGrafico extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+        return scene;
     }
-
 
     /**
      * Obtener los 4 movimientos del Pokemon del entrenador.
+     *
      * @param pokemonEntrenador
      */
 
@@ -426,6 +446,7 @@ public class CombateGrafico extends Application {
                     }
 
                 }
+
             }
 
         }
@@ -434,21 +455,22 @@ public class CombateGrafico extends Application {
 
     /**
      * Este método actualiza la estamina del Pokemon que se le pase por parámetro, en el label que se le pase por parámetro
+     *
      * @param pokemon
      * @param estaminaLabel
      */
 
     public static void actualizarEstaminaE(Pokemon pokemon, Label estaminaLabel) {
 
-
         double nuevaEstamina = pokemon.getEstamina();
 
         String estaminaE = "EST: " + nuevaEstamina;
         estaminaLabel.setText(estaminaE);
-
-
     }
 
+    public static int getOpcion() {
+        return opcion;
+    }
 
 }
 

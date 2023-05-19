@@ -49,28 +49,47 @@ public class MenuPokedex extends Application {
 
 		// CREAR EL CAMPO DE TEXTO Y EL BOTÓN DE BÚSQUEDA
 		TextField searchField = new TextField();
-		Button searchButton = new Button("Buscar");
+		searchField.setId("buscarBarra");
+
+		Button buscar = new Button();
+		buscar.setId("buscarButton");
 
 		// CREAR LOS CONTROLES PARA MOSTRAR LA INFORMACIÓN DEL POKÉMON
-		Label nameLabel = new Label();
+		Label nombreLabel = new Label();
+		nombreLabel.setId("nombre");
+
 		ImageView imageView = new ImageView();
-		Label vitalityLabel = new Label();
-		Label speedLabel = new Label();
-		Label staminaLabel = new Label();
-		Label attackLabel = new Label();
-		Label defenseLabel = new Label();
-		Label specialAttackLabel = new Label();
-		Label specialDefenseLabel = new Label();
+		imageView.setId("imagen");
+		imageView.setFitWidth(110);
+		imageView.setFitHeight(70);
+
+		Label vitalidadLabel = new Label();
+		vitalidadLabel.setId("vitalidad");
+		Label velocidadLabel = new Label();
+		velocidadLabel.setId("velocidad");
+		Label estaminaLabel = new Label();
+		estaminaLabel.setId("estamina");
+		Label ataqueLabel = new Label();
+		ataqueLabel.setId("ataque");
+		Label defensaLabel = new Label();
+		defensaLabel.setId("defensa");
+		Label ataqueEspecialLabel = new Label();
+		ataqueEspecialLabel.setId("ataqueEspecial");
+		Label defensaEspecialLabel = new Label();
+		defensaEspecialLabel.setId("defensaEspecial");
 		Label noEncontradoLabel = new Label();
+		noEncontradoLabel.setId("noEncontrado");
 
 		// AGREGAR BOTÓN PARA REGRESAR AL MENÚ ANTERIOR
-		Button backButton = new Button(" <-- ");
+		Button backButton = new Button();
+		backButton.setId("back");
 		backButton.setOnAction(e -> {
 			primaryStage.setScene(previousScene);
 			audioMediaPlayer.stop();
 		});
 		// AGREGAR BOTÓN PARA SILENCIAR O REANUDAR EL SONIDO
-		Button muteButton = new Button(" -ZzZ- ");
+		Button muteButton = new Button();
+		muteButton.setId("muteButton");
 		muteButton.setOnAction(e -> {
 			if (audioMediaPlayer.isMute()) {
 				audioMediaPlayer.setMute(false);
@@ -82,58 +101,57 @@ public class MenuPokedex extends Application {
 		// CUANDO SE PRESIONE LA TECLA ENTER
 		searchField.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER) {
-				searchButton.fire();
+				buscar.fire();
 			}
 		});
 
-		// AGREGAR UN CONTROLADOR DE EVENTOS AL BOTÓN DE BÚSQUEDA
-		searchButton.setOnAction(event -> {
-			// OBTENER EL TEXTO INGRESADO POR EL USUARIO EN EL CAMPO DE TEXTO
-			String searchText = searchField.getText();
+		buscar.setOnAction(event -> {
+			String nombrePokemon = searchField.getText();
 
-			// RESTABLECER EL CAMPO DE TEXTO A VACÍO
 			searchField.clear();
 
+			/**
+			 * PokemonCRUD: READ (2)
+			 */
+
 			try {
-				// ESTABLECER CONEXIÓN A LA BASE DE DATOS
+
 				Connection db = MySQL.getConexion();
-				// Crear un objeto Statement para ejecutar consultas SQL
+
 				Statement stmt = db.createStatement();
 
-				// EJECUTAR UNA CONSULTA SQL PARA BUSCAR EL POKÉMON EN LA BASE DE DATOS
-				ResultSet rs = stmt.executeQuery("SELECT * FROM pokedex WHERE nombre = '" + searchText + "'");
 
-				// VERIFICAR SI SE ENCONTRÓ EL POKÉMON EN LA BASE DE DATOS
+				ResultSet rs = stmt.executeQuery("SELECT * FROM pokedex WHERE nombre = '" + nombrePokemon + "'");
+
 				if (rs.next()) {
-					// OBTENER LA INFORMACIÓN DEL POKÉMON Y ACTUALIZAR LOS CONTROLES CON ELLA
+
 					String nombre = rs.getString("nombre");
-					nameLabel.setText("Nombre: " + nombre);
+					nombreLabel.setText(nombre);
 
 					String ruta = rs.getString("foto");
 					Image imageArchivo = new Image(Objects.requireNonNull(getClass().getResourceAsStream(ruta)));
 					imageView.setImage(imageArchivo);
 
-					// CAMBIAR LOS INT POR DOUBLE CUANDO SE ACTUALIZA LA BASE DE DATOS
-					int vitalidad = rs.getInt("vitalidad");
-					vitalityLabel.setText("Vitalidad: " + vitalidad);
+					double vitalidad = rs.getDouble("vitalidad");
+					vitalidadLabel.setText("Vitalidad: " + vitalidad);
 
-					int velocidad = rs.getInt("velocidad");
-					speedLabel.setText("Velocidad: " + velocidad);
+					double velocidad = rs.getDouble("velocidad");
+					velocidadLabel.setText("Velocidad: " + velocidad);
 
-					int estamina = rs.getInt("estamina");
-					staminaLabel.setText("Estamina: " + estamina);
+					double estamina = rs.getDouble("estamina");
+					estaminaLabel.setText("Estamina: " + estamina);
 
-					int ataque = rs.getInt("ataque");
-					attackLabel.setText("Ataque: " + ataque);
+					double ataque = rs.getDouble("ataque");
+					ataqueLabel.setText("Ataque: " + ataque);
 
-					int defensa = rs.getInt("defensa");
-					defenseLabel.setText("Defensa: " + defensa);
+					double defensa = rs.getDouble("defensa");
+					defensaLabel.setText("Defensa: " + defensa);
 
-					int ataqueEspecial = rs.getInt("ataque_especial");
-					specialAttackLabel.setText("Ataque Especial: " + ataqueEspecial);
+					double ataqueEspecial = rs.getDouble("ataque_especial");
+					ataqueEspecialLabel.setText("Atq Especial: " + ataqueEspecial);
 
-					int defensaEspecial = rs.getInt("defensa_especial");
-					specialDefenseLabel.setText("Defensa Especial: " + defensaEspecial);
+					double defensaEspecial = rs.getDouble("defensa_especial");
+					defensaEspecialLabel.setText("Def Especial: " + defensaEspecial);
 				} else { // FALTA PONER LA CONDICION PARA QUE SI NO APARECE EL NOMBRE SALTE EL MENSAJE
 					noEncontradoLabel.setText("No se encontró el Pokémon en la base de datos");
 					System.out.println("No se encontró el Pokémon en la base de datos.");
@@ -147,17 +165,15 @@ public class MenuPokedex extends Application {
 
 		// CREAR EL LAYOUT Y AGREGAR LOS CONTROLES A ÉL
 		VBox searchBox = new VBox(13);
-		searchField.setPrefWidth(50);
-		searchField.setPrefHeight(50);
-		searchButton.setPrefWidth(100);
-		searchBox.getChildren().addAll(searchField, searchButton);
+		buscar.setPrefWidth(30);
+		searchBox.getChildren().addAll(searchField);
 
 		VBox multimediaBox = new VBox(10);
 		searchBox.getChildren().addAll(backButton, muteButton);
 
 		VBox infoBox = new VBox(10);
-		infoBox.getChildren().addAll(nameLabel, imageView, vitalityLabel, speedLabel, staminaLabel, attackLabel,
-				defenseLabel, specialAttackLabel, specialDefenseLabel, noEncontradoLabel);
+		infoBox.getChildren().addAll(nombreLabel, imageView, vitalidadLabel, velocidadLabel, estaminaLabel, ataqueLabel,
+				defensaLabel, ataqueEspecialLabel, defensaEspecialLabel, noEncontradoLabel);
 
 		VBox root = new VBox(10);
 		root.getChildren().addAll(searchBox, infoBox);
@@ -166,6 +182,7 @@ public class MenuPokedex extends Application {
 		stackPane.getChildren().addAll(backgroundImageView, root);
 		root.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(stackPane, WINDOW_WIDTH, WINDOW_HEIGHT);
+		scene.getStylesheets().add("Pokedex.css");
 
 		// MOSTRAR LA VENTANA
 		primaryStage.setScene(scene);

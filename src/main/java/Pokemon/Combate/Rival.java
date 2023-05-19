@@ -110,7 +110,6 @@ public class Rival {
 
         for (int i = 0; i < 6; i++) {
             Pokemon pokemon = PokemonCRUD.generarPokemon();
-            System.out.println(pokemon);
             equipo.add(pokemon);
         }
 

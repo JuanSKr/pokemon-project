@@ -1,0 +1,82 @@
+.button {
+    -fx-font-size: 18px;
+    -fx-background-color: brown;
+    -fx-text-fill: white;
+}
+
+#back {
+    -fx-background-color: transparent;
+    -fx-translate-x: -30px; /* izquierda-derecha */
+    -fx-translate-y: 20px; /* abajo-arriba */
+    -fx-min-width: 160px;
+    -fx-min-height: 62px;
+    -fx-background-image: url('img/botones/entrenador-atras.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+#muteButton {
+    -fx-background-color: transparent;
+    -fx-translate-x: -855px; /* izquierda-derecha */
+    -fx-translate-y: 20px; /* abajo-arriba */
+    -fx-min-width: 160px;
+    -fx-min-height: 62px;
+    -fx-background-image: url('img/botones/pokedex-mute.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#avatarButton {
+    -fx-background-color: transparent;
+    -fx-translate-x: 630px; /* izquierda-derecha */
+    -fx-translate-y: -40px; /* abajo-arriba */
+    -fx-min-width: 400px;
+    -fx-min-height: 280px;
+    -fx-background-image: url('img/botones/entrenador-avatar.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 1deg;
+}
+
+#equiposButton {
+    -fx-background-color: transparent;
+    -fx-translate-x: 290px; /* izquierda-derecha */
+    -fx-translate-y: 100px; /* abajo-arriba */
+    -fx-min-width: 400px;
+    -fx-min-height: 280px;
+    -fx-background-image: url('img/botones/entrenador-equipos.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-rotate: 1deg;
+}
+
+#barra {
+    -fx-translate-x: 280px;
+    -fx-translate-y: 40px;
+    -fx-min-width: 180px;
+    -fx-min-height: 45px;
+    -fx-rotate: 91.5deg
+}
+
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 3, 5);
+    -fx-text-fill: white;
+}
+
+#back:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 3, 5);
+    -fx-text-fill: white;
+    -fx-background-image: url('img/botones/entrenador-atras-hover.png');
+}
+
+#muteButton:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 1, 3, 5);
+    -fx-text-fill: white;
+    -fx-background-image: url('img/botones/pokedex-mute-hover.png');
+}

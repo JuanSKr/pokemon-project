@@ -5,6 +5,7 @@ import Pokemon.Database.PokemonCRUD;
 import Pokemon.Entrenador.Entrenador;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Tienda.Objeto;
+import javafx.scene.image.Image;
 
 import java.util.Scanner;
 
@@ -329,20 +330,6 @@ public class Pokemon {
 
 // Metodos propios
 
-    /**
-     * Un Pokemon aprende un nuevo movimiento cada 3 niveles.
-     * Si el nivel del Pokemon es múltiplo de 3, llama al método addMovimiento().
-     *
-     * @param pokemon
-     */
-
-    public static void aprenderMovimiento(Pokemon pokemon) {
-
-        if ((pokemon.getNivel() % 3) == 0) {
-            addMovimiento(pokemon);
-        }
-
-    }
 
     /**
      * Este método, dependiendo del valor que se le pase a opción asigna el movimiento.

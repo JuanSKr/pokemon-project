@@ -8,10 +8,8 @@ import Pokemon.Entrenador.Entrenador;
 import Pokemon.Entrenador.Mochila;
 import Pokemon.Funcionalidad.Funcion;
 import Pokemon.Pokemon.ListaEstados;
-import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
 import Pokemon.Pokemon.Tipo;
-import javafx.scene.control.ListView;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -24,13 +22,9 @@ public class PokemonCRUD {
     public static boolean login;
     public static boolean registrado;
 
-    /**
-     * Método que lee inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
-     *
-     * @param pokemon
-     */
 
     /**
+     * PokemonCRUD: CREATE (1)
      * Método que inserta el Pokemon que se le pasa por parámetro en la tabla Capturado.
      *
      * @param pokemon
@@ -84,6 +78,44 @@ public class PokemonCRUD {
     }
 
     /**
+     * PokemonCRUD: READ (1)
+     * Método para cargar la información del entrenador de la base de datos en el programa.
+     *
+     * @param nombre
+     * @return Entrenador
+     */
+
+    public static Entrenador cargarEntrenador(String nombre) {
+        try {
+            Connection db = MySQL.getConexion();
+            String sql = "SELECT * FROM entrenador WHERE nombre = ?";
+
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setString(1, nombre);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            Entrenador entrenador = null;
+
+            if (rs.next()) {
+                // Obtener todos los detalles del usuario de la base de datos
+                String contrasena = rs.getString("pass");
+                int dinero = rs.getInt("dinero");
+                String foto = rs.getString("foto");
+
+                // Crear un objeto Entrenador con los detalles cargados
+                entrenador = new Entrenador(nombre, dinero, new HashMap<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>(), foto);
+            }
+
+            return entrenador;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * PokemonCRUD: UPDATE
      * Este método actualiza el dinero del entrenador.
      * Se le pasa un objeto por parámetro
      */
@@ -91,7 +123,6 @@ public class PokemonCRUD {
     public static void actualizarDinero() {
 
         try {
-
             Connection db = MySQL.getConexion();
             String sql = "UPDATE entrenador SET dinero = ? WHERE id_entrenador = ?";
             PreparedStatement ps = db.prepareStatement(sql);
@@ -108,22 +139,52 @@ public class PokemonCRUD {
 
     }
 
-    public static void actualizarPokemon(int equipo, int idPokemon) {
+    /**
+     * PokemonCRUD: DELETE
+     * Este método elimina el Pokemon de capturado que le pasa por parámetro.
+     * Necesitará la id del pokemon.
+     * @param idPokemon
+     */
+
+    public static void eliminarPokemon(int idPokemon) {
+        try {
+            Connection db = MySQL.getConexion();
+            String sql = "DELETE FROM capturado WHERE id_capturado = ?";
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setInt(1, idPokemon);
+            int filasAfectadas = preparedStatement.executeUpdate();
+            System.out.println("Se eliminaron " + filasAfectadas + " filas.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void actualizarPokemon(int numEquipo, int idPokemon) {
 
         try {
+
+            Pokemon pokemon = getPokemon(idPokemon);
+            Entrenador.equipo1.clear();
+            Entrenador.equipo2.clear();
+            Entrenador.caja.clear();
+
+            getEquipo1(Entrenador.equipo1, idEntrenador());
+            getEquipo2(Entrenador.equipo2, idEntrenador());
+            getCaja(Entrenador.caja, idEntrenador());
 
             Connection db = MySQL.getConexion();
             String sql = "UPDATE capturado SET equipo = ? WHERE id_capturado = ?";
             PreparedStatement ps = db.prepareStatement(sql);
             int dinero = Entrenador.getDinero();
             int idEntrenador = idEntrenador();
-            ps.setInt(1, equipo);
+            ps.setInt(1, numEquipo);
             ps.setInt(2, idPokemon);
 
             ps.executeUpdate();
 
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
 
     }
@@ -189,7 +250,7 @@ public class PokemonCRUD {
     }
 
     public static Pokemon mostrarPokemon() {
-
+        Entrenador.equipo1.clear();
         PokemonCRUD.getEquipo1(Entrenador.equipo1, idEntrenador());
         int contador = 0;
 
@@ -231,7 +292,6 @@ public class PokemonCRUD {
      * Método para rellenar la lista de equipo1 del Entrenador con los Pokemons de la tabla capturado.
      *
      * @param equipo1
-     * @param idEntrenador
      * @return
      */
 
@@ -242,7 +302,7 @@ public class PokemonCRUD {
             Connection db = MySQL.getConexion();
             String sql = "SELECT * FROM capturado WHERE id_entrenador = ? AND equipo = 1";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setInt(1, idEntrenador);
+            preparedStatement.setInt(1, idEntrenador());
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -435,42 +495,10 @@ public class PokemonCRUD {
 
     }
 
-    /**
-     * Método para cargar la información del entrenador de la base de datos en el programa.
-     *
-     * @param nombre
-     * @return Entrenador
-     */
 
-    public static Entrenador cargarEntrenador(String nombre) {
-        try {
-            Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM entrenador WHERE nombre = ?";
-
-            PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setString(1, nombre);
-
-            ResultSet rs = preparedStatement.executeQuery();
-
-            Entrenador entrenador = null;
-
-            if (rs.next()) {
-                // Obtener todos los detalles del usuario de la base de datos
-                String contrasena = rs.getString("pass");
-                int dinero = rs.getInt("dinero");
-
-                // Crear un objeto Entrenador con los detalles cargados
-                entrenador = new Entrenador(nombre, dinero, new HashMap<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
-            }
-
-            return entrenador;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     /**
+     * PokemonCRUD: CREATE (2)
      * Primero consulta la ID máxima que puede tener un entrenador en la base de datos, para no repetir IDs.
      * Después se crea un nuevo entrenador con el nombre y la contraseña elegida y una nueva mochila asociada el entrenador.
      *
@@ -506,12 +534,13 @@ public class PokemonCRUD {
                 return;
             }
 
-            sql = "INSERT INTO entrenador (id_entrenador, nombre, dinero, pass) VALUES (?,?,?,?)";
+            sql = "INSERT INTO entrenador (id_entrenador, nombre, dinero, pass, foto) VALUES (?,?,?,?,?)";
             preparedStatement = db.prepareStatement(sql);
             preparedStatement.setInt(1, nuevaId);
             preparedStatement.setString(2, nombre);
-            preparedStatement.setInt(3, 500);
+            preparedStatement.setInt(3, 800);
             preparedStatement.setString(4, pass);
+            preparedStatement.setString(5, Entrenador.fotoDefault());
             int filasInsertadasEntrenador = preparedStatement.executeUpdate();
 
             sql = "INSERT INTO mochila (id_mochila, id_entrenador, id_objeto, cantidad) " +
@@ -628,7 +657,7 @@ public class PokemonCRUD {
             String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'Estado'";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
 
-            int idRandom = Funcion.random(61, 84);
+            int idRandom = Funcion.random(61, 69);
 
             preparedStatement.setInt(1, idRandom);
             ResultSet rs = preparedStatement.executeQuery();
@@ -890,7 +919,6 @@ public class PokemonCRUD {
 
     public static int idEntrenador() {
 
-        // Entrenador.setNombre("El pepe");
 
         try {
 
@@ -1025,19 +1053,6 @@ public class PokemonCRUD {
 
     }
 
-    public static void eliminarPokemon(int idPokemon) {
-        try {
-            Connection db = MySQL.getConexion();
-            String sql = "DELETE FROM capturado WHERE id_capturado = ?";
-            PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setInt(1, idPokemon);
-            int filasAfectadas = preparedStatement.executeUpdate();
-            System.out.println("Se eliminaron " + filasAfectadas + " filas.");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 //    public static String mostrarMochila(int idObjeto) {
@@ -1085,6 +1100,25 @@ public class PokemonCRUD {
 //        }
 //        return null;
 //    }
+
+    public static void updateFoto(String foto) {
+
+        try {
+
+            Connection db = MySQL.getConexion();
+            String sql = "UPDATE entrenador SET foto = ? WHERE id_entrenador = ?";
+            PreparedStatement ps = db.prepareStatement(sql);
+            int idEntrenador = idEntrenador();
+            ps.setString(1, foto);
+            ps.setInt(2, idEntrenador);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+        }
+
+    }
 
     public static void main(String[] args) {
 
