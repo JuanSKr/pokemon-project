@@ -30,13 +30,8 @@ public class Menu extends Application {
 
     private static MediaView videoView = new MediaView();
 
-
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-        Image barra = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/barra.png")));
-        ImageView barraView = new ImageView(barra);
-        barraView.setId("barra");
 
         // Creamos el reproductor para el vídeo
         Media videoBackground = new Media(getClass().getResource("/vid/menu.mp4").toExternalForm());
@@ -50,6 +45,10 @@ public class Menu extends Application {
 
         reproductor.setCycleCount(MediaPlayer.INDEFINITE);
         reproductor.play();
+
+        Image barra = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/barra.png")));
+        ImageView barraView = new ImageView(barra);
+        barraView.setId("barra");
 
         Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png")));
         ImageView logoView = new ImageView(logo);

@@ -34,9 +34,6 @@ public class Avatar extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        StackPane root = new StackPane();
-        root.setStyle("-fx-background-color: black");
-
         Media videoBackground = new Media(getClass().getResource("/vid/avatar.mp4").toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(videoBackground);
         MediaView videoView = new MediaView(mediaPlayer);
@@ -47,6 +44,10 @@ public class Avatar extends Application {
 
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
+
+        StackPane root = new StackPane();
+        root.setStyle("-fx-background-color: black");
+
 
         VBox container = new VBox(10);
         container.setPadding(new Insets(10));

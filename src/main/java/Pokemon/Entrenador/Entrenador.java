@@ -3,6 +3,7 @@ package Pokemon.Entrenador;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -137,31 +138,13 @@ public class Entrenador {
         Entrenador.caja = caja;
     }
 
-    public static void setContrasena(String contrasena) {
-
-
-
-        // TODO Auto-generated method stub
-
+    public void setContrasena(String pass) {
+        this.pass = pass;
     }
 
     public static String getContrasena() {
         // TODO Auto-generated method stub
         return null;
-    }
-
-    /**
-     * @param pokemon
-     * @param equipoInicial
-     * @param equipoFinal
-     * @return Se le pasan 3 parametros al método, el Pokemon que se quiere mover, el equipo donde está y donde debe acabar
-     */
-
-    public static void moverPokemon(Pokemon pokemon, LinkedList equipoInicial, LinkedList equipoFinal) {
-
-        equipoInicial.remove(pokemon);
-        equipoFinal.add(pokemon);
-
     }
 
 
@@ -186,7 +169,7 @@ public class Entrenador {
             equipo2.add(pokemon);
             equipo = 2;
             System.out.println(equipo2);
-        } else if(caja.size() < 15) {
+        } else if (caja.size() < 15) {
             caja.add(pokemon);
             equipo = 3;
         } else {
@@ -197,27 +180,11 @@ public class Entrenador {
     }
 
 
-    public static void verEquipos() {
-
-        PokemonCRUD.getEquipo1(equipo1, PokemonCRUD.idEntrenador());
-        PokemonCRUD.getEquipo2(equipo2, PokemonCRUD.idEntrenador());
-        PokemonCRUD.getCaja(caja, PokemonCRUD.idEntrenador());
-
-        System.out.println("Equipo 1:");
-        for (Pokemon mostrarEquipo : equipo1) {
-            System.out.println(mostrarEquipo.toString());
-        }
-
-        System.out.println("Equipo 2:");
-        for (Pokemon mostrarEquipo : equipo2) {
-            System.out.println(mostrarEquipo.toString());
-        }
-
-        System.out.println("Caja:");
-        for (Pokemon mostrarEquipo : caja) {
-            System.out.println(mostrarEquipo.toString());
-        }
-    }
+    /**
+     * Asigna la foto default al entrenador
+     *
+     * @return
+     */
 
     public static String fotoDefault() { //Método añadido post-tests.
         return "/img/alonso.png";
