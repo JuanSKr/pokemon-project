@@ -621,7 +621,7 @@ public class PokemonCRUD {
     public static Ataque generarAtaque() {
         try {
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'Ataque'";
+            String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'ataque'";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
             int idRandom = Funcion.random(1, 50);
 
@@ -654,7 +654,7 @@ public class PokemonCRUD {
     public static Estado generarEstado() {
         try {
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'Estado'";
+            String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'estado'";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
 
             int idRandom = Funcion.random(61, 69);
@@ -687,7 +687,7 @@ public class PokemonCRUD {
     public static Mejora generarMejora() {
         try {
             Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'Mejora'";
+            String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'mejora'";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
             int idRandom = Funcion.random(51, 60);
 

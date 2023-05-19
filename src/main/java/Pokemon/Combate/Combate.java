@@ -342,24 +342,24 @@ public class Combate {
         int random = Funcion.random(1, 4);
         setMovimiento(pokemonRival);
 
-            if (random == 1) {
+        if (random == 1) {
 //                Ataque ataque = (Ataque) pokemonRival.getMovimiento1();
 //                System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + ataque.getNombreMovimiento());
-                movimientoRival1(pokemonRival, pokemonEntrenador, pokemonRival.getMovimiento1());
+            movimientoRival1(pokemonRival, pokemonEntrenador, pokemonRival.getMovimiento1());
 
-            } else if (random == 2) {
+        } else if (random == 2) {
 //                Ataque ataque = (Ataque) pokemonRival.getMovimiento2();
 //                System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + ataque.getNombreMovimiento());
-                movimientoRival1(pokemonRival, pokemonEntrenador, pokemonRival.getMovimiento2());
-            } else if (random == 3) {
+            movimientoRival1(pokemonRival, pokemonEntrenador, pokemonRival.getMovimiento2());
+        } else if (random == 3) {
 //                Estado estado = (Estado) pokemonRival.getMovimiento3();
 //                System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + estado.getNombreMovimiento());
-                movimientoRival1(pokemonRival, pokemonEntrenador, pokemonRival.getMovimiento3());
-            } else {
+            movimientoRival1(pokemonRival, pokemonEntrenador, pokemonRival.getMovimiento3());
+        } else {
 //                Mejora mejora = (Mejora) pokemonRival.getMovimiento4();
 //                System.out.println(pokemonRival.getNombre() + " enemigo ha utilizado " + mejora.getNombreMovimiento());
-                movimientoRival1(pokemonRival, pokemonEntrenador, pokemonRival.getMovimiento4());
-            }
+            movimientoRival1(pokemonRival, pokemonEntrenador, pokemonRival.getMovimiento4());
+        }
     }
 
 
@@ -369,7 +369,7 @@ public class Combate {
      * @param pokemon
      */
 
-    public static void setMovimiento(Pokemon pokemon) {
+    public static void setMovimiento(Pokemon pokemon) { //ERROR
 
         Ataque ataque1 = PokemonCRUD.generarAtaque();
         Ataque ataque2 = PokemonCRUD.generarAtaque();
@@ -381,10 +381,10 @@ public class Combate {
         pokemon.setMovimiento3(estado);
         pokemon.setMovimiento4(mejora);
 
-        System.out.println(ataque1.getTipoMovimiento());
-        System.out.println(ataque2.getTipoMovimiento());
-        System.out.println(estado.getTipoMovimiento());
-        System.out.println(mejora.getTipoMovimiento()); //CHECKIAR
+        System.out.println("Mov1: " + ataque1.getTipoMovimiento());
+        System.out.println("Mov2: " + ataque2.getTipoMovimiento());
+        System.out.println("Mov3: " + estado.getTipoMovimiento());
+        System.out.println("Mov4: " + mejora.getTipoMovimiento());
 
     }
 
