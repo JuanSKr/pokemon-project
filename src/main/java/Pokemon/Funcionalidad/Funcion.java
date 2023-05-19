@@ -5,7 +5,7 @@ import Pokemon.Database.PokemonCRUD;
 
 import java.util.Random;
 
-public class dFuncion {
+public class Funcion {
 
     /**
      * @param min numero pequeño
@@ -32,7 +32,7 @@ public class dFuncion {
 
     public static Movimiento generarMovimiento() {
 
-        int random = Funcion.random(1, 3);
+        int random = random(1, 3);
 
         if (random == 1) {
             return PokemonCRUD.generarAtaque();
