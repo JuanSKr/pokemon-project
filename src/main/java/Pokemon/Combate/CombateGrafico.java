@@ -213,7 +213,7 @@ public class CombateGrafico extends Application {
         if(primerAtaque == 0) {
             System.out.println("Empiezas");
         } else {
-//            Combate.accionRival(pRival, pEntrenador);
+            Combate.accionRival(pRival, pEntrenador);
             modificarBarra(vidaJugador, pEntrenador);
             actualizarEstaminaE(pRival, estaminaRival);
         }

@@ -657,7 +657,7 @@ public class PokemonCRUD {
             String sql = "SELECT * FROM movimiento WHERE id_movimiento = ? AND tipo_movimiento = 'Estado'";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
 
-            int idRandom = Funcion.random(61, 84);
+            int idRandom = Funcion.random(61, 69);
 
             preparedStatement.setInt(1, idRandom);
             ResultSet rs = preparedStatement.executeQuery();
