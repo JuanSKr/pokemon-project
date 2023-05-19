@@ -99,10 +99,10 @@ public class Selector extends Application {
         audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 
         Image selectorTxt = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/selector.png")));
-        ImageView lectorView = new ImageView(selectorTxt);
-        lectorView.setFitWidth(920);
-        lectorView.setFitHeight(460);
-        lectorView.setId("lectorTxt");
+        ImageView selectorView = new ImageView(selectorTxt);
+        selectorView.setFitWidth(920);
+        selectorView.setFitHeight(460);
+        selectorView.setId("selectorTxt");
 
         Button opcion1 = new Button();
         opcion1.setId("opcion1");
@@ -192,7 +192,7 @@ public class Selector extends Application {
 //        root.getChildren().addAll(videoView, barraView,combateButton, capturarButton, entrenadorButton, pokedexButton, tiendaButton, muteButton);
         root.getChildren().
 
-                addAll(videoView, lectorView, opcion1, opcion2, opcion3, opcion4, opcion5, opcion6, pokemon1View,
+                addAll(videoView, selectorView, opcion1, opcion2, opcion3, opcion4, opcion5, opcion6, pokemon1View,
                         pokemon2View, pokemon3View, pokemon4View, pokemon5View, pokemon6View);
 
         root.setAlignment(Pos.CENTER);

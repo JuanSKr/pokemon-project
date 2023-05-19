@@ -17,6 +17,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Avatar extends Application {
 
     private static final int WINDOW_WIDTH = 1080;
@@ -50,9 +52,13 @@ public class Avatar extends Application {
         container.setPadding(new Insets(10));
         container.setAlignment(Pos.CENTER);
 
-        HBox avatarContainer = new HBox(10);
-        avatarContainer.setAlignment(Pos.CENTER);
+        Image avatarTxt = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/avatar.png")));
+        ImageView avatarView = new ImageView(avatarTxt);
+        avatarView.setFitWidth(750);
+        avatarView.setFitHeight(350);
+        avatarView.setId("txtView");
 
+        Pane avatarContainer = new Pane();
         Image image1 = new Image(getClass().getResourceAsStream("/img/entrenador1.gif"));
         Image image2 = new Image(getClass().getResourceAsStream("/img/entrenador2.gif"));
         Image image3 = new Image(getClass().getResourceAsStream("/img/alonso.png"));
@@ -63,39 +69,36 @@ public class Avatar extends Application {
         ImageView imageView1 = new ImageView(image1);
         imageView1.setFitWidth(50);
         imageView1.setFitHeight(50);
-
+        imageView1.setId("foto1");
 
         ImageView imageView2 = new ImageView(image2);
         imageView2.setFitWidth(50);
         imageView2.setFitHeight(50);
+        imageView2.setId("foto2");
 
 
         ImageView imageView3 = new ImageView(image3);
         imageView3.setFitWidth(50);
         imageView3.setFitHeight(50);
+        imageView3.setId("foto3");
 
 
         ImageView imageView4 = new ImageView(image4);
         imageView4.setFitWidth(50);
         imageView4.setFitHeight(50);
+        imageView4.setId("foto4");
 
 
         ImageView imageView5 = new ImageView(image5);
         imageView5.setFitWidth(50);
         imageView5.setFitHeight(50);
+        imageView5.setId("foto5");
 
 
         ImageView imageView6 = new ImageView(image6);
         imageView6.setFitWidth(50);
         imageView6.setFitHeight(50);
-
-        HBox.setMargin(imageView1, new Insets(0, 0, 0, -300));
-        HBox.setMargin(imageView2, new Insets(0, 0, 0, 50));
-        HBox.setMargin(imageView3, new Insets(0, 0, 0, 50));
-        HBox.setMargin(imageView4, new Insets(0, 0, 0, 50));
-        HBox.setMargin(imageView5, new Insets(0, 0, 0, 50));
-        HBox.setMargin(imageView6, new Insets(0, 0, 0, 50));
-
+        imageView6.setId("imageView2");
 
         Button opcion1 = new Button();
         opcion1.setId("opcion1");
@@ -147,7 +150,7 @@ public class Avatar extends Application {
         });
 
         avatarContainer.getChildren().addAll(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6,
-                imageView1, imageView2, imageView3, imageView4, imageView5, imageView6);
+                imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, avatarView);
 
         Button aceptar = new Button();
         aceptar.setId("aceptar");

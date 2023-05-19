@@ -82,7 +82,7 @@
     -fx-background-position: center;
 }
 
-#lectorTxt {
+#selectorTxt {
     -fx-translate-x: 0px;
     -fx-translate-y: -140px;
     -fx-effect: dropshadow(gaussian, rgba(49,100,158,0.7), 4, 0, 7.5, 4);
