@@ -218,7 +218,6 @@ public class CombateGrafico extends Application {
             actualizarEstaminaE(pRival, estaminaRival);
         }
 
-
         // CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
 
         atacarButton.setId("atacar");

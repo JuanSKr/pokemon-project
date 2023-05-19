@@ -264,7 +264,7 @@ public class MenuExplorador extends Application {
 						&& pokemonCircle.getCenterY() - trainerCircle.getCenterY() <= TRAINER_RADIUS + POKEMON_RADIUS) {
 
 					Random rand = new Random();
-					if (rand.nextDouble() <= 0.500) {// PORCENTAJE DE POSIBILIDADES DE CONSEGUIR EL POKEMON
+					if (rand.nextDouble() <= 0.700) {// PORCENTAJE DE POSIBILIDADES DE CONSEGUIR EL POKEMON
 						// CREAR UN FONDO DE PANTALLA PARA LA NUEVA ESCENA
 						// AGREGAR IMAGEN DE FONDO A LA ESCENA
 						ImageView fondo = new ImageView(

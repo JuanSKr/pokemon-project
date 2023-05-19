@@ -20,13 +20,11 @@ public class Combate {
 
     static Scanner sc = new Scanner(System.in);
 
-    static int pokemonElegido;
-    static int contadorRival = 0;
-    static int contadorEntrenador = 0;
+    protected static int pokemonElegido;
+    protected static int contadorRival = 0;
+    protected static int contadorEntrenador = 0;
 
     public static Pokemon elegirPokemon(int opcionPokemon) {
-
-//        Entrenador.setNombre("El pepe");
 
         Pokemon pokemon = Pokemon.mostrarPokemon(PokemonCRUD.idEntrenador(), opcionPokemon);
         System.out.println("¡Has seleccionado a " + pokemon.getNombre() + "!");
@@ -110,7 +108,7 @@ public class Combate {
 
         try {
 
-            if (movimiento.getTipoMovimiento().equals("ATAQUE")) {
+            if (movimiento.getTipoMovimiento().equals("ataque")) {
                 if (pokemonAtacante.getEstamina() < estaminaAtaque) {
                     System.out.println("No estamina");
                 } else {
@@ -121,7 +119,7 @@ public class Combate {
                     pokemonAtacante.setEstamina(nuevaEstamina);
                 }
 
-            } else if (movimiento.getTipoMovimiento().equals("ESTADO")) {
+            } else if (movimiento.getTipoMovimiento().equals("estado")) {
                 if (pokemonAtacante.getEstamina() < estMejoraEstado) {
                     System.out.println("No estamina");
                 } else {
@@ -130,7 +128,7 @@ public class Combate {
                     pokemonAtacante.setEstamina(nuevaEstamina);
                 }
 
-            } else if (movimiento.getTipoMovimiento().equals("MEJORA")) {
+            } else if (movimiento.getTipoMovimiento().equals("mejora")) {
                 if (pokemonAtacante.getEstamina() < estMejoraEstado) {
                     System.out.println("No estamina");
                 } else {
@@ -157,7 +155,7 @@ public class Combate {
 
         try {
 
-            if (movimiento.getTipoMovimiento().equals("ATAQUE")) {
+            if (movimiento.getTipoMovimiento().equals("ataque")) {
                 if (pokemonEntrenador.getEstamina() < estaminaAtaque) {
                     System.out.println("No estamina");
                 } else {
@@ -168,7 +166,7 @@ public class Combate {
                     pokemonEntrenador.setEstamina(nuevaEstamina);
                 }
 
-            } else if (movimiento.getTipoMovimiento().equals("ESTADO")) {
+            } else if (movimiento.getTipoMovimiento().equals("estado")) {
                 if (pokemonEntrenador.getEstamina() < estMejoraEstado) {
                     System.out.println("No estamina");
                 } else {
@@ -177,7 +175,7 @@ public class Combate {
                     pokemonEntrenador.setEstamina(nuevaEstamina);
                 }
 
-            } else if (movimiento.getTipoMovimiento().equals("MEJORA")) {
+            } else if (movimiento.getTipoMovimiento().equals("mejora")) {
                 if (pokemonEntrenador.getEstamina() < estMejoraEstado) {
                     System.out.println("No estamina");
                 } else {
@@ -203,7 +201,7 @@ public class Combate {
 
         try {
 
-            if (movimiento.getTipoMovimiento().equals("ATAQUE")) {
+            if (movimiento.getTipoMovimiento().equals("ataque")) {
                 if (pokemonEntrenador.getEstamina() < estaminaAtaque) {
                     System.out.println("No estamina");
                 } else {
@@ -214,7 +212,7 @@ public class Combate {
                     pokemonEntrenador.setEstamina(nuevaEstamina);
                 }
 
-            } else if (movimiento.getTipoMovimiento().equals("ESTADO")) {
+            } else if (movimiento.getTipoMovimiento().equals("estado")) {
                 if (pokemonEntrenador.getEstamina() < estMejoraEstado) {
                     System.out.println("No estamina");
                 } else {
@@ -223,7 +221,7 @@ public class Combate {
                     pokemonEntrenador.setEstamina(nuevaEstamina);
                 }
 
-            } else if (movimiento.getTipoMovimiento().equals("MEJORA")) {
+            } else if (movimiento.getTipoMovimiento().equals("mejora")) {
                 if (pokemonEntrenador.getEstamina() < estMejoraEstado) {
                     System.out.println("No estamina");
                 } else {
@@ -249,7 +247,7 @@ public class Combate {
         int contador = 0;
         try {
 
-            if (movimiento.getTipoMovimiento().equals("ATAQUE")) {
+            if (movimiento.getTipoMovimiento().equals("ataque")) {
                 if (pokemonEntrenador.getEstamina() < estaminaAtaque) {
                     System.out.println("No estamina");
                 } else {
@@ -260,7 +258,7 @@ public class Combate {
                     pokemonEntrenador.setEstamina(nuevaEstamina);
                 }
 
-            } else if (movimiento.getTipoMovimiento().equals("ESTADO")) {
+            } else if (movimiento.getTipoMovimiento().equals("estado")) {
                 if (pokemonEntrenador.getEstamina() < estMejoraEstado) {
                     System.out.println("No estamina");
                 } else {
@@ -269,7 +267,7 @@ public class Combate {
                     pokemonEntrenador.setEstamina(nuevaEstamina);
                 }
 
-            } else if (movimiento.getTipoMovimiento().equals("MEJORA")) {
+            } else if (movimiento.getTipoMovimiento().equals("mejora")) {
                 if (pokemonEntrenador.getEstamina() < estMejoraEstado) {
                     System.out.println("No estamina");
                 } else {
@@ -436,18 +434,6 @@ public class Combate {
         double idEstamina = (pokemon.getEstamina() + addEstamina);
 
         return idEstamina;
-
-    }
-
-    public static void main(String[] args) {
-
-        Pokemon atacante = generarPokemon();
-
-        Pokemon defensor = generarPokemon();
-
-        Ataque ataque = generarAtaque();
-
-        System.out.println(calcularAtaque(atacante, defensor, ataque));
 
     }
 

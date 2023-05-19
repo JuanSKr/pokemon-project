@@ -44,8 +44,6 @@ public class Equipos extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Entrenador.setNombre("El pepe");
-
         PokemonCRUD.getEquipo1(equipo1, PokemonCRUD.idEntrenador());
         PokemonCRUD.getEquipo2(equipo2, PokemonCRUD.idEntrenador());
         PokemonCRUD.getCaja(caja, PokemonCRUD.idEntrenador());
@@ -90,6 +88,7 @@ public class Equipos extends Application {
 
         ListView<String> equipo1ListView = new ListView<>();
         // Añadir aqui configuraion de tamaño
+        Entrenador.equipo1.clear();
         PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
         obtenerEquipo1(equipo1, equipo1ListView);
 
@@ -175,10 +174,20 @@ public class Equipos extends Application {
                 String pokemon = arrastrar.getString();
                 String nombrePokemon = pokemon;
                 int idPokemon = PokemonCRUD.idPokemon(nombrePokemon);
-                ((ListView<String>) event.getGestureSource()).getItems().remove(pokemon); // Eliminar del contenedor de origen
+                ListView<String> origen = (ListView<String>) event.getGestureSource();
+                origen.getItems().remove(pokemon); // Eliminar del contenedor de origen
                 equipo1ListView.getItems().add(pokemon);
                 completado = true;
                 PokemonCRUD.actualizarPokemon(1, idPokemon);
+                Entrenador.equipo1.add(PokemonCRUD.getPokemon(idPokemon));
+
+                // Aquí verificamos de qué lista proviene el Pokémon y lo eliminamos de la lista del Entrenador
+                if (origen == equipo2ListView) {
+                    Entrenador.equipo2.remove(PokemonCRUD.getPokemon(idPokemon));
+                } else if (origen == cajaListView) {
+                    Entrenador.caja.remove(PokemonCRUD.getPokemon(idPokemon));
+                }
+
             } else if (arrastrar.hasString()) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
@@ -189,6 +198,7 @@ public class Equipos extends Application {
             event.setDropCompleted(completado);
             event.consume();
         });
+
 
 // Agregar evento para eliminar un Pokémon al hacer clic derecho
         equipo1ListView.setOnMouseClicked(event -> {
@@ -236,6 +246,8 @@ public class Equipos extends Application {
                 equipo2ListView.getItems().add(pokemon);
                 completado = true;
                 PokemonCRUD.actualizarPokemon(2, idPokemon);
+                Entrenador.equipo2.add(PokemonCRUD.getPokemon(idPokemon));
+                Entrenador.equipo1.remove(PokemonCRUD.getPokemon(idPokemon)); // Asegúrate de eliminarlo de equipo1
             } else if (arrastrar.hasString()) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
@@ -246,6 +258,7 @@ public class Equipos extends Application {
             event.setDropCompleted(completado);
             event.consume();
         });
+
         // PERMITIR QUE LOS ELEMENTOS SEAN SOLTADOS EN CAJALISTVIEW
         cajaListView.setOnDragOver(event -> {
             if (event.getGestureSource() != cajaListView && event.getDragboard().hasString()) {
@@ -262,10 +275,20 @@ public class Equipos extends Application {
                 String pokemon = arrastrar.getString();
                 String nombrePokemon = pokemon;
                 int idPokemon = PokemonCRUD.idPokemon(nombrePokemon);
-                ((ListView<String>) event.getGestureSource()).getItems().remove(pokemon); // Eliminar del contenedor de origen
+                ListView<String> origen = (ListView<String>) event.getGestureSource();
+                origen.getItems().remove(pokemon); // Eliminar del contenedor de origen
                 cajaListView.getItems().add(pokemon);
                 completado = true;
                 PokemonCRUD.actualizarPokemon(3, idPokemon);
+                Entrenador.caja.add(PokemonCRUD.getPokemon(idPokemon));
+
+                // Aquí verificamos de qué lista proviene el Pokémon y lo eliminamos de la lista del Entrenador
+                if (origen == equipo1ListView) {
+                    Entrenador.equipo1.remove(PokemonCRUD.getPokemon(idPokemon));
+                } else if (origen == equipo2ListView) {
+                    Entrenador.equipo2.remove(PokemonCRUD.getPokemon(idPokemon));
+                }
+
             } else if (arrastrar.hasString()) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Información");
@@ -276,6 +299,7 @@ public class Equipos extends Application {
             event.setDropCompleted(completado);
             event.consume();
         });
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------
         VBox containers = new VBox();
@@ -304,6 +328,8 @@ public class Equipos extends Application {
      */
 
     public static void obtenerEquipo1(LinkedList<Pokemon> equipo1, ListView<String> equipo1ListView) {
+
+
 
         if (equipo1.size() == 0) {
             System.out.println("Vacio");

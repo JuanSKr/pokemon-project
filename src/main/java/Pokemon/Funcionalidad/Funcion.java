@@ -5,7 +5,7 @@ import Pokemon.Database.PokemonCRUD;
 
 import java.util.Random;
 
-public class Funcion {
+public class dFuncion {
 
     /**
      * @param min numero pequeño

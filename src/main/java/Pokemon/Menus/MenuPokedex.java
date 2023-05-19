@@ -111,7 +111,7 @@ public class MenuPokedex extends Application {
 			searchField.clear();
 
 			/**
-			 * PokemonCRUD: READ
+			 * PokemonCRUD: READ (2)
 			 */
 
 			try {

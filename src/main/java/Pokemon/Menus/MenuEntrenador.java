@@ -12,6 +12,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.util.Objects;
 
 public class MenuEntrenador extends Application {
@@ -19,7 +21,11 @@ public class MenuEntrenador extends Application {
     private static final double WINDOW_HEIGHT = 650;
     private Scene previousScene;
     private Stage primaryStage;
+
     private static MediaView videoView = new MediaView();
+
+    Media videoBackground = new Media(getClass().getResource("/vid/entrenador.mp4").toExternalForm());
+    MediaPlayer reproductor = new MediaPlayer(videoBackground);
 
 
     public MenuEntrenador(Stage primaryStage, Scene previousScene) {
@@ -30,18 +36,15 @@ public class MenuEntrenador extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        // Creamos el reproductor para el vídeo
-        Media videoBackground = new Media(getClass().getResource("/vid/entrenador.mp4").toExternalForm());
-        MediaPlayer reproductor = new MediaPlayer(videoBackground);
         videoView.setMediaPlayer(reproductor);
-
-        // Ajustar el tamaño del video al tamaño de la ventana
         videoView.setPreserveRatio(false);
         videoView.setFitWidth(1080);
         videoView.setFitHeight(650);
 
         reproductor.setCycleCount(MediaPlayer.INDEFINITE);
         reproductor.play();
+
+
         // -------------------------MULTIMEDIA-----------------------------------------------
         // CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
         Media audioMedia = new Media(getClass().getResource("/aud/MenuEntrenador.wav").toExternalForm());

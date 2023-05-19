@@ -3,7 +3,6 @@ package Pokemon.Entrenador;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Tienda.Objeto;
 import Pokemon.Pokemon.Pokemon;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -138,12 +137,11 @@ public class Entrenador {
         Entrenador.caja = caja;
     }
 
-    public void setContrasena(String pass) {
-        this.pass = pass;
+    public static void setContrasena(String contrasena) {
+
     }
 
     public static String getContrasena() {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -157,6 +155,11 @@ public class Entrenador {
     public static int addPokemon(Pokemon pokemon) {
         int equipo = 0;
 
+        Entrenador.equipo1.clear();
+        Entrenador.equipo2.clear();
+        Entrenador.caja.clear();
+
+
         PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
         PokemonCRUD.getEquipo2(Entrenador.equipo2, PokemonCRUD.idEntrenador());
         PokemonCRUD.getCaja(Entrenador.caja, PokemonCRUD.idEntrenador());
@@ -169,7 +172,7 @@ public class Entrenador {
             equipo2.add(pokemon);
             equipo = 2;
             System.out.println(equipo2);
-        } else if (caja.size() < 15) {
+        } else if(caja.size() < 15) {
             caja.add(pokemon);
             equipo = 3;
         } else {
@@ -178,13 +181,6 @@ public class Entrenador {
 
         return equipo;
     }
-
-
-    /**
-     * Asigna la foto default al entrenador
-     *
-     * @return
-     */
 
     public static String fotoDefault() { //Método añadido post-tests.
         return "/img/alonso.png";

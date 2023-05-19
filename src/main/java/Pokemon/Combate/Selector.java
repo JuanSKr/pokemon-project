@@ -129,7 +129,6 @@ public class Selector extends Application {
         opcion1.setOnAction(e ->
 
         {
-
             opcionSeleccionada = 1;
             Scene currentScene = primaryStage.getScene();
             CombateGrafico combate = new CombateGrafico(primaryStage, currentScene);
@@ -211,6 +210,7 @@ public class Selector extends Application {
     }
 
     public Image setImagen(int posicion) {
+        Entrenador.equipo1.clear();
         PokemonCRUD.getEquipo1(Entrenador.equipo1, PokemonCRUD.idEntrenador());
 
         Image imagen = null;

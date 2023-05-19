@@ -78,6 +78,43 @@ public class PokemonCRUD {
     }
 
     /**
+     * PokemonCRUD: READ (1)
+     * Método para cargar la información del entrenador de la base de datos en el programa.
+     *
+     * @param nombre
+     * @return Entrenador
+     */
+
+    public static Entrenador cargarEntrenador(String nombre) {
+        try {
+            Connection db = MySQL.getConexion();
+            String sql = "SELECT * FROM entrenador WHERE nombre = ?";
+
+            PreparedStatement preparedStatement = db.prepareStatement(sql);
+            preparedStatement.setString(1, nombre);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            Entrenador entrenador = null;
+
+            if (rs.next()) {
+                // Obtener todos los detalles del usuario de la base de datos
+                String contrasena = rs.getString("pass");
+                int dinero = rs.getInt("dinero");
+                String foto = rs.getString("foto");
+
+                // Crear un objeto Entrenador con los detalles cargados
+                entrenador = new Entrenador(nombre, dinero, new HashMap<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>(), foto);
+            }
+
+            return entrenador;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * PokemonCRUD: UPDATE
      * Este método actualiza el dinero del entrenador.
      * Se le pasa un objeto por parámetro
@@ -128,6 +165,9 @@ public class PokemonCRUD {
         try {
 
             Pokemon pokemon = getPokemon(idPokemon);
+            Entrenador.equipo1.clear();
+            Entrenador.equipo2.clear();
+            Entrenador.caja.clear();
 
             getEquipo1(Entrenador.equipo1, idEntrenador());
             getEquipo2(Entrenador.equipo2, idEntrenador());
@@ -210,7 +250,7 @@ public class PokemonCRUD {
     }
 
     public static Pokemon mostrarPokemon() {
-
+        Entrenador.equipo1.clear();
         PokemonCRUD.getEquipo1(Entrenador.equipo1, idEntrenador());
         int contador = 0;
 
@@ -252,7 +292,6 @@ public class PokemonCRUD {
      * Método para rellenar la lista de equipo1 del Entrenador con los Pokemons de la tabla capturado.
      *
      * @param equipo1
-     * @param idEntrenador
      * @return
      */
 
@@ -263,7 +302,7 @@ public class PokemonCRUD {
             Connection db = MySQL.getConexion();
             String sql = "SELECT * FROM capturado WHERE id_entrenador = ? AND equipo = 1";
             PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setInt(1, idEntrenador);
+            preparedStatement.setInt(1, idEntrenador());
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -456,41 +495,7 @@ public class PokemonCRUD {
 
     }
 
-    /**
-     * Método para cargar la información del entrenador de la base de datos en el programa.
-     *
-     * @param nombre
-     * @return Entrenador
-     */
 
-    public static Entrenador cargarEntrenador(String nombre) {
-        try {
-            Connection db = MySQL.getConexion();
-            String sql = "SELECT * FROM entrenador WHERE nombre = ?";
-
-            PreparedStatement preparedStatement = db.prepareStatement(sql);
-            preparedStatement.setString(1, nombre);
-
-            ResultSet rs = preparedStatement.executeQuery();
-
-            Entrenador entrenador = null;
-
-            if (rs.next()) {
-                // Obtener todos los detalles del usuario de la base de datos
-                String contrasena = rs.getString("pass");
-                int dinero = rs.getInt("dinero");
-                String foto = rs.getString("foto");
-
-                // Crear un objeto Entrenador con los detalles cargados
-                entrenador = new Entrenador(nombre, dinero, new HashMap<>(), new HashMap<>(), contrasena, new LinkedList<>(), new LinkedList<>(), new LinkedList<>(), foto);
-            }
-
-            return entrenador;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     /**
      * PokemonCRUD: CREATE (2)
@@ -914,7 +919,6 @@ public class PokemonCRUD {
 
     public static int idEntrenador() {
 
-        // Entrenador.setNombre("El pepe");
 
         try {
 
