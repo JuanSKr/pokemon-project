@@ -54,51 +54,53 @@ public class Avatar extends Application {
 
         Image avatarTxt = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/avatar.png")));
         ImageView avatarView = new ImageView(avatarTxt);
-        avatarView.setFitWidth(750);
+        avatarView.setFitWidth(600);
         avatarView.setFitHeight(350);
         avatarView.setId("txtView");
 
         Pane avatarContainer = new Pane();
-        Image image1 = new Image(getClass().getResourceAsStream("/img/entrenador1.gif"));
+        Image image1 = new Image(getClass().getResourceAsStream("/img/gato.gif"));
         Image image2 = new Image(getClass().getResourceAsStream("/img/entrenador2.gif"));
-        Image image3 = new Image(getClass().getResourceAsStream("/img/alonso.png"));
-        Image image4 = new Image(getClass().getResourceAsStream("/img/entrenador2.gif"));
-        Image image5 = new Image(getClass().getResourceAsStream("/img/entrenador1.gif"));
-        Image image6 = new Image(getClass().getResourceAsStream("/img/entrenador2.gif"));
+        Image image3 = new Image(getClass().getResourceAsStream("/img/entrenador3.png"));
+        Image image4 = new Image(getClass().getResourceAsStream("/img/entrenador4.gif"));
+        Image image5 = new Image(getClass().getResourceAsStream("/img/entrenador5.gif"));
+        Image image6 = new Image(getClass().getResourceAsStream("/img/entrenador6.png"));
 
         ImageView imageView1 = new ImageView(image1);
-        imageView1.setFitWidth(50);
-        imageView1.setFitHeight(50);
+        imageView1.setFitWidth(120);
+        imageView1.setFitHeight(120);
         imageView1.setId("foto1");
+        imageView1.setMouseTransparent(true);
 
         ImageView imageView2 = new ImageView(image2);
-        imageView2.setFitWidth(50);
-        imageView2.setFitHeight(50);
+        imageView2.setFitWidth(120);
+        imageView2.setFitHeight(120);
         imageView2.setId("foto2");
-
+        imageView2.setMouseTransparent(true);
 
         ImageView imageView3 = new ImageView(image3);
-        imageView3.setFitWidth(50);
-        imageView3.setFitHeight(50);
+        imageView3.setFitWidth(100);
+        imageView3.setFitHeight(100);
         imageView3.setId("foto3");
-
+        imageView3.setMouseTransparent(true);
 
         ImageView imageView4 = new ImageView(image4);
-        imageView4.setFitWidth(50);
-        imageView4.setFitHeight(50);
+        imageView4.setFitWidth(100);
+        imageView4.setFitHeight(100);
         imageView4.setId("foto4");
-
+        imageView4.setMouseTransparent(true);
 
         ImageView imageView5 = new ImageView(image5);
-        imageView5.setFitWidth(50);
-        imageView5.setFitHeight(50);
+        imageView5.setFitWidth(100);
+        imageView5.setFitHeight(100);
         imageView5.setId("foto5");
-
+        imageView5.setMouseTransparent(true);
 
         ImageView imageView6 = new ImageView(image6);
-        imageView6.setFitWidth(50);
-        imageView6.setFitHeight(50);
-        imageView6.setId("imageView2");
+        imageView6.setFitWidth(100);
+        imageView6.setFitHeight(100);
+        imageView6.setId("foto6");
+        imageView6.setMouseTransparent(true);
 
         Button opcion1 = new Button();
         opcion1.setId("opcion1");
@@ -114,43 +116,80 @@ public class Avatar extends Application {
         opcion6.setId("opcion6");
 
         opcion1.setOnAction(e -> {
-            String foto = "/img/Entrenador1.gif";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Entrenador seleccionado");
+            alert.setHeaderText("Has seleccionado al entrenador número 1.");
+            alert.setContentText("Recuerda confirmar los cambios antes de salir.");
+            alert.showAndWait();
+
+            String foto = "/img/gato.gif";
             Entrenador.setFoto(foto);
             PokemonCRUD.updateFoto(foto);
         });
 
         opcion2.setOnAction(e -> {
-            String foto = "/img/Entrenador2.gif";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Entrenador seleccionado");
+            alert.setHeaderText("Has seleccionado al entrenador número 2.");
+            alert.setContentText("Recuerda confirmar los cambios antes de salir.");
+            alert.showAndWait();
+
+            String foto = "/img/entrenador2.gif";
             Entrenador.setFoto(foto);
             PokemonCRUD.updateFoto(foto);
+
         });
 
         opcion3.setOnAction(e -> {
-            String foto = "/img/alonso.gif";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Entrenador seleccionado");
+            alert.setHeaderText("Has seleccionado al entrenador número 3.");
+            alert.setContentText("Recuerda confirmar los cambios antes de salir.");
+            alert.showAndWait();
+
+            String foto = "/img/entrenador3.gif";
             Entrenador.setFoto(foto);
             PokemonCRUD.updateFoto(foto);
         });
 
         opcion4.setOnAction(e -> {
-            String foto = "/img/alonso1.gif";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Entrenador seleccionado");
+            alert.setHeaderText("Has seleccionado al entrenador número 4.");
+            alert.setContentText("Recuerda confirmar los cambios antes de salir.");
+            alert.showAndWait();
+
+            String foto = "/img/entrenador4.gif";
             Entrenador.setFoto(foto);
             PokemonCRUD.updateFoto(foto);
         });
 
         opcion5.setOnAction(e -> {
-            String foto = "/img/Entrenador1.gif";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Entrenador seleccionado");
+            alert.setHeaderText("Has seleccionado al entrenador número 5.");
+            alert.setContentText("Recuerda confirmar los cambios antes de salir.");
+            alert.showAndWait();
+
+            String foto = "/img/entrenador5.gif";
             Entrenador.setFoto(foto);
             PokemonCRUD.updateFoto(foto);
         });
 
         opcion6.setOnAction(e -> {
-            String foto = "/img/Entrenador2.gif";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("¿Cómo 33?");
+            alert.setHeaderText("Has seleccionado a El Nano.");
+            alert.setContentText("Vaya padreada.");
+            alert.showAndWait();
+
+            String foto = "/img/entrenador6.png";
             Entrenador.setFoto(foto);
             PokemonCRUD.updateFoto(foto);
         });
 
-        avatarContainer.getChildren().addAll(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6,
-                imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, avatarView);
+        avatarContainer.getChildren().addAll(avatarView, opcion1, opcion2, opcion3, opcion4, opcion5, opcion6,
+                imageView1, imageView2, imageView3, imageView4, imageView5, imageView6);
 
         Button aceptar = new Button();
         aceptar.setId("aceptar");

@@ -100,8 +100,8 @@ public class Selector extends Application {
 
         Image selectorTxt = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/selector.png")));
         ImageView selectorView = new ImageView(selectorTxt);
-        selectorView.setFitWidth(920);
-        selectorView.setFitHeight(460);
+        selectorView.setFitWidth(720);
+        selectorView.setFitHeight(350);
         selectorView.setId("selectorTxt");
 
         Button opcion1 = new Button();

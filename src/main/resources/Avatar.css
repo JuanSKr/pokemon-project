@@ -5,15 +5,15 @@
 }
 
 #txtView {
-    -fx-translate-x: 150px;
-    -fx-translate-y: -50px;
+    -fx-translate-x: 245px;
+    -fx-translate-y: -60px;
     -fx-effect: dropshadow(gaussian, rgba(49,100,158,0.7), 4, 0, 7.5, 4);
 }
 
 #back {
     -fx-background-color: transparent;
     -fx-translate-x: -50px; /* izquierda-derecha */
-    -fx-translate-y: 65px; /* abajo-arriba */
+    -fx-translate-y: 50px; /* abajo-arriba */
     -fx-min-width: 160px;
     -fx-min-height: 62px;
     -fx-background-image: url('img/botones/entrenador-atras.png');
@@ -25,7 +25,7 @@
 #aceptar {
     -fx-background-color: transparent;
     -fx-translate-x: 50px; /* izquierda-derecha */
-    -fx-translate-y: 137px; /* abajo-arriba */
+    -fx-translate-y: 122px; /* abajo-arriba */
     -fx-min-width: 160px;
     -fx-min-height: 62px;
     -fx-background-image: url('img/botones/avatar-aceptar.png');
@@ -37,7 +37,7 @@
 #opcion1 {
     -fx-background-color: transparent;
     -fx-translate-x: -30px;
-    -fx-translate-y: 250px;
+    -fx-translate-y: 315px;
     -fx-min-width: 230px;
     -fx-min-height: 130px;
     -fx-background-image: url('img/botones/selector-fondo.png');
@@ -49,8 +49,8 @@
 
 #opcion2 {
     -fx-background-color: transparent;
-    -fx-translate-x: 130px;
-    -fx-translate-y: 110px;
+    -fx-translate-x: 140px;
+    -fx-translate-y: 315px;
     -fx-min-width: 230px;
     -fx-min-height: 130px;
     -fx-background-image: url('img/botones/selector-fondo.png');
@@ -62,8 +62,8 @@
 
 #opcion3 {
     -fx-background-color: transparent;
-    -fx-translate-x: 502px;
-    -fx-translate-y: 110px;
+    -fx-translate-x: 325px;
+    -fx-translate-y: 315px;
     -fx-min-width: 230px;
     -fx-min-height: 130px;
     -fx-background-image: url('img/botones/selector-fondo.png');
@@ -75,8 +75,8 @@
 
 #opcion4 {
     -fx-background-color: transparent;
-    -fx-translate-x: 540px;
-    -fx-translate-y: 110px;
+    -fx-translate-x: 510px;
+    -fx-translate-y: 315px;
     -fx-min-width: 230px;
     -fx-min-height: 130px;
     -fx-background-image: url('img/botones/selector-fondo.png');
@@ -88,8 +88,8 @@
 
 #opcion5 {
     -fx-background-color: transparent;
-    -fx-translate-x: 570px;
-    -fx-translate-y: 110px;
+    -fx-translate-x: 690px;
+    -fx-translate-y: 315px;
     -fx-min-width: 230px;
     -fx-min-height: 130px;
     -fx-background-image: url('img/botones/selector-fondo.png');
@@ -101,7 +101,7 @@
 #opcion6 {
     -fx-background-color: transparent;
     -fx-translate-x: 870px;
-    -fx-translate-y: 110px;
+    -fx-translate-y: 315px;
     -fx-min-width: 230px;
     -fx-min-height: 130px;
     -fx-background-image: url('img/botones/selector-fondo.png');
@@ -111,42 +111,35 @@
 }
 
 #foto1 {
-    -fx-translate-x: 50px;
-    -fx-translate-y: 0px;
-    -fx-max-width: 50px;
-    -fx-max-height: 50px;
+    -fx-translate-x: 25px;
+    -fx-translate-y: 317px;
 
 }
 #foto2 {
-    -fx-translate-x: 0px;
-    -fx-translate-y: 0px;
-    -fx-max-width: 50px;
-    -fx-max-height: 50px;
+    -fx-translate-x: 190px;
+    -fx-translate-y: 317px;
+
 }
 #foto3 {
-    -fx-translate-x: 0px;
-    -fx-translate-y: 0px;
-    -fx-max-width: 50px;
-    -fx-max-height: 50px;
+    -fx-translate-x: 385px;
+    -fx-translate-y: 328px;
+
 }
 #foto4 {
-    -fx-translate-x: 0px;
-    -fx-translate-y: 0px;
-    -fx-max-width: 50px;
-    -fx-max-height: 50px;
+    -fx-translate-x: 575px;
+    -fx-translate-y: 328px;
+
 }
 #foto5 {
-    -fx-translate-x: 0px;
-    -fx-translate-y: 0px;
-    -fx-max-width: 50px;
-    -fx-max-height: 50px;
+    -fx-translate-x: 745px;
+    -fx-translate-y: 328px;
+
 }
 
 #foto6 {
-    -fx-translate-x: 0px;
-    -fx-translate-y: 0px;
-    -fx-max-width: 50px;
-    -fx-max-height: 50px;
+    -fx-translate-x: 930px;
+    -fx-translate-y: 328px;
+
 }
 
 
