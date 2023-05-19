@@ -17,6 +17,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Avatar extends Application {
 
     private static final int WINDOW_WIDTH = 1080;
@@ -53,11 +55,11 @@ public class Avatar extends Application {
         HBox avatarContainer = new HBox(10);
         avatarContainer.setAlignment(Pos.CENTER);
 
-        Image image1 = new Image(getClass().getResourceAsStream("/img/entrenador1.gif"));
-        Image image2 = new Image(getClass().getResourceAsStream("/img/entrenador2.gif"));
-        Image image3 = new Image(getClass().getResourceAsStream("/img/alonso.png"));
-        Image image4 = new Image(getClass().getResourceAsStream("/img/entrenador2.gif"));
-        Image image5 = new Image(getClass().getResourceAsStream("/img/entrenador1.gif"));
+        Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/entrenador1.gif")));
+        Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/entrenador2.gif")));
+        Image image3 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/alonso.png")));
+        Image image4 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/entrenador2.gif")));
+        Image image5 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/entrenador1.gif")));
         Image image6 = new Image(getClass().getResourceAsStream("/img/entrenador2.gif"));
 
         ImageView imageView1 = new ImageView(image1);
