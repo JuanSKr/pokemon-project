@@ -105,26 +105,26 @@ public class MenuPokedex extends Application {
 			}
 		});
 
-		// AGREGAR UN CONTROLADOR DE EVENTOS AL BOTÓN DE BÚSQUEDA
 		buscar.setOnAction(event -> {
-			// OBTENER EL TEXTO INGRESADO POR EL USUARIO EN EL CAMPO DE TEXTO
 			String nombrePokemon = searchField.getText();
 
-			// RESTABLECER EL CAMPO DE TEXTO A VACÍO
 			searchField.clear();
 
+			/**
+			 * PokemonCRUD: READ
+			 */
+
 			try {
-				// ESTABLECER CONEXIÓN A LA BASE DE DATOS
+
 				Connection db = MySQL.getConexion();
-				// Crear un objeto Statement para ejecutar consultas SQL
+
 				Statement stmt = db.createStatement();
 
-				// EJECUTAR UNA CONSULTA SQL PARA BUSCAR EL POKÉMON EN LA BASE DE DATOS
+
 				ResultSet rs = stmt.executeQuery("SELECT * FROM pokedex WHERE nombre = '" + nombrePokemon + "'");
 
-				// VERIFICAR SI SE ENCONTRÓ EL POKÉMON EN LA BASE DE DATOS
 				if (rs.next()) {
-					// OBTENER LA INFORMACIÓN DEL POKÉMON Y ACTUALIZAR LOS CONTROLES CON ELLA
+
 					String nombre = rs.getString("nombre");
 					nombreLabel.setText(nombre);
 
@@ -132,26 +132,25 @@ public class MenuPokedex extends Application {
 					Image imageArchivo = new Image(Objects.requireNonNull(getClass().getResourceAsStream(ruta)));
 					imageView.setImage(imageArchivo);
 
-					// CAMBIAR LOS INT POR DOUBLE CUANDO SE ACTUALIZA LA BASE DE DATOS
-					int vitalidad = rs.getInt("vitalidad");
+					double vitalidad = rs.getDouble("vitalidad");
 					vitalidadLabel.setText("Vitalidad: " + vitalidad);
 
-					int velocidad = rs.getInt("velocidad");
+					double velocidad = rs.getDouble("velocidad");
 					velocidadLabel.setText("Velocidad: " + velocidad);
 
-					int estamina = rs.getInt("estamina");
+					double estamina = rs.getDouble("estamina");
 					estaminaLabel.setText("Estamina: " + estamina);
 
-					int ataque = rs.getInt("ataque");
+					double ataque = rs.getDouble("ataque");
 					ataqueLabel.setText("Ataque: " + ataque);
 
-					int defensa = rs.getInt("defensa");
+					double defensa = rs.getDouble("defensa");
 					defensaLabel.setText("Defensa: " + defensa);
 
-					int ataqueEspecial = rs.getInt("ataque_especial");
+					double ataqueEspecial = rs.getDouble("ataque_especial");
 					ataqueEspecialLabel.setText("Atq Especial: " + ataqueEspecial);
 
-					int defensaEspecial = rs.getInt("defensa_especial");
+					double defensaEspecial = rs.getDouble("defensa_especial");
 					defensaEspecialLabel.setText("Def Especial: " + defensaEspecial);
 				} else { // FALTA PONER LA CONDICION PARA QUE SI NO APARECE EL NOMBRE SALTE EL MENSAJE
 					noEncontradoLabel.setText("No se encontró el Pokémon en la base de datos");

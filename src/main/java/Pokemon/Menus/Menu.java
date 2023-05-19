@@ -105,9 +105,6 @@ public class Menu extends Application {
         });
 
 
-
-
-
         capturarButton.setOnAction(e -> {
             MenuExplorador menuExplorador = new MenuExplorador(primaryStage, primaryStage.getScene());
             menuExplorador.start(primaryStage);

@@ -1,6 +1,7 @@
 package Pokemon.Menus;
 
 import Pokemon.Database.PokemonCRUD;
+import Pokemon.Entrenador.Entrenador;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -133,24 +134,22 @@ public class MenuExplorador extends Application {
 		pokemon = PokemonCRUD.generarPokemon();
 
 		System.out.println(pokemon);
-		// GENERAR POKEMON RANDOM
-		// CARGAR LA IMAGEN DE FONDO
+
 		Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Prueba1.jpeg")));
 		ImageView backgroundImageView = new ImageView(backgroundImage);
 		backgroundImageView.setFitWidth(1080);
 		backgroundImageView.setFitHeight(650);
-		// CREAR LA CIRCUNFERENCIA ENTRENADOR
+
 		trainerCircle = new Circle(150, 100, 36);
-		// CREAR LA CIRCUNFERENCIA POKÉMON
+
 		pokemonCircle = new Circle(350, 300, 40);
-		// CARGAR LA IMAGEN POKEMON
+
 		String ruta = pokemon.getFoto();
 		Image imagePokemon = new Image(Objects.requireNonNull(getClass().getResourceAsStream(ruta)));
-		// CREAR EL IMAGEVIEW Y AJUSTAR SU TAMAÑO Y POSICIÓN
-		// GENERAR NÚMEROS ALEATORIOS PARA LA POSICIÓN EN X E Y DEL NUEVO POKÉMON
+
 		double randomX = Math.random() * (WINDOW_WIDTH - 20) + 10;
 		double randomY = Math.random() * (WINDOW_HEIGHT - 20) + 10;
-		// ESTABLECER LA NUEVA POSICIÓN DEL POKÉMON
+
 		pokemonCircle.setCenterX(randomX);
 		pokemonCircle.setCenterY(randomY);
 		ImageView imageView = new ImageView(imagePokemon);
@@ -168,7 +167,8 @@ public class MenuExplorador extends Application {
 			imageView.setY(newValue.doubleValue() - pokemonCircle.getRadius());
 		});
 		// CARGAR LA IMAGEN ENTRENADOR
-		Image imagenEntrenador = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/alonso.png")));
+		String entrenadorFoto = Entrenador.getFoto();
+		Image imagenEntrenador = new Image(Objects.requireNonNull(getClass().getResourceAsStream(entrenadorFoto)));
 		// CREAR EL IMAGEVIEW Y AJUSTAR SU TAMAÑO Y POSICIÓN
 		// GENERAR NÚMEROS ALEATORIOS PARA LA POSICIÓN EN X E Y DEL NUEVO POKÉMON
 		double randomX1 = Math.random() * (WINDOW_WIDTH - 20) + 10;
