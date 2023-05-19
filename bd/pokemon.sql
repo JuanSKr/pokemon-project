@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2023 a las 19:23:00
+-- Tiempo de generación: 19-05-2023 a las 07:05:25
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -59,15 +59,14 @@ CREATE TABLE `capturado` (
 --
 
 INSERT INTO `capturado` (`id_capturado`, `nombre`, `mote`, `equipo`, `vitalidad`, `fertilidad`, `velocidad`, `estamina`, `ataque`, `defensa`, `ataque_especial`, `defensa_especial`, `tipo1`, `tipo2`, `movimiento1`, `id_entrenador`, `id_pokedex`, `nivel`, `xp`, `foto`, `movimiento2`, `movimiento3`, `movimiento4`, `foto_espalda`) VALUES
-(1234, 'Venonat', '', 1, 130, 5, 45, 90, 55, 50, 40, 55, 'BICHO', 'VENENO', 47, 6, 48, 1, 0, '/img/Gif/venonat.gif', 51, 54, 71, '/img/Gif/venonatespalda.gif'),
-(2674, 'Vaporeon', '', 1, 130, 5, 65, 260, 65, 60, 110, 95, 'AGUA', 'null', 23, 6, 134, 1, 0, 'img/Gif/vaporeon.gif', NULL, NULL, NULL, '/img/Gif/vaporeonespalda.gif'),
-(7015, 'Starmie', '', 1, 100, 5, 115, 100, 70, 85, 85, 85, 'AGUA', 'PSIQUICO', 47, 6, 121, 1, 0, '/img/Gif/starmie.gif', NULL, NULL, NULL, '/img/Gif/starmieespalda.gif'),
-(8310, 'Kabuto', '', 3, 100, 5, 80, 60, 80, 90, 55, 45, 'ROCA', 'AGUA', 12, 6, 140, 1, 0, '/img/Gif/kabuto.gif', NULL, NULL, NULL, '/img/Gif/kabutoespalda.gif'),
-(8709, 'Abra', '', 2, 100, 5, 90, 120, 20, 15, 105, 105, 'PSIQUICO', 'null', 53, 6, 63, 1, 0, '/img/Gif/abra.gif', NULL, NULL, NULL, '/img/Gif/abraespalda.gif'),
-(8939, 'Hypno', '', 1, 170, 5, 67, 140, 73, 70, 73, 115, 'PSIQUICO', 'null', 67, 6, 97, 1, 0, 'img/Gif/hypno.gif', NULL, NULL, NULL, '/img/Gif/hypnoespalda.gif'),
-(9579, 'Hitmonchan', '', 1, 100, 5, 75, 100, 105, 79, 35, 110, 'LUCHA', 'null', 64, 6, 107, 1, 0, '/img/Gif/hitmonchan.gif', NULL, NULL, NULL, '/img/Gif/hitmonchanespalda.gif'),
-(9587, 'Golduck', '', 2, 100, 5, 85, 165, 85, 85, 95, 95, 'AGUA', 'null', 7, 6, 55, 1, 0, '/img/Gif/golduck.gif', NULL, NULL, NULL, '/img/Gif/golduckespalda.gif'),
-(9825, 'Paras', '', 1, 100, 5, 30, 95, 60, 60, 40, 80, 'BICHO', 'PLANTA', 57, 6, 46, 1, 0, '/img/Gif/paras.gif', NULL, NULL, NULL, '/img/Gif/parasespalda.gif');
+(2773, 'Geodude', '', 1, 100, 5, 20, 185, 80, 100, 30, 30, 'ROCA', 'TIERRA', 72, 6, 74, 1, 0, '/img/Gif/geodude.gif', NULL, NULL, NULL, '/img/Gif/geodudeespalda.gif'),
+(6230, 'Raichu', '', 1, 100, 5, 130, 145, 90, 80, 110, 80, 'ELECTRICO', 'null', 60, 6, 26, 1, 0, '/img/Gif/raichu.gif', NULL, NULL, NULL, '/img/Gif/raichuespalda.gif'),
+(9199, 'Poliwrath', '', 1, 100, 5, 90, 145, 85, 95, 70, 70, 'AGUA', 'LUCHA', 37, 6, 62, 1, 0, '/img/Gif/poliwrath.gif', NULL, NULL, NULL, '/img/Gif/poliwrathespalda.gif'),
+(19693, 'Magnemite', '', 2, 100, 5, 45, 110, 35, 70, 95, 55, 'ELECTRICO', 'ACERO', 54, 6, 81, 1, 0, '/img/Gif/magnemite.gif', NULL, NULL, NULL, '/img/Gif/magnemiteespalda.gif'),
+(20319, 'Zubat', '', 1, 100, 5, 85, 100, 45, 35, 30, 40, 'VENENO', 'VOLADOR', 71, 6, 41, 1, 0, '/img/Gif/zubat.gif', NULL, NULL, NULL, '/img/Gif/zubatespalda.gif'),
+(21320, 'Clefairy', '', 1, 100, 5, 60, 135, 45, 48, 60, 65, 'HADA', 'null', 64, 6, 35, 1, 0, '/img/Gif/clefairy.gif', NULL, NULL, NULL, '/img/Gif/clefairyespalda.gif'),
+(27532, 'Poliwhirl', '', 1, 100, 5, 70, 125, 65, 65, 65, 65, 'AGUA', 'null', 67, 6, 61, 1, 0, '/img/Gif/poliwhirl.gif', NULL, NULL, NULL, '/img/Gif/poliwhirlespalda.gif'),
+(68114, 'Omanyte', '', 2, 100, 5, 35, 120, 40, 100, 90, 55, 'ROCA', 'AGUA', 44, 6, 138, 1, 0, '/img/Gif/omanyte.gif', NULL, NULL, NULL, '/img/Gif/omanyteespalda.gif');
 
 -- --------------------------------------------------------
 
@@ -80,21 +79,25 @@ CREATE TABLE `entrenador` (
   `nombre` varchar(20) NOT NULL,
   `pass` varchar(20) NOT NULL,
   `dinero` decimal(20,2) NOT NULL,
-  `id_mochila` int(11) DEFAULT NULL
+  `id_mochila` int(11) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `entrenador`
 --
 
-INSERT INTO `entrenador` (`id_entrenador`, `nombre`, `pass`, `dinero`, `id_mochila`) VALUES
-(1, 'Test', 'asd', 500.00, NULL),
-(2, '1212', '1212', 500.00, NULL),
-(3, 'asda', 'asd', 500.00, NULL),
-(4, 'asd', 'asd', 500.00, NULL),
-(5, 'ggwg', 'gewgwe', 500.00, NULL),
-(6, 'El pepe', '1234', 10.00, NULL),
-(7, 'Juan', '1234', 500.00, NULL);
+INSERT INTO `entrenador` (`id_entrenador`, `nombre`, `pass`, `dinero`, `id_mochila`, `foto`) VALUES
+(1, 'Test', 'asd', 500.00, NULL, NULL),
+(2, '1212', '1212', 500.00, NULL, NULL),
+(3, 'asda', 'asd', 500.00, NULL, NULL),
+(4, 'asd', 'asd', 500.00, NULL, NULL),
+(5, 'ggwg', 'gewgwe', 500.00, NULL, NULL),
+(6, 'El pepe', '1234', 40.00, NULL, '/img/Entrenador1.gif'),
+(7, 'Juan', '1234', 500.00, NULL, NULL),
+(8, 'Test152', '1234', 500.00, NULL, NULL),
+(9, 'Prueba33', '1234', 500.00, NULL, NULL),
+(10, 'Patatudo', '1234', 800.00, NULL, '/img/Entrenador1.gif');
 
 -- --------------------------------------------------------
 
@@ -120,7 +123,10 @@ INSERT INTO `mochila` (`id_mochila`, `id_objeto`, `id_entrenador`, `cantidad`) V
 (4, NULL, 4, NULL),
 (5, NULL, 5, NULL),
 (6, NULL, 6, NULL),
-(7, NULL, 7, NULL);
+(7, NULL, 7, NULL),
+(8, NULL, 8, NULL),
+(9, NULL, 9, NULL),
+(10, NULL, 10, NULL);
 
 -- --------------------------------------------------------
 
