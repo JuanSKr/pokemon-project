@@ -31,7 +31,7 @@ public class Menu extends Application {
         ImageView barraView = new ImageView(barra);
         barraView.setId("barra");
 
-        // Creamos el reproductor para el vídeo
+        // CREAMOS EL REPRODUCTOR PARA EL VÍDEO
         Media videoBackground = new Media(getClass().getResource("/vid/menu.mp4").toExternalForm());
         MediaPlayer reproductor = new MediaPlayer(videoBackground);
         videoView.setMediaPlayer(reproductor);
