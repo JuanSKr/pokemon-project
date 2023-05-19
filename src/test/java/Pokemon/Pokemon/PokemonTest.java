@@ -3,6 +3,8 @@ package Pokemon.Pokemon;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import Pokemon.Combate.Movimientos.Ataque;
 import Pokemon.Combate.Movimientos.Movimiento;
 
 class PokemonTest {
@@ -11,11 +13,11 @@ class PokemonTest {
 	void testAddMovimiento() {
 		// CREAR UN POKEMON DE PRUEBA
 		Pokemon pokemon = new Pokemon();
-		Movimiento movimiento = new Movimiento("Movimiento de prueba", Tipo.NORMAL, 50);
+		Ataque ataque = new Ataque("Test", 50, Tipo.ACERO, "ATAQUE", 0);
 		// AGREGAR EL MOVIMIENTO AL POKEMON
-		pokemon.addMovimiento(movimiento);
+		pokemon.addMovimiento(pokemon);
 		// VERIFICAR QUE EL MOVIMIENTO SE HAYA AGREGADO CORRECTAMENTE
-		Assertions.assertEquals(movimiento, pokemon.getMovimiento1());
+		Assertions.assertEquals(ataque, pokemon.getMovimiento1());
 	}
 
 	@Test
@@ -40,10 +42,10 @@ class PokemonTest {
 		pokemon.setTipo1(Tipo.ELECTRICO);
 		pokemon.setAtaque(50);
 		// OBTENER LA REPRESENTACIÓN EN CADENA DEL POKEMON
-		String resultado = pokemon.mostrarPokemon();
+		pokemon = Pokemon.mostrarPokemon(1,1);
 		// VERIFICAR QUE LA REPRESENTACIÓN EN CADENA SEA LA ESPERADA
 		String esperado = "Nombre: Pikachu\nTipo: Electric\nAtaque: 50";
-		Assertions.assertEquals(esperado, resultado);
+		Assertions.assertEquals(esperado, pokemon);
 	}
 
 }

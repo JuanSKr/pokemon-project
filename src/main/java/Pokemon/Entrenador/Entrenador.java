@@ -207,7 +207,9 @@ public class Entrenador {
         }
     }
 
-
+    public static String fotoDefault() { //Método añadido post-tests.
+    	return "/img/alonso.png";
+    	}
 
     public static void main(String[] args) {
 

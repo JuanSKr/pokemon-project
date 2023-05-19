@@ -414,19 +414,9 @@ public class Pokemon {
 
     }
 
-    public static Pokemon mostrarPokemon(int idEntrenador) {
+    public static Pokemon mostrarPokemon(int idEntrenador, int opcion) {
 
         PokemonCRUD.getEquipo1(Entrenador.equipo1, idEntrenador);
-        int contador = 0;
-
-        for (Pokemon pokemon : Entrenador.equipo1) {
-            contador++;
-            System.out.println(contador + ". " + pokemon.getNombre());
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Selecciona un pokemon: ");
-        int opcion = scanner.nextInt();
 
         if (Entrenador.equipo1.size() >= opcion) {
             switch (opcion) {
@@ -452,10 +442,6 @@ public class Pokemon {
         }
     }
 
-    public static void main(String[] args) {
-
-
-    }
 
 }
 
