@@ -130,10 +130,18 @@ public class MenuExplorador extends Application {
 //--------------------------------------------------------------------------------------------------------------------------
 	@Override
 	public void start(Stage primaryStage) {
+		
+		// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
+		Media audioMedia1 = new Media(
+				getClass().getResource("/aud/Captura.wav").toExternalForm());
+		MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia1);
+		audioMediaPlayer.setAutoPlay(true);
 
 		pokemon = PokemonCRUD.generarPokemon();
 
 		System.out.println(pokemon);
+		
+		
 
 		Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Prueba1.jpeg")));
 		ImageView backgroundImageView = new ImageView(backgroundImage);
