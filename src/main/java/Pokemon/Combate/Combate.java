@@ -429,5 +429,18 @@ public class Combate {
 
     }
 
+    public static int dineroGanado() {
+
+        return Funcion.random(300, 500);
+
+    }
+
+    public static int dineroPerdido() {
+        double perdido = Entrenador.getDinero();
+
+        return (int) perdido / 3;
+
+    }
+
 
 }

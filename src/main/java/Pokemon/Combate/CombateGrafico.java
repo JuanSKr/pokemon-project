@@ -3,6 +3,8 @@ package Pokemon.Combate;
 import Pokemon.Combate.Movimientos.Ataque;
 import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.PokemonCRUD;
+import Pokemon.Entrenador.Entrenador;
+import Pokemon.Menus.Menu;
 import Pokemon.Pokemon.Pokemon;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -24,9 +26,11 @@ public class CombateGrafico extends Application {
 
 
     private Stage primaryStage;
+    private Scene previousScene;
     private Scene currentScene;
-    public static int opcion;
-    public static ProgressBar vidaRival = new ProgressBar();
+    protected static int opcion;
+    protected static ProgressBar vidaRival = new ProgressBar();
+    protected static int contador = 1;
 
     // Declaramos los botones que se van a utilizar en la clase
 
@@ -253,7 +257,11 @@ public class CombateGrafico extends Application {
                 }
 
             } else {
-                System.out.println("Tu pokemon se ha debilitado :(");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(pRival.getNombre() + " se ha debilitado.");
+                alert.setHeaderText(null);
+                alert.setContentText(pRival.getNombre() + " se ha debilitado. Cámbialo para seguir luchando.");
+                alert.showAndWait();
                 restaurarBotones();
             }
 
@@ -277,11 +285,14 @@ public class CombateGrafico extends Application {
                     restaurarBotones();
                     pRival = PokemonCRUD.generarPokemon();
                     actualizarRival(pRival, vidaRival, estaminaRival, rivalView, rivalTxt, topContainer);
-                    System.out.println("VIDA POMEMON UNEVO: " + pRival.getVitalidad());
                 }
 
             } else {
-                System.out.println("Tu pokemon se ha debilitado :(");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(pRival.getNombre() + " se ha debilitado.");
+                alert.setHeaderText(null);
+                alert.setContentText(pRival.getNombre() + " se ha debilitado. Cámbialo para seguir luchando.");
+                alert.showAndWait();
                 restaurarBotones();
             }
         });
@@ -302,7 +313,11 @@ public class CombateGrafico extends Application {
                 }
 
             } else {
-                System.out.println("Tu pokemon se ha debilitado :(");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(pEntrenador.getNombre() + " se ha debilitado.");
+                alert.setHeaderText(null);
+                alert.setContentText(pEntrenador.getNombre() + " se ha debilitado. Cámbialo para seguir luchando.");
+                alert.showAndWait();
                 restaurarBotones();
             }
         });
@@ -323,7 +338,11 @@ public class CombateGrafico extends Application {
                 }
 
             } else {
-                System.out.println("Tu pokemon se ha debilitado :(");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(pEntrenador.getNombre() + " se ha debilitado.");
+                alert.setHeaderText(null);
+                alert.setContentText(pEntrenador.getNombre() + " se ha debilitado. Cámbialo para seguir luchando.");
+                alert.showAndWait();
                 restaurarBotones();
             }
 
@@ -341,20 +360,30 @@ public class CombateGrafico extends Application {
                     System.out.println(pRival.getNombre() + "se ha debilitado.");
                 }
             } else {
-                System.out.println("Tu pokemon está debilitado.");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(pEntrenador.getNombre() + " se ha debilitado.");
+                alert.setHeaderText(null);
+                alert.setContentText(pEntrenador.getNombre() + " se ha debilitado. Cámbialo para seguir luchando.");
+                alert.showAndWait();
             }
         });
 
 
         mochilaButton.setId("mochila");
         mochilaButton.setOnAction(event -> {
-            System.out.println("Mochila");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No disponible");
+            alert.setHeaderText(null);
+            alert.setContentText("Mochila no está disponible.");
+            alert.showAndWait();
         });
 
         rendirseButton.setId("rendirse");
         rendirseButton.setOnAction(event -> {
-            System.out.println("Rendirse");
+            backMenu();
+            abandonarCombate();
         });
+
         VBox movesContainer = new VBox();
         movesContainer.getChildren().addAll(atacarButton, descansarButton, mochilaButton, rendirseButton);
         movesContainer.setAlignment(Pos.BASELINE_RIGHT);
@@ -544,27 +573,55 @@ public class CombateGrafico extends Application {
 
     public static void actualizarRival(Pokemon pokemon, ProgressBar viejaBarra, Label estamina, ImageView imagenPokemon, Label nombre, Pane contenedor) {
 
-        // Crear una nueva ProgressBar
-        ProgressBar nuevaBarra = new ProgressBar();
-        nuevaBarra.setProgress(pokemon.getVitalidad() / 100);
-        nuevaBarra.setPrefWidth(150);
-        VBox.setMargin(nuevaBarra, new Insets(0, 0, 0, 50));
-        nuevaBarra.setLayoutX(892);
-        nuevaBarra.setLayoutY(68);
-        nuevaBarra.setStyle("-fx-background-color: lightgray; -fx-accent: #993399;");
+        if (contador < 6) {
 
-        // Remplazar la vieja ProgressBar con la nueva
-        contenedor.getChildren().remove(viejaBarra);
-        contenedor.getChildren().add(nuevaBarra);
+            contador++;
+            ProgressBar nuevaBarra = new ProgressBar();
+            nuevaBarra.setProgress(pokemon.getVitalidad() / 100);
+            nuevaBarra.setPrefWidth(150);
+            VBox.setMargin(nuevaBarra, new Insets(0, 0, 0, 50));
+            nuevaBarra.setLayoutX(892);
+            nuevaBarra.setLayoutY(68);
+            nuevaBarra.setStyle("-fx-background-color: lightgray; -fx-accent: #993399;");
 
-        // Actualizar el resto de los elementos de la interfaz
-        actualizarEstamina(pokemon, estamina);
-        Image nuevaImagen = new Image(Objects.requireNonNull(CombateGrafico.class.getResourceAsStream(pokemon.getFoto())));
-        imagenPokemon.setImage(nuevaImagen);
-        nombre.setText(pokemon.getNombre());
+            contenedor.getChildren().remove(viejaBarra);
+            contenedor.getChildren().add(nuevaBarra);
 
-        // Actualizar la referencia a la ProgressBar en la clase
-        vidaRival = nuevaBarra; // Asegúrate de que 'vidaRival' es una variable estática accesible desde este método
+            actualizarEstamina(pokemon, estamina);
+            Image nuevaImagen = new Image(Objects.requireNonNull(CombateGrafico.class.getResourceAsStream(pokemon.getFoto())));
+            imagenPokemon.setImage(nuevaImagen);
+            nombre.setText(pokemon.getNombre());
+
+            vidaRival = nuevaBarra;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("¡Has ganado!");
+            alert.setHeaderText("¡Felicidades! Has ganado el combate.");
+            alert.setContentText("Has ganado: " + Combate.dineroGanado() + " PokeDollars.");
+            PokemonCRUD.dineroGanado(Combate.dineroGanado());
+            backMenu();
+            alert.showAndWait();
+        }
+    }
+
+    public static void backMenu() {
+        Stage stage = (Stage) rendirseButton.getScene().getWindow();
+
+        Menu menu = new Menu();
+        try {
+            menu.start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void abandonarCombate() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Has abandonado el combate.");
+        alert.setHeaderText(null);
+        alert.setContentText("Te has rendido y has perdido "+Combate.dineroPerdido() + " PokeDollars.");
+        PokemonCRUD.dineroPerdido(Combate.dineroPerdido());
+        alert.showAndWait();
     }
 
 

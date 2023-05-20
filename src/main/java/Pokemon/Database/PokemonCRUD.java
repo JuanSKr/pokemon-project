@@ -140,6 +140,49 @@ public class PokemonCRUD {
     }
 
     /**
+     * Método que recibe dinero por parámetro y lo suma al actual en base de datos.
+     * @param ganado
+     */
+
+    public static void dineroGanado(int ganado) {
+
+        try {
+            Connection db = MySQL.getConexion();
+            String sql = "UPDATE entrenador SET dinero = ? WHERE id_entrenador = ?";
+            PreparedStatement ps = db.prepareStatement(sql);
+            int dinero = Entrenador.getDinero();
+            int idEntrenador = idEntrenador();
+            ps.setInt(1, dinero + ganado);
+            ps.setInt(2, idEntrenador);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+        }
+
+    }
+
+    public static void dineroPerdido(int perdido) {
+
+        try {
+            Connection db = MySQL.getConexion();
+            String sql = "UPDATE entrenador SET dinero = ? WHERE id_entrenador = ?";
+            PreparedStatement ps = db.prepareStatement(sql);
+            int dinero = Entrenador.getDinero();
+            int idEntrenador = idEntrenador();
+            ps.setInt(1, dinero - perdido);
+            ps.setInt(2, idEntrenador);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+        }
+
+    }
+
+    /**
      * PokemonCRUD: DELETE
      * Este método elimina el Pokemon de capturado que le pasa por parámetro.
      * Necesitará la id del pokemon.
