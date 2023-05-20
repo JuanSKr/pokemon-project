@@ -130,6 +130,13 @@ public class MenuExplorador extends Application {
 //--------------------------------------------------------------------------------------------------------------------------
 	@Override
 	public void start(Stage primaryStage) {
+		
+		// CREAMOS UN REPRODUCTOR DE MEDIOS PARA REPRODUCIR EL AUDIO
+				Media audioMedia = new Media(getClass().getResource("/aud/Captura.wav").toExternalForm());
+				MediaPlayer audioMediaPlayer = new MediaPlayer(audioMedia);
+				audioMediaPlayer.setAutoPlay(true);
+				audioMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+
 
 		pokemon = PokemonCRUD.generarPokemon();
 
@@ -322,17 +329,20 @@ public class MenuExplorador extends Application {
 							pokemon.setMote(apodo); // ASIGNAR EL MOTE AL POKEMON
 							PokemonCRUD.createCapturado(pokemon);
 							primaryStage.setScene(previousScene);// VUELVE AL MENU PRINCIPAL
+							audioMediaPlayer.stop();
 							// primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// CIERRA LA VENTANA DE DIÁLOGO Y AÑADE AL POKEMON AL EQUIPO.
 						noMoteButton.setOnAction(event -> {
 							PokemonCRUD.createCapturado(pokemon);
 							primaryStage.setScene(previousScene);// VUELVE AL MENU PRINCIPAL
+							audioMediaPlayer.stop();
 							// primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// CIERRA LA VENTANA Y AÑADE AL POKEMON AL EQUIPO.
 						salirButton.setOnAction(event -> {
 							primaryStage.setScene(previousScene);// VUELVE AL MENU PRINCIPAL
+							audioMediaPlayer.stop();
 							// primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// MOSTRAR LA NUEVA ESCENA
@@ -374,6 +384,7 @@ public class MenuExplorador extends Application {
 						salirButton.setOnAction(event -> {
 
 							primaryStage.setScene(previousScene);
+							audioMediaPlayer.stop();
 							// primaryStage.setScene(scene); // VOLVER A LA ESCENA ANTERIOR
 						});
 						// AÑADIR LA NUEVA ESCENA A LA VENTANA PRINCIPAL
