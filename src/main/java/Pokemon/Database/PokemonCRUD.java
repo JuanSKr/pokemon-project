@@ -143,6 +143,7 @@ public class PokemonCRUD {
      * PokemonCRUD: DELETE
      * Este método elimina el Pokemon de capturado que le pasa por parámetro.
      * Necesitará la id del pokemon.
+     *
      * @param idPokemon
      */
 
@@ -496,7 +497,6 @@ public class PokemonCRUD {
     }
 
 
-
     /**
      * PokemonCRUD: CREATE (2)
      * Primero consulta la ID máxima que puede tener un entrenador en la base de datos, para no repetir IDs.
@@ -633,6 +633,7 @@ public class PokemonCRUD {
                 ataque.setNombreMovimiento(rs.getString("nombre"));
                 ataque.setPotencia(rs.getInt("potencia"));
                 ataque.setTipo(Tipo.valueOf(rs.getString("tipo_ataque").toUpperCase()));
+                ataque.setTipoMovimiento("ataque");
 
                 return ataque;
             }
@@ -667,6 +668,9 @@ public class PokemonCRUD {
                 estado.setNombreMovimiento(rs.getString("nombre"));
                 estado.setTurnos(rs.getInt("turno"));
                 estado.setTipo(Tipo.valueOf(rs.getString("tipo_ataque").toUpperCase()));
+                estado.setTipoMovimiento("estado");
+                estado.setEstado(ListaEstados.valueOf(rs.getString("estado").toUpperCase()));
+
 
                 return estado;
             }
@@ -699,6 +703,12 @@ public class PokemonCRUD {
                 mejora.setNombreMovimiento(rs.getString("nombre"));
                 mejora.setTurnos(rs.getInt("turno"));
                 mejora.setTipo(Tipo.valueOf(rs.getString("tipo_ataque").toUpperCase()));
+                mejora.setTipoMovimiento("mejora");
+                mejora.setAtaque(rs.getInt("ataque"));
+                mejora.setDefensa(rs.getInt("defensa"));
+                mejora.setAtaqueEspecial(rs.getInt("ataque_especial"));
+                mejora.setDefensaEspecial(rs.getInt("defensa_especial"));
+                mejora.setVitalidad(rs.getInt("vitalidad"));
 
                 return mejora;
             }
@@ -914,6 +924,7 @@ public class PokemonCRUD {
 
     /**
      * Este método devuelve la id del Entrenador buscando en la base de datos por su nombre.
+     *
      * @return idEntrenador
      */
 
@@ -947,6 +958,7 @@ public class PokemonCRUD {
 
     /**
      * Este método devuelve la id del Pokémon buscando en la base de datos por su nombre.
+     *
      * @param nombrePokemon Pokemon que se busca su ID
      * @return
      */
@@ -1054,7 +1066,6 @@ public class PokemonCRUD {
     }
 
 
-
 //    public static String mostrarMochila(int idObjeto) {
 //
 //        try {
@@ -1121,7 +1132,6 @@ public class PokemonCRUD {
     }
 
     public static void main(String[] args) {
-
 
 
     }

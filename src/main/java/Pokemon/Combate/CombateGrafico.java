@@ -5,6 +5,7 @@ import Pokemon.Combate.Movimientos.Movimiento;
 import Pokemon.Database.PokemonCRUD;
 import Pokemon.Pokemon.Pokemon;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -210,12 +211,10 @@ public class CombateGrafico extends Application {
 
         int primerAtaque = Combate.calcularVelocidad(pEntrenador, pRival);
 
-        if(primerAtaque == 0) {
+        if (primerAtaque == 0) {
             System.out.println("Empiezas");
         } else {
-            Combate.accionRival(pRival, pEntrenador);
-            modificarBarra(vidaJugador, pEntrenador);
-            actualizarEstaminaE(pRival, estaminaRival);
+            ataqueRival(vidaJugador, estaminaRival);
         }
 
         // CREAR BOTONES PARA LOS MOVIMIENTOS DEL POKÉMON
@@ -238,55 +237,113 @@ public class CombateGrafico extends Application {
         // Movimiento 1
         movimiento1Button.setOnAction(event -> {
 
-            Combate.ejecMovimiento1(pEntrenador, pRival);
-            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
-            modificarBarra(vidaRival, pRival);
+            if (pEntrenador.getVitalidad() > 0) {
+                if (pRival.getVitalidad() > 0) {
+                    ataqueRival(vidaJugador, estaminaRival);
+                    Combate.ejecMovimiento1(pEntrenador, pRival);
+                    actualizarEstamina(pEntrenador, estaminaEntrenador);
+                    modificarBarra(vidaRival, pRival);
+                    restaurarBotones();
 
-            // Restaura los botones originales
-            restaurarBotones();
+                } else {
+                    System.out.println(pRival.getNombre() + " se ha debilitado.");
+                    pRival = PokemonCRUD.generarPokemon();
+                    actualizarRival(pRival, vidaRival, estaminaRival, rivalView, rivalTxt);
+
+                }
+
+            } else {
+                System.out.println("Tu pokemon se ha debilitado :(");
+                restaurarBotones();
+            }
+
         });
 
 
         // Movimiento 2
         movimiento2Button.setOnAction(event -> {
 
-            Combate.ejecMovimiento2(pEntrenador, pRival); //Cambiar
-            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
-            modificarBarra(vidaRival, pRival);
+            if (pEntrenador.getVitalidad() > 0) {
+                if (pRival.getVitalidad() > 0) {
+                    ataqueRival(vidaJugador, estaminaRival);
+                    Combate.ejecMovimiento2(pEntrenador, pRival);
+                    actualizarEstamina(pEntrenador, estaminaEntrenador);
+                    modificarBarra(vidaRival, pRival);
+                    restaurarBotones();
 
-            // Restaura los botones originales
-            restaurarBotones();
+                } else {
+                    System.out.println(pRival.getNombre() + " se ha debilitado.");
+                    restaurarBotones();
+                    pRival = PokemonCRUD.generarPokemon();
+                    actualizarRival(pRival, vidaRival, estaminaRival, rivalView, rivalTxt);
+                    System.out.println("VIDA POMEMON UNEVO: " + pRival.getVitalidad());
+                }
+
+            } else {
+                System.out.println("Tu pokemon se ha debilitado :(");
+                restaurarBotones();
+            }
         });
 
         // Movimiento 3
         movimiento3Button.setOnAction(event -> {
 
-            Combate.ejecMovimiento3(pEntrenador, pRival); //Cambiar
-            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
-            modificarBarra(vidaRival, pRival);
+            if (pEntrenador.getVitalidad() > 0) {
+                if (pRival.getVitalidad() > 0) {
+                    ataqueRival(vidaJugador, estaminaRival);
+                    Combate.ejecMovimiento3(pEntrenador, pRival);
+                    actualizarEstamina(pEntrenador, estaminaEntrenador);
+                    modificarBarra(vidaRival, pRival);
+                    restaurarBotones();
 
-            // Restaura los botones originales
-            restaurarBotones();
+                } else {
+                    System.out.println(pRival.getNombre() + " se ha debilitado.");
+                }
+
+            } else {
+                System.out.println("Tu pokemon se ha debilitado :(");
+                restaurarBotones();
+            }
         });
 
         // Movimiento 4
         movimiento4Button.setOnAction(event -> {
 
-            Combate.ejecMovimiento4(pEntrenador, pRival); //Cambiar
-            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
-            modificarBarra(vidaRival, pRival);
+            if (pEntrenador.getVitalidad() > 0) {
+                if (pRival.getVitalidad() > 0) {
+                    ataqueRival(vidaJugador, estaminaRival);
+                    Combate.ejecMovimiento4(pEntrenador, pRival);
+                    actualizarEstamina(pEntrenador, estaminaEntrenador);
+                    modificarBarra(vidaRival, pRival);
+                    restaurarBotones();
 
-            // Restaura los botones originales
-            restaurarBotones();
+                } else {
+                    System.out.println(pRival.getNombre() + " se ha debilitado.");
+                }
+
+            } else {
+                System.out.println("Tu pokemon se ha debilitado :(");
+                restaurarBotones();
+            }
+
         });
 
         descansarButton.setId("descansar");
         descansarButton.setOnAction(event -> {
-            double nuevaEstamina = Combate.descansar(pEntrenador);
-            pEntrenador.setEstamina(nuevaEstamina);
-            actualizarEstaminaE(pEntrenador, estaminaEntrenador);
-
+            if (pEntrenador.getVitalidad() > 0) {
+                if (pRival.getVitalidad() > 0) {
+                    double nuevaEstamina = Combate.descansar(pEntrenador);
+                    pEntrenador.setEstamina(nuevaEstamina);
+                    actualizarEstamina(pEntrenador, estaminaEntrenador);
+                    ataqueRival(vidaJugador, estaminaRival);
+                } else {
+                    System.out.println(pRival.getNombre() + "se ha debilitado.");
+                }
+            } else {
+                System.out.println("Tu pokemon está debilitado.");
+            }
         });
+
 
         mochilaButton.setId("mochila");
         mochilaButton.setOnAction(event -> {
@@ -429,7 +486,7 @@ public class CombateGrafico extends Application {
      * @param barra
      * @param pokemon
      */
-    public void modificarBarra(ProgressBar barra, Pokemon pokemon) {
+    public static void modificarBarra(ProgressBar barra, Pokemon pokemon) {
 
         barra.setProgress(pokemon.getVitalidad() / 100);
 
@@ -460,7 +517,7 @@ public class CombateGrafico extends Application {
      * @param estaminaLabel
      */
 
-    public static void actualizarEstaminaE(Pokemon pokemon, Label estaminaLabel) {
+    public static void actualizarEstamina(Pokemon pokemon, Label estaminaLabel) {
 
         double nuevaEstamina = pokemon.getEstamina();
 
@@ -470,6 +527,25 @@ public class CombateGrafico extends Application {
 
     public static int getOpcion() {
         return opcion;
+    }
+
+    public static void ataqueRival(ProgressBar vidaJugador, Label estaminaRival) {
+
+        Combate.accionRival(pRival, pEntrenador, estaminaRival);
+        modificarBarra(vidaJugador, pEntrenador);
+        actualizarEstamina(pRival, estaminaRival);
+        System.out.println("Estamina rival: " + pRival.getEstamina());
+
+    }
+
+
+    public static void actualizarRival(Pokemon pokemon, ProgressBar vida, Label estamina, ImageView imagenPokemon, Label nombre) {
+            modificarBarra(vida, pokemon);
+            actualizarEstamina(pokemon, estamina);
+            Image nuevaImagen = new Image(Objects.requireNonNull(CombateGrafico.class.getResourceAsStream(pokemon.getFoto())));
+            imagenPokemon.setImage(nuevaImagen);
+            nombre.setText(pokemon.getNombre());
+
     }
 
 }
