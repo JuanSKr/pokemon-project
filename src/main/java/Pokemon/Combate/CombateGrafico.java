@@ -440,7 +440,6 @@ public class CombateGrafico extends Application {
         PokemonCRUD.getEquipo1(listaPokemon, PokemonCRUD.idEntrenador());
         ComboBox<Pokemon> equipo = new ComboBox<>();
         AnchorPane equipoContainer = new AnchorPane();
-        equipoContainer.getChildren().add(equipo);
         equipo.setLayoutX(0);
         equipo.setLayoutY(0);
 
@@ -486,7 +485,7 @@ public class CombateGrafico extends Application {
 
         StackPane stackPane = new StackPane();
         Pane rectPane = new Pane(rectangle);
-        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt, estaminaEntrenador, estaminaRival, movimiento1Txt, movimiento2Txt, movimiento3Txt, movimiento4Txt, equipoContainer);
+        stackPane.getChildren().addAll(backgroundImageView, rectPane, root, rivalTxt, entrenadorTxt, estaminaEntrenador, estaminaRival, movimiento1Txt, movimiento2Txt, movimiento3Txt, movimiento4Txt, equipo);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(stackPane, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add("Combate.css");
