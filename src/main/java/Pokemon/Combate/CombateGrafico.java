@@ -26,6 +26,7 @@ public class CombateGrafico extends Application {
     private Stage primaryStage;
     private Scene currentScene;
     public static int opcion;
+    public static ProgressBar vidaRival = new ProgressBar();
 
     // Declaramos los botones que se van a utilizar en la clase
 
@@ -125,7 +126,6 @@ public class CombateGrafico extends Application {
         topContainer.getChildren().add(rivalView);
 
         // CREAR UNA BARRA DE VIDA PARA EL POKÉMON RIVAL
-        ProgressBar vidaRival = new ProgressBar();
         double vidaR = pRival.getVitalidad();
         vidaRival.setProgress(vidaR / 100);
         vidaRival.setPrefWidth(150);
@@ -248,7 +248,7 @@ public class CombateGrafico extends Application {
                 } else {
                     System.out.println(pRival.getNombre() + " se ha debilitado.");
                     pRival = PokemonCRUD.generarPokemon();
-                    actualizarRival(pRival, vidaRival, estaminaRival, rivalView, rivalTxt);
+                    actualizarRival(pRival, vidaRival, estaminaRival, rivalView, rivalTxt, topContainer);
 
                 }
 
@@ -272,10 +272,11 @@ public class CombateGrafico extends Application {
                     restaurarBotones();
 
                 } else {
+
                     System.out.println(pRival.getNombre() + " se ha debilitado.");
                     restaurarBotones();
                     pRival = PokemonCRUD.generarPokemon();
-                    actualizarRival(pRival, vidaRival, estaminaRival, rivalView, rivalTxt);
+                    actualizarRival(pRival, vidaRival, estaminaRival, rivalView, rivalTxt, topContainer);
                     System.out.println("VIDA POMEMON UNEVO: " + pRival.getVitalidad());
                 }
 
@@ -488,6 +489,8 @@ public class CombateGrafico extends Application {
      */
     public static void modificarBarra(ProgressBar barra, Pokemon pokemon) {
 
+        barra.setProgress(1);
+
         barra.setProgress(pokemon.getVitalidad() / 100);
 
         if (pokemon.getVitalidad() <= 60) {
@@ -539,14 +542,31 @@ public class CombateGrafico extends Application {
     }
 
 
-    public static void actualizarRival(Pokemon pokemon, ProgressBar vida, Label estamina, ImageView imagenPokemon, Label nombre) {
-            modificarBarra(vida, pokemon);
-            actualizarEstamina(pokemon, estamina);
-            Image nuevaImagen = new Image(Objects.requireNonNull(CombateGrafico.class.getResourceAsStream(pokemon.getFoto())));
-            imagenPokemon.setImage(nuevaImagen);
-            nombre.setText(pokemon.getNombre());
+    public static void actualizarRival(Pokemon pokemon, ProgressBar viejaBarra, Label estamina, ImageView imagenPokemon, Label nombre, Pane contenedor) {
 
+        // Crear una nueva ProgressBar
+        ProgressBar nuevaBarra = new ProgressBar();
+        nuevaBarra.setProgress(pokemon.getVitalidad() / 100);
+        nuevaBarra.setPrefWidth(150);
+        VBox.setMargin(nuevaBarra, new Insets(0, 0, 0, 50));
+        nuevaBarra.setLayoutX(892);
+        nuevaBarra.setLayoutY(68);
+        nuevaBarra.setStyle("-fx-background-color: lightgray; -fx-accent: #993399;");
+
+        // Remplazar la vieja ProgressBar con la nueva
+        contenedor.getChildren().remove(viejaBarra);
+        contenedor.getChildren().add(nuevaBarra);
+
+        // Actualizar el resto de los elementos de la interfaz
+        actualizarEstamina(pokemon, estamina);
+        Image nuevaImagen = new Image(Objects.requireNonNull(CombateGrafico.class.getResourceAsStream(pokemon.getFoto())));
+        imagenPokemon.setImage(nuevaImagen);
+        nombre.setText(pokemon.getNombre());
+
+        // Actualizar la referencia a la ProgressBar en la clase
+        vidaRival = nuevaBarra; // Asegúrate de que 'vidaRival' es una variable estática accesible desde este método
     }
+
 
 }
 
