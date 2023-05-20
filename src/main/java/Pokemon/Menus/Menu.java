@@ -28,6 +28,7 @@ public class Menu extends Application {
     private static MediaView videoView = new MediaView();
 
 
+
     @Override
     public void start(Stage primaryStage) throws IOException {
 
