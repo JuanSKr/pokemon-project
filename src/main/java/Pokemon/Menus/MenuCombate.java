@@ -18,7 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-	//AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
+//AQUÍ SE ESTÁ CREANDO LA CLASE MENUENTRENADOR
 public class MenuCombate extends Application {
 
     private static final int SCENE_WIDTH = 1080;
@@ -45,15 +45,15 @@ public class MenuCombate extends Application {
         gridPane.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
         gridPane.setPadding(new Insets(PADDING_SIZE));
         BackgroundImage backgroundImage = new BackgroundImage(image,
-        	    BackgroundRepeat.NO_REPEAT,
-        	    BackgroundRepeat.NO_REPEAT,
-        	    BackgroundPosition.CENTER,
-        	    BackgroundSize.DEFAULT
-        	);
-        	gridPane.setBackground(new Background(backgroundImage));
-        	gridPane.setVgap(GAP_SIZE);
-        	gridPane.setHgap(GAP_SIZE);
-        	ImageView imagenLogo = new ImageView(image);
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT
+        );
+        gridPane.setBackground(new Background(backgroundImage));
+        gridPane.setVgap(GAP_SIZE);
+        gridPane.setHgap(GAP_SIZE);
+        ImageView imagenLogo = new ImageView(image);
 
         // Agregar botón para regresar al menú anterior
         Button backButton = new Button(" <-- ");

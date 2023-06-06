@@ -63,42 +63,6 @@ public class Rival {
 
     }
 
-    public static Movimiento cogerMovimiento(Pokemon pokemon) {
-
-        Movimiento movimiento;
-
-        int random = Funcion.random(1, 4);
-
-        if(random == 1) {
-            movimiento = pokemon.getMovimiento1();
-        } else if (random == 2) {
-            movimiento = pokemon.getMovimiento2();
-        } else if (random == 3) {
-            movimiento = pokemon.getMovimiento3();
-        } else {
-            movimiento = pokemon.getMovimiento4();
-        }
-
-        return movimiento;
-    }
-
-    public static Movimiento movimientoRandom(Pokemon pokemon) {
-
-        pokemonRival();
-
-        int random = Funcion.random(1, 4);
-
-        if(random == 1) {
-            return pokemon.getMovimiento1();
-        } else if(random == 2) {
-            return pokemon.getMovimiento2();
-        } else if (random == 3) {
-            return pokemon.getMovimiento3();
-        } else {
-            return pokemon.getMovimiento4();
-        }
-    }
-
 
     /**
      * Crea una LinkedList y le añade 6 pokemons aleatorios de la DB.
@@ -158,12 +122,6 @@ public class Rival {
                 "Equipo: " + equipo;
     }
 
-    public static void main(String[] args) {
-
-        pokemonRival();
-
-
-    }
 }
 
 

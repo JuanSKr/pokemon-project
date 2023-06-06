@@ -91,9 +91,7 @@ public class MenuEntrenador extends Application {
             Avatar avatar = new Avatar(primaryStage, primaryStage.getScene());
             avatar.start(primaryStage);
         });
-
-
-
+        
         stackPane.getChildren().add(videoView);
         stackPane.getChildren().add(barraView);
         StackPane.setAlignment(muteButton, Pos.TOP_RIGHT);

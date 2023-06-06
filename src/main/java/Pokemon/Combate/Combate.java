@@ -56,14 +56,9 @@ public class Combate {
         double ataqueStat = pokemonAtacante.getAtaque();
         double defensaStat = pokemonDefensor.getDefensa();
         double potencia = ataque.getPotencia();
-
         double multiplicador = TablaTipos.obtenerMultiplicador(pokemonAtacante.getTipo1(), pokemonDefensor.getTipo1());
-
-
         double calculado1 = (potencia * ataqueStat / defensaStat) / 2;
-
         double calculoFinal = (calculado1 * multiplicador);
-
         return calculoFinal;
 
     }
@@ -366,51 +361,6 @@ public class Combate {
         }
     }
 
-
-    /**
-     * Hacer un setMovimiento para el Pokemon Rival.
-     *
-     * @param pokemon
-     */
-
-    public static void setMovimiento(Pokemon pokemon) { //ERROR
-
-
-    }
-
-    public static boolean rivalDebilitado(Rival rival, Pokemon pokemonRival) {
-        if (contadorRival < 6) {
-            if (pokemonRival.getVitalidad() == 0) {
-                System.out.println(pokemonRival.getNombre() + " se ha debilitado.");
-                contadorRival++;
-                pokemonRival = Rival.pokemonRival();
-                System.out.println(rival.getNombre() + " utilizará a " + pokemonRival.getNombre());
-                return false;
-            }
-        } else {
-            System.out.println("Has ganado");
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean pokemonDebilitado(Pokemon pokemonEntrenador) {
-
-        if (contadorEntrenador <= 6) {
-            if (pokemonEntrenador.getVitalidad() == 0) {
-                System.out.println(pokemonEntrenador.getNombre() + " se ha debilitado.");
-                contadorEntrenador++;
-                pokemonEntrenador = elegirPokemon(1);
-                System.out.println(Entrenador.getNombre() + " utilizará a " + pokemonEntrenador.getNombre());
-                return false;
-            }
-        } else {
-            System.out.println("Has perdido");
-            return true;
-        }
-        return false;
-
-    }
 
     /**
      * Este método suma una cantidad random de estamina (entre 10 y 35) al Pokemon

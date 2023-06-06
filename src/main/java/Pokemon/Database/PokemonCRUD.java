@@ -293,45 +293,6 @@ public class PokemonCRUD {
 
     }
 
-    public static Pokemon mostrarPokemon() {
-        Entrenador.equipo1.clear();
-        PokemonCRUD.getEquipo1(Entrenador.equipo1, idEntrenador());
-        int contador = 0;
-
-        for (Pokemon pokemon : Entrenador.equipo1) {
-            contador++;
-            System.out.println(contador + ". " + pokemon.getNombre());
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Selecciona un pokemon: ");
-        int opcion = scanner.nextInt();
-
-        if (Entrenador.equipo1.size() >= opcion) {
-            switch (opcion) {
-                case 1:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(0).getId());
-                case 2:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(1).getId());
-                case 3:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(2).getId());
-                case 4:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(3).getId());
-                case 5:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(4).getId());
-                case 6:
-                    return PokemonCRUD.getPokemon(Entrenador.equipo1.get(5).getId());
-                default:
-                    System.out.println("Opción no válida.");
-                    return null;
-            }
-        } else {
-            System.out.println("Opción no válida.");
-            return null;
-        }
-    }
-
-
     /**
      * Método para rellenar la lista de equipo1 del Entrenador con los Pokemons de la tabla capturado.
      *
@@ -973,7 +934,6 @@ public class PokemonCRUD {
 
     public static int idEntrenador() {
 
-
         try {
 
             Connection db = MySQL.getConexion();
@@ -1171,11 +1131,6 @@ public class PokemonCRUD {
         } catch (SQLException e) {
 
         }
-
-    }
-
-    public static void main(String[] args) {
-
 
     }
 
