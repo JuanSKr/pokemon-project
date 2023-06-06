@@ -233,14 +233,6 @@ public class Selector extends Application {
     }
 
 
-    public static void main(String[] args) {
-        abrirMenu();
-    }
-
-    public static void abrirMenu() {
-        launch();
-    }
-
 
 }
 
