@@ -15,7 +15,7 @@
 - First of all you have to initialize Apache and MySQL services with XAMPP.
 - Then, you must start the Main class and the program will be executed.
 
-#### 📚 Libraries Implemented in the development process: 
+#### 📚 Libraries implemented in the development process: 
 - JDBC - (mysql-connector-java) (8.0.32)
 - JavaFX by OpenJFX - (javafx-controls) (19)
 - JUnit by Jupiter - (junit-jupiter-api) 
