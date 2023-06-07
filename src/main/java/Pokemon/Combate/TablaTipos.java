@@ -27,6 +27,7 @@ public class TablaTipos {
      */
 
     private void inicializarTabla() {
+        // Inicializar la tabla de tipos según las reglas de Pokémon
         // Valores normales
         inicializarNormal();
         // Valores fuertes

@@ -124,6 +124,7 @@ public class Selector extends Application {
 //            }
 //        });
 //
+//        // -----------------------------------------------------------------------------------------------------------------
 //
         opcion1.setOnAction(e ->
 
@@ -226,9 +227,12 @@ public class Selector extends Application {
         return imagen;
     }
 
+
     public static int getOpcionSeleccionada() {
         return opcionSeleccionada;
     }
+
+
 
 }
 

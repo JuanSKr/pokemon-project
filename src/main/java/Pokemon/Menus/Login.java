@@ -19,6 +19,7 @@ public class Login extends Application {
     private TextField nombreUsuario;
     private PasswordField contrasena;
     private Label mensaje;
+    private Entrenador entrenador = null;
     Image imageBackground = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/Login.gif")));
 
     @Override
@@ -80,7 +81,25 @@ public class Login extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    
+
+//    private void iniciarSesion() {
+//        String nombre = nombreUsuario.getText();
+//        String password = contrasena.getText();
+//        if (nombre.equals("test") && password.equals("1234")) {
+//            mensaje.setText("Inicio de sesión exitoso.");
+//            Entrenador.setNombre(nombre);
+//            Menu menu = new Menu();
+//            try {
+//                menu.start(new Stage());
+//                ((Stage) nombreUsuario.getScene().getWindow()).close();
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//            }
+//        } else {
+//            mensaje.setText("Nombre de usuario o contraseña incorrectos.");
+//        }
+//    }
+
     private void iniciarSesion() {
         String nombre = nombreUsuario.getText();
         String password = contrasena.getText();

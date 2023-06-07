@@ -218,4 +218,7 @@ public class Avatar extends Application {
         primaryStage.show();
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
