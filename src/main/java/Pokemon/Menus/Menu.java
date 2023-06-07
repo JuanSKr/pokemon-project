@@ -146,7 +146,7 @@ public class Menu extends Application {
         Scene scene = new Scene(root, 1080, 650);
         scene.getStylesheets().add("Menu.css");
 
-        primaryStage.setTitle("Pokémon: Menu");
+        primaryStage.setTitle("Pokémon - Proyecto");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
