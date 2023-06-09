@@ -1,7 +1,7 @@
 # Pokémon Project
 ### Juan Castaño and Miguel Moya
 
-#### 🔨 Programming languages utilized in the development of this application:
+#### ⚒️ Programming languages utilized in the development of this application:
 <ul style="list-style-type: none;">
   <li>Java 
     <br><img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original-wordmark.svg" title="Java" alt="Java" width="50" height="50"/></li>
