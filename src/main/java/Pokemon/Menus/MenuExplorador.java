@@ -51,7 +51,7 @@ public class MenuExplorador extends Application {
         this.previousScene = previousScene;
     }
 
-//---------------------------------------------------------------------------------------------------------------------------	
+//---------------------------------------------------------------------------------------------------------------------------
     // MOVIMIENTO DIRECCION
 
     /**
@@ -262,7 +262,7 @@ public class MenuExplorador extends Application {
                     pokemonCircle.setCenterX(pokemonCircle.getCenterX() + pokemonSpeedX);
                     pokemonCircle.setCenterY(pokemonCircle.getCenterY() + pokemonSpeedY);
 
-//------------------------------------------------------------------------------------------------------------			
+//------------------------------------------------------------------------------------------------------------
                     // SI CONSIGUE CAPTURA EL POKEMON NUESTRA LA SIGUIENTE ESCENA
                     if (trainerCircle.getCenterX() - pokemonCircle.getCenterX() <= TRAINER_RADIUS + POKEMON_RADIUS
                             && pokemonCircle.getCenterX() - trainerCircle.getCenterX() <= TRAINER_RADIUS + POKEMON_RADIUS
