@@ -4,7 +4,7 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `pokemon`
--- Author: github.com/juancg14
+-- Author: github.com/JuanSKr
 --
 
 -- --------------------------------------------------------

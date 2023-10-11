@@ -18,7 +18,10 @@
 ## 📚 Libraries implemented in the development process: 
 - JDBC - (mysql-connector-java) (8.0.32)
 - JavaFX by OpenJFX - (javafx-controls) (19)
-- JUnit by Jupiter - (junit-jupiter-api) 
+- JUnit by Jupiter - (junit-jupiter-api)
+
+## ⬇️ Download .exe (✅ Online database connection included)
+- https://www.mediafire.com/file/1vwdhcual5242a3/Pokemon.exe/file
 
 ## 📝 License
 
