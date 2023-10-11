@@ -21,7 +21,7 @@
 - JUnit by Jupiter - (junit-jupiter-api)
 
 ## ⬇️ Download .exe (✅ Online database connection included)
-- https://www.mediafire.com/file/1vwdhcual5242a3/Pokemon.exe/file
+- [Mediafire](https://www.mediafire.com/file/mjtrsrnnqe81tmi/Pokemon.exe/file)
 
 ## 📝 License
 
