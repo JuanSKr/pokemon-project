@@ -183,7 +183,7 @@ public class Entrenador {
     }
 
     public static String fotoDefault() { //Método añadido post-tests.
-        return "/img/alonso.png";
+        return "img/entrenador2.gif";
     }
 
 

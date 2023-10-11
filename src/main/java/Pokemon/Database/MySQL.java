@@ -15,6 +15,7 @@ public class MySQL {
     public static Connection getConexion() throws SQLException {
         if (conexion == null)
             conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
+//            conexion = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/pokemondbjym", "jympokemon", "00xz45dkIrka145!fkgfir459azir");
         return conexion;
     }
 
