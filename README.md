@@ -23,6 +23,28 @@
 ## ⬇️ Download .exe (✅ Online database connection included)
 - [Mediafire](https://www.mediafire.com/file/mjtrsrnnqe81tmi/Pokemon.exe/file)
 
+## 📸 Screenshots
+
+<details>
+    <summary>🚀 Click here</summary>
+🔑 Login Screen
+
+   ![Login](https://i.imgur.com/xdt30pF.jpg)
+
+💻 Menu Screen
+
+   ![Menu](https://i.imgur.com/M0WBxUQ.jpg)
+
+🕵️‍♂️ Avatar Screen
+
+   ![Avatar](https://i.imgur.com/cqAclJs.jpg)
+
+📺 Pokedex Screen
+
+   ![Pokedex](https://i.imgur.com/gQ2XvSt.jpg)
+   
+</details>
+
 ## 📝 License
 
 This project is [MIT](LICENSE) licensed.
