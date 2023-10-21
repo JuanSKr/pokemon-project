@@ -20,9 +20,6 @@
 - JavaFX by OpenJFX - (javafx-controls) (19)
 - JUnit by Jupiter - (junit-jupiter-api)
 
-## ⬇️ Download .exe (✅ Online database connection included)
-- [Mediafire](https://www.mediafire.com/file/mjtrsrnnqe81tmi/Pokemon.exe/file)
-
 ## 📸 Screenshots
 
 <details>
