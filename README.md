@@ -17,7 +17,7 @@
 
 ## 📚 Libraries implemented in the development process: 
 - JDBC - (mysql-connector-java) (8.0.32)
-- JavaFX by OpenJFX - (javafx-controls) (19)
+- JavaFX by OpenJFX - (javafx-controls) (21)
 - JUnit by Jupiter - (junit-jupiter-api)
 
 ## 📸 Screenshots
