@@ -1,0 +1,351 @@
+/*
+ * Estilos comunes a todas las pantallas.
+ * Colores sacados del menú principal: azul #2A75BB / #1D3F7A, amarillo #FFCB05 y crema #F9EBA0.
+ */
+
+.pantalla {
+    -fx-font-family: "Bahnschrift";
+}
+
+/* ---------- Paneles (como la barra del menú: crema con borde azul y amarillo) ---------- */
+.panel {
+    -fx-background-color: linear-gradient(to bottom, #FFF8D6, #F7E59A);
+    -fx-background-radius: 18;
+    -fx-border-color: #2A75BB, #FFCB05;
+    -fx-border-width: 5, 3;
+    -fx-border-insets: 0, 5;
+    -fx-border-radius: 18, 13;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.45), 18, 0.2, 0, 6);
+}
+
+.panel-oscuro {
+    -fx-background-color: rgba(16, 26, 52, 0.82);
+    -fx-background-radius: 16;
+    -fx-border-color: #2A75BB;
+    -fx-border-width: 3;
+    -fx-border-radius: 16;
+    -fx-padding: 12;
+}
+
+.titulo-panel {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-weight: 900;
+    -fx-font-size: 22px;
+    -fx-text-fill: #1D3F7A;
+}
+
+.texto {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2B2B2B;
+}
+
+.texto-suave {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 13px;
+    -fx-text-fill: #6B5A2A;
+}
+
+.texto-claro {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 3, 0.5, 0, 1);
+}
+
+.negrita {
+    -fx-font-weight: bold;
+}
+
+/* ---------- Botones ---------- */
+.boton-juego {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-weight: 900;
+    -fx-font-size: 17px;
+    -fx-text-fill: #FFCB05;
+    -fx-background-color: #6E6A4E, linear-gradient(to bottom, #4A9BE8, #2A6FC0);
+    -fx-background-insets: 0, 0 0 4 0;
+    -fx-background-radius: 12;
+    -fx-border-color: #1D3F7A;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 12;
+    -fx-padding: 8 20 11 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 4, 0.3, 0, 2);
+}
+
+.boton-juego .text {
+    -fx-effect: dropshadow(one-pass-box, #1D3F7A, 0, 1, 1.5, 1.5);
+}
+
+.boton-juego:hover {
+    -fx-background-color: #6E6A4E, linear-gradient(to bottom, #62AEF5, #3580D4);
+    -fx-translate-y: -1;
+}
+
+.boton-juego:pressed {
+    -fx-background-insets: 0, 2 0 2 0;
+    -fx-translate-y: 1;
+}
+
+.boton-juego:focused {
+    -fx-border-color: #FFCB05;
+}
+
+.boton-juego:disabled {
+    -fx-opacity: 0.45;
+}
+
+.boton-juego.claro {
+    -fx-text-fill: #1D3F7A;
+    -fx-background-color: #9C8A3A, linear-gradient(to bottom, #FFF3B0, #F5D249);
+}
+
+.boton-juego.claro .text {
+    -fx-effect: null;
+}
+
+.boton-juego.claro:hover {
+    -fx-background-color: #9C8A3A, linear-gradient(to bottom, #FFF8CC, #FFDF66);
+}
+
+.boton-juego.rojo {
+    -fx-text-fill: white;
+    -fx-background-color: #7A2A20, linear-gradient(to bottom, #F0604A, #C7321F);
+    -fx-border-color: #6B1A10;
+}
+
+.boton-juego.rojo .text {
+    -fx-effect: dropshadow(one-pass-box, #6B1A10, 0, 1, 1.5, 1.5);
+}
+
+.boton-juego.rojo:hover {
+    -fx-background-color: #7A2A20, linear-gradient(to bottom, #FF7A63, #DA412C);
+}
+
+.boton-juego.pequeno {
+    -fx-font-size: 14px;
+    -fx-padding: 5 12 8 12;
+}
+
+.boton-imagen {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+
+.boton-imagen:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 6, 0.4, 0, 3);
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+}
+
+.boton-imagen:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.boton-imagen:disabled {
+    -fx-opacity: 0.4;
+}
+
+/* ---------- Campos de texto ---------- */
+.campo-juego {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.65);
+    -fx-background-color: #1D3F7A, dodgerblue;
+    -fx-background-insets: 0, 2.5;
+    -fx-background-radius: 10, 8;
+    -fx-padding: 9 14 9 14;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.45), 6, 0.3, 0, 3);
+}
+
+.campo-juego:focused {
+    -fx-background-color: #FFCB05, dodgerblue;
+}
+
+/* ---------- Diálogos ---------- */
+.velo {
+    -fx-background-color: rgba(8, 14, 30, 0.6);
+}
+
+.dialogo {
+    -fx-padding: 26 30 24 30;
+    -fx-spacing: 16;
+}
+
+.dialogo-titulo {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-weight: 900;
+    -fx-font-size: 25px;
+    -fx-text-fill: #1D3F7A;
+    -fx-text-alignment: center;
+}
+
+.dialogo-texto {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 17px;
+    -fx-text-fill: #3A3320;
+    -fx-text-alignment: center;
+}
+
+.aviso {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFCB05;
+    -fx-background-color: rgba(16, 26, 52, 0.92);
+    -fx-background-radius: 22;
+    -fx-border-color: #FFCB05;
+    -fx-border-radius: 22;
+    -fx-border-width: 2;
+    -fx-padding: 10 24 10 24;
+}
+
+/* ---------- Chips de tipo / estado ---------- */
+.chip-tipo {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 2 8 2 8;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.35), 0, 0, 0, 1);
+}
+
+.chip-tipo .text {
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.5), 0, 0, 1, 1);
+}
+
+.chip-estado {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 11px;
+    -fx-font-weight: 900;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 1 6 1 6;
+}
+
+/* ---------- Barras (vida, estamina, estadísticas) ---------- */
+.barra {
+    -fx-background-color: #3A3A3A;
+    -fx-background-radius: 6;
+    -fx-padding: 2;
+}
+
+.barra-relleno {
+    -fx-background-radius: 4;
+}
+
+/* ---------- Scroll y listas ---------- */
+.scroll-pane, .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #2A75BB;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar .track, .scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+.tooltip {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 13px;
+    -fx-background-color: rgba(16, 26, 52, 0.95);
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 6 10 6 10;
+}
+
+/* ---------- Tarjetas (huecos de Pokémon, objetos...) ---------- */
+.tarjeta {
+    -fx-background-color: rgba(255, 255, 255, 0.75);
+    -fx-background-radius: 12;
+    -fx-border-color: #C9A93A;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-cursor: hand;
+}
+
+.tarjeta:hover {
+    -fx-background-color: white;
+    -fx-border-color: #2A75BB;
+}
+
+.tarjeta.seleccionada {
+    -fx-background-color: #DCEBFF;
+    -fx-border-color: #2A75BB;
+    -fx-border-width: 3;
+}
+
+.tarjeta.vacia {
+    -fx-background-color: rgba(255, 255, 255, 0.28);
+    -fx-border-color: rgba(150, 120, 40, 0.5);
+    -fx-border-style: segments(6, 5);
+    -fx-cursor: default;
+}
+
+.tarjeta.destino {
+    -fx-border-color: #2BB24C;
+    -fx-border-width: 3;
+    -fx-background-color: #E4FFE9;
+}
+
+.tarjeta.debilitado {
+    -fx-opacity: 0.5;
+}
+
+.nombre-tarjeta {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1D3F7A;
+}
+
+.nivel-tarjeta {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 11px;
+    -fx-text-fill: #6B5A2A;
+}
+
+/* ---------- Dinero ---------- */
+.dinero {
+    -fx-background-color: rgba(16, 26, 52, 0.85);
+    -fx-background-radius: 20;
+    -fx-border-color: #FFCB05;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 20;
+    -fx-padding: 5 16 5 8;
+    -fx-spacing: 8;
+    -fx-alignment: center-left;
+}
+
+.dinero .label {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 20px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #FFCB05;
+}

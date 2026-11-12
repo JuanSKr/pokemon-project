@@ -1,0 +1,24 @@
+/* Encuentro con un Pokémon salvaje */
+
+.mensaje-encuentro {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 3, 0.5, 0, 1);
+}
+
+.nombre-ball {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 16px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #FFCB05;
+}
+
+.datos-ball {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}

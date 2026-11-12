@@ -1,0 +1,58 @@
+/* Equipos */
+
+.titulo-zona {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 16px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #1D3F7A;
+}
+
+.zona {
+    -fx-background-color: rgba(255, 255, 255, 0.35);
+    -fx-background-radius: 12;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+}
+
+.zona.destino {
+    -fx-background-color: rgba(43, 178, 76, 0.18);
+    -fx-border-color: #2BB24C;
+    -fx-border-style: segments(8, 6);
+}
+
+.nombre-ficha {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 22px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #1D3F7A;
+}
+
+.nivel-ficha {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 16px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #2B2B2B;
+}
+
+.stat-ficha {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A4020;
+    -fx-min-width: 70px;
+}
+
+.valor-ficha {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 13px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #1D3F7A;
+}
+
+.movimiento-ficha {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2B2B2B;
+}

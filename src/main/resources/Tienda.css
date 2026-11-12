@@ -1,0 +1,51 @@
+/* Tienda */
+
+.tarjeta-articulo {
+    -fx-cursor: default;
+}
+
+.nombre-articulo {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 19px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #1D3F7A;
+}
+
+.precio-articulo {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #B07A00;
+}
+
+.cantidad-articulo {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 18px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #1D3F7A;
+    -fx-min-width: 26px;
+    -fx-alignment: center;
+}
+
+.fila-mochila {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 10;
+    -fx-border-color: #C9A93A;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-padding: 8 12 8 10;
+}
+
+.cantidad-mochila {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 18px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #2A75BB;
+}
+
+.total-articulo {
+    -fx-font-family: "Bahnschrift";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6B5A2A;
+}

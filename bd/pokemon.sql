@@ -287,10 +287,10 @@ INSERT INTO `pokedex` (`id_pokedex`, `nombre`, `vitalidad`, `velocidad`, `estami
 (26, 'Raichu', 100, 130, 145, 90, 80, 110, 80, 'Electrico', NULL, '/img/Gif/raichu.gif', '/img/Gif/raichuespalda.gif'),
 (27, 'Sandshrew', 100, 70, 155, 75, 85, 30, 30, 'Tierra', NULL, '/img/Gif/sandshrew.gif', '/img/Gif/sandshrewespalda.gif'),
 (28, 'Sandslash', 100, 95, 120, 100, 110, 55, 55, 'Tierra', NULL, '/img/Gif/sandslash.gif', '/img/Gif/sandslashespalda.gif'),
-(29, 'Nidoran♀', 100, 55, 90, 47, 52, 40, 40, 'Veneno', NULL, '/img/Gif/nidoranf.gif', '/img/Gif/nidoranfespalda.gif'),
+(29, 'Nidoran♀', 100, 55, 90, 47, 52, 40, 40, 'Veneno', NULL, '/img/Gif/nidoranf.gif', '/img/Gif/nidoranespalda.gif'),
 (30, 'Nidorina', 100, 70, 125, 62, 67, 55, 55, 'Veneno', NULL, '/img/Gif/nidorina.gif', '/img/Gif/nidorinaespalda.gif'),
 (31, 'Nidoqueen', 100, 85, 110, 102, 92, 82, 87, 'Veneno', 'Tierra', '/img/Gif/nidoqueen.gif', '/img/Gif/nidoqueenespalda.gif'),
-(32, 'Nidoran♂', 100, 50, 95, 57, 40, 40, 40, 'Veneno', NULL, '/img/Gif/nidoran-male.gif', '/img/Gif/nidoran-maleespalda.gif'),
+(32, 'Nidoran♂', 100, 50, 95, 57, 40, 40, 40, 'Veneno', NULL, '/img/Gif/nidoran-male.gif', '/img/Gif/nidoranespalda.gif'),
 (33, 'Nidorino', 100, 75, 145, 72, 57, 55, 55, 'Veneno', NULL, '/img/Gif/nidorino.gif', '/img/Gif/nidorinoespalda.gif'),
 (34, 'Nidoking', 100, 85, 110, 102, 77, 85, 75, 'Veneno', 'Tierra', '/img/Gif/nidoking.gif', '/img/Gif/nidokingespalda.gif'),
 (35, 'Clefairy', 100, 60, 135, 45, 48, 60, 65, 'Hada', NULL, '/img/Gif/clefairy.gif', '/img/Gif/clefairyespalda.gif'),
@@ -347,7 +347,7 @@ INSERT INTO `pokedex` (`id_pokedex`, `nombre`, `vitalidad`, `velocidad`, `estami
 (86, 'Seel', 100, 70, 145, 45, 55, 45, 70, 'Agua', NULL, '/img/Gif/seel.gif', '/img/Gif/seelespalda.gif'),
 (87, 'Dewgong', 100, 90, 120, 70, 80, 70, 95, 'Agua', 'Hielo', '/img/Gif/dewgong.gif', '/img/Gif/dewgongespalda.gif'),
 (88, 'Grimer', 100, 25, 90, 80, 50, 40, 40, 'Veneno', NULL, '/img/Gif/grimer.gif', '/img/Gif/grimerespalda.gif'),
-(89, 'Muk', 100, 20, 120, 105, 75, 65, 100, 'Veneno', NULL, '/img/Gif/muk.gif', '/img/Gif/mukespaldaespalda.gif'),
+(89, 'Muk', 100, 20, 120, 105, 75, 65, 100, 'Veneno', NULL, '/img/Gif/muk.gif', '/img/Gif/mukespalda.gif'),
 (90, 'Shellder', 100, 40, 120, 65, 100, 45, 25, 'Agua', NULL, '/img/Gif/shellder.gif', '/img/Gif/shellderespalda.gif'),
 (91, 'Cloyster', 100, 70, 100, 95, 180, 85, 45, 'Agua', 'Hielo', '/img/Gif/cloyster.gif', '/img/Gif/cloysterespalda.gif'),
 (92, 'Gastly', 100, 80, 140, 35, 30, 100, 100, 'Fantasma', 'Veneno', '/img/Gif/gastly.gif', '/img/Gif/gastlyespalda.gif'),
@@ -499,6 +499,41 @@ ALTER TABLE `mochila`
 --
 ALTER TABLE `objeto`
   ADD CONSTRAINT `capturado_fk` FOREIGN KEY (`id_capturado`) REFERENCES `capturado` (`id_capturado`);
+--
+-- Catálogo de la tienda y objetos de cada entrenador
+-- (el juego también las crea solo al arrancar si no existen)
+--
+
+CREATE TABLE `articulo` (
+  `id_articulo` int(11) NOT NULL PRIMARY KEY,
+  `nombre` varchar(30) NOT NULL,
+  `descripcion` varchar(160) NOT NULL,
+  `precio` int(11) NOT NULL,
+  `categoria` varchar(15) NOT NULL,
+  `valor` decimal(6,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `articulo` (`id_articulo`, `nombre`, `descripcion`, `precio`, `categoria`, `valor`) VALUES
+(1, 'Poké Ball', 'Una ball básica para capturar Pokémon salvajes.', 200, 'BALL', 1.00),
+(2, 'Super Ball', 'Ball de buena calidad. Captura con más facilidad que la Poké Ball.', 600, 'BALL', 1.50),
+(3, 'Ultra Ball', 'Ball de altas prestaciones. Ideal para Pokémon difíciles.', 1200, 'BALL', 2.20),
+(4, 'Poción', 'Restaura el 40% de la vida de un Pokémon en combate.', 300, 'CURACION', 40),
+(5, 'Superpoción', 'Restaura el 80% de la vida de un Pokémon en combate.', 700, 'CURACION', 80),
+(6, 'Éter', 'Recupera el 60% de la estamina de un Pokémon en combate.', 400, 'ESTAMINA', 60),
+(7, 'Revivir', 'Reanima a un Pokémon debilitado con la mitad de su vida.', 1500, 'REVIVIR', 50);
+
+CREATE TABLE `inventario` (
+  `id_entrenador` int(11) NOT NULL,
+  `id_articulo` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id_entrenador`, `id_articulo`),
+  CONSTRAINT `inventario_entrenador_fk` FOREIGN KEY (`id_entrenador`) REFERENCES `entrenador` (`id_entrenador`) ON DELETE CASCADE,
+  CONSTRAINT `inventario_articulo_fk` FOREIGN KEY (`id_articulo`) REFERENCES `articulo` (`id_articulo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- 5 Poké Balls de regalo para cada entrenador
+INSERT INTO `inventario` (`id_entrenador`, `id_articulo`, `cantidad`) SELECT `id_entrenador`, 1, 5 FROM `entrenador`;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
