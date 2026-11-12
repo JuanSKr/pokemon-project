@@ -46,6 +46,7 @@ public class Menu extends Application {
         videoView.setFitWidth(1080);
         videoView.setFitHeight(650);
 
+        reproductor.setOnError(() -> System.err.println("Error en el vídeo del menú: " + reproductor.getError()));
         reproductor.setCycleCount(MediaPlayer.INDEFINITE);
         reproductor.play();
 
